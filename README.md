@@ -94,7 +94,7 @@ the core leaves to the development history.
 
 ## Build prerequisites
 
-Lean `v4.31.0-rc1` with `elan`; mathlib at the pinned revision (`lake exe cache get`); Python 3.11
+Lean `v4.31.0-rc1` with `elan`; mathlib at the pinned revision (in `lean/`: `lake update`, then `lake exe cache get`); Python 3.11
 or later, standard library only; pandoc 3.9; TeX Live 2026 with XeTeX, fontspec, unicode-math,
 geometry, lineno, longtable, booktabs, array, and the font packages `stix2-otf`, `dejavu` and `cleveref`
 (`tlmgr install stix2-otf dejavu cleveref` (user mode), no administrator rights needed). Details and the measured
@@ -172,5 +172,6 @@ and each is exercised by a planted defect rather than asserted:
 ## Locators
 
 `papers/apal_build/locators.txt` carries the DOI and repository fields the final build stamps
-into the PDF. In this archive they are unset; the build runs in `draft` mode and a `final` build
-refuses to run until they are set.
+into the PDF. In this release they are set: DOI https://doi.org/10.5281/zenodo.23053094 (the Zenodo
+software record) and repository https://github.com/hirokifukui/single-quadratic-definability; the shipped
+PDF is the `final` build, and a `final` build refuses to run while either field is unset.

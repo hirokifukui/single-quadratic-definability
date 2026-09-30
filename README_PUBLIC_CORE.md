@@ -1,6 +1,6 @@
 # Public core of the mpup r53 artifact — a self-verifying release
 
-This archive is the PUBLIC CORE cut from the sealed full package `mpup_gpt_r53_20260930.zip` (SHA-256 `34711cdd2a480abb998e7c3e7af2dbe6aa0731744c5b4e2799ee6153b86f3a8d`):
+This archive is the PUBLIC CORE cut from the sealed full package `mpup_gpt_r53_20260930.zip` (SHA-256 `c7ffc92c9ce562697b6fd5e12edef9cd961357956f813bb76b8f1a9e0606a64a`):
 the Lean development (`lean/`), the frozen statements and certificates, the shipped tools, the native
 manuscript source and the built PDF, the release documents, and the current correspondence.  The
 development history (earlier rounds' reviews, homework, red-team notes, superseded drafts) is in the
