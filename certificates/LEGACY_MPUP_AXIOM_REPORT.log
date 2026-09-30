@@ -1,0 +1,7 @@
+# LEGACY_MPUP_AXIOM_REPORT — 6 roots (of 398 total). Terminology: external-input-free, NOT unconditional.
+DiophCompression.not_universalAchievableN_one_degree_two	external-input=HardDiophantineSetExists,QuadraticSolvabilityDecidableN	axioms=[Classical.choice, Quot.sound, propext]
+DiophCompression.not_universalAchievableZ_one_degree_two	external-input=HardDiophantineSetExists,QuadraticSolvabilityDecidableZ	axioms=[Classical.choice, Quot.sound, propext]
+DiophCompression.universalCapacityN_degree_two_eq_zero	external-input=HardDiophantineSetExists,QuadraticSolvabilityDecidableN	axioms=[Classical.choice, Quot.sound, propext]
+DiophCompression.universalCapacityZ_degree_two_eq_zero	external-input=HardDiophantineSetExists,QuadraticSolvabilityDecidableZ	axioms=[Classical.choice, Quot.sound, propext]
+DiophCompression.withinN_degree_two_is_decidable	external-input=QuadraticSolvabilityDecidableN	axioms=[Classical.choice, Quot.sound, propext]
+DiophCompression.withinZ_degree_two_is_decidable	external-input=QuadraticSolvabilityDecidableZ	axioms=[Classical.choice, Quot.sound, propext]

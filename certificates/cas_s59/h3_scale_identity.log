@@ -1,0 +1,2 @@
+PASS H3 scale identity (n,m,M) in {(1,1,2),(1,2,2),(2,1,2),(1,1,3)}, symbolic B, beta
+CAUGHT control L with -2*sum(e)

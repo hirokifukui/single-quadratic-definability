@@ -1,0 +1,733 @@
+\section{The arithmetic projection theorem: complete proof}\label[appendix]{sec:F}
+This appendix proves Theorems 9.2 and 9.3 in full. Parts I and II give the full-rank and the singular case of the projection argument; Part III proves the properties of the Pell-unit orbit that the full-rank argument uses; Part IV assembles the pieces, transports between the two halves of the fibre, and derives the summit; Part V proves the five auxiliary results the earlier parts cite (Lemmas V.1, V.2, V.3, V.6 and Theorem V.4). The paper depends on no text outside itself. The formal development verifies the same argument; it is corroboration, and no step below ends with a citation to a Lean declaration in place of a proof.
+
+\subsection*{F.0 Coverage of the twenty-five required lemmas}
+The proof below is organised so that each of the twenty-five lemmas the argument requires is proved in a named part and section (Parts I–IV). The lemma-by-lemma coverage table, listing where each is proved, ships with the artifact as \texttt{release/APPENDIX\_\allowbreak{}F\_\allowbreak{}COVERAGE.\allowbreak{}md}; the proof is complete without it. The Pell-orbit lemmas of Part III are proved here for the first time.
+
+\subsection*{Part I. The full-rank case: a complete per-point proof}
+\subsubsection*{0. Data and statement}
+Fix $r ≥ 2$. A fiber datum is (A, B, C, ℓ) with $A ∈ ℤ, B ∈ ℤ^{r}, C ∈ M_{r}(ℤ)$, and affine part $ℓ = (l, m, q), l ∈ ℤ, m ∈ ℤ^{r}$, $q ∈ ℤ$. The fiber polynomial and projection set are
+
+$F(c, u) = A c^{2} + c·(B·u) + uᵀCu + l c + m·u + q$,   $S = S(l,m,q)$ = \{ $c ∈ ℕ$ : ∃ u ∈ $ℤ^{r}$, $F(c,u) = 0$ \}.
+
+Write $G = C + Cᵀ$ (symmetric, even diagonal), $N = \mathrm{det} G$, and assume $N ≠ 0$ (the full-rank hypothesis). Write adj(G) for the adjugate, $\tilde{W}(Y) = Yᵀ·\mathrm{adj}(G)·Y$ for the adjugate form, and
+
+$Y(c,u) = G u + c B + m$        (the completed vector),   $α = 2NA − Bᵀ·\mathrm{adj}(G)·B$,   $β = β(l,m) = 2Nl − 2·Bᵀ·\mathrm{adj}(G)·m$,   $γ = γ(m,q) = 2Nq − mᵀ·\mathrm{adj}(G)·m$.
+
+α depends only on (A,B,C); β is linear in (l,m); γ is linear in q and quadratic in m. The bound shape is fbound = K·((1+|ℓ|₁)²+|q|) with $|ℓ|_{1} = |l| + Σ_{i}|m_{i}|$ and $K = K(A,B,C)$ independent of (l,m,q).
+
+\begin{theorem*}[full-rank projection dichotomy]
+If $\mathrm{det} G ≠ 0$ there is $K_{1} = K_{1}(A,B,C)$ such that for every (l,m,q): S(l,m,q) is infinite, or every $c ∈ S(l,m,q)$ satisfies $c ≤ K_{1}·((1+|ℓ|_{1})^{2}+|q|)$.
+
+\end{theorem*}
+\begin{proof}[Proof of the full-rank projection dichotomy]
+The proof shape is a per-point alternative:
+
+every $c_{0} ∈ S$ either satisfies a direct bound c₀ ≤ |β|-type,   or generates, through one of its own witnesses u₀, an infinite   family of fiber elements.
+
+If S is not infinite, the second alternative is impossible at every point, so every point satisfies the direct bound. No global line restriction of the fiber occurs anywhere in the argument, and no boundedness statement is ever transported from a subfamily to S.
+
+\subsubsection*{1. The completion identity}
+For every $(c,u) ∈ ℤ ×$ $ℤ^{r}$,
+
+$2N·F(c,u) = \tilde{W}(Y(c,u)) + α c^{2} + β c + γ$.                        (1.1)
+
+Both sides are integer polynomials in (c,u); the identity is checked by expanding, using $G·\mathrm{adj}(G) = N·I$ and the symmetry of adj(G). The factor 2N is a nonzero scalar multiplier, not a unit of ℤ: it is never divided by. The one cancellation used downstream is of the form $2N·x = 0 ⇒ x = 0$ with $N ≠ 0$, which holds because ℤ is an integral domain. In particular $F(c,u) = 0 ⟺ \tilde{W}(Y) + αc^{2} + βc + γ = 0$.
+
+\subsubsection*{2. The scaled line through a fiber point}
+Let $(c_{0}, u_{0}) ∈ ℤ ×$ $ℤ^{r}$ and let $w ∈ ℤ^{r}$ be any direction. The scaled line through (c₀, u₀) in direction w is the two-parameter integer family
+
+$c(t) = c_{0} + N t$,   $u(t,s) = u_{0} + s·\mathrm{adj}(G)·w − t·\mathrm{adj}(G)·B$,          $(t,s) ∈ ℤ^{2}$.      (2.1)
+
+Every point of the family lies in ℤ × $ℤ^{r}$ because adj(G) is an integer matrix; this is the integrality mechanism $N·ℤ^{r} ⊆ G·ℤ^{r}$ in action, since $G·(\mathrm{adj}(G)·d) = N·d$ for every $d ∈ ℤ^{r}$.
+
+\emph{Lattice transport.} Along (2.1) the completed vector moves in the single direction w:
+
+$Y(c(t), u(t,s)) = Y_{0} + (N s)·w$,   where $Y_{0} = Y(c_{0},u_{0})$.           (2.2)
+
+The c-dependence of Y cancels against the −t·adj(G)·B term: G·(t·adj(G)·B) = Nt·B absorbs the increment (Nt)·B of the cB summand.
+
+\emph{Line value.} Substituting (2.2) into (1.1) and expanding the square,
+
+$2N·F(c(t), u(t,s)) = 2N·F(c_{0},u_{0})$       + N·[ Nα·t² + N·W̃(w)·s² + Z₀·t + 2B₀·s ],                    (2.3)
+
+where $Z_{0} = 2α c_{0} + β$ and $B_{0} = Y_{0}ᵀ·\mathrm{adj}(G)·w$. The bracket is a binary integer quadratic in (t,s) with no ts-term, no constant term, t²-coefficient Nα and s²-coefficient N·W̃(w). If (c₀,u₀) is a fiber solution, $F(c_{0},u_{0}) = 0$, so the zeros of F on the line are exactly the integer zeros of the bracket, and $(t,s) = (0,0)$ is one of them.
+
+\subsubsection*{3. The bounded alternative at a point: $α(2αc_{0}+β) ≤ 0$ forces $c_{0} ≤ |β|$}
+Let $α ≠ 0$ and let $c_{0} ∈ S, c_{0} ≥ 0$, with $α·(2α c_{0} + β) ≤ 0$. Then $2α^{2}c_{0} ≤ −αβ ≤ |α|·|β|$. Since $|α| ≥ 1$ and $c_{0} ≥ 0, |α|·c_{0} ≤ α^{2}·c_{0}$, hence $|α|·2c_{0} ≤ 2α^{2}c_{0} ≤ |α|·|β|$; cancelling $|α| > 0$ gives $2c_{0} ≤ |β|$ and in particular
+
+$c_{0} ≤ |β|$.                                                        (3.1)
+
+This step uses nothing about witnesses: it is a sign computation on the linear polynomial 2αc₀ + β. The passage from |β| to fbound is the size estimate $|β| ≤ kβ·(1+|ℓ|_{1})$ with the explicit constant $kβ = 2|N| + 2·Σ_{ij}|B_{i}·\mathrm{adj}(G)_{ij}|$, together with $(1+|ℓ|_{1}) ≤ (1+|ℓ|_{1})^{2} + |q|$.
+
+\subsubsection*{4. The infinite alternative at a point: $α(2αc_{0}+β) > 0$ with a signed non-square direction}
+Call $w ∈ ℤ^{r} a$ \emph{signed non-square direction} for α when
+
+$α·\tilde{W}(w) < 0$  and  −α·W̃(w) is not a square in ℤ.                  (4.1)
+
+\begin{proposition*}
+Let $α ≠ 0$, let w satisfy (4.1), and let $c_{0} ∈ S$ with witness u₀ and $α·Z_{0} > 0$, where $Z_{0} = 2αc_{0} + β$. Then S is infinite.
+
+\end{proposition*}
+\begin{proof}
+Consider the scaled line (2.1) through (c₀,u₀) in direction w, and the binary quadratic of (2.3):
+
+$Q(t,s) = Nα·t^{2} + N·\tilde{W}(w)·s^{2} + Z_{0}·t + 2B_{0}·s$.
+
+Write ε = sign(N) ∈ \{±1\}, so that $N·ε = |N| ≥ 1$. The following six facts drive the Pell mechanism.
+
+(i) \emph{Discriminant positivity.} disc(Q) with respect to its quadratic part (Nα, 0, N·W̃(w)) equals $0^{2} − 4·Nα·N·\tilde{W}(w) = (2N)^{2}·(−α·\tilde{W}(w)) > 0$ by (4.1).
+
+(ii) \emph{Discriminant non-squareness.} A square times a non-square is a non-square: $(2N)^{2} ≠ 0$ and −α·W̃(w) non-square give disc(Q) non-square.
+
+(iii) \emph{Initial point.} $Q(0,0) = 0$: the auxiliary one-witness fiber set of the form (Nα, 0, N·W̃(w)) with affine data (ε·Z₀, 2B₀, 0) contains $t = 0$.
+
+(iv) \emph{Orientation.} The Pell entry condition at the initial point is the positivity of X₀ = 2·disc(Q)·0 + $(2·0·2B_{0} − 4·N·\tilde{W}(w)·ε·Z_{0}) = −4·|N|·\tilde{W}(w)·Z_{0}$. From $α·\tilde{W}(w) < 0$ and $α·Z_{0} > 0$, the product α²·W̃(w)·Z₀ is negative, and $α^{2} > 0$ forces $\tilde{W}(w)·Z_{0} < 0$; hence $X_{0} > 0$.
+
+(v) \emph{Infinite orbit.} By (i)–(iv), the Pell automorph of the binary form (Nα, 0, N·W̃(w)) — powered from a nontrivial positive solution of p² − disc·q² = 1, which exists because disc(Q) is positive and non-square — moves the initial point to solutions with strictly increasing t-height: the auxiliary fiber set contains infinitely many $t ∈ ℕ$. This is the one-witness Pell theorem of the two-variable layer, applied verbatim to the auxiliary form.
+
+(vi) \emph{Transport back, distinctness, nonnegativity, residue.} Each auxiliary solution $t = z′ ∈ ℕ$ (with its s) yields, through $t := ε·z′$ in (2.1) and the identity (2.3) with 2N cancelled, a genuine fiber solution: the sign adjustment ε in the affine coefficient of (iii) and in $t := ε·z′$ cancel through $ε^{2} = 1$, landing at
+
+$c = c_{0} + N·(ε·z′) = c_{0} + |N|·z′ ∈ ℕ$.
+
+The map $z′ ↦ c_{0} + |N|·z′$ is injective $(|N| ≥ 1)$, its outputs are nonnegative, and they all lie in the residue class c₀ mod |N|. The image of an infinite set under an injective map is infinite, so S is infinite.
+
+\end{proof}
+\subsubsection*{5. The per-point dichotomy for $α ≠ 0$ with a direction}
+\begin{proposition*}
+Let $α ≠ 0$ and let w be a signed non-square direction for α. Then the dichotomy holds with $K = kβ$ (as in §3): for every (l,m,q), S is infinite or every $c ∈ S$ satisfies $c ≤ kβ·((1+|ℓ|_{1})^{2}+|q|)$.
+
+\end{proposition*}
+\begin{proof}
+Fix (l,m,q). If S is infinite there is nothing to prove. Suppose S is not infinite, and let $c ∈ S$ be arbitrary with witness u. Exactly one of the following holds:
+
+\begin{itemize}
+\item $α·(2αc+β) ≤ 0$. Then $c ≤ |β|$ by §3, and |β| folds into the bound shape.
+\item $α·(2αc+β) > 0$. Then §4 applies at (c, u) — the scaled line through this
+very point — and S is infinite, contradicting the case assumption.
+
+\end{itemize}
+Hence every point of S satisfies the direct bound.
+
+\end{proof}
+The quantifier structure is the load-bearing part: the bound is proved for each element of S individually, from data at that element. At no point is a subfamily's boundedness transferred outward.
+
+\subsubsection*{6. The case $α = 0$}
+Here the identity (1.1) reads $2N·F = \tilde{W}(Y) + βc + γ$. Three sub-cases.
+
+\emph{(6a) $β = 0$: shift periodicity.} Take the scaled line (2.1) with direction $w = 0$ through any solution (c₀,u₀): by (2.3) with $α = 0, β = 0, \tilde{W}(0) = 0$, the bracket vanishes for every (t,s), so every c₀ + Nt with $t ∈ ℤ$ and c₀ + Nt ≥ 0 is again a fiber element. Membership of c in S therefore depends only on $c \mathrm{mod} |N|: c ∈ S ⟺ c + |N| ∈ S$ (shift by t = ±ε). A subset of ℕ that is invariant in both directions under shift by $|N| ≥ 1$ is empty or contains a full residue class; empty makes the bound vacuous, a full residue class is infinite.
+
+\emph{(6b) $β ≠ 0$ with a progression direction: $β·\tilde{W}(w) < 0$.} If S is empty the bound is vacuous. Otherwise fix a solution (c₀,u₀) and set $B_{0} = Y_{0}ᵀ·\mathrm{adj}(G)·w$. For every target $k ∈ ℕ$ choose an auxiliary integer
+
+τ = $k + |2N·B_{0}| + c_{0} + 1 ≥ 1$,
+
+and set the line parameters of (2.1) to $t := z$ and $s := β·τ$, where $z = −2B_{0}·τ − N·\tilde{W}(w)·β·τ^{2}$. With $α = 0$ the bracket of (2.3) — here $Z_{0} = β$ — evaluates at (z, β·τ) to $β·(N·\tilde{W}(w)·β·τ^{2} + z + 2B_{0}·τ) = 0$ by the choice of z, so c₀ + N·z carries a fiber solution, and
+
+$c_{0} + N·z = c_{0} − (2N·B_{0})·τ + N^{2}·(−\tilde{W}(w)·β)·τ^{2}$.
+
+The leading coefficient N²·(−W̃(w)β) is ≥ 1, so the quadratic term dominates: $c_{0} + N·z ≥ c_{0} − |2N·B_{0}|·τ + τ^{2} ≥ k$ by the choice of τ. Fiber elements exceed every k, so S is unbounded, hence infinite.
+
+\emph{(6c) $β ≠ 0$ with $β·\tilde{W} ≥ 0$ everywhere.} For $c ∈ S$ with witness u, the identity gives $\tilde{W}(Y) + βc + γ = 0$, so $β^{2}c = −βγ − β·\tilde{W}(Y) ≤ −βγ ≤ |β|·|γ|$. Since $|β| ≥ 1$ and $c ≥ 0$, cancelling as in §3 gives
+
+$c ≤ |γ| ≤ kγ·((1+Σ_{i}|m_{i}|)^{2}+|q|) ≤ kγ·((1+|ℓ|_{1})^{2}+|q|)$,
+
+with the explicit constant $kγ = 2|N| + Σ_{ij}|\mathrm{adj}(G)_{ij}|$. Again the bound is per-point.
+
+The dichotomy for $α = 0$ holds with $K = kγ$, once for every $β ≠ 0$ one of the two hypotheses of (6b)/(6c) is available; §8 supplies this from the sign pattern of W̃.
+
+\subsubsection*{7. The semidefinite alternative for $α ≠ 0: α·\tilde{W} ≥ 0$ everywhere}
+If $α·\tilde{W}(Y) ≥ 0$ for every Y — W̃ semidefinite with the same orientation as α — the bound is direct and no direction is needed. For $c ∈ S$ with witness u, (1.1) gives $α·(αc^{2} + βc + γ) = −α·\tilde{W}(Y) ≤ 0$, hence $α^{2}c^{2} ≤ |α||β|c + |α||γ|$, and cancelling $|α| ≥ 1$ as before, $c^{2} ≤ |β|c + |γ|$. If $c > |β| + |γ|$ then $c^{2} > (|β|+|γ|)·c ≥ |β|c + |γ|$ (using c ≥ 1), a contradiction; so
+
+$c ≤ |β| + |γ| ≤ (kβ + kγ)·((1+|ℓ|_{1})^{2}+|q|)$.
+
+The dichotomy holds with $K = kβ + kγ$, and the infinite branch is never invoked. This is the semidefinite edge case; it is also per-point.
+
+\subsubsection*{8. Producing the direction: the sign trichotomy of the adjugate form}
+The propositions of §§5–7 cover every (A,B,C) with $N ≠ 0$ once the following sign analysis of W̃ is in place. Throughout, $r ≥ 2$ supplies two coordinate indices $i ≠ j$.
+
+\emph{(8a) Anisotropy under semidefiniteness.} If $ε ≠ 0$ and $ε·\tilde{W} ≥ 0$ everywhere, then $\tilde{W}(w) = 0$ forces $w = 0$. Reason: for every v, testing $ε·\tilde{W} ≥ 0$ on the line w-direction plus v and letting the w-coefficient grow shows the pairing wᵀ·adj(G)·v vanishes; taking v over the standard basis gives $\mathrm{adj}(G)·w = 0$, and then $N·w = G·\mathrm{adj}(G)·w = 0$ with $N ≠ 0$ forces $w = 0$.
+
+\emph{(8b) Attaining the sign.} Under (8a)'s hypotheses, some coordinate vector has $ε·\tilde{W} > 0: a$ standard basis vector with $ε·\tilde{W} = 0$ would be zero by (8a).
+
+\emph{(8c) Indefinite case.} If $\tilde{W}(v) > 0$ and $\tilde{W}(w) < 0$ for some v, w, restrict W̃ to the plane x·v + y·w: the restricted values form a binary quadratic a x² + b xy + c y² with $a > 0 > c$, hence discriminant b² − 4ac > 0. If that discriminant is a square, the form splits into two integer linear factors and a walk along one factor line produces, for every $h > 0$ and σ = ±1, a point x with $σ·\tilde{W}(x) > 0$ and h·|W̃(x)| non-square; if it is not a square, the form is anisotropic and Lemma V.2 below (the points (k−b, 2a), k ∈ \{0,1,D,D+1\}) produces the same conclusion; the square case is Lemma V.3 below (explicit isotropic-line point). In either case: for every $h > 0$ and σ = ±1 there is x with $σ·\tilde{W}(x) > 0$ and h·|W̃(x)| non-square. Taking σ = −sign(α) and $h = |α|$ yields a signed non-square direction for α. For a progression direction no square condition is needed: for any $β ≠ 0$, whichever of v, w has W̃-value of sign opposite to β already satisfies $β·\tilde{W} < 0$.
+
+\emph{(8d) Semidefinite opposite to α.} If $α ≠ 0$ and $α·\tilde{W} ≤ 0$ everywhere, restrict −α·W̃ to the coordinate plane (i,j): its values there form the binary quadratic p x² + e xy + q y² with $p, q > 0$ (positivity at nonzero points holds by (8a) with ε = −α) and e even (e is twice an adjugate pairing scaled by −α), and e² < 4pq. The inequality is strict for the same reason $p, q > 0$ are: if e² ≥ 4pq the binary form p x² + e xy + q y² would take the value 0 or a negative value at a nonzero integer point of the plane — at (−e, 2p) it takes p(4pq − e²), which is ≤ 0 — and (8a) forbids that. A positive definite integer binary form with even cross term represents a positive non-square value (Lemma V.1 below: at one of (1,0), (0,1), (1,p)); at the representing point x·eᵢ + y·eⱼ one has −α·W̃ equal to that value, so $α·\tilde{W} < 0$ with −α·W̃ non-square — a signed non-square direction for α.
+
+\emph{(8e) Assembly grid.} Combining the trichotomy of α with the sign pattern of W̃:
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.201\linewidth}>{\raggedright\arraybackslash}p{0.182\linewidth}>{\raggedright\arraybackslash}p{0.329\linewidth}>{\raggedright\arraybackslash}p{0.182\linewidth}@{}}
+\toprule
+sign pattern of W̃ & α < 0 & α = 0 & α > 0 \\
+\midrule\endhead
+both signs attained & direction by (8c) → §5 & β = 0: → (6a); β ≠ 0: progression by (8c) → (6b) & direction by (8c) → §5 \\
+W̃ ≤ 0 everywhere & root bound → §7 & β = 0: → (6a); β < 0: (6c); β > 0: direction by (8b) → (6b) & direction by (8d) → §5 \\
+W̃ ≥ 0 everywhere & direction by (8d) → §5 & β = 0: → (6a); β > 0: (6c); β < 0: direction by (8b) → (6b) & root bound → §7 \\
+\bottomrule
+\end{longtable}
+Every cell terminates in §5, §6, or §7, each of which delivers the dichotomy with $K ∈ \{kβ, kγ, kβ+kγ\}$. Taking $K_{1} = kβ + kγ$ dominates all cells, and K₁ is determined by (A,B,C) alone. This proves the Theorem.
+
+\end{proof}
+\subsubsection*{9. The constant}
+In this full-rank layer the constants are the explicit integer expressions
+
+$kβ = 2|\mathrm{det} G| + 2·Σ_{ij} |B_{i}·\mathrm{adj}(G)_{ij}|$,   $kγ = 2|\mathrm{det} G| + Σ_{ij} |\mathrm{adj}(G)_{ij}|$,
+
+evaluated from (B, C); they do not depend on (l, m, q), which is the uniformity the capacity counting uses. No claim is made here about effectivity of constants in the singular layer (Lemmas 2–5 of the companion document), where the normal form involves a choice of basis; the capacity argument needs only existence of one finite constant per (A,B,C).
+
+\subsubsection*{10. Line-by-line Lean correspondence}
+The lemmas of Parts I--V are each anchored to a named declaration of \texttt{DiophCompression/SemanticQuadraticMatrix/} (and \texttt{Directions.\allowbreak{}lean}, \texttt{PellStep.\allowbreak{}lean} in the sibling directory \texttt{DiophCompression/SemanticQuadraticTwoWitness/}); the table listing every lemma with its anchor and file:lines is \texttt{release/APPENDIX\_\allowbreak{}F\_\allowbreak{}LEAN\_\allowbreak{}ANCHORS.\allowbreak{}md} of the artifact, beside the full statement map \texttt{release/STATEMENT\_\allowbreak{}MAP\_\allowbreak{}FULL.\allowbreak{}md} and the proof companion. The anchors that carry the theorem are those of the table in §9 above.
+\subsection*{Part II. The singular case: complete proofs of the component lemmas}
+\subsubsection*{0. Setup and notation}
+Fix $r ≥ 0$. A fiber datum is a tuple (A, B, C, ℓ) with $A ∈ ℤ, B ∈ ℤ^{r}, C ∈ M_{r}(ℤ)$, and an affine part $ℓ = (l, m, q), l ∈ ℤ, m ∈ ℤ^{r}$, $q ∈ ℤ$. The fiber polynomial is
+
+$F(c, u) = A c^{2} + c·(B·u) + uᵀCu + l c + m·u + q$,
+
+and the projection set is S = \{ $c ∈ ℕ$ : ∃ u ∈ $ℤ^{r}$, $F(c,u) = 0$ \}. Write $G = C + Cᵀ$ for the Gram matrix and $|ℓ|_{1} = |l| + Σ_{i}|m_{i}|$ for the ℓ¹-size of the affine data. The bound shape throughout is
+
+fbound = K · ((1 + |ℓ|₁)² + |q|),
+
+with K depending only on (A, B, C) — never on (l, m, q). The dichotomy to be proved: \textbf{S is infinite, or S ⊆ [0, fbound]}.
+
+Two conventions used silently below. First, $2·uᵀCu = uᵀGu$, so all quadratic-value arguments may replace C by its symmetrization at the cost of the nonzero scalar multiplier 2 — not a unit of ℤ — which never divides anything in these proofs: it multiplies, and it cancels only through torsion-freeness of ℤ (2x = 2y ⟹ x = y). Second, "periodic in c" always means: membership of c depends only on c mod P for a fixed positive integer P; a nonempty periodic subset of ℕ contains a full residue class and is infinite.
+
+\subsubsection*{1. Lemma 1 — full-rank adjugate reduction $(\mathrm{det} G ≠ 0)$}
+\textbf{Statement.} If $\mathrm{det} G ≠ 0$ there is $K_{1} = K_{1}(A,B,C)$ such that for all (l,m,q): S is infinite or $S ⊆ [0, K_{1}·((1+|ℓ|_{1})^{2}+|q|)]$.
+
+\begin{proof}
+The argument is per fibre point and is given in full as Part I of this appendix; the numbering there is self-contained and nothing below depends on any text outside this paper. The structure:
+
+The completion identity $2N·F(c,u) = \tilde{W}(Y) + αc^{2} + βc + γ$ — with Y = Gu + cB + m the completed vector, $\tilde{W}(Y) = Yᵀ·\mathrm{adj}(G)·Y$ the adjugate form, $α = 2NA − Bᵀ·\mathrm{adj}(G)·B, β = 2Nl − 2Bᵀ·\mathrm{adj}(G)·m, γ = 2Nq − mᵀ·\mathrm{adj}(G)·m$ — converts the fiber condition without division. For $α ≠ 0$ with a signed non-square direction w (α·W̃(w) < 0 and −α·W̃(w) non-square), take an arbitrary $c_{0} ∈ S$ with witness u₀. Either $α(2αc_{0}+β) ≤ 0$, and a sign computation on 2αc₀+β forces $c_{0} ≤ |β|$ directly; or $α(2αc_{0}+β) > 0$, and the scaled line $c = c_{0}$ + Nt, $u = u_{0} + s·\mathrm{adj}(G)·w − t·\mathrm{adj}(G)·B$ through this very point — an integer family along which Y moves by (Ns)·w only — carries a Pell orbit: the line value is a binary quadratic in (t,s) with discriminant (2N)²·(−α·W̃(w)), positive and non-square, whose automorph moves the initial solution $(t,s) = (0,0)$ to infinitely many solutions, landing fiber elements at c₀ + |N|·z′ for infinitely many distinct $z′ ∈ ℕ$. If S is not infinite the second alternative is impossible at every point, so every point of S obeys $c_{0} ≤ |β|$ — the bound is proved pointwise, never transported from a subfamily. The direction w is produced from the sign trichotomy of W̃: indefinite W̃ restricts to a plane binary form of positive discriminant (split or anisotropic walk); W̃ semidefinite opposite to α restricts to a positive definite plane form with even cross term representing a suitable non-square; W̃ semidefinite aligned with α needs no direction — the identity forces $c^{2} ≤ |β|c + |γ|$, hence $c ≤ |β| + |γ|$ (root bound). For $α = 0: β = 0$ gives shift periodicity mod |N| (empty or infinite); $β ≠ 0$ with a progression direction $(β·\tilde{W}(w) < 0)$ gives quadratic-growth unboundedness along the line; $β ≠ 0$ with $β·\tilde{W} ≥ 0$ everywhere forces $c ≤ |γ|$ pointwise. The constants $kβ = 2|N| + 2Σ_{ij}|B_{i}·\mathrm{adj}(G)_{ij}|$ and $kγ = 2|N| + Σ_{ij}|\mathrm{adj}(G)_{ij}|$ depend only on (B,C); $K_{1} = kβ + kγ$ dominates every branch.
+
+\end{proof}
+\subsubsection*{2. Lemma 2 — integral radical decomposition $(\mathrm{det} G = 0)$}
+\textbf{Statement.} If det G = 0 (G symmetric, the case $G = 0$ included), there is $U ∈ GL_{r}(ℤ)$ with UᵀGU = diag(G₀, 0), det G₀ ≠ 0, where the zero block has size s = dim ker. Moreover F ∘ U has the shape required by Lemmas 3A/3B: the last s variables (the radical variables) appear only linearly.
+
+\begin{proof}
+Let K = ker(G : $ℚ^{r} → ℚ^{r}$) ∩ $ℤ^{r}$, a submodule of $ℤ^{r}$.
+
+(i) \emph{K is saturated}: if $k·x ∈ K$ with $k ≠ 0$, then G(kx) = 0, so $k·(Gx) = 0$ in $ℤ^{r}$, and since $ℤ^{r}$ is torsion-free, Gx = 0, i.e. $x ∈ K$.
+
+(ii) \emph{The quotient is free}: $ℤ^{r}$/K is finitely generated; it is torsion-free precisely by (i) (a torsion element x + K with $k·x ∈ K$ forces x ∈ K); a finitely generated torsion-free module over the PID ℤ is free.
+
+(iii) \emph{The sequence splits}: $0 → K → ℤ^{r} → ℤ^{r}$/K → 0 with free quotient splits; choose a basis $w_{1},…,w_{s}$ of K and lifts $v_{1},…,v_{r−s}$ of a basis of the quotient. The matrix U with columns $(v_{1},…,v_{r−s}$, $w_{1},…,w_{s}$) lies in $GL_{r}$(ℤ): its columns generate $ℤ^{r}$ (every x decomposes as lift-part plus K-part) and are ℤ-linearly independent.
+
+(iv) \emph{Block shape}: for the last s columns, $G·w_{j} = 0$, so UᵀGU has zero in the last s columns; by symmetry of G, also in the last s rows. The leading (r−s)×(r−s) block G₀ represents the form induced on $ℤ^{r}$/K, which is nondegenerate: a vector v with G₀-pairing zero against the whole quotient lifts to $x ∉ K$ with Gx pairing to zero against $ℤ^{r}$, hence Gx = 0 by nondegeneracy of the standard pairing, hence $x ∈ K$ — contradiction.
+
+(v) \emph{Effect on F}: write $u = U·(v, w)$. The quadratic value satisfies $2·uᵀCu = uᵀGu = (v,w)ᵀ·UᵀGU·(v,w) = vᵀG_{0}v$: the radical variables w drop out of the quadratic part entirely. This holds although UᵀCU itself may keep nonzero entries in the radical block — the value only sees the symmetric part, and the factor 2 cancels because ℤ is torsion-free (2x = 2y ⟹ x = y). The terms c·(B·u) and m·u are linear in u, hence remain linear in (v,w); collecting, each radical variable wᵢ carries the affine-in-c coefficient $a_{i}(c) = b_{i} c + m_{i}′$ with (bᵢ) determined by (B, U) and (mᵢ′) linear in m. The transformation is a congruence Uᵀ(·)U with a single $U ∈ GL_{r}(ℤ)$ — not a Smith normal form, which is a two-sided equivalence P(·)Q and does not preserve quadratic values.
+
+\end{proof}
+All five steps read verbatim when $G = 0$: the kernel is all of $ℤ^{r}$, the quotient is the zero module (free on the empty basis), U consists of kernel columns only, the leading block G₀ is the empty 0×0 matrix whose determinant is the empty product $1 ≠ 0$, the nondegeneracy step (iv) is vacuous, and in (v) the quadratic part vanishes identically, so every variable carries an affine-in-c coefficient. The kernel statement \texttt{singular\_\allowbreak{}symmetric\_\allowbreak{}congruent\_\allowbreak{}block} carries no $G ≠ 0$ hypothesis; the dispatch sends every $\mathrm{det} G = 0$ datum, $G = 0$ included, through this lemma.
+
+Four further remarks close the edge cases and the scope. (a) \emph{Radical dimension zero cannot occur here}: over $ℤ, \mathrm{det} G = 0$ forces a nonzero rational kernel and hence a nonzero saturated integral kernel, so $s ≥ 1$ whenever this lemma is invoked; $s = 0$ is exactly the $\mathrm{det} G ≠ 0$ case of Lemma 1. (b) \emph{Existence-only by design}: an algorithmic variant is available in principle — the saturated kernel and a complement can be produced by Hermite-normal-form computations — but no such claim is used or made anywhere in this paper. (c) \emph{Independence of the completion}: any two completions U, U′ differ by a block-triangular unimodular change T respecting the kernel, so the normal forms are congruent over ℤ with $\mathrm{det} G_{0}′ = \mathrm{det}(T_{1})^{2}·\mathrm{det} G_{0} = \mathrm{det} G_{0}$, and the projection set — the only object consumed downstream — is unchanged under any $U ∈ GL_{r}(ℤ)$, since $u ↦ U·u$ is a bijection of $ℤ^{r}$. (d) \emph{Low-dimensional controls}: concrete small instances are formalized in the fidelity layer (\texttt{SemanticQuadraticSingular/Fidelity3W.\allowbreak{}lean}, nine coefficient tuples for $r = 3$ checked in the kernel); no CAS enumeration is claimed here beyond what \cref{sec:12} records.
+
+\subsubsection*{3. Lemma 3A — nonzero-minor periodicity}
+\textbf{Statement.} In the Lemma 2 normal form, suppose two radical coefficient pairs have a nonzero minor: $b_{i}m_{j}′ − b_{j}m_{i}′ ≠ 0$ for some i, j. Then S is empty or infinite.
+
+\begin{proof}
+By Bézout, for fixed c the radical variables solve $Σ_{i} (b_{i}c+m_{i}′)w_{i} = t$ exactly when $g(c) ∣ t$, where $g(c) = \mathrm{gcd}(b_{1}c+m_{1}′, …, b_{sc}+m_{s}′) ≥ 0$. Hence, writing F₀(c, v) for the non-radical part of the normal form (the v-variables being the nondegenerate-block variables),
+
+$c ∈ S$  ⟺  $∃ v ∈ ℤ^{k_{0}}$ : $g(c) ∣ F_{0}(c, v)$.                    (3.1)
+
+The identity  $b_{j}(b_{i}c + m_{i}′) − b_{i}(b_{j}c + m_{j}′) = b_{j}m_{i}′ − b_{i}m_{j}′ =: Δ_{ij}$ shows $g(c) ∣ Δ_{ij}$ for every c. Fix i, j with $Δ := Δ_{ij} ≠ 0$ and set $P = Δ^{2}$. Claim: membership (3.1) is periodic with period P.
+
+Let $c′ ≡ c (\mathrm{mod} P)$.
+
+(i) \emph{g is unchanged}: every common divisor e of the values (bₖc+mₖ′)ₖ divides g(c), hence divides Δ, hence divides P; then $e ∣ b_{k}c+m_{k}′$ and $e ∣ P ∣ (c′−c)·b_{k}$ give $e ∣ b_{k}c′+m_{k}′$ — so common divisors at c are common divisors at c′, and symmetrically. The two gcds have the same divisor sets, so $g(c′) = g(c) =: g$.
+
+(ii) \emph{The residues are unchanged}: $g ∣ Δ ∣ P$ and $c′ ≡ c (\mathrm{mod} P)$ give, for any $v, F_{0}(c′, v) ≡ F_{0}(c, v) (\mathrm{mod} g)$ (polynomial evaluation respects the congruence, coefficients integral). Hence $g ∣ F_{0}(c, v) ⟺ g ∣ F_{0}(c′, v)$ for the SAME v, and the existential (3.1) transfers in both directions.
+
+So S is a periodic subset of ℕ with period P; a nonempty periodic subset of ℕ contains a full residue class and is infinite.
+
+\end{proof}
+\emph{Consequence for capacity}: the graph of a function has singleton fibers — totality and single-valuedness are what make them singletons, not injectivity — so its datum can never fall in this branch; the branch removes itself from the counting argument rather than contributing a bound. Injectivity is used only in the counting step, where it makes the outputs associated with distinct inputs distinct.
+
+\subsubsection*{4. Lemma 3B — proportional compression}
+\textbf{Statement.} If all pair minors vanish, there is a single pair $(b′, μ′) ∈ ℤ^{2}$ such that for every c and every target $t ∈ ℤ$:
+
+(∃ w ∈ $ℤ^{s}$ : Σᵢ (bᵢc+mᵢ′)wᵢ = t)  ⟺  (∃ w ∈ ℤ : (b′c+μ′)·w = t).
+
+\begin{proof}
+Vanishing minors mean the vectors $(b_{i}, m_{i}′) ∈ ℤ^{2}$ are pairwise proportional. Discard identically-zero pairs (their variables contribute nothing to either side). If all pairs are zero, take $(b′, μ′) = (0,0)$; both sides then say $t = 0$. Otherwise let (b₀, μ₀) be a primitive vector (content 1) with every $(b_{i}, m_{i}′) = λ_{i}(b_{0}, μ_{0}), λ_{i} ∈ ℤ$ not all zero (integrality of the λᵢ: Lemma V.6 below, $\mathrm{gcd}(b_{0},μ_{0}) = 1$ and Gauss's lemma), and set $g = \mathrm{gcd}(λ_{1},…,λ_{s}) > 0$ and $(b′, μ′) = g·(b_{0}, μ_{0})$.
+
+$(⇒) Σ_{i} λ_{i}(b_{0}c+μ_{0})w_{i} = t$ gives $(b_{0}c+μ_{0})·(Σλ_{i}w_{i}) = t$. As w ranges over $ℤ^{s}$, Σλᵢwᵢ ranges over exactly gℤ: it always lies in gℤ because g divides every λᵢ, and every element of gℤ occurs, by Bézout. So the left side is solvable iff $t ∈ (b_{0}c+μ_{0})·gℤ = (b′c+μ′)ℤ…$ with the sign convention $b′c+μ′ = g(b_{0}c+μ_{0})$; that is precisely solvability of $(b′c+μ′)w = t$.
+
+(⇐) is the same equality read backwards: $t ∈ (b′c+μ′)ℤ = (b_{0}c+μ_{0})·gℤ$, and gℤ = \{Σλᵢwᵢ\}, producing an explicit $w ∈ ℤ^{s}$.
+
+Both directions are Bézout; the equivalence is exact, not one-sided, so any number s of radical variables is replaced by exactly one coupled variable without changing the projection set.
+
+\end{proof}
+\subsubsection*{5. Lemma 4 — quotient-rank-zero leaf (moving linear modulus)}
+\textbf{Statement.} For the normal form with $k_{0} = 0$, i.e. the fiber condition ∃w : $Q(c) + (bc+μ)w = 0$ with Q(c) = Ac² + lc + q: there is $K_{4} = |A| + |b| + |b|^{2} + 2$ such that S is infinite or $S ⊆ [0, K_{4}·((1+|l|+|μ|)^{2}+|q|)]$.
+
+\begin{proof}
+Solvability in w is the divisibility $(bc+μ) ∣ Q(c)$ (with the convention that modulus 0 divides only 0). The remainder identity — an algebraic identity in ℤ[A,l,q,b,μ,c], verified by expansion:
+
+$R := Aμ^{2}$ − blμ + b²q      = b²·Q(c) − (bc+μ)·(A(bc+μ) + (bl − 2Aμ)).                (5.1)
+
+Hence $(bc+μ) ∣ Q(c)$ ⟹ $(bc+μ) ∣ b^{2}Q(c)$ ⟹ $(bc+μ) ∣ R$. Four branches:
+
+\textbf{$(b ≠ 0, R ≠ 0)$ — bounded.} Every $c ∈ S$ satisfies |bc+μ| ≤ |R| (a nonzero multiple is at least as large in absolute value as the divisor), so $|c| ≤ (|R|+|μ|)/|b| ≤ |R|+|μ|$. Since $|R| ≤ |A|μ^{2} + |b||l||μ| + b^{2}|q| ≤ (|A|+|b|+b^{2})·((|l|+|μ|)^{2} + |q|)$, the bound K₄·((1+|l|+|μ|)²+|q|) holds with $K_{4} = |A|+|b|+|b|^{2}+2$ (the +2 absorbs the |μ| addend and the shift from (|l|+|μ|)² to (1+|l|+|μ|)²).
+
+\textbf{$(b ≠ 0, R = 0)$ — congruence sub-split.} Expanding the cofactor in $(5.1): L(c) := A(bc+μ)$ + (bl − 2Aμ) = Abc + bl − Aμ, and $R = 0$ gives the identity $b^{2}·Q(c) = (bc+μ)·L(c)$. For any c with t := bc+μ ≠ 0, multiply the target divisibility by b²:  $t ∣ Q(c) ⟺ t·b^{2} ∣ b^{2}·Q(c) = t·L(c) ⟺ b^{2} ∣ L(c)$. The moving-modulus condition is therefore EQUIVALENT to the fixed linear congruence
+
+$A·b·c + b·l − A·μ ≡ 0 (\mathrm{mod} b^{2})$.                              (5.2)
+
+\begin{itemize}
+\item If (5.2) has a solution $c_{0} ∈ ℤ$, its solution set contains the arithmetic
+progression $c ≡ c_{0} (\mathrm{mod} b^{2})$; shifting c₀ by a multiple of b² into ℕ, every   member c of the progression with bc+μ ≠ 0 (all but at most one) lies in S   — infinite.
+
+\item If (5.2) has no solution, then no c with bc+μ ≠ 0 lies in S; the only
+possible member is the single c with bc+μ = 0 (it exists only when   $b ∣ μ$, and then $t = 0$ requires $Q(c) = 0$ as well), and that c satisfies   $|c| = |μ|/|b| ≤ |μ|$ — bounded, inside the K₄ bound.
+
+\end{itemize}
+(Kernel: this is precisely the case split \texttt{∃ c₀, b² ∣ (A·b·c₀ + b·l − A·μ)} inside \texttt{quotient\_\allowbreak{}rank\_\allowbreak{}zero\_\allowbreak{}dichotomy}; the infinite arm is discharged by the explicit injection $t ↦ c_{1} + b^{2}·t$ into the fiber.)
+
+\textbf{$(b = 0, μ ≠ 0)$ — fixed modulus.} The condition is $μ ∣ Q(c)$; Q(c) mod μ depends only on c mod μ, so membership is periodic with period |μ|; empty or infinite.
+
+\textbf{$(b = 0, μ = 0)$ — no coupled variable.} The condition is $Q(c) = 0$. If $A = l = 0$ and $q = 0$, every c solves — infinite. If $A = l = 0, q ≠ 0, S$ is empty. Otherwise Q is a nonzero polynomial of degree ≤ 2 with at most two integer roots; both roots satisfy $|c| ≤ |l| + |q| + 1$ when $A = 0$ (root −q/l), and $|c| ≤ (|l|+|q|+1)$ when $A ≠ 0$ by the elementary root bound $|c| ≤ 1 + \mathrm{max}(|l|,|q|)/|A| ≤ 1 + |l| + |q|$ — inside the K₄ bound.
+
+\end{proof}
+The modulus in the two $b ≠ 0$ branches moves with c; the mechanism is division of the moving modulus into the FIXED remainder R, not a fixed- modulus periodicity. That distinction is what the four-branch structure records, and conflating the two is the error the branch table exists to prevent.
+
+\subsubsection*{6. Lemma 5 — moving-modulus prime progression $(k_{0} ≥ 2)$}
+\textbf{Statement.} Consider the normal form $F_{0}(c, v) + (bc+μ)w = 0$ with F₀ carrying a nondegenerate Gram block G₀ of $\mathrm{rank} k_{0} ≥ 2$, and no restriction on the sign of b. Then S is infinite, or every $c ∈ S$ satisfies a bound of the branch shape.
+\begin{proof}[Proof of Lemma 5]
+
+\textbf{Reduction to $b ≥ 0$.} The unimodular substitution $w ↦ −w$ is a bijection of ℤ and carries the condition $F_{0}(c, v) + (bc+μ)w = 0$ to $F_{0}(c, v) + (−bc−μ)w = 0$, so the datum (b, μ) and the datum (−b, −μ) have the \emph{same} projection set S. We may therefore assume $b ≥ 0$ throughout. (This is the same normalisation used inside Lemma 6; it is stated here and in the dispatch because Lemma 3B is free to return either sign.)
+
+\textbf{The case $b = 0$.} Lemma 3B may return $b′ = 0$ — it does so whenever every radical pair is of the form (0, mᵢ′), and it returns $(b′, μ′) = (0,0)$ when all of them vanish — so this case must be treated, and it is not covered by the prime-progression argument below, which needs a modulus that moves with c.
+
+\emph{$(b = 0, μ ≠ 0)$ — fixed modulus.} The condition is ∃v, w : $F_{0}(c,v) + μw = 0$, that is ∃v : $μ ∣ F_{0}(c,v)$. All coefficients of F₀ are integers, so for $c ≡ c′ (\mathrm{mod} |μ|)$ and any v we have $F_{0}(c,v) ≡ F_{0}(c′,v) (\mathrm{mod} μ)$; hence membership of c in S depends only on the residue of c modulo |μ|. S is therefore a union of residue classes intersected with ℕ: empty, or infinite. This is the same argument as the corresponding branch of Lemma 4 and uses nothing about k₀.
+
+\emph{$(b = 0, μ = 0)$ — no coupled variable.} The condition is ∃v, w : $F_{0}(c,v) = 0$, in which w is free and contributes nothing, so S = \{c ∈ ℕ : ∃ v ∈ $ℤ^{k_{0}}$, F₀(c,v) = 0\}. That is exactly a full-rank fibre datum in the k₀ variables v: the v-quadratic part of F₀ has Gram G₀ with $\mathrm{det} G_{0} ≠ 0$, and the hypothesis $k_{0} ≥ 2$ supplies precisely the two coordinate indices that Part I requires. Lemma 1 applies verbatim, in dimension k₀, and returns its own verdict and constant. There is no regress: Lemma 1 is a terminal leaf and is invoked here directly, not through Lemma 2 or 3B.
+
+\textbf{The case $b > 0$.} Assume a solution (c₀, v₀, w₀) with t₀ = bc₀+μ > 0. (If every solution has bc+μ ≤ 0 then bc ≤ $−μ ≤ |μ|$ for $c ∈ S$, and $b ≥ 1$ gives $c ≤ |μ|$, inside the uniform bound.)
+
+\emph{Choice of prime.} Let $D = 2·|\mathrm{det} G_{0}|·b·t_{0} > 0$. By Dirichlet's theorem on primes in arithmetic progressions there are infinitely many primes $p ≡ 1 (\mathrm{mod} D)$; choose one with $p > \mathrm{max}(D, |\mathrm{det} G_{0}|, t_{0}, 2)$. Then: p is odd; p ∤ det G₀ (p > |det G₀| and p prime); $b ∣ p−1$; $t_{0} ∣ p−1$; $\mathrm{gcd}(t_{0}, p) = 1$.
+
+\emph{The step.} Write $p−1 = b·j$ (integer since b ∣ p−1) and $c_{1} = c_{0} + t_{0}·j$. Then $b c_{1} + μ = t_{0} + b t_{0} j = t_{0}(1 + (p−1)) = t_{0}·p$, and $c_{1} > c_{0}$ since $t_{0}, j > 0$.
+
+\emph{Persistence mod t₀.} $c_{1} ≡ c_{0} (\mathrm{mod} t_{0})$ because $t_{0} ∣ t_{0}j$. Take $v ≡ v_{0} (\mathrm{mod} t_{0})$. Then $F_{0}(c_{1}, v) ≡ F_{0}(c_{0}, v_{0}) (\mathrm{mod} t_{0})$ (all coefficients integral, congruence respected by polynomial evaluation), and $F_{0}(c_{0}, v_{0}) = −t_{0}·w_{0} ≡ 0 (\mathrm{mod} t_{0})$. So $F_{0}(c_{1}, v) ≡ 0 (\mathrm{mod} t_{0})$ along this congruence class of v.
+
+\emph{Solvability mod p.} The quadratic part of F₀ in v has Gram G₀ with $p ∤ \mathrm{det} G_{0}$ and $\mathrm{rank} k_{0} ≥ 2$. We use the following classical fact, proved here rather than cited, since \cref{sec:F} takes no step by citation.
+
+\begin{displaytext}
+\textbf{Fact (universality over $F_{p}$).} Let p be an odd prime and let Q be a quadratic form in $k ≥ 2$ variables over $F_{p}$ whose Gram matrix G satisfies $p ∤ \mathrm{det} G$. Then Q represents every element of $F_{p}$.
+\end{displaytext}
+
+\begin{proof}
+Since p is odd, 2 is a unit, so the polarisation $B(x,y) = ½(Q(x+y) − Q(x) − Q(y))$ is a symmetric bilinear form with Gram G, and Gram–Schmidt against B diagonalises Q: in a suitable basis $Q = a_{1}x_{1}^{2}$ + ⋯ + $a_{kx}$\_k², and $\mathrm{det} G ≠ 0$ forces every $a_{i} ≠ 0$. Setting x₃ = ⋯ = $x_{k} = 0$ leaves the binary form a₁x² + a₂y² with $a_{1}, a_{2} ≠ 0$, so it suffices to represent an arbitrary t by that form. The squares of $F_{p}$ are (p−1)/2 nonzero values together with 0, so |\{x² : x ∈ $F_{p}$\}| = (p+1)/2; multiplication by the unit a₁ is a bijection, hence |A| = |\{a₁x² : x ∈ $F_{p}$\}| = (p+1)/2, and likewise |B| = |\{t − a₂y² : y ∈ $F_{p}$\}| = (p+1)/2. Now $|A| + |B| = p + 1 > p = |F_{p}$|, so A and B cannot be disjoint. Any common value gives $a_{1}x^{2} = t − a_{2}y^{2}$, that is $Q(x, y) = t$.
+\end{proof}
+
+The hypothesis $p ∤ \mathrm{det} G$ is not decorative: over F₇ the degenerate form $Q(x,y) = x^{2}$ represents only 4 of the 7 residues. The formal proof in the development follows a polarisation route that avoids diagonalising (\texttt{FiniteFieldQuadraticGeneral.\allowbreak{}lean}); it corroborates the argument above and does not replace it.
+
+After completing the square in the linear terms mod p (unit 2 invertible), $F_{0}(c_{1}, v) ≡ 0 (\mathrm{mod} p)$ has a solution $v ≡ v_{p}$.
+
+\emph{Gluing.} $\mathrm{gcd}(t_{0}, p) = 1$, so CRT produces $v_{1} ∈ ℤ^{k_{0}}$ with $v_{1} ≡ v (\mathrm{mod} t_{0})$ and $v_{1} ≡ v_{p} (\mathrm{mod} p)$. Then $F_{0}(c_{1}, v_{1}) ≡ 0 \mathrm{mod} t_{0}$ and mod p, hence mod t₀p, i.e. $t_{0}p ∣ F_{0}(c_{1}, v_{1})$. Set $w_{1} = −F_{0}(c_{1}, v_{1})/(t_{0}p) ∈ ℤ$; then $F_{0}(c_{1}, v_{1}) + (bc_{1}+μ)w_{1} = F_{0}(c_{1}, v_{1}) + t_{0}p·w_{1} = 0, a$ solution at c₁ with t₁ = bc₁+μ = $t_{0}p > 0$.
+
+\emph{Iteration.} The new solution satisfies the same hypothesis $(t_{1} > 0)$, so the step repeats with strictly increasing c. S is infinite.
+
+\emph{The complementary branch.} Stated with the case split above: if every solution has bc+μ ≤ 0, then for $c ∈ S$ we have bc ≤ $−μ ≤ |μ|$, and $b ≥ 1$ gives $c ≤ |μ| ≤ (1+|l|+|μ|)^{2}$ — within fbound. Together with the two $b = 0$ branches and the sign reduction, the four cases $b < 0, b = 0$ with $μ = 0, b = 0$ with $μ ≠ 0$, and $b > 0$ exhaust the data Lemma 3B can present.
+
+\end{proof}
+\subsubsection*{7. Lemma 6 — rank-one coupled dichotomy $(k_{0} = 1)$}
+\textbf{Statement.} For the normal form with $k_{0} = 1$: fiber condition $∃ u, w ∈ ℤ$ : $Q(c,u) + (bc+μ)·w = 0$, with $Q(c,u) = A c^{2} + B_{1} c u + k u^{2} + l c + m_{1} u + q$ and $k ≠ 0$ (the single nondegenerate variable; det G₀ = 2k). There is $K_{6} = K_{6}(A, B_{1}, k, b)$ such that for all (l, m₁, μ, q): S is infinite or every $c ∈ S$ satisfies $c ≤ K_{6}·((1+|l|+|m_{1}|+|μ|)^{2}+|q|)$.
+
+\begin{proof}
+Solvability in w is the divisibility $(bc+μ) ∣ Q(c,u)$ for some u (the modulus 0 divides only 0). The unimodular change $w ↦ −w$ replaces (b, μ) by (−b, −μ) without changing the projection set, so $b ≥ 0$ may be assumed; three cases.
+
+\emph{$(b = 0, μ = 0)$ — uncoupled.} The condition is ∃u : $Q(c,u) = 0$, exactly the one-witness two-variable dichotomy of the base layer (proved in full as Theorem V.4 below, with the transfer stated as Corollary V.5), whose constant transfers unchanged (its infinite branch already contains the Pell classes of that layer — which is where a Pell mechanism enters the rank-one component, and why no separate Pell argument appears below).
+
+\emph{$(b = 0, μ ≠ 0)$ — fixed modulus.} The condition is ∃u : $μ ∣ Q(c,u)$. For $c′ ≡ c (\mathrm{mod} |μ|)$ the difference
+
+$Q(c′,u) − Q(c,u) = (c′−c)·(A(c′+c) + B_{1}u + l)$
+
+is divisible by μ, so the condition transfers in both directions with the same u: membership is periodic mod |μ| — empty or infinite.
+
+\emph{$(b > 0)$ — coupled: the rank-one prime step.} If every fiber element has bc+μ ≤ 0, then c ≤ bc ≤ $−μ ≤ |μ| (b ≥ 1, c ≥ 0)$: bounded, inside the K₆ shape. Otherwise some fiber element (c₀, u₀) has t₀ = bc₀+μ > 0 with $t_{0} ∣ Q(c_{0},u_{0})$, and the following step produces a fiber element at strictly larger c; iterating makes S unbounded, hence infinite.
+
+\emph{The discriminant invariant.} Write $disc_{u} Q(c) = (B_{1}c+m_{1})^{2} − 4k(Ac^{2}+lc+q)$ for the u-discriminant of Q at c, and set
+
+D′ = (b·m₁ − B₁·μ)² − 4k·(Aμ² − blμ + b²q).
+
+The identity $b^{2}·disc_{u}$ Q(c) − D′ = (bc+μ)·(integer cofactor), checked by expansion, gives $b^{2}·disc_{u}$ Q(c) ≡ D′ (mod bc+μ) for every c. (The second summand of D′ is −4k times the Lemma-4 remainder R.)
+
+\emph{Choice of prime.} By Dirichlet's theorem choose a prime
+
+$p ≡ 1 (\mathrm{mod} 8·\mathrm{max}(1,|D′|)·b·|2k|·t_{0})$,   $p > t_{0}$.
+
+Then p is odd, $p ∤ 2k, b ∣ p−1, t_{0} ∣ p−1, \mathrm{gcd}(t_{0}, p) = 1$, and D′ is a square mod p: for $D′ ≠ 0$ decompose $D′ = sign(D′)·2^{e}·m$ with m odd; the Legendre symbols at 2 and −1 equal 1 because $p ≡ 1 (\mathrm{mod} 8)$, and $(m/p) = (p/m) = (1/m) = 1$ by quadratic reciprocity $(p ≡ 1 \mathrm{mod} 4)$ together with $p ≡ 1 (\mathrm{mod} m)$; multiplicativity gives $(D′/p) = 1$. For $D′ = 0$ the root below is a double root. No square/non-square case split on D′ is needed: the residue argument is uniform for every $D′ ≠ 0$, perfect squares included (a square is a residue modulo every prime).
+
+\emph{The step.} Set $c_{1} = c_{0} + t_{0}·(p−1)/b$, an integer since $b ∣ p−1$. Then bc₁ + $μ = t_{0} + t_{0}(p−1) = t_{0}·p$ and $c_{1} > c_{0}$.
+
+\emph{Root mod p.} $b^{2}·disc_{u}$ $Q(c_{1}) ≡ D′ (\mathrm{mod} t_{0}p)$, so $disc_{u}$ Q(c₁) is a square mod p. Here b is invertible $\mathrm{mod} p: p ≡ 1 (\mathrm{mod} b)$, so $p ∣ b$ would give $p ≤ b$ and simultaneously p = 1 + (a positive multiple of b) > b — a contradiction. With $p ∤ 2k$, completing the square in u shows Q(c₁, ·) has a root $u_{p}$ mod p.
+
+\emph{Persistence mod t₀.} $c_{1} ≡ c_{0} (\mathrm{mod} t_{0})$, so with $u ≡ u_{0} (\mathrm{mod} t_{0}): Q(c_{1},u) ≡ Q(c_{0},u_{0}) ≡ 0 (\mathrm{mod} t_{0})$.
+
+\emph{Gluing.} $\mathrm{gcd}(t_{0},p) = 1$: CRT produces u₁ with $u_{1} ≡ u_{0} (\mathrm{mod} t_{0})$ and $u_{1} ≡ u_{p} (\mathrm{mod} p)$, so t₀p = bc₁+μ divides Q(c₁,u₁) — a fiber element at c₁ with the new modulus $t_{0}p > 0$, and the hypothesis of the step holds again.
+
+\end{proof}
+\emph{General r.} The $k_{0} = 1$ leaf of the dispatch presents the fiber polynomial with a 1×1 nondegenerate block: expanding the one-index sums identifies it with the scalar polynomial above under $k = C_{11}$ (with 2C₁₁ = det G₀ ≠ 0), b = the compressed slope, μ = the compressed offset; the constant transfers unchanged. This is the translation layer \texttt{QuotientRankOne.\allowbreak{}lean}; the analytic content is the scalar core of the two-witness layer.
+
+\subsubsection*{8. Assembly and the capacity corollary}
+\begin{proof}[Proof of the assembly and the capacity corollary]
+\textbf{Dispatch.} The witness count r is unrestricted here (Part II fixes r ≥ 0), while Lemma 1 is stated and proved in Part I for $r ≥ 2$ — its direction step needs two coordinate indices $i ≠ j$. The small cases are therefore routed separately, and the routing is exhaustive as follows.
+
+\emph{$r ≤ 1$.} Theorem V.4 applies directly and settles both. For $r = 1$ the fibre datum (A, B, C, ℓ) is precisely the coefficient data (A, B, C, l, m, q) of Theorem V.4, with $B ∈ ℤ^{1}$ the coefficient of cu and $C ∈ ℤ^{1×1}$ that of u²; the theorem gives S infinite or $c ≤ K·((1+|l|+|m|)^{2} + |q|)$, and $|ℓ|_{1} = |l|+|m|$, so that bound is of the branch shape below with $K_{branch} = K(A,B,C)$. No assumption on det G is needed: the cases $C = 0$ and $C ≠ 0$ are both inside Theorem V.4. For $r = 0$ the fibre condition carries no unknown, and taking $B = C = m = 0$ in Theorem V.4 leaves exactly the condition Ac² + lc + $q = 0$ on c, with the same conclusion.
+
+\emph{$r ≥ 2$.} Given (A,B,C): if $\mathrm{det} G ≠ 0$, Lemma 1. If $\mathrm{det} G = 0$, Lemma 2 produces the normal form; if a radical pair minor is nonzero, Lemma 3A (empty-or-infinite); otherwise Lemma 3B compresses to one coupled variable, its output sign is normalised to $b ≥ 0$ by $w ↦ −w$ (Lemma 5, reduction step; the same substitution is used inside Lemma 6), and the quotient rank k₀ of G₀ dispatches to Lemma 4 (k₀=0), Lemma 6 (k₀=1), or Lemma 5 (k₀≥2). Each of those three lemmas treats $b = 0$ as well as $b > 0$, which matters because Lemma 3B returns $b′ = 0$ whenever the radical pairs are all of the form (0, mᵢ′). \textbf{Size transport.} The branch lemmas bound c in the data of the NORMAL FORM, after the congruence $u = U(v,w)$ of Lemma 2 and the compression of Lemma 3B, whereas the dichotomy of \cref{definition:9.1} is stated in the ORIGINAL affine data (ℓ, q). The step between them is short but it is exactly the parameter uniformity this paper claims, so it is carried out here rather than asserted.
+
+Write $κ(U) := max_{i} Σ_{j} |U_{ij}|$ for the largest ℓ¹ row sum of U; $κ(U) ≥ 1$ because U is integral and invertible, and κ(U) depends only on U, hence only on G, hence only on C — never on (l, m, q). Three estimates:
+
+(i)   Substituting $u = U(v,w)$ leaves A, l and q untouched and replaces m by         Uᵀm, so $|Uᵀm|_{1} ≤ κ(U)·|m|_{1}$ (coordinate j of Uᵀm pairs m with column j of U,         and summing over j groups the terms by row: $Σ_{j}|Σ_{i} U_{ij}m_{i}| ≤ Σ_{i}|m_{i}|·Σ_{j}|U_{ij}|$         ≤ κ(U)|m|₁). Hence $|ℓ_{norm}|_{1} = |l| + |Uᵀm|_{1} ≤ κ(U)·|ℓ|_{1}$.   (ii)  Lemma 3B outputs $(b′, μ′) = g·(b_{0}, μ_{0})$ with $(b_{i}, m_{i}′) = λ_{i}(b_{0}, μ_{0})$ and         $g = \mathrm{gcd}(λ_{1},…,λ_{s})$. Since g divides each λᵢ and the λᵢ are not all zero,         $g ≤ max_{i}|λ_{i}|$, so $|μ′| = g|μ_{0}| ≤ max_{i}|λ_{i}μ_{0}| = max_{i}|m_{i}′| ≤ |Uᵀm|_{1}$ (and         $|μ′| = 0$ trivially when μ₀ = 0). The leading linear coefficient m₁ of         the non-radical block is likewise a coordinate of Uᵀm.   (iii) $|b′| = g|b_{0}| = gcd_{i}(b_{i})$, and the bᵢ are determined by (B, U) alone.         So the compressed slope, which is the only normal-form quantity a branch         constant depends on, is fixed by (A, B, C) and not by the affine data —         which is what lets $K_{branch}$ be chosen before the parameter point.
+
+Consequently every normal-form quantity a branch bound uses satisfies $|l| + |μ′| ≤ |ℓ_{norm}|_{1} ≤ κ(U)|ℓ|_{1}$, while q is unchanged, so
+
+$K_{branch}·((1+|l|+|μ′|)^{2} + |q|) ≤ K_{branch}·κ(U)^{2}·((1+|ℓ|_{1})^{2} + |q|)$,
+
+and the branch bound has the fbound shape in the original data with the constant $K_{branch}$·κ(U)². Every terminal verdict is "infinite" or "c ≤ $K_{branch}$·((1+|ℓ|₁)²+|q|)"; $K_{H} = κ(U)^{2}$ times the max over the finitely many branch constants. Each branch supplies one finite constant determined by (A,B,C), which is all the capacity counting uses; no computability claim is made for the constants of the singular branches, where the normal form involves a choice of basis. (Lean: \texttt{DichotomySG}, \texttt{dichotomyM\_\allowbreak{}of\_\allowbreak{}dichotomySG\_\allowbreak{}zero}, \texttt{singular\_\allowbreak{}projection\_\allowbreak{}dichotomy\_\allowbreak{}all\_\allowbreak{}r}, \texttt{quadraticProjectionDichotomyZ\_\allowbreak{}all}.)
+
+\textbf{Capacity corollary (G\_ℤ(r,2) = 2 for all r).} Upper bound: let $P(a_{1},…,a_{n}$, c, u) represent the graph of an injective e : $ℕ^{n} → ℕ$ with total degree ≤ 2 and r ℤ-witnesses. For parameters $a ∈ [0,N]^{n}$, substitute: the resulting fiber datum has fixed (A,B,C) (the (c,u)-quadratic part of P, independent of a) and affine data with $|ℓ|_{1} ≤ κ_{P}·(1+N), |q| ≤ κ_{P}·(1+N)^{2}$ (coefficients of P are fixed; substituted parameters have size ≤ N; degree ≤ 2 caps parameter-monomials at quadratic). Totality and single-valuedness make every fiber a singleton, excluding the infinite branch, so every $\mathrm{output} e(a) ≤ K_{H}·((1+κ_{P}(1+N))^{2} + κ_{P}(1+N)^{2}) ≤ κ'·N^{2}$ for N large. The $(N+1)^{n}$ inputs map injectively into $[0, κ'N^{2}]: (N+1)^{n} ≤ κ'N^{2} + 1$ for all large N forces $n ≤ 2$. Lower bound: the quadratic pairing polynomial (a₁,a₂) ↦ code with no witnesses represents an injective graph at degree 2, so $n = 2$ is achieved, for every r by witness padding. Hence G\_ℤ(r,2) = 2. The same substitution argument with $r = 0$ in both directions gives the arity-spectrum inertia GraphAchievableZ(n,r,2) ⟺ GraphAchievableZ(n,0,2).
+
+\end{proof}
+\subsubsection*{9. Lean anchor table}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.081\linewidth}>{\raggedright\arraybackslash}p{0.174\linewidth}>{\raggedright\arraybackslash}p{0.644\linewidth}@{}}
+\toprule
+§ & claim & Lean anchor (each with the standard axiom footprint) \\
+\midrule\endhead
+1 & full-rank dichotomy & \texttt{full\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}dichotomy\_\allowbreak{}\allowbreak{}all}, \texttt{full\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}projection\_\allowbreak{}\allowbreak{}dichotomy\_\allowbreak{}\allowbreak{}of\_\allowbreak{}\allowbreak{}direction\_\allowbreak{}\allowbreak{}property} (Full\allowbreak{}Rank\allowbreak{}Generic.\allowbreak{}lean); leaves: Class\_\allowbreak{}D*.\allowbreak{}lean, Directions.\allowbreak{}lean, Pell\allowbreak{}Step.\allowbreak{}lean, Pell\allowbreak{}Pow.\allowbreak{}lean; complete per-point text: FULL\_\allowbreak{}RANK\_\allowbreak{}PROOF\_\allowbreak{}V2.\allowbreak{}md (accompanying artifact) \\
+2 & saturation/\allowbreak{}splitting/\allowbreak{}block & \texttt{integer\_\allowbreak{}\allowbreak{}kernel\_\allowbreak{}\allowbreak{}is\_\allowbreak{}\allowbreak{}saturated}, \texttt{saturated\_\allowbreak{}\allowbreak{}submodule\_\allowbreak{}\allowbreak{}has\_\allowbreak{}\allowbreak{}complement}, \texttt{singular\_\allowbreak{}\allowbreak{}symmetric\_\allowbreak{}\allowbreak{}congruent\_\allowbreak{}\allowbreak{}block}, \texttt{nondegenerate\_\allowbreak{}\allowbreak{}quotient\_\allowbreak{}\allowbreak{}block} (Radical\allowbreak{}Decomposition.\allowbreak{}lean) \\
+3\allowbreak{}A & minor periodicity & \texttt{affine\_\allowbreak{}\allowbreak{}family\_\allowbreak{}\allowbreak{}nonzero\_\allowbreak{}\allowbreak{}minor\_\allowbreak{}\allowbreak{}periodic} (Radical\allowbreak{}Affine.\allowbreak{}lean) \\
+3\allowbreak{}B & compression & \texttt{affine\_\allowbreak{}\allowbreak{}family\_\allowbreak{}\allowbreak{}zero\_\allowbreak{}\allowbreak{}minors\_\allowbreak{}\allowbreak{}proportional}, \texttt{primitive\_\allowbreak{}\allowbreak{}affine\_\allowbreak{}\allowbreak{}direction}, \texttt{radical\_\allowbreak{}\allowbreak{}family\_\allowbreak{}\allowbreak{}reduces\_\allowbreak{}\allowbreak{}to\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}coupled\_\allowbreak{}\allowbreak{}variable} (Radical\allowbreak{}Affine.\allowbreak{}lean) \\
+4 & remainder identity + dichotomy & \texttt{linear\_\allowbreak{}\allowbreak{}modulus\_\allowbreak{}\allowbreak{}divides\_\allowbreak{}\allowbreak{}quadratic\_\allowbreak{}\allowbreak{}remainder}, \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}zero\_\allowbreak{}\allowbreak{}bounded\_\allowbreak{}\allowbreak{}or\_\allowbreak{}\allowbreak{}infinite}, \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}zero\_\allowbreak{}\allowbreak{}dichotomy} (Quotient\allowbreak{}Rank\allowbreak{}Zero.\allowbreak{}lean) \\
+5 & prime progression & \texttt{moving\_\allowbreak{}\allowbreak{}remainder\_\allowbreak{}\allowbreak{}identity\_\allowbreak{}\allowbreak{}general}, \texttt{moving\_\allowbreak{}\allowbreak{}remainder\_\allowbreak{}\allowbreak{}root\_\allowbreak{}\allowbreak{}mod\_\allowbreak{}\allowbreak{}prime\_\allowbreak{}\allowbreak{}general}, \texttt{moving\_\allowbreak{}\allowbreak{}modulus\_\allowbreak{}\allowbreak{}prime\_\allowbreak{}\allowbreak{}step\_\allowbreak{}\allowbreak{}general}, \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}ge\_\allowbreak{}\allowbreak{}two\_\allowbreak{}\allowbreak{}moving\_\allowbreak{}\allowbreak{}dichotomy} (Moving\allowbreak{}Modulus\allowbreak{}General.\allowbreak{}lean) \\
+7 (Lemma 6) & rank-one coupled dichotomy & \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}normal\_\allowbreak{}\allowbreak{}form}, \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}coupled\_\allowbreak{}\allowbreak{}dichotomy}, \texttt{quotient\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}dichotomy} (Quotient\allowbreak{}Rank\allowbreak{}One.\allowbreak{}lean); scalar core: \texttt{dichotomy2\_\allowbreak{}\allowbreak{}rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}normal}, \texttt{rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}uncoupled}, \texttt{rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}coupled\_\allowbreak{}\allowbreak{}pos} (Semantic\allowbreak{}Quadratic\allowbreak{}Two\allowbreak{}Witness/\allowbreak{}Rank\allowbreak{}One.\allowbreak{}lean), \texttt{rank\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}coupled\_\allowbreak{}\allowbreak{}prime\_\allowbreak{}\allowbreak{}step}, \texttt{d\allowbreak{}Prime\_\allowbreak{}\allowbreak{}identity}, \texttt{square\_\allowbreak{}\allowbreak{}mod\_\allowbreak{}\allowbreak{}prime\_\allowbreak{}\allowbreak{}of\_\allowbreak{}\allowbreak{}one\_\allowbreak{}\allowbreak{}mod\_\allowbreak{}\allowbreak{}eight\_\allowbreak{}\allowbreak{}abs} (Semantic\allowbreak{}Quadratic\allowbreak{}Two\allowbreak{}Witness/\allowbreak{}Rank\allowbreak{}One\allowbreak{}Coupled.\allowbreak{}lean) \\
+8 & assembly + capacity & \texttt{quadratic\allowbreak{}Projection\allowbreak{}Dichotomy\allowbreak{}Z\_\allowbreak{}\allowbreak{}all}, \texttt{quadratic\allowbreak{}Witness\allowbreak{}Inertia\allowbreak{}Z}, \texttt{graph\allowbreak{}Achievable\allowbreak{}Z\_\allowbreak{}\allowbreak{}degree\_\allowbreak{}\allowbreak{}two\_\allowbreak{}\allowbreak{}iff} (Singular\allowbreak{}Assembly.\allowbreak{}lean); \texttt{graph\allowbreak{}Capacity\allowbreak{}Z\_\allowbreak{}\allowbreak{}two\_\allowbreak{}\allowbreak{}of\_\allowbreak{}\allowbreak{}projection\allowbreak{}Dichotomy} (Projection\allowbreak{}Dichotomy.\allowbreak{}lean) \\
+\bottomrule
+\end{longtable}
+External inputs at natural-language level, listed in full: Dirichlet's theorem on primes in arithmetic progressions (§6; in the kernel via mathlib); quadratic reciprocity and the values of the Legendre symbol at −1 and 2, used in the rank-one coupled leaf (§7); solvability of Pell's equation for a positive nonsquare discriminant, used in Theorem V.4's Pell case and again in Part III (in the kernel via mathlib \texttt{Pell.\allowbreak{}exists\_\allowbreak{}of\_\allowbreak{}not\_\allowbreak{}isSquare}); and the classical two-variable quadratic dichotomy leaf constants (§1), which are kernel-verified here and depend on nothing outside this development. Universality of a nondegenerate quadratic form of $\mathrm{rank} ≥ 2$ over $F_{p}$ is not on this list: it is proved in §6 above, where a reader expecting to find it among the inputs will find it as a theorem.
+
+\subsection*{Part III. Pell-unit orbits: recurrence, norm, congruence, growth}
+The full-rank argument of Part I produces a unit of a real quadratic order and iterates it to obtain the orbit. This Part proves the properties of that iteration which Part I uses (\texttt{StructuredFamilyCore.\allowbreak{}pell}, \texttt{FullRankAssemblyData.\allowbreak{}lean}).
+
+Throughout, D is a positive nonsquare integer and $(P, Q) ∈ ℤ^{2}$ satisfies
+
+(III.1)  $P^{2} − D·Q^{2} = 1$,   $P ≥ 2$,   $Q ≥ 1$.
+
+Such a pair exists for every positive nonsquare D, since Pell's equation is then solvable; Part I produces one from the discriminant data of the form. It need not be, and is not claimed to be, the fundamental unit — any nontrivial positive solution serves. Given a starting point $(X_{0}, Y_{0}) ∈ ℤ^{2}$ define
+
+(III.2)  $X_{k+1} = X_{k}·P + D·Y_{k}·Q$,   $Y_{k+1} = X_{k}·Q + Y_{k}·P$.
+
+This is multiplication by the unit P + Q√D in ℤ[√D], written out in coordinates: if $ξ_{k} = X_{k} + Y_{k}$√D then $ξ_{k+1} = ξ_{k}·(P + Q√D)$.
+
+\subsubsection*{Lemma III.1 (norm preservation along the orbit)}
+For every $k, X_{k}^{2} − D·Y_{k}^{2} = X_{0}^{2} − D·Y_{0}^{2}$.
+
+\begin{proof}
+It suffices to prove the one-step identity, and then induct. Expanding (III.2),
+
+$X_{k+1}$² − $D·Y_{k+1}$²     = $(X_{k}$ P + D $Y_{k}$ Q)² − $D·(X_{k}$ Q + $Y_{k}$ P)²     = $X_{k}$²P² + $2D·X_{k}$ $Y_{k}$ P Q + $D^{2}Y_{k}$²Q² − $D·X_{k}$²Q² − $2D·X_{k}$ $Y_{k}$ P Q − $D·Y_{k}$²P²     = $X_{k}$²P² + $D^{2}Y_{k}$²Q² − $D·X_{k}$²Q² − $D·Y_{k}$²P²     = $X_{k}$²(P² − D Q²) − $D·Y_{k}$²(P² − D Q²)     = $(X_{k}$² − $D·Y_{k}$²)·(P² − D·Q²).
+
+By (III.1) the second factor is 1, so the norm is unchanged. The cross terms cancel exactly, which is the only point at which (III.1) is used; no positivity is needed here.
+
+\end{proof}
+\subsubsection*{Lemma III.2 (congruence preservation)}
+Let $m ≥ 1$ and suppose $P ≡ 1$ and $Q ≡ 0 (\mathrm{mod} m)$. Then $X_{k} ≡ X_{0}$ and $Y_{k} ≡ Y_{0} (\mathrm{mod} m)$ for every k.
+
+\begin{proof}
+One step: $X_{k+1} = X_{k}·P + D·Y_{k}·Q ≡ X_{k}·1 + D·Y_{k}·0 = X_{k}$, and $Y_{k+1} = X_{k}·Q + Y_{k}·P ≡ X_{k}·0 + Y_{k}·1 = Y_{k} (\mathrm{mod} m)$. Induct.
+
+\end{proof}
+The hypothesis of Lemma III.2 is not restrictive, and the reason is a finiteness argument rather than a cyclicity one.
+
+\begin{lemma*}[III.2′.]
+Let $m ≥ 1$ and let (P, Q) satisfy $P^{2} − D·Q^{2} = 1$. Then there is d with $1 ≤ d ≤ m^{2}$ such that the coordinates $(P_{d}$, $Q_{d}$) of (P + $Q√D)^{d}$ satisfy $P_{d} ≡ 1$ and $Q_{d} ≡ 0 (\mathrm{mod} m)$.
+
+\end{lemma*}
+\begin{proof}
+Let G be the set of pairs $(x, y) ∈ (ℤ/m)^{2}$ with $x^{2} − D·y^{2} = 1$, under the composition $(x, y)·(x′, y′) = (x x′ + D y y′, x y′ + y x′)$ inherited from multiplication in ℤ[√D]. That G is closed under this composition is the multiplicativity of the norm, written out: for all x, y, x′, y′,
+
+$(x x′ + D y y′)^{2} − D·(x y′ + y x′)^{2} = (x^{2} − D y^{2})·(x′^{2} − D y′^{2})$,
+
+an identity of polynomials in ℤ[x, y, x′, y′, D] — the same computation as in Lemma III.1, with (P, Q) replaced by (x′, y′) — so a product of two elements of norm 1 again has norm 1. Composition is associative, (1, 0) is neutral, and (x, −y) inverts (x, y) since $(x + y√D)(x − y√D) = x^{2} − D y^{2} = 1$; so G is a group. It is a subset of (ℤ/m)², hence $|G| ≤ m^{2}$. The reduction of (P, Q) lies in G, so its order d divides |G| and in particular $d ≤ m^{2}$. Then (P, $Q)^{d}$ reduces to (1, 0), which is the assertion.
+
+\end{proof}
+No cyclicity of G is claimed or needed: the argument uses only that G is a finite group and that the order of an element divides the order of the group. Part I selects a power of the unit (P, Q) that meets the congruence required by the branch — Lemma III.2′ says such a power exists, with an explicit bound on the exponent — and Lemma III.2 is what makes that selection stable along the whole orbit once it has been made.
+
+\subsubsection*{Lemma III.3 (strict growth)}
+Suppose $X_{0} ≥ 1$ and $Y_{0} ≥ 0$. Then for every $k: X_{k} ≥ 1, Y_{k} ≥ 0$, and $X_{k+1} ≥ 2·X_{k}$. In particular $X_{k} ≥ 2^{k}$·X₀, so $(X_{k}$) is strictly increasing and unbounded.
+
+\begin{proof}
+Induction on k. The base case is the hypothesis. Assume $X_{k} ≥ 1$ and $Y_{k} ≥ 0$. Since $D ≥ 2$ and $Q ≥ 1$ we have $D·Y_{k}·Q ≥ 0$, so
+
+$X_{k+1} = X_{k}·P + D·Y_{k}·Q ≥ X_{k}·P ≥ 2·X_{k} ≥ 2 ≥ 1$,
+
+using $P ≥ 2$. Likewise $X_{k}·Q ≥ 0$ and $Y_{k}·P ≥ 0$ give $Y_{k+1} ≥ 0$. The chain $X_{k} ≥ 2^{k}$·X₀ follows, and $2^{k}·X_{0} → ∞$.
+
+\end{proof}
+\subsubsection*{Lemma III.4 (the output projection is strictly increasing)}
+Let denom, px, pc ∈ ℤ with $\mathrm{denom} ≠ 0$ and px ≠ 0, and suppose $c_{k} ∈ ℕ$ satisfies $\mathrm{denom}·c_{k} = px·X_{k}$ + pc for every k, with $(X_{k}$) as in Lemma III.3. Then $(c_{k}$) is strictly increasing — from $k = 0$, not merely from some index on — and the set \{$c_{k}$ : k ≥ 0\} is infinite.
+
+\begin{proof}
+From $\mathrm{denom}·c_{k} = px·X_{k}$ + pc,
+
+$\mathrm{denom}·(c_{k+1} − c_{k}) = px·(X_{k+1} − X_{k})$,
+
+and Lemma III.3 gives $X_{k+1} − X_{k} ≥ X_{k} ≥ 1$, so the right-hand side is nonzero for \emph{every} k, not merely from some index on. Hence
+
+$|c_{k+1} − c_{k}| = (|px|/|\mathrm{denom}|)·(X_{k+1} − X_{k}) ≥ |px|·X_{k}/|\mathrm{denom}| > 0$,
+
+and the sign of $c_{k+1} − c_{k}$ is the sign of px/denom — of the quotient, not of px alone — which is the same for every k. So $(c_{k}$) is strictly monotone from the start. A strictly monotone integer sequence is injective, so its range is infinite. It is moreover increasing: a strictly decreasing sequence in ℕ cannot be infinite, and $c_{k} ∈ ℕ$ by hypothesis. No sign condition on px, denom or pc needs to be assumed; the hypothesis that the $c_{k}$ are natural numbers forces the direction.
+
+\end{proof}
+\subsubsection*{Remark III.5 (what is and is not effective here)}
+Lemmas III.1–III.4 are entirely effective: given (D, P, Q, X₀, Y₀, denom, px, pc) every term of the orbit and of the output sequence is computable, and by Lemma III.4 the output sequence is strictly increasing from the first index, so no threshold has to be computed. This effectivity is local to the Pell branch. It does not make the certificate of \cref{sec:8} effective, because the \emph{witnesses} u realising $c_{k}$ ∈ fibre are selected from membership proofs rather than constructed, and because the constant K of \cref{theorem:9.2} — which decides which branch applies — is not effective. The orbit is explicit; the choice of orbit is not.
+
+\subsection*{Part IV. Assembly}
+\subsubsection*{IV.1 From a branch to a data-carrying family}
+Parts I and II each terminate, in the unbounded alternative, not in the bare proposition "this set is infinite" but in explicit arithmetic data: a first-degree or second-degree progression (Part II §3, §4, §5), a unit orbit with its recurrence (Part I §4 together with Part III), or a step orbit with its primes (Part II §6). Collecting the alternatives gives, for each branch, a family of one of three forms together with the data that pin its output map: a coefficient triple in the progression case, the tuple (D, P, Q, X₀, Y₀, denom, px, pc) in the Pell case, and (b, μ, modulusFactor) with the prime sequence in the moving-modulus case. In every case the output map is a function c : $ℕ → ℕ$ presented by an equation — $c_{t} = αt^{2} + βt + γ$, or $\mathrm{denom}·c_{k} = px·X_{k}$ + pc, or the recurrence $b·c_{k+1} + μ = (b·c_{k} + μ)·p_{k}$ — and is strictly monotone, hence injective.
+
+Two things should be said about what this does and does not give. First, the three forms are those the case analysis emits. Nothing here proves that they are mutually exclusive, and a single fibre may admit families of more than one form; the classification is of the proof's output, not of the fibre. Second, the passage from a family to a certificate for the original polynomial P selects, for each output value $c_{t}$, a witness $u_{t}$ with $P(a, c_{t}, u_{t}) = 0$. The existence of such a $u_{t}$ is part of the membership statement $c_{t}$ ∈ fibre; the selection is not constructive. What is proved is that an infinite, arithmetically structured set of outputs exists and that each of its elements is realised — not that the realising witnesses can be computed.
+
+\subsubsection*{IV.2 Output-negation transport}
+Parts I–III work with a fibre of natural numbers. The fibre of P at a is a set of integers with two halves, and the halves meet exactly in the output zero, so a set of integers is infinite if and only if at least one half is. Write $ε ∈ \{+1, −1\}$ for the selector and
+
+fibreNatSigned(P, a, ε) = \{ $m ∈ ℕ$ : ε·m ∈ fibre(P, a) \}.
+
+Homogenising P and specialising the parameters at a presents each signed half as a set fiberSetG(H, ℓ, q) for a homogeneous quadratic H — this is where the degree hypothesis on P is consumed, and the affine data (ℓ, q) become integers once a is fixed. The sign ε is carried through the construction rather than handled by a second argument: it travels into the polynomial coefficients in the progression case, into the affine projection in the Pell case, and into the sign field in the moving-modulus case. Consequently no separate degree bound for a negated output polynomial is required, and the kind of the family is preserved by the transport.
+
+If the half selected by ε is infinite, Parts I–III supply a family inside it, and the transport above turns that family into a certificate for P at a. If both halves are finite the fibre is finite, which is the other horn.
+
+\subsubsection*{IV.3 The summit}
+\begin{proof}[Proof of Theorems 9.2 and 9.3]
+Let P have total degree at most two. Apply the dichotomy of Parts I–II to the homogeneous part H of P. It supplies a constant K depending on H alone — not on the affine data, and hence not on the parameter point a, since a enters only through (ℓ, q). Fix a. Either every element of each signed half is bounded by fboundG(K, ℓ, q), in which case, since ‖ℓ‖ and |q| are bounded by an explicit polynomial of degree at most two in ‖a‖∞ read off the coefficients of P, every element of the fibre satisfies $|c| ≤ C·(1 + ‖a‖∞)^{2}$ for a constant C determined by K and by the coefficients of P; or some half is unbounded, hence infinite, and IV.1–IV.2 produce a certificate.
+
+This is the required quantifier order: C is chosen after P and before a. One constant per equation serves every parameter point. The two horns are mutually exclusive at a given point, since a certificate exhibits an unbounded output family inside the fibre and the bounded horn bounds every element of it.
+
+\cref{theorem:9.2} follows by forgetting the family, and \cref{theorem:9.3} is the statement just proved.
+
+\end{proof}
+\subsection*{Part V. Transplanted lemmas: directions, the one-witness dichotomy, and integer proportionality}
+Parts I and II above invoke five auxiliary results. They are proved here in full: nothing in \cref{sec:F} depends on any text outside this manuscript. The numbering V.1–V.6 is in bijection with the labels used in Parts I and II, and each result carries the name of the Lean theorem that certifies it. Note that \cref{sec:C} of this paper is a different appendix on a different subject; the labels below are the only ones Parts I and II refer to.
+
+Throughout §V.1, $Q(x,y) = a x^{2} + b$ xy + c y² with $a, b, c ∈ ℤ$ and $D = b^{2}$ − 4ac.
+
+\subsubsection*{V.0 Two elementary facts about squares}
+\textbf{Fact V.0.1} (\texttt{not\_\allowbreak{}isSquare\_\allowbreak{}of\_\allowbreak{}between}). If $n ≥ 0$ and $n^{2} < X < (n+1)^{2}$ for an integer n, then X is not a square.
+
+\begin{proof}
+If $X = s^{2}$ then $X = |s|^{2}$, and $n^{2} < |s|^{2} < (n+1)^{2}$ with $n ≥ 0$ and $|s| ≥ 0$ gives $n < |s| < n+1$, which no integer satisfies.
+
+\end{proof}
+\textbf{Fact V.0.2} (\texttt{not\_\allowbreak{}isSquare\_\allowbreak{}sq\_\allowbreak{}mul}, \texttt{not\_\allowbreak{}isSquare\_\allowbreak{}mul\_\allowbreak{}of\_\allowbreak{}coprime}, \texttt{not\_\allowbreak{}both\_\allowbreak{}squares}). (i) If $r ≠ 0$ and r²X is a square, then X is a square. (ii) If $X > 0$ is not a square and $\mathrm{gcd}(X, Y) = 1$, then XY is not a square. (iii) If XY is not a square and $H ≠ 0$, then H·X and H·Y are not both squares.
+
+\begin{proof}
+(i) If $r^{2}X = s^{2}$ then $r^{2} ∣ s^{2}$, hence $r ∣ s$; write s = rt and cancel $r^{2} ≠ 0$ to get $X = t^{2}$. (ii) If XY = s² with $\mathrm{gcd}(X,Y) = 1$ then X is a unit times a square, so $X = ±t^{2}$; $X > 0$ forces $X = t^{2}$, contradicting that X is not a square. (iii) If HX = r₁² and HY = r₂² then $H^{2}·XY = (r_{1}r_{2})^{2}$, and (i) with $r = H ≠ 0$ makes XY a square.
+
+\end{proof}
+\subsubsection*{V.1 Signed non-square directions: the definite case}
+\renewcommand{\thePart}{V.\arabic{Part}}
+\setcounter{Part}{0}
+\begin{lemmaPart}[definite direction; \texttt{definite\_\allowbreak{}nonsquare\_\allowbreak{}direction}]\label[lemma]{lemma:V.1}
+Let $p, q > 0$, let h be even, and let h² < 4pq. Then at least one point $(x,y) ∈ \{(1,0), (0,1), (1,p)\}$ satisfies both $Q(x,y) = p x^{2} + h$ xy + $q y^{2} > 0$ and Q(x,y) is not a square.
+
+\end{lemmaPart}
+\begin{proof}
+If p is not a square, take $(1,0): Q(1,0) = p > 0$ and p is not a square. If p is a square but q is not, take $(0,1): Q(0,1) = q > 0$ and q is not a square.
+
+Otherwise $p = r^{2}$ and $q = t^{2}$ with $r, t > 0$; put m = rt > 0. Evaluate at (1,p):
+
+\[
+Q(1,p) = p + hp + qp^{2} = p(1 + h + qp) = r^{2}(1 + h + t^{2}r^{2}) = r^{2}(m^{2} + h + 1).
+\]
+The hypothesis h² < 4pq = 4m² gives $−2m < h < 2m$, hence
+
+\[
+(m−1)^{2} = m^{2} − 2m + 1 < m^{2} + h + 1 < m^{2} + 2m + 1 = (m+1)^{2}.
+\]
+Both inequalities are strict, so $m^{2} + h + 1 > (m−1)^{2} ≥ 0$, and in fact $m^{2} + h + 1 > 0$. The only square in the closed range [(m−1)², (m+1)²] other than the two endpoints is m², and $m^{2} + h + 1 = m^{2}$ would force $h = −1$, which is excluded because h is even. So m² + h + 1 lies strictly between two consecutive squares — either (m−1)² and m², or m² and (m+1)² — and Fact V.0.1 shows it is not a square. Finally $r ≠ 0$, so if r²(m² + h + 1) were a square then Fact V.0.2(i) would make m² + h + 1 a square. Hence $Q(1,p) = r^{2}(m^{2} + h + 1)$ is positive and not a square.
+
+\end{proof}
+\subsubsection*{V.2 Signed non-square directions: the anisotropic case}
+\begin{lemmaPart}[anisotropic direction; \texttt{anisotropic\_\allowbreak{}signed\_\allowbreak{}nonsquare\_\allowbreak{}direction}]\label[lemma]{lemma:V.2}
+Let $D > 0$ be a non-square, let $h > 0$ and σ ∈ \{1, −1\}. Then for at least one $k ∈ \{0, 1, D, D+1\}$ the point $(x,y) = (k − b, 2a)$ satisfies $σ·Q(x,y) > 0$ and h·|Q(x,y)| is not a square.
+
+\end{lemmaPart}
+\begin{proof}
+First, $a ≠ 0$: if $a = 0$ then $D = b^{2}, a$ square. Second, $D ≥ 2: D > 0$ and $D = 1$ is a square. For every integer k,
+
+\begin{equation}\tag{V.1}\label{eq:V.1}
+Q(k − b, 2a) = a(k−b)^{2} + 2ab(k−b) + 4a^{2}c = a(k^{2} − b^{2} + 4ac) = a(k^{2} − D).
+\end{equation}
+Since $D ≡ 0$ and $D − 1 ≡ −1$ modulo $D, \mathrm{gcd}(D, D−1) = 1$; likewise $D^{3} − 1 ≡ −1 (\mathrm{mod} D)$ gives $\mathrm{gcd}(D, D^{3}−1) = 1$. As $D > 0$ is not a square, Fact V.0.2(ii) with $X = D$ shows that neither D(D−1) nor $D(D^{3}−1) = D(D−1)(D^{2}+D+1)$ is a square.
+
+\emph{Case σa < 0.} Take $k ∈ \{0, 1\}$. Since $D ≥ 2$ we have $k^{2} − D < 0$, so by \eqref{eq:V.1} $σ·Q = (σa)(k^{2} − D) > 0$, and $|Q| = |a|(D − k^{2})$, which is |a|D for $k = 0$ and |a|(D−1) for $k = 1$. Apply Fact V.0.2(iii) with $H = h|a| ≠ 0, X = D$ and $Y = D − 1$: since XY = D(D−1) is not a square, at least one of h|a|D and h|a|(D−1) is not a square. Choose k accordingly.
+
+\emph{Case σa > 0.} Take $k ∈ \{D, D+1\}$. Then k² − D equals $D^{2} − D = D(D−1) > 0$ for $k = D$, and $(D+1)^{2} − D = D^{2} + D + 1 > 0$ for $k = D+1$; so $σ·Q = (σa)(k^{2} − D) > 0$ and $|Q| = |a|(k^{2} − D)$. Apply Fact V.0.2(iii) with $H = h|a| ≠ 0, X = D(D−1)$ and $Y = D^{2} + D + 1$: their product is $D(D−1)(D^{2}+D+1) = D(D^{3}−1)$, which is not a square, so at least one of h|a|D(D−1) and h|a|(D²+D+1) is not a square. Choose k accordingly.
+
+Since $a ≠ 0$, one of the two cases applies.
+
+\end{proof}
+\subsubsection*{V.3 Signed non-square directions: the split case}
+\begin{lemmaPart}\label[lemma]{lemma:V.3}
+(split direction; \texttt{split\_\allowbreak{}signed\_\allowbreak{}nonsquare\_\allowbreak{}direction}, \texttt{split\_\allowbreak{}finish}). Let $D = d^{2}$ with $d > 0$, let $h > 0$ and σ ∈ \{1, −1\}. Then there is $(x,y) ∈ ℤ^{2}$ with $σ·Q(x,y) > 0$ and h·|Q(x,y)| not a square. Explicitly, with K as below and $y_{0} := σKh(K^{2}h^{2} + 1)$:
+
+\begin{itemize}
+\item $a = c = 0$ (so $d = |b|$ and b ≠ 0): K = b, (x,y) = (1, y₀);
+\item $a = 0, c ≠ 0: K$ = 4cd², $(x,y) = (−2c + 2c·y_{0}, (b+d) − (b−d)·y_{0})$;
+\item $a ≠ 0: K$ = 4ad², $(x,y) = ((b+d) − (b−d)·y_{0}, −2a + 2a·y_{0})$;
+\end{itemize}
+
+and in each case $Q(x,y) = K·y_{0}$.
+\end{lemmaPart}
+
+\begin{proof}
+\emph{The finisher.} For any $K ≠ 0$, the value $K·y_{0} = σK^{2}h(K^{2}h^{2} + 1)$ satisfies $σ·K·y_{0} = K^{2}h(K^{2}h^{2} + 1) > 0$, and, writing $n := K^{2}h^{2} ≥ 1$,
+
+\[
+h·|K·y_{0}| = h·K^{2}h(K^{2}h^{2} + 1) = K^{2}h^{2}(K^{2}h^{2} + 1) = n(n + 1),
+\]
+which is not a square because $n^{2} < n(n+1) < (n+1)^{2}$ and Fact V.0.1 applies. So it suffices to exhibit, in each case, a point with $Q(x,y) = K·y_{0}$ for some $K ≠ 0$ depending only on (a, b, c).
+
+\emph{Case $a = c = 0$.} Then Q(x,y) = bxy and $D = b^{2} = d^{2}$, so $b ≠ 0$, and $Q(1, y_{0}) = b·y_{0}$ with $K = b ≠ 0$.
+
+\emph{Case $a ≠ 0$.} Put $v_{1} = (b+d, −2a)$ and $v_{2} = (d−b, 2a)$. Both are isotropic:
+
+\[
+Q(v_{1}) = a(b+d)^{2} − 2ab(b+d) + 4a^{2}c = a(d^{2} − b^{2} + 4ac) = a(d^{2} − D) = 0,
+\]
+and the same computation gives $Q(v_{2}) = 0$. For the associated symmetric pairing $2B(u,v) = 2a u_{1}v_{1} + b(u_{1}v_{2} + u_{2}v_{1}) + 2c u_{2}v_{2}$,
+
+\[
+2B(v_{1},v_{2}) = 2a(d^{2} − b^{2}) + 4ab^{2} − 8a^{2}c = 2a(d^{2} + b^{2} − 4ac) = 2a(d^{2} + D) = 4ad^{2},
+\]
+using $D = b^{2}$ − 4ac = d². Hence
+
+\[
+Q(v_{1} + y_{0}v_{2}) = Q(v_{1}) + y_{0}·2B(v_{1},v_{2}) + y_{0}^{2}·Q(v_{2}) = 4ad^{2}·y_{0},
+\]
+and v₁ + y₀v₂ = ((b+d) − (b−d)y₀, −2a + 2ay₀) is the stated point, with K = 4ad² ≠ 0 because $a ≠ 0$ and $d > 0$.
+
+\emph{Case $a = 0, c ≠ 0$.} Here Q(x,y) = bxy + cy² and $D = b^{2} = d^{2}$. The vectors $u = (−2c, b+d)$ and $v = (2c, d−b)$ are isotropic, since $Q(u) = (b+d)c(d−b) = c(d^{2} − b^{2}) = 0$ and likewise $Q(v) = 0$; and $2B(u,v) = b[(−2c)(d−b) + (b+d)(2c)] + 2c(b+d)(d−b) = 4b^{2}c$ = 4cd². The same expansion gives $Q(u + y_{0}v) = 4cd^{2}·y_{0}$, i.e. Q(−2c + 2cy₀, (b+d) − (b−d)y₀) = K·y₀ with K = 4cd² ≠ 0.
+
+\end{proof}
+\subsubsection*{V.4 The one-witness fibre dichotomy}
+Fix $A, B, C ∈ ℤ$. For $l, m, q ∈ ℤ$ put
+
+\[
+\begin{gathered}
+P(c,u) = A c^{2} + B cu + C u^{2} + l c + m u + q, \\ \\
+S = S(l,m,q) = {c ∈ ℕ : ∃ u ∈ ℤ, P(c,u) = 0}, \\ \\
+Δ = B^{2} − 4AC,  w = 2Cu + Bc + m,  β = 2Bm − 4Cl,  γ = m^{2} − 4Cq,
+\end{gathered}
+\]
+so that, expanding w² and subtracting 4C·P,
+
+\begin{equation}\tag{V.3}\label{eq:V.3}
+4C·P(c,u) = w^{2} − (Δc^{2} + βc + γ).
+\end{equation}
+\begin{theoremPart}\label[theorem]{theorem:V.4}
+(one-witness fibre dichotomy; \texttt{fiber\_\allowbreak{}dichotomy}, FiberDichotomy.lean; leaves $Class_{D1}$–D7). There is $K = K(A,B,C) ∈ ℕ$ such that for every (l, m, q): either S is infinite, or every $c ∈ S$ satisfies $c ≤ K·((1 + |l| + |m|)^{2} + |q|)$.
+
+\end{theoremPart}
+\begin{proof}
+Here β is linear in (l, m), γ is quadratic in m and linear in q, and β² − 4Δγ is quadratic in (l, m) and linear in q; so any bound that is a polynomial of degree ≤ 1 in |β|, |γ| and |β² − 4Δγ| with coefficients depending only on A, B, C has the required shape. Each case below produces either an infinite family in S or a bound of that shape. (S = ∅ falls under the bounded branch vacuously.)
+
+\emph{Case $Δ < 0$ (definite; \texttt{dichotomy\_\allowbreak{}definite}).} Then $C ≠ 0$, since $Δ < 0$ forces $4AC > B^{2} ≥ 0$. At a solution, \eqref{eq:V.3} gives $Δc^{2} + βc + γ = w^{2} ≥ 0$, and $Δ ≤ −1$ gives $c^{2} ≤ Δc^{2} + βc + γ + c^{2} ≤ βc + γ ≤ |β|c + |γ|$, whence $c ≤ |β| + |γ|$. Always bounded.
+
+\emph{Case $Δ = 0, C ≠ 0$ (\texttt{dichotomy\_\allowbreak{}degenerate\_\allowbreak{}C\_\allowbreak{}ne}).} By \eqref{eq:V.3}, $w^{2} = βc + γ$ at every solution.
+
+If $β > 0$ and (c₀,u₀) is a solution with $w_{0} = 2Cu_{0}$ + Bc₀ + m, put
+
+\[
+c_{t} = c_{0} + 4Ctw_{0} + 4C^{2}βt^{2}, \quad u_{t} = u_{0} + βt − 2Btw_{0} − 2BCβt^{2}.
+\]
+Then $2Cu_{t} + Bc_{t} + m = w_{0} + 2Cβt$, and $βc_{t} + γ = w_{0}^{2} + 4Cβtw_{0} + 4C^{2}β^{2}t^{2} = (w_{0} + 2Cβt)^{2}$; so $w_{t}^{2} = βc_{t} + γ$ and, by \eqref{eq:V.3} with $C ≠ 0, P(c_{t},u_{t}) = 0$. Since $4C^{2}β > 0$ we get $c_{t} → ∞$, so S is infinite.
+
+If $β = 0$ then c\_τ = c₀ + 2Cτ, u\_τ = u₀ − Bτ satisfy 2Cu\_τ + Bc\_τ + $m = w_{0}$, hence w\_τ² = $w_{0}^{2} = γ$ = βc\_τ + γ and P(c\_τ,u\_τ) = 0 for every τ ∈ ℤ. Taking τ = sign(C)·t gives $c_{t} = c_{0} + 2|C|t → ∞$, so S is infinite.
+
+If $β < 0$ then $(−β)c ≤ γ$ at every solution, so $c ≤ |γ|$.
+
+\emph{Case $Δ = 0, C = 0$ (\texttt{dichotomy\_\allowbreak{}degenerate\_\allowbreak{}C\_\allowbreak{}zero}).} Then $B^{2} = Δ = 0$, so $B = 0$ and P = Ac² + lc + q + mu. If $m ≠ 0$ and (c₀,u₀) is a solution, put $c_{t} = c_{0} + m^{2}t$; then $c_{t} ≡ c_{0} (\mathrm{mod} m)$, so $Ac_{t}$² + $lc_{t}$ + q ≡ Ac₀² + lc₀ + $q = −mu_{0} ≡ 0 (\mathrm{mod} m)$, and $u_{t} := −(Ac_{t}^{2} + lc_{t} + q)/m$ is an integer with $P(c_{t},u_{t}) = 0$. Hence S is infinite. If $m = 0$: for $A ≠ 0 a$ root of Ac² + lc + $q = 0$ satisfies $c^{2} ≤ |A|c^{2} = |lc + q| ≤ |l|c + |q|$, so $c ≤ |l| + |q|$; for $A = 0$ and $l ≠ 0$ the root $c = −q/l$ satisfies $c ≤ |q|$; for $A = l = 0$ the set S is ℕ (if $q = 0$, infinite) or ∅.
+
+\emph{Case $Δ = δ^{2} > 0, C ≠ 0$ (\texttt{dichotomy\_\allowbreak{}square\_\allowbreak{}C\_\allowbreak{}ne}).} Put $X = 2δ^{2}c + β$ and $Y = 2δw$. Then $X^{2} − Y^{2} = β^{2} − 4δ^{2}γ =: N′$ by \eqref{eq:V.3}. If $N′ ≠ 0$, both X − Y and X + Y are nonzero divisors of N′, so $|X − Y| ≤ |N′|$ and $|X + Y| ≤ |N′|$, hence $2|X| ≤ 2|N′|$ and $c ≤ (|N′| + |β|)/(2δ^{2}) ≤ |N′| + |β|$. If $N′ = 0$ then Y = sX with $s ∈ \{1, −1\}$ at every solution; take one solution (c₀,u₀) with that sign, put σ = sign(C), and set
+
+\[
+c_{t} = c_{0} + 2σCδ·t = c_{0} + 2|C|δ·t, \quad u_{t} = u_{0} + σ(sδ^{2} − Bδ)·t.
+\]
+Then $w_{t} = w_{0} + 2σCsδ^{2}t$, so $Y_{t} = Y_{0} + 4σCsδ^{3}t = s(X_{0} + 4σCδ^{3}t) = sX_{t}$; therefore $X_{t}^{2} − Y_{t}^{2} = 0 = N′$, which by \eqref{eq:V.3} says $P(c_{t},u_{t}) = 0$. Since $2|C|δ > 0, c_{t} → ∞$ and S is infinite.
+
+\emph{Case $Δ = B^{2} > 0, C = 0$ (\texttt{dichotomy\_\allowbreak{}square\_\allowbreak{}C\_\allowbreak{}zero}).} Then $B ≠ 0$ and P = (Bc + m)u + (Ac² + lc + q). Put $R = B^{2}q$ − Blm + Am². Expanding the right side verifies the identity
+
+\begin{equation}\tag{V.4}\label{eq:V.4}
+B^{2}(Ac^{2} + lc + q) = (Bc + m)(ABc + Bl − Am) + R
+\end{equation}
+for all c. If every $c ∈ S$ has Bc + $m = 0$ then $|B|c = |m|$ and $c ≤ |m|$. Otherwise fix $(c_{1},u_{1}) ∈ S$ with Bc₁ + $m ≠ 0$; multiplying $P(c_{1},u_{1}) = 0$ by B² and using \eqref{eq:V.4} gives
+
+\begin{equation}\tag{V.5}\label{eq:V.5}
+(Bc_{1} + m)(B^{2}u_{1} + ABc_{1} + Bl − Am) = −R.
+\end{equation}
+If $R = 0$, then \eqref{eq:V.5} and Bc₁ + $m ≠ 0$ force B²u₁ + ABc₁ + Bl − Am = 0, and $c_{t} = c_{1} + B^{2}t, u_{t} = u_{1}$ − ABt satisfy
+
+\[
+P(c_{t},u_{t}) = P(c_{1},u_{1}) + tB·(B^{2}u_{1} + ABc_{1} + Bl − Am) = 0
+\]
+for every t; since $B^{2} > 0, S$ is infinite. If $R ≠ 0$ then for every $c ∈ S$ with Bc + $m ≠ 0$ the identity \eqref{eq:V.4} gives Bc + $m ∣ R$, so $|Bc + m| ≤ |R|$ and $c ≤ |R| + |m| ≤ (B^{2} + |B| + |A| + 1)·((1 + |l| + |m|)^{2} + |q|)$; the c with Bc + $m = 0$ satisfy $c ≤ |m|$. (The Lean constant is K = B² + |B| + |A| + 1.)
+
+\emph{Case $Δ > 0 a$ non-square (Pell; \texttt{dichotomy\_\allowbreak{}pell}).} Then $C ≠ 0$, since $C = 0$ would make $Δ = B^{2} a$ square. Put $X = 2Δc + β$ and $Y = 2w$, so that \eqref{eq:V.3} reads
+
+\[
+X^{2} − ΔY^{2} = β^{2} − 4Δγ =: N′.
+\]
+If $X ≤ 0$ then $2Δc ≤ −β$ and $c ≤ |β|$: bounded. So suppose some solution has $X > 0$; we show S is unbounded, hence infinite.
+
+Since Δ is a positive non-square there is a unit $p^{2} − Δq^{2} = 1$ with $p, q > 0$ (mathlib \texttt{Pell.\allowbreak{}exists\_\allowbreak{}of\_\allowbreak{}not\_\allowbreak{}isSquare}). Its powers $(p + q√Δ)^{k} = p_{k} + q_{k}√Δ$ satisfy $p_{k+1} = p p_{k} + Δ q q_{k} > p_{k}$ and $q_{k+1} = p q_{k} + q p_{k} > q_{k}$, so $p_{k} ≥ 2$ and $q_{k} ≥ 1$ for $k ≥ 1$, and $p_{k}^{2} − Δq_{k}^{2} = 1$. Let $M = 8Δ|C|$. By pigeonhole on the residues $(p_{k}$, $q_{k}$) modulo M there are $1 ≤ i < j$ with $(p_{i}, q_{i}) ≡ (p_{j}, q_{j})$; then $T = j − i ≥ 1$ satisfies $(p_{T}, q_{T}) ≡ (1, 0) (\mathrm{mod} M)$, because $p_{T} + q_{T}√Δ = (p_{j} + q_{j}√Δ)(p_{i} − q_{i}√Δ) ≡ (p_{j} + q_{j}√Δ)(p_{j} − q_{j}√Δ) = p_{j}^{2} − Δq_{j}^{2} = 1 (\mathrm{mod} M)$.
+
+Given a solution with $X > 0$, put ε = sign(Y) ∈ \{1, −1\} (with $ε = 1$ if Y = 0) and
+
+\[
+X′ = X p_{T} + ΔY·(εq_{T}), \quad Y′ = X·(εq_{T}) + Y p_{T},
+\]
+so that $ΔY(εq_{T}) = Δ|Y|q_{T} ≥ 0$. Composition of the norm form gives $X′^{2} − ΔY′^{2} = (X^{2} − ΔY^{2})(p_{T}^{2} − Δq_{T}^{2}) = N′$; moreover $X′ ≥ X$ $p_{T} ≥ 2X > X$, and $X′ ≡ X, Y′ ≡ Y (\mathrm{mod} M)$.
+
+Now $2Δ ∣ M$, so $c′ := (X′ − β)/(2Δ) = c + (X′ − X)/(2Δ)$ is an integer with $c′ > c ≥ 0$; $2 ∣ M$ and Y is even, so $w′ := Y′/2$ is an integer; and
+
+\[
+u′ := (w′ − Bc′ − m)/(2C) = u + (Y′ − Y)/(4C) − B(X′ − X)/(4ΔC)
+\]
+is an integer, because $M = 8Δ|C|$ divides both Y′ − Y and X′ − X, so that (Y′ − Y)/2 and (X′ − X)/(2Δ) are each divisible by 4|C| and hence by 2C. Then (c′, u′) is a solution with $c′ > c$, and iterating produces elements of S beyond every bound.
+
+\end{proof}
+\subsubsection*{V.5 The uncoupled rank-one branch}
+\begin{corollaryPart}\label[corollary]{corollary:V.5}
+(uncoupled rank-one branch; \texttt{rank\_\allowbreak{}one\_\allowbreak{}uncoupled}, the $m_{2} = 0$ sub-branch). In Part II, Lemma 6, case $(b = 0, μ = 0)$, the condition on c is ∃u : $Q(c,u) = 0$ with Q a quadratic in the two variables (c, u). The projection is either infinite or bounded by K·((1+|ℓ|+|m|)² + |q|) with $K = K(A, B_{1}, k)$ from Theorem V.4.
+
+\end{corollaryPart}
+\begin{proof}
+The condition is exactly membership in the set S of Theorem V.4 for the coefficient data of Q, and Theorem V.4 gives the dichotomy with that constant. The infinite branch already contains the Pell orbits of the $Δ > 0$ non-square case, which is where a Pell mechanism enters the rank-one component.
+\end{proof}
+\subsubsection*{V.6 Integer proportionality from vanishing pair minors}
+\begin{lemmaPart}\label[lemma]{lemma:V.6}
+(\texttt{all\_\allowbreak{}pairMinors\_\allowbreak{}zero\_\allowbreak{}iff\_\allowbreak{}rank\_\allowbreak{}one\_\allowbreak{}affine\_\allowbreak{}family}, \texttt{primitive\_\allowbreak{}affine\_\allowbreak{}direction}). Let $(b_{i}, m_{i}) ∈ ℤ^{2}$ for $i = 1, …, s$ satisfy $b_{i}m_{j} − b_{j}m_{i} = 0$ for all i, j. Then there exist $(b_{0}, m_{0}) ∈ ℤ^{2}$ with $\mathrm{gcd}(b_{0}, m_{0}) = 1$ and integers λ₁, …, $λ_{s}$ such that $(b_{i}, m_{i}) = λ_{i}·(b_{0}, m_{0})$ for every i.
+
+\end{lemmaPart}
+\begin{proof}
+If every pair is (0,0), take $(b_{0}, m_{0}) = (1, 0)$ and $λ_{i} = 0$ for all i.
+
+Otherwise fix i₀ with $(b_{i_{0}}, m_{i_{0}}) ≠ (0,0)$, put $g = \mathrm{gcd}(b_{i_{0}}, m_{i_{0}}) > 0$ and write $b_{i_{0}} = g b_{0}, m_{i_{0}} = g m_{0}$; then $\mathrm{gcd}(b_{0}, m_{0}) = 1$. The minor condition with $j = i_{0}$ reads $b_{i}·g m_{0} = g b_{0}·m_{i}$, and cancelling $g ≠ 0$ gives
+
+\begin{equation}\tag{V.2}\label{eq:V.2}
+b_{i} m_{0} = b_{0} m_{i} \quad for every i.
+\end{equation}
+\emph{If $b_{0} = 0$}, then $\mathrm{gcd}(0, m_{0}) = 1$ forces $|m_{0}| = 1$, and \eqref{eq:V.2} gives $b_{i} m_{0} = 0$, hence $b_{i} = 0$ for all i. Take $λ_{i} := m_{i} m_{0}$; then $λ_{i} m_{0} = m_{i} m_{0}^{2} = m_{i}$ (as m₀² = 1) and $λ_{i} b_{0} = 0 = b_{i}$.
+
+\emph{If $b_{0} ≠ 0$}, then \eqref{eq:V.2} shows $b_{0} ∣ b_{i} m_{0}$, and $\mathrm{gcd}(b_{0}, m_{0}) = 1$ gives $b_{0} ∣ b_{i}$ by Bézout: choose x, y with $x b_{0} + y m_{0} = 1$, so that
+
+\[
+b_{i} = x b_{0} b_{i} + y·b_{i} m_{0} = x b_{0} b_{i} + y·b_{0} m_{i} = b_{0}(x b_{i} + y m_{i}).
+\]
+Set $λ_{i} := x b_{i} + y m_{i} ∈ ℤ$, so $b_{i} = λ_{i} b_{0}$. Substituting into \eqref{eq:V.2} gives $λ_{i} b_{0} m_{0} = b_{0} m_{i}$, and cancelling $b_{0} ≠ 0$ yields $m_{i} = λ_{i} m_{0}$.
+
+\end{proof}
+This is the integrality used in Part II, Lemma 3B: the λᵢ there are these integers, so $g = \mathrm{gcd}(λ_{1}, …, λ_{s})$ is well defined and positive whenever some pair is nonzero.
+

@@ -1,0 +1,21 @@
+S1_gap_criterion PASS checks=47516 mismatch=0
+S1_planted_strict_lower PASS caught=394
+S2_full_residue PASS checks=861 mismatch=0
+S2_planted_upper PASS caught=9
+S4_FS_image_card1 PASS shell size=6
+S4_FS_recovery PASS f(a)=(e_rho+a)/3 == floor((a+1)/3), a in [-30,30]
+S4_planted_card_shell PASS card(S_rho)=1 criterion fails on 1 of 3 residues
+S5_totality PASS inputs=2401 miss=0
+S5_planted_7 PASS
+S5_rank PASS max rank(L^T L) over 50 random L = 3
+S6_isometry PASS
+S6_T_integral_map PASS z'=(2a-b,u,v) and P preserved
+S6_planted_T PASS u'=2/3-u non-integral
+S7_HC_finite PASS trials=120 positives=40 mismatch=0
+S7_planted_shift PASS caught=34
+S9_coercivity_sharp PASS equality at y=A^-1 e_i for 180 cases
+S9_planted_diag PASS 1/A_ii exceeded 175 times
+S10_brahmagupta PASS
+LEG2_TESTS=18 LEG2_FAIL=0
+LEG2_DONE
+LEG2_EXIT=0

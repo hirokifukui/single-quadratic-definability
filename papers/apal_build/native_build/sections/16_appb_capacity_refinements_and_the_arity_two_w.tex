@@ -1,0 +1,23 @@
+\section{Capacity refinements and the arity-two witness}\label[appendix]{sec:B}
+The capacity core (\texttt{APALLogicCore.\allowbreak{}lean}, \texttt{apal\_\allowbreak{}logic\_\allowbreak{}core}) bounds the arity at which single quadratic equations can define the graph of an injection into ℤ. What is proved is a pair of bounds, not an equality:
+
+AtomGraphZZ $2 n → n ≤ 2$   (the upper bound), and   AtomGraphZZ 1 1   (the lower bound, already at degree one).
+
+The upper bound is now sharpened to AtomGraphZZ $2 n → n ≤ 1$ (\texttt{atomGraphZZ\_le\_one}, a case of \cref{theorem:4.1} at $m = 1$), so the two bounds meet and ca(SE₂) = 1 (\texttt{atomGraphZZ\_capacity\_eq\_one}). The purpose of this appendix is therefore no longer to record a gap but to keep the two semantics apart, which remains necessary.
+
+Two semantics must be kept apart, since they carry the same informal description and different theorems.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.143\linewidth}>{\raggedright\arraybackslash}p{0.092\linewidth}>{\raggedright\arraybackslash}p{0.089\linewidth}>{\raggedright\arraybackslash}p{0.116\linewidth}>{\raggedright\arraybackslash}p{0.185\linewidth}>{\raggedright\arraybackslash}p{0.217\linewidth}@{}}
+\toprule
+ & inputs & output & unknowns & predicate & arity-two witness \\
+\midrule\endhead
+one-sorted & ℤⁿ & ℤ & ℤʳ & \texttt{Atom\allowbreak{}Graph\allowbreak{}ZZ} & \textbf{none exists} (\cref{corollary:4.4}) \\
+mixed & ℕⁿ & ℕ & ℤʳ & \texttt{Graph\allowbreak{}Achievable\allowbreak{}Z} & \textbf{proved}: \texttt{graph\allowbreak{}Capacity\allowbreak{}Z r 2 = 2} for every r \\
+\bottomrule
+\end{longtable}
+In the mixed setting the arity-two witness exists and the capacity is exactly two for every number of integer unknowns (\texttt{quadraticWitnessInertiaZ}): integer unknowns buy no input arity at degree two. That theorem does not transfer to the one-sorted setting, and we do not use it there. Over ℤ the arity-two witness does not exist at all, by \cref{corollary:4.4}; the bound $n ≤ m$ of \cref{theorem:4.1} is attained at every pair $n ≤ m$, but by the zero-padding of \cref{theorem:4.3}, not by any compression.
+
+The appendix also records: PP₂ graphs of injections at every arity, so the failure at $n ≥ 2$ is a property of the \emph{single-equation} fragment and not of degree two; the chain $SE_{2}(k) ⊊ PP_{2}(k) ⊆ SE_{4}(k)$ for $k ≥ 4$; and the internal arity collapse of PP₂ through the integer tuple code.
+
+Finally, on effectivity of the constants in Sections 2–4: as explained in \cref{remark:2.3} the only non-explicit ingredient is the constant K of the projection dichotomy. The search-bound literature cited in \cref{sec:11} is explicit throughout, and is the natural place to look for the technique if an effective K is ever wanted. Everything else — the coefficient sums SL and SQ, the box counts, the arity bookkeeping — is explicit in the formalization, so an effective version of \cref{theorem:9.2} would immediately make \cref{theorem:2.1,theorem:2.2,theorem:3.2,theorem:4.1} effective, with constants that can be read off mechanically.
+

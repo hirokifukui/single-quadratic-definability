@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Structure and Computability of the Single-Quadratic Existential Fragment over the Integers (Lean 4 formalization)"
+abstract: >-
+  Lean 4 development accompanying a classification of the total functions definable over the integers
+  by one polynomial equation of total degree at most two, with arbitrarily many integer unknowns. The
+  forward directions of the classification take the ternary-coset representation input TCER as an
+  explicit hypothesis. The development also contains the injective-dimension theorem n <= m, which uses
+  no analytic input, the converse constructions, the classification without unknowns, a function that
+  needs exactly one unknown in this format, the uniform finite-fibre bounds, the structured
+  infinite-fibre theorem, and the computability phase diagrams under two named classical hypotheses.
+  The literature-to-TCER adapter is supplied in ordinary mathematics, not as a Lean proof of TCER.
+authors:
+  - family-names: "Fukui"
+    given-names: "Hiroki"
+    orcid: "https://orcid.org/0009-0008-7122-522X"
+    affiliation: "Research Institute of Criminal Psychiatry / Sex Offender Medical Center, Tokyo, Japan; Department of Neuropsychiatry, Kyoto University, Kyoto, Japan"
+version: "0.31.0"
+date-released: "2026-09-30"
+license: "MIT"
+repository-code: "https://github.com/hirokifukui/single-quadratic-definability"
+doi: "10.5281/zenodo.23053094"
+# prose documents (manuscript, submission, correspondence, Markdown docs) are CC-BY-4.0; see LICENSE-CC-BY-4.0.txt and LICENSING.md
+keywords:
+  - Diophantine definability
+  - existential fragments
+  - quadratic equations
+  - finite fibres
+  - definable functions
+  - computability
+  - Lean 4
+  - mathlib

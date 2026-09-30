@@ -1,0 +1,11 @@
+\section{Polynomial graph classification}\label{sec:5}
+\begin{theorem}[\texttt{MultivariatePolynomialGraphs.\allowbreak{}lean}, \texttt{polynomial\_\allowbreak{}graph\_\allowbreak{}singleQuadratic\_\allowbreak{}iff}]\label[theorem]{theorem:5.1}
+For every $n$ and every $p ∈ ℤ[x_{1},…,x_{n}]$: $\mathrm{graph}(p) ∈ \mathrm{SE}_{2}(n+1) ⟺ \mathrm{totalDegree}\ p ≤ 2$. Here $\mathrm{totalDegree}$ is mathlib's, so the zero polynomial has degree 0 and falls under the left-hand side; no separate convention is adopted for it.
+
+\end{theorem}
+\begin{proof}
+(⇐) The graph is cut out by the single equation $y − p = 0$, of total degree at most two. (⇒) Suppose $\mathrm{deg} p = d ≥ 3$. Write $p = p_{d}$ + (lower), with $p_{d}$ the top homogeneous part, which is nonzero. Since ℤ is infinite, $p_{d}$ does not vanish identically, so there is $v ∈ ℤ^{n}$ with $p_{d}(v) ≠ 0$ (\texttt{exists\_\allowbreak{}eval\_\allowbreak{}ne\_\allowbreak{}zero}). Restrict p to the line t ↦ tv: the resulting univariate polynomial has degree exactly d and leading coefficient $p_{d}$(v) (\texttt{linePoly\_\allowbreak{}natDegree}, \texttt{exists\_\allowbreak{}line\_\allowbreak{}natDegree\_\allowbreak{}eq\_\allowbreak{}totalDegree}), so |p(tv)| grows like $|t|^{d}$. On the other hand $a ↦ p(a)$ would be an SE₂-definable total function, hence of quadratic growth by \cref{theorem:3.2}, so $|p(tv)| ≤ C(1 + ‖tv‖_{∞})^{2} = C(1 + |t|·‖v‖_{∞})^{2}$ for all t; for $|t| ≥ 1$ this is at most C(1 + $‖v‖_{∞}$)² t², so $|p(tv)| = O(t^{2})$ — a contradiction for large t since $d ≥ 3$.
+
+\end{proof}
+No substitution or coordinate-change lemma is needed: the growth theorem is already vector-valued and holds at every arity.
+

@@ -1,0 +1,39 @@
+PASS N1 N == 48601
+PASS N1 wrong1 norm = 48586
+PASS N1 wrong2 norm = 48557
+PASS N1 right1 norm = 48601
+PASS N1 right2 norm = 48601
+PASS N1 mod 5 first coords 1 and 0
+CAUGHT control N1 48586 == 48601
+PASS N2 dW=1 E^T G E == G
+PASS N2 dW=1 F^T G F == G
+PASS N2 dW=1 E(0)=F(0)=I
+PASS N2 dW=1 (★) coefficients
+CAUGHT control N2 dW=1 sign-flipped t^2 term preserves Gram
+PASS N2 dW=2 E^T G E == G
+PASS N2 dW=2 F^T G F == G
+PASS N2 dW=2 E(0)=F(0)=I
+PASS N2 dW=2 (★) coefficients
+CAUGHT control N2 dW=2 sign-flipped t^2 term preserves Gram
+PASS N2 dW=3 E^T G E == G
+PASS N2 dW=3 F^T G F == G
+PASS N2 dW=3 E(0)=F(0)=I
+PASS N2 dW=3 (★) coefficients
+CAUGHT control N2 dW=3 sign-flipped t^2 term preserves Gram
+PASS N3 diag(lam,1/lam) preserves XY Gram
+PASS N3 Q(Z'-c) == Q(Z-c)
+PASS N3 difference identity (coords in U,V)
+CAUGHT control N3 difference with 1/lam in place of F/lam
+PASS N3 integrality sweep (525 cases)
+CAUGHT control N3 lam=2 (≢1 mod 3) integral
+PASS N4 (4b+1)(4u+1)=1: divisor pairs with both ≡1 mod 4 give only (0,0)
+PASS N4 b(2u+1) = 2 b (u+1/2) (Q=2bu, centre (0,-1/2), R=0)
+PASS N4 (4b+1)(4u+1)-1 = 16(b+1/4)(u+1/4)-1
+PASS N4 b(2u+1)=0 over ZZ forces b=0 (2u+1 odd, never 0)
+CAUGHT control N4 (2b+1)(2u+1)=1 unique
+PASS N5 deg1 6x+4: q=5, 1 root(s) in Z_q to prec 12, q^1 ≡ 1 mod 4
+PASS N5 disc!=0 x^2+1: q=5, 2 root(s) in Z_q to prec 12, q^2 ≡ 1 mod 3
+PASS N5 disc=0 (2x+1)^2: q=3, 1 root(s) in Z_q to prec 12, q^6 ≡ 1 mod 7
+PASS N5 disc!=0 3x^2+x+5: q=19, 2 root(s) in Z_q to prec 12, q^2 ≡ 1 mod 10
+CAUGHT control N5 x^2+1 has a root in Z_3
+LEG2_SUMMARY 38/38  CONTROLS_CAUGHT 8/8

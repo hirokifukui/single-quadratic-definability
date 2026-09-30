@@ -1,0 +1,21 @@
+FAIL DIFF    AllR_TARGET_STATEMENTS.lean:quadraticWitnessInertiaZ  (in DiophCompression/SemanticQuadraticSingular/SingularAssembly.lean)
+    frozen: theorem quadraticWitnessInertiaZ : ∀ r, graphCapacityZ r 2 = 2 ∧ False
+    prod  : theorem quadraticWitnessInertiaZ : ∀ r, graphCapacityZ r 2 = 2
+FROZEN_FILES=33
+SUPERSEDED_SKIPPED=1
+OPEN_REGISTRY=15/15
+THEOREMS=296/297
+DEFINITIONS=58/58
+DUPLICATE_NAMES=0
+FAIL=1
+FAIL MISSING AllR_TARGET_STATEMENTS.lean:quadraticWitnessInertiaZ
+FROZEN_FILES=33
+SUPERSEDED_SKIPPED=1
+OPEN_REGISTRY=15/15
+THEOREMS=296/297
+DEFINITIONS=58/58
+DUPLICATE_NAMES=0
+FAIL=1
+NEG_CONTROL_MUTATE_CAUGHT=1
+NEG_CONTROL_MISSING_CAUGHT=1
+NEG_CONTROL_EXIT=0

@@ -1,0 +1,19 @@
+PASS N1 full solution tuples of (3b-a+1)^2+u^2=1 = ((q,+-1)) if r=1 else ((q,0)); a in [-300,300]
+PASS N1c a=1: solutions ((0,-1),(0,1)) -> two witnesses
+PASS N1d total degree 2
+PASS N1e w^2+z^2=1 over ZZ has exactly the 4 solutions (+-1,0),(0,+-1)
+PASS N4 Lagrange poly through (0,0),(1,0),(2,0) is 0 (degree<=2 uniqueness), so value 0 at 3 != 1
+PASS N4b no degree<=2 poly through (0,0),(1,0),(2,0),(3,1): Lagrange of 4 points has degree 3
+PASS N5 odd p: unique even point in {0,1}; 6p vs 4 never equal (p in [-31,31] odd)
+PASS N5e 6p=4: gcd(6) does not divide 4
+PASS N6 affine s + l x integer-valued on Z <=> s,l in ZZ (s,l in (1/6)Z grid)
+PASS N7 floor((a+3t)/3) = floor(a/3)+t
+PASS N8a P6 == 9*P2 and content(P6)=9
+PASS N8b (2b-2a)^2 factors as 4*(a-b)^2
+PLANT_CAUGHT PLANT1 (3b-a)^2+u^2=1 claimed = floor(a/3)
+PLANT_CAUGHT PLANT2 a=1 witness tuple claimed ((0,0),)
+PLANT_CAUGHT PLANT3 Lagrange through (0,0),(1,0),(2,0),(3,1) claimed degree <= 2
+PLANT_CAUGHT PLANT4 6p=4 claimed solvable (p=2/3 claimed integer)
+PLANT_CAUGHT PLANT5 affine (x+1)/2 claimed integer-valued
+LEG2_SAGE checks 12/12 PASS; plants caught 5/5; sage SageMath version 10.8, Release Date: 2025-12-18
+LEG2_EXIT= 0

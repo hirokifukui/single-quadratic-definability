@@ -1,0 +1,11 @@
+@@SEP@@ c21_affine_square
+@c21_affine_square : ∀ {n : ℕ} (A : Matrix (Fin n) (Fin n) ℤ) (b : Fin n → ℤ) (c : ℤ),
+  (∀ (x : Fin n → ℤ), IsSquare (deltaQ A b c x)) → ∃ ℓ s, ∀ (x : Fin n → ℤ), ↑(deltaQ A b c x) = (ℓ ⬝ᵥ castQ x + s) ^ 2
+@@SEP@@ deltaQ
+def DiophCompression.ResearchUpgrade.deltaQ : {n : ℕ} → Matrix (Fin n) (Fin n) ℤ → (Fin n → ℤ) → ℤ → (Fin n → ℤ) → ℤ :=
+fun {n} A b c x => x ⬝ᵥ A.mulVec x + b ⬝ᵥ x + c
+@@SEP@@ commonSlope_padZero_iff
+@commonSlope_padZero_iff : ∀ {n m : ℕ} (f : (Fin n → ℤ) → Fin m → ℤ), CommonSlopeIntNF (padZero f) ↔ CommonSlopeIntNF f
+@@SEP@@ PLANT (must fail)
+/Users/hiroki/lean/s60_evidence/probe/probe_gate30b.lean:10:8: error(lean.unknownIdentifier): Unknown identifier `c21_affine_square_PLANTED_s60`
+EXIT=1

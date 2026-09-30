@@ -1,0 +1,11 @@
+=== 8. the isotropic section hits R(a) exactly ===
+[PASS] 8a Q(v0 + t e) = R(a) for t = (R(a) - R(a0)) / B(v0, e), whenever Q(e) = 0  -- 74 qualifying instances, failures: []
+[PASS] 8b planted control: dropping Q(e) = 0 breaks the identity  -- 1888 instances where the section misses R(a)
+[PASS] 8c every radical vector is isotropic (2Q(r) = B(r,r) = 0)
+=== 9. the Pell identities ===
+[PASS] 9a Q(X v +- A Y w) = Q(v)(X^2 - Delta Y^2); 9b a square Delta yields an isotropic e = s v + A w with B(v,e) = 2 s Q(v)  -- 40 qualifying (v,w) pairs, failures: []
+[PASS] 9c a Pell unit X^2 - Delta Y^2 = 1 with X > 1, Y != 0 exists for each nonsquare Delta tried  -- 10 discriminants
+[PASS] 9d among z0, z+, z- at least two outputs differ (pi w != 0 or pi v != 0)
+=== SUMMARY ===
+CHECKS=6 PASS=6 FAIL=0
+REDERIVE_GATE23_ISOTROPIC_PELL_S52 DONE

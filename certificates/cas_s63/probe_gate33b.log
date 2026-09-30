@@ -1,0 +1,14 @@
+@@SEP@@ DC name (must succeed)
+DiophCompression.relation_phase_diagram_all_positive_arity_of_classical : DiophCompression.UniformQuadraticSolvabilityOnCodes →
+  DiophCompression.DPRM_NN →
+    ∀ {k : ℕ},
+      0 < k →
+        DiophCompression.SingleEqFragmentZZ 2 k ⊂ DiophCompression.RecFragmentZZ k ∧
+          DiophCompression.RecFragmentZZ k ⊂ DiophCompression.REFragmentZZ k ∧
+            DiophCompression.REFragmentZZ k = DiophCompression.PPFragmentZZ 2 k ∧
+              DiophCompression.PPFragmentZZ 2 k = DiophCompression.SingleEqFragmentZZ 4 k
+@@SEP@@ RU name sealedFullNF_of_TCER (must fail without import ResearchUpgrade)
+/Users/hiroki/lean/s63_evidence/probe/probe_gate33b.lean:8:8: error(lean.unknownIdentifier): Unknown identifier `DiophCompression.ResearchUpgrade.sealedFullNF_of_TCER`
+@@SEP@@ RU name generalFullNF_iff_semidefiniteFullNF (must fail)
+/Users/hiroki/lean/s63_evidence/probe/probe_gate33b.lean:10:8: error(lean.unknownIdentifier): Unknown identifier `DiophCompression.ResearchUpgrade.generalFullNF_iff_semidefiniteFullNF`
+EXIT=1

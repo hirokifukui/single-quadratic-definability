@@ -1,0 +1,20 @@
+PASS M1 two-root identity
+PASS M2a scaled identity (factor)
+PASS M2b P6 total/unique = parityFn on [-150,150]
+PASS M3 (2b-2a)^2 -> (a,)
+PASS M4 (3b-3a)(3b-3a-1) -> (a,)
+PASS M5a (2b-a)(2b-a-2) at 0 -> (0,1)
+PASS M5b (3b-a)(3b-a+1) at 2 -> ()
+PASS M6 floor(a/3) one-witness, witness sets
+PASS M6b total degree 2
+PASS M7 unique quadratic through (0,0),(1,0),(2,0) is 0; floor(1)=1 at a=3
+PASS M7a forces (c2,c1,c0)=(0,1/3,0)
+PASS M8 3p=2 unsolvable in ZZ; floor shift 6 = 2
+PASS M9 four squares 0..200
+PASS M10 (a+M)^2-a^2 not constant in a
+PASS M11 N=4 on 2Z^3: 6 reps, gcd 2
+PLANT_CAUGHT PLANT1 scale 8
+PLANT_CAUGHT PLANT2 (3b-a)^2+u^2=1 = floor
+PLANT_CAUGHT PLANT3 (3b-a)(3b-a+1) total
+LEG2_SAGE checks 15/15 PASS; plants caught 3/3; SageMath version 10.8, Release Date: 2025-12-18
+LEG2_EXIT= 0

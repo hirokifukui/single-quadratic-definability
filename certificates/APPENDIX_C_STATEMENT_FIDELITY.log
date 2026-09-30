@@ -1,0 +1,34 @@
+APPENDIX_C_STATEMENT_FIDELITY — Gate-8 F01 (s34, 2026-09-04 13:36:11)
+
+MEASURED_ROOT   /Users/hiroki/lean/mpup-lean
+ROOT_KIND       development vault (Gate-8 Q3: not a release certificate)
+FROZEN_FILE     frozen_statements/WeightedBound_STATEMENTS.lean
+PRODUCTION      MPUP/WeightedBound.lean
+
+WEIGHTED_THEOREMS      19/19
+WEIGHTED_DEFINITIONS   2/2
+Gate-8 F01 asked for 13/13 and 2/2; the module gained six theorems at s34 (F03 the two closed
+forms plus three counting lemmas, F04 the integer-side no-go), so the figure is 19, not 13.
+Gate-8's own minimum freeze list omitted the definition `pval` while requiring 2/2 definitions;
+both definitions are frozen here.
+
+WHOLE_TREE_AFTER_FREEZE
+  FROZEN_FILES=56  THEOREMS=455/455  DEFINITIONS=168/168  DUPLICATE_NAMES=0  FAIL=0  SDIFF_EXIT=0
+  (before s34: 55 / 436 / 166 -- the weighted module was covered by neither figure)
+
+PLANTED_NEGATIVE_CONTROLS (written by us into a temp copy, not borrowed from a live defect)
+  CTRL_C  wtCount_closed_form frozen as (k + 2) instead of (k + 1)
+          -> FAIL DIFF, THEOREMS=453/455, FAIL=2
+  CTRL_D  not_MPUP_Z_of_weighted_bound renamed to a name absent from production
+          -> FAIL MISSING
+  live tree re-run immediately afterwards: THEOREMS=455/455, FAIL=0
+
+STATEMENT_MEANING_CHECK (does wtCount compute what Appendix C means?)
+  Lean  #eval MPUP.wtCount  / MPUP.monoCount over 0<=d<=5, 0<=k<=4
+  Independent re-implementation in Python from the Lean definition, enumerating exponent vectors
+  Tables agree in every cell.
+  Planted wrong closed form C(d+k, k) disagrees with the wtCount table (d=2,k=2: 6 vs 4),
+  so the check discriminates.
+  Closed forms are no longer prose: monoCount_closed_form and wtCount_closed_form are theorems.
+
+EXIT 0

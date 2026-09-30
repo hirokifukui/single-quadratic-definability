@@ -1,0 +1,9 @@
+\section{Function phase diagram}\label{sec:7}
+\begin{theorem}[\texttt{function\_\allowbreak{}phase\_\allowbreak{}diagram\_\allowbreak{}by\_\allowbreak{}arity\_\allowbreak{}of\_\allowbreak{}DPRM\_\allowbreak{}NN}]\label[theorem]{theorem:7.1}
+Assume $\mathrm{DPRM}_{NN}$. For all $n, m$: $\mathrm{TotComp}_{n,m} = \mathrm{Fun}_{n,m}(\mathrm{PP}_{2}) = \mathrm{Fun}_{n,m}(\mathrm{SE}_{4})$ (\texttt{ppQuadratic\_\allowbreak{}functions\_\allowbreak{}eq\_\allowbreak{}totalComputable\_\allowbreak{}of\_\allowbreak{}DPRM}, \texttt{ppQuadratic\_\allowbreak{}functions\_\allowbreak{}eq\_\allowbreak{}singleQuartic}); $\mathrm{Fun}_{n,m}(\mathrm{SE}_{2}) ⊆ \mathrm{TotComp}_{n,m}$ always, strictly for $n, m ≥ 1$ and with equality for $n = 0$ or $m = 0$ (\cref{theorem:3.5}); $\mathrm{Fun}(\mathrm{PP}_{2})$ is closed under composition and $\mathrm{Fun}(\mathrm{SE}_{2})$ is not (\cref{theorem:3.4}). The only conditional arrow is $\mathrm{TotComp} ⊆ \mathrm{Fun}(\mathrm{PP}_{2})$.
+
+\end{theorem}
+\begin{proof}
+$\mathrm{TotComp} = \mathrm{Fun}(PP_{2}) = \mathrm{Fun}(SE_{4})$ is the DPRM transport of \cref{theorem:6.7} read at the level of graphs. $\mathrm{Fun}(SE_{2}) ⊆ \mathrm{TotComp}$ is \cref{theorem:3.3}, which uses no classical input; strictness for $n, m ≥ 1$ and equality for $n = 0$ or $m = 0$ are \cref{theorem:3.5}; the failure of closure under composition is \cref{theorem:3.4}. The only arrow that consumes a hypothesis is therefore $\mathrm{TotComp} ⊆ \mathrm{Fun}(PP_{2})$.
+
+\end{proof}

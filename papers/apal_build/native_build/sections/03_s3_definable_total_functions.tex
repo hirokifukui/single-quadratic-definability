@@ -1,0 +1,45 @@
+\section{Definable total functions}\label{sec:3}
+\begin{definition}[\texttt{FiniteFiberGrowth.\allowbreak{}lean}, \texttt{ComputableFunctions.\allowbreak{}lean}]\label[definition]{definition:3.1}
+For $f : ℤ^{n} → ℤ^{m}$, $\mathrm{graphVecZZ}\ f := \{v ∈ ℤ^{n+m} \mid (v_{n+j})_{j} = f((v_{i})_{i})\}$. $f$ is $SE_{2}$-definable ($\mathrm{SingleQuadraticDefinableFunctionZZ}$) if $\mathrm{graphVecZZ}\ f ∈ SE_{2}(n+m)$; $PP_{2}$-definable, $SE_{4}$-definable likewise; $\mathrm{TotalComputableFunctionZZ}\ f :⟺ \mathrm{Computable}\ f$.
+
+\end{definition}
+\begin{theorem}[quadratic growth; \texttt{singleQuadratic\_\allowbreak{}function\_\allowbreak{}quadratic\_\allowbreak{}growth}]\label[theorem]{theorem:3.2}
+If $f$ is $SE_{2}$-definable there is $C ∈ ℕ$ with $|f(a)_{j}| ≤ C·N^{2}$ for all $N ≥ 1$, $‖a‖_{∞} ≤ N$, all $j$.
+\end{theorem}
+\begin{proof}
+The fibre of graphVecZZ f over a is the singleton \{f(a)\} (\texttt{fiberVecZZ\_\allowbreak{}eq\_\allowbreak{}singleton\_\allowbreak{}of\_\allowbreak{}represents}), hence finite; apply \cref{theorem:2.1}.
+
+\end{proof}
+
+\begin{theorem}[\texttt{singleQuadratic\_\allowbreak{}total\_\allowbreak{}function\_\allowbreak{}computable}, \texttt{ppQuadratic\_\allowbreak{}total\_\allowbreak{}function\_\allowbreak{}computable}]\label[theorem]{theorem:3.3}
+SE₂- and PP₂-definable total functions are computable (witness search on the graph, then read off the unique output).
+
+\end{theorem}
+\begin{proof}
+Let f : $ℤ^{n} → ℤ^{m}$ be total with graphVecZZ $f ∈ SE_{2}(n+m)$, represented by P with witness arity $r: (a, b) ∈ \mathrm{graph} ⟺ ∃u ∈ ℤ^{r}, P(a, b, u) = 0$. Given a, search over the codes of pairs $(b, u) ∈ ℤ^{m} × ℤ^{r}$, which is \texttt{Primcodable}, testing the primitive recursive predicate $P(a,b,u) = 0$. Totality of f guarantees that some pair satisfies it, so the search terminates; and the graph is the graph of a function, so the b returned is f(a) regardless of which pair is found first. Hence f is computable. The PP₂ case is identical with the system in place of the single equation. Two things are not used and should be named: no height bound and no classical input. Termination comes from totality, and correctness from functionality of the graph.
+
+\end{proof}
+\begin{theorem}[composition; \texttt{ppQuadratic\_\allowbreak{}functions\_\allowbreak{}closed\_\allowbreak{}under\_\allowbreak{}composition}, \texttt{singleQuadratic\_\allowbreak{}functions\_\allowbreak{}not\_\allowbreak{}closed\_\allowbreak{}under\_\allowbreak{}composition}]\label[theorem]{theorem:3.4}
+PP₂-definable functions are closed under composition (the intermediate vector is carried as fresh witnesses, \texttt{compSys}). $SE_{2}$-definable functions are not: $x ↦ x^{2}$ is $SE_{2}$-definable but $x ↦ x^{4}$ is not, since quartic growth contradicts \cref{theorem:3.2}. The $ℤ → ℤ$ instance is \texttt{UnarySE2ZZ}.
+
+\end{theorem}
+\begin{proof}
+\emph{Closure for PP₂.} Let f : $ℤ^{n} → ℤ^{m}$ and g : $ℤ^{m} → ℤᵖ$ have PP₂-definable graphs, by systems $S_{f}$ in witnesses u and $S_{g}$ in witnesses v. Then
+
+$(a, c) ∈ \mathrm{graph}(g ∘ f) ⟺ ∃ b ∈ ℤ^{m}, ∃u, ∃v$ : $S_{f}(a, b, u) = 0 ∧ S_{g}(b, c, v) = 0$,
+
+and the right-hand side is a single system: no equation is altered, the intermediate vector b is carried as fresh existential witnesses alongside u and v, and every equation still has total degree at most two. So $\mathrm{graph}(g ∘ f) ∈ PP_{2}(n+p)$. The step that a system permits and a single equation does not is exactly this conjunction: combining two quadratics into one equation by summing their squares would produce total degree four.
+
+\emph{Failure for SE₂.} The map $x ↦ x^{2}$ is SE₂-definable: its graph is cut out by $b − a^{2} = 0$, one equation of total degree two with no witnesses. If Fun(SE₂) were closed under composition, $x ↦ x^{4}$ would be SE₂-definable, and \cref{theorem:3.2} would give a constant C with $|a^{4}| ≤ C(1+|a|)^{2}$ for every a — false for |a| large. So closure fails, and it fails at arity one (\texttt{UnarySE2ZZ}).
+
+\end{proof}
+This is the first place where the difference between one equation and a system becomes a theorem rather than a convention. Closure under composition is exactly the ability to hide an intermediate value; a system can hide it in a fresh unknown, whereas a single equation of bounded degree cannot, because the degree budget that would pay for the substitution is already spent.
+
+\begin{theorem}[exactness by arity; \texttt{FunctionPhaseByArity.\allowbreak{}lean}]\label[theorem]{theorem:3.5}
+For $n, m ≥ 1$, $\mathrm{Fun}_{n,m}(SE_{2}) ⊊ \mathrm{TotComp}_{n,m}$ with witness $a ↦ (a_{0}^{3}, 0, …, 0)$ (\texttt{cubeFirstZZ}, \texttt{singleQuadratic\_\allowbreak{}functions\_\allowbreak{}strict\_\allowbreak{}of\_\allowbreak{}pos\_\allowbreak{}arity}); for $n = 0$ or $m = 0$ every function is both $SE_{2}$-definable and computable (\texttt{singleQuadratic\_\allowbreak{}functions\_\allowbreak{}eq\_\allowbreak{}at\_\allowbreak{}zero\_\allowbreak{}input}, \texttt{\_\allowbreak{}output}). All unconditional.
+
+\end{theorem}
+\begin{proof}
+Let $n, m ≥ 1$. The map $a ↦ (a_{0}^{3}, 0, …, 0)$ is total and computable. Were it SE₂-definable, \cref{theorem:3.2} would supply C with $|a_{0}^{3}| ≤ C(1+‖a‖_{∞})^{2}$ for all a, which fails as $a_{0} → ∞$. With the inclusion $Fun_{n,m}(SE_{2}) ⊆ TotComp_{n,m}$ of \cref{theorem:3.3}, this gives strictness. For $n = 0: ℤ^{0}$ is a singleton, so a function $ℤ^{0} → ℤ^{m}$ is one constant vector b*, and its graph \{b*\} is cut out by the single equation $Σ_{j} (b_{j} − b*_{j})^{2} = 0$ of total degree two with no witnesses; every such function is also computable, so the two classes coincide. For $m = 0$: there is exactly one function $ℤ^{n} → ℤ^{0}$, its graph is everything, cut out by $0 = 0$, and it is computable; again the classes coincide.
+
+\end{proof}

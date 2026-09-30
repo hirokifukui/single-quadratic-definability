@@ -1,0 +1,6 @@
+CAUGHT P1 A.7 hypothesis deleted exit=1 ["FAIL Proposition A.7: token 'Assume TCER' not found in order"]
+CAUGHT P2 A.6 semidefinite -> definite exit=1 ["FAIL Proposition A.6: token 'nonzero and semidefinite of either sign' not found in order"]
+CAUGHT P3 A.6 root swapped to generalFullNF_of_TCER exit=1 ['FAIL Proposition A.6: no type fingerprint for generalFullNF_of_TCER']
+CAUGHT P4 A.7 forged type hash exit=1 ['FAIL Proposition A.7: lean_type_sha256 for sealedFullNF_of_TCER is 000000000000, current type is 83d320e6dbc5 (root substituted or type changed; re-register deliberately)']
+CAUGHT P5 A.7 'unconditionally' inserted exit=1 ["FAIL Proposition A.7: forbidden token 'unconditionally' present"]
+A6A7_PLANTS_CAUGHT=5/5

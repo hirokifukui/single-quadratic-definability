@@ -1,0 +1,3 @@
+FAIL lean/ResearchUpgrade/SectionRigidity.lean 172 190 ['L172']
+MISSING README_PUBLIC_CORE.md
+SECTIONS=16 OK=14 FAIL=2

@@ -1,0 +1,8 @@
+CAUGHT P1 10.17 hypothesis deleted exit=1 ["FAIL Proposition 10.17: token 'Assume TCER' not found in order"]
+CAUGHT P2 10.16 'without' -> 'with' exit=1 ["FAIL Proposition 10.16: token 'defined by a single quadratic equation over ℤ without unknowns' not found in order"]
+CAUGHT P3 10.16 TCER inserted exit=1 ["FAIL Proposition 10.16: forbidden token 'Assume TCER' present"]
+CAUGHT P4 10.18 'no' -> 'some' exit=1 ["FAIL Proposition 10.18: token 'and by no single quadratic equation over ℤ without unknowns' not found in order"]
+CAUGHT P5 10.18 root swapped to floorThird_oneWitness exit=1 ['FAIL Proposition 10.18: no type fingerprint for floorThird_oneWitness']
+CAUGHT P6 10.17 forged type hash exit=1 ['FAIL Proposition 10.17: lean_type_sha256 for singleQuadratic_iff_uniqueWitness_of_TCER is 000000000000, current type is b9f04e5cf134 (root substituted or type changed; re-register deliberately)']
+CAUGHT P7 10.17 uniqueness weakened exit=1 ["FAIL Proposition 10.17: token 'whose solutions in the unknowns coincide whenever the inputs and outputs do' not found in order"]
+P1618_PLANTS_CAUGHT=7/7

@@ -1,0 +1,31 @@
+PASS S1 27/56 and 25/56
+PASS S1 factor X^25(cX^2-C)
+PASS S1 positive just above N0=(2C/c)^28
+CAUGHT control S1 eps=1/28 gap positive
+PASS S2 Q=0 and linear coeff of b is 1
+PASS S2 total+unique
+CAUGHT control S2 linear part vanishes
+PASS S3 total degree 2
+PASS S3 unknown quadratic part positive definite
+PASS S3 CommonSlope of table
+PASS S3 graph point has zero witness
+PASS S3 on one-hot witnesses, zero iff b=f(a)
+PASS S3 non-boolean witnesses never give 0, never negative
+CAUGHT control S3 delta with flipped sign still vanishes on the graph
+CAUGHT control S3 without e(e-1) the graph is still defined
+PASS S4 (a+M)^2-a^2=2Ma+M^2 depends on a
+CAUGHT control S4 difference independent of a
+PASS S5 exactly one integer root each a
+PASS S5 f(2t)=t, f(2t+1)=-3t-1
+PASS S5 no common slope M=1..16
+CAUGHT control S5 common slope with M=4
+PASS S6 F(k0)-F(k1) = F(k1)*K*s*(integral poly)
+PASS S6 F(k0)=F(k1)*mu with mu ≡ 1 mod K
+PASS S6 G(k0+L j) ≡ G(k0) mod L
+CAUGHT control S6 mu ≡ 1 mod 2K
+PASS S7 Q(x+Ne)=Q(x)+N polar(x,e)+N^2 Q(e)
+CAUGHT control S7 Q(x+Ne)=Q(x)+N polar(x,e) (drops N^2Q(e))
+PASS S8 injectivity criterion agrees on 26975 instances
+CAUGHT control S8 B injective alone suffices
+LEG2_SUMMARY 20/20  CONTROLS_CAUGHT 9/9
+0

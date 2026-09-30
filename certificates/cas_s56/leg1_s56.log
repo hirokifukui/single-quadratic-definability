@@ -1,0 +1,23 @@
+PASS N(45)=48601
+  prose1 sum = 48586  prose2 sum = 48557
+FAIL prose triple1 sums to 48601
+FAIL prose triple2 sums to 48601
+PASS json triple1 sums to 48601
+PASS json triple2 sums to 48601
+PASS json first coords differ mod 5
+PASS json triple1 in (1,0,0)+5Z^3
+PASS json triple2 in (0,1,0)+5Z^3
+PASS rotation norm identity
+PASS w'-w=(2aK/d)(v-bKw), w-coeff
+PASS gcd(1+abK^2,h)=1 when h|K (grid)
+PASS control w'=(-4/5,3/5)
+PASS control change from w/3 nonintegral
+PASS H(T)=F(cPT)/c=1+BPT+AcP^2T^2
+PASS rank-one example (2b-a)(2b+3a-1)=0 total & output-unique |a|<=300
+PASS m=0: u^2+v^2=a^2 total (u=a,v=0), residual a^2 nonconstant
+PASS t(t-1)>=0 on Z and <0 at 1/2
+PASS 1+24t^2 == 1 mod 8
+--- planted controls (must FAIL) ---
+FAIL CONTROL rotation with wrong RHS a(1-abK^2)^2
+FAIL CONTROL triple (-199,-90,31)
+FAIL CONTROL rank-one with 2b+3a=0 (not total)

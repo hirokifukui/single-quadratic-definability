@@ -1,0 +1,15 @@
+\section{Technical arithmetic lemmas}\label[appendix]{sec:D}
+The following are used throughout and are proved in the formalization.
+
+\emph{Growth on boxes.} For an integer polynomial p of total degree d and $‖a‖_{∞} ≤ N$ with $N ≥ 1, |p(a)| ≤ S·N^{d}$ where S is the sum of the absolute values of the coefficients (\texttt{eval\_\allowbreak{}abs\_\allowbreak{}le\_\allowbreak{}int}). This is what turns "degree at most two in the parameters" into "at most SQ·N²".
+
+\emph{Top homogeneous part and lines.} The top homogeneous part of a nonzero polynomial is nonzero and does not vanish identically over an infinite integral domain (\texttt{topHomogeneous\_\allowbreak{}ne\_\allowbreak{}zero}, \texttt{exists\_\allowbreak{}eval\_\allowbreak{}ne\_\allowbreak{}zero}); restricting to a line through the origin in a direction where it does not vanish gives a univariate polynomial of the same degree (\texttt{linePoly\_\allowbreak{}natDegree}, \texttt{exists\_\allowbreak{}line\_\allowbreak{}natDegree\_\allowbreak{}eq\_\allowbreak{}totalDegree}). This is the engine of \cref{theorem:5.1}.
+
+\emph{Box counting.} The number of integer points of ℤᵐ in a box of half-side B is (2B+1)ᵐ, and a set with a coordinatewise bound has at most that cardinality (\texttt{ncard\_\allowbreak{}le\_\allowbreak{}of\_\allowbreak{}abs\_\allowbreak{}le\_\allowbreak{}vec}).
+
+\emph{Primitive recursion over ℤ.} mathlib's computability library is developed over ℕ; the integer operations are obtained through the sign-magnitude encoding, and addition, multiplication, powers and polynomial evaluation at an integer coordinate vector are primitive recursive (\texttt{IntPrimrec.\allowbreak{}lean}: \texttt{primrec₂\_\allowbreak{}int\_\allowbreak{}add}, \texttt{primrec₂\_\allowbreak{}int\_\allowbreak{}mul}, \texttt{primrec\_\allowbreak{}int\_\allowbreak{}pow}, \texttt{primrec\_\allowbreak{}eval\_\allowbreak{}of\_\allowbreak{}coords}). These are what make the code-level statements of \cref{sec:6} meaningful.
+
+\emph{Four squares and the sum-of-squares trick.} Every natural number is a sum of four squares (mathlib), which converts an ℕ-valued unknown into four ℤ-valued ones (\texttt{exists\_\allowbreak{}fourSquares}); a finite system over ℤ has the same solutions as the single equation given by the sum of the squares of its members (\texttt{transportPoly\_\allowbreak{}eval\_\allowbreak{}eq\_\allowbreak{}zero\_\allowbreak{}iff}). Together these are the whole of \cref{theorem:6.7} apart from bookkeeping.
+
+\emph{Homogeneous decomposition of a quadratic.} Any polynomial of total degree at most two in a two-block variable set splits, after specialising one block, as a homogeneous quadratic in the other block plus an affine part whose coefficients are polynomials of degree at most one and two in the specialised block (\texttt{normal\_\allowbreak{}form\_\allowbreak{}general\_\allowbreak{}quadratic}). This single lemma is what connects Sections 2 and 8 to Section 9.
+

@@ -1,0 +1,202 @@
+== F1 counts
+CORE_FILES=724 SUMS_LINES=723
+SUMS_OK=723
+CORE_SOURCE_MANIFEST_LINES=396 CORE_SUBMISSION_LINES=272
+== F2 r50 core vs r51 core identity
+lean FILES=326 DIFF=0
+submission/native FILES=31 DIFF=0
+frozen_statements FILES=59 DIFF=0
+SAME papers/apal_build/APAL_MANUSCRIPT_v32.pdf
+SAME submission/APAL_MANUSCRIPT_v32.pdf
+SAME submission/APAL_MANUSCRIPT_v32.tex
+== F3 log / manifest hashes and CLEANROOM_REFERENCE
+9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9
+db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b
+MANIFEST_LINES=323
+SRC_KEY_COUNT=1
+SRC_MANIFEST_SHA256=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b
+RU_BUILD_EXIT=0
+SOURCE_FREEZE=OK
+FRESH_EXIT=0
+R49_LOG_BYTE_IDENTICAL_TO_R49_ZIP_TREE
+== F4 our README recipe run on the core (subshell, verbatim from rendered README lines)
+== F5 lakefile libs / fresh_build targets / RU imports
+11:@[default_target]
+12:lean_lib «MPUP» where
+14:lean_lib «DiophCompression» where
+20:lean_lib «ResearchUpgrade» where
+24:echo "=== plain lake build (default target) ==="; lake build > logs/lake_build_plain.log 2>&1; echo "PLAIN_BUILD_EXIT=0"; tail -3 logs/lake_build_plain.log
+25:echo "=== lake build DiophCompression ==="; lake build DiophCompression > logs/lake_build_dc.log 2>&1; echo "DC_BUILD_EXIT=0"; tail -3 logs/lake_build_dc.log
+26:echo "=== lake build ResearchUpgrade (r40, third library) ==="; lake build ResearchUpgrade > logs/lake_build_ru.log 2>&1; echo "RU_BUILD_EXIT=0"; tail -3 logs/lake_build_ru.log
+27:echo "=== lake build DiophCompression.QuadraticWitnessInertiaCore (all-r root) ==="; lake build DiophCompression.QuadraticWitnessInertiaCore > logs/minimal_all_r_build.log 2>&1; echo "CORE_BUILD_EXIT=0"; tail -3 logs/minimal_all_r_build.log
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:1:import DiophCompression.QuadraticPPSeparation
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:2:import DiophCompression.AtomicDegreeRank
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:3:import DiophCompression.Folding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:4:import DiophCompression.OneSorted
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:5:import DiophCompression.OneSortedPPCoding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:6:import DiophCompression.OneSortedFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:7:import DiophCompression.OneSortedPPFolding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:8:import DiophCompression.APALLogicCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:9:import DiophCompression.FiniteFiberGrowth
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:10:import DiophCompression.PolynomialGraphs
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:11:import DiophCompression.SkolemReduction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:12:import DiophCompression.FiniteFiberCardinality
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:13:import DiophCompression.FragmentLattice
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:14:import DiophCompression.MultivariatePolynomialGraphs
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:15:import DiophCompression.IntPrimrec
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:16:import DiophCompression.ComputabilityFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:17:import DiophCompression.ComputableFunctions
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:18:import DiophCompression.HaltingTransport
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:19:import DiophCompression.UnaryDiagonal
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:20:import DiophCompression.QuadraticCodes
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:21:import DiophCompression.GlobalQuadraticCode
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:22:import DiophCompression.EffectiveDiagonal
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:23:import DiophCompression.DPRMTransport
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:24:import DiophCompression.InfiniteFiberCertificate
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:25:import DiophCompression.StructuredCertificates
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:26:import DiophCompression.OutputNegation
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:27:import DiophCompression.LeafExtraction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:28:import DiophCompression.SummitTarget
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:29:import DiophCompression.BranchExhaustion
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:30:import DiophCompression.GSInputCompiler
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:31:import DiophCompression.SummitReduction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:32:import DiophCompression.SemanticQuadratic.LeafDataD3D6
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:33:import DiophCompression.PeriodicProgressionCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:34:import DiophCompression.StructuredFamilyCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:35:import DiophCompression.PellOrbitCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:36:import DiophCompression.SemanticQuadratic.PellFiberOrbit
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:37:import DiophCompression.SemanticQuadratic.PellOrbitOfXPos
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:38:import DiophCompression.SemanticQuadraticTwoWitness.RankOneCoupledData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:39:import DiophCompression.SemanticQuadratic.QuadraticFamilyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:40:import DiophCompression.SemanticQuadratic.OneWitnessFamilyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:41:import DiophCompression.SemanticQuadratic.FiberDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:42:import DiophCompression.SemanticQuadratic.PellDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:43:import DiophCompression.SemanticQuadratic.DegenerateDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:44:import DiophCompression.SemanticQuadraticTwoWitness.RankOneUncoupledData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:45:import DiophCompression.SemanticQuadraticTwoWitness.RankOneNormalData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:46:import DiophCompression.SemanticQuadraticMatrix.FullRankAssemblyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:47:import DiophCompression.SemanticQuadraticSingular.SingularDataCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:48:import DiophCompression.SemanticQuadraticGeneral.TopDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:49:import DiophCompression.SemanticQuadraticMatrix.QuadraticFamilyA2
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:50:import DiophCompression.PeriodicProgressionData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:51:import DiophCompression.ArityZeroFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:52:import DiophCompression.FunctionPhaseByArity
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:53:import DiophCompression.FunctionPhaseByArityNN
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:54:import DiophCompression.RelationPhaseAllPositiveArityClassical
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:55:import DiophCompression.APALStructuralTheoryCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:56:import MPUP.Quantitative
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:60:import MPUP.WeightedBound
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:61:import DiophCompression.SemanticQuadraticSingular.SingularAssembly
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:62:import DiophCompression.SemanticQuadraticSingular.QuadraticUniversalityCorollaries
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:63:import DiophCompression.SemanticQuadraticSingular.CorollariesAllR
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:64:import DiophCompression.QuadraticUniversalityConditional
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:65:import DiophCompression.SummitClosure
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:66:import DiophCompression.GSCompilerComputable
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:67:import DiophCompression.SummitInstances
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/HypothesisBinderLedger.lean:71:import ResearchUpgrade
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:1:import ResearchUpgrade
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:2:import DiophCompression.QuadraticPPSeparation
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:3:import DiophCompression.AtomicDegreeRank
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:4:import DiophCompression.Folding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:5:import DiophCompression.OneSorted
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:6:import DiophCompression.OneSortedPPCoding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:7:import DiophCompression.OneSortedFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:8:import DiophCompression.OneSortedPPFolding
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:9:import DiophCompression.APALLogicCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:10:import DiophCompression.FiniteFiberGrowth
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:11:import DiophCompression.PolynomialGraphs
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:12:import DiophCompression.SkolemReduction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:13:import DiophCompression.FiniteFiberCardinality
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:14:import DiophCompression.FragmentLattice
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:15:import DiophCompression.MultivariatePolynomialGraphs
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:16:import DiophCompression.IntPrimrec
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:17:import DiophCompression.ComputabilityFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:18:import DiophCompression.ComputableFunctions
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:19:import DiophCompression.HaltingTransport
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:20:import DiophCompression.UnaryDiagonal
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:21:import DiophCompression.QuadraticCodes
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:22:import DiophCompression.GlobalQuadraticCode
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:23:import DiophCompression.EffectiveDiagonal
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:24:import DiophCompression.DPRMTransport
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:25:import DiophCompression.InfiniteFiberCertificate
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:26:import DiophCompression.StructuredCertificates
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:27:import DiophCompression.OutputNegation
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:28:import DiophCompression.LeafExtraction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:29:import DiophCompression.SummitTarget
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:30:import DiophCompression.BranchExhaustion
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:31:import DiophCompression.GSInputCompiler
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:32:import DiophCompression.SummitReduction
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:33:import DiophCompression.SemanticQuadratic.LeafDataD3D6
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:34:import DiophCompression.PeriodicProgressionCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:35:import DiophCompression.StructuredFamilyCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:36:import DiophCompression.PellOrbitCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:37:import DiophCompression.SemanticQuadratic.PellFiberOrbit
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:38:import DiophCompression.SemanticQuadratic.PellOrbitOfXPos
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:39:import DiophCompression.SemanticQuadraticTwoWitness.RankOneCoupledData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:40:import DiophCompression.SemanticQuadratic.QuadraticFamilyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:41:import DiophCompression.SemanticQuadratic.OneWitnessFamilyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:42:import DiophCompression.SemanticQuadratic.FiberDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:43:import DiophCompression.SemanticQuadratic.PellDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:44:import DiophCompression.SemanticQuadratic.DegenerateDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:45:import DiophCompression.SemanticQuadraticTwoWitness.RankOneUncoupledData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:46:import DiophCompression.SemanticQuadraticTwoWitness.RankOneNormalData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:47:import DiophCompression.SemanticQuadraticMatrix.FullRankAssemblyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:48:import DiophCompression.SemanticQuadraticSingular.SingularDataCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:49:import DiophCompression.SemanticQuadraticGeneral.TopDichotomyData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:50:import DiophCompression.SemanticQuadraticMatrix.QuadraticFamilyA2
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:51:import DiophCompression.PeriodicProgressionData
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:52:import DiophCompression.ArityZeroFragments
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:53:import DiophCompression.FunctionPhaseByArity
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:54:import DiophCompression.FunctionPhaseByArityNN
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:55:import DiophCompression.RelationPhaseAllPositiveArityClassical
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:56:import DiophCompression.APALStructuralTheoryCore
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:57:import DiophCompression.SummitClosure
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:58:import DiophCompression.GSCompilerComputable
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:59:import DiophCompression.SummitInstances
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:60:import MPUP.Quantitative
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:61:import MPUP.WeightedBound
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:62:import DiophCompression.SemanticQuadraticSingular.SingularAssembly
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:63:import DiophCompression.SemanticQuadraticSingular.QuadraticUniversalityCorollaries
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:64:import DiophCompression.SemanticQuadraticSingular.CorollariesAllR
+/Users/hiroki/lean/s63_evidence/facts/core/lean/scripts/PaperClaimTypeReport.lean:65:import DiophCompression.QuadraticUniversalityConditional
+52:      lake build DiophCompression
+55:`lake build` returning 0 is necessary and not sufficient: a file containing `sorry` also builds. The
+65:    (cd lean && lake env lean scripts/FinalAxiomReport.lean)
+84:    (cd lean && lake env lean scripts/HypothesisBinderLedger.lean)
+90:    (cd lean && lake env lean scripts/PaperClaimTypeReport.lean) > certificates/PaperClaimTypeReport_current.log
+== F6 r49 log three builds (lines 42-57)
+=== plain lake build (default target) ===
+PLAIN_BUILD_EXIT=0
+```
+✔ [8542/8543] Built MPUP (2.6s)
+Build completed successfully (8543 jobs).
+=== lake build DiophCompression ===
+DC_BUILD_EXIT=0
+info: DiophCompression/SummitInstances.lean:140:0: 'DiophCompression.kindOmitB2_breaks_partition' depends on axioms: [propext]
+✔ [8691/8692] Built DiophCompression (2.6s)
+Build completed successfully (8692 jobs).
+=== lake build ResearchUpgrade (r40, third library) ===
+RU_BUILD_EXIT=0
+✔ [8786/8788] Built ResearchUpgrade.WitnessCount (3.4s)
+✔ [8787/8788] Built ResearchUpgrade (2.7s)
+Build completed successfully (8788 jobs).
+=== lake build DiophCompression.QuadraticWitnessInertiaCore (all-r root) ===
+== F7 sign-off fields / locators / SEAL tail
+AUTHOR_DISPOSITION count=74 nonblank=0
+AUTHOR_SIGNOFF_DATE count=74 nonblank=0
+AUTHOR_REVIEWER count=74 nonblank=0
+release/AUTHOR_SIGNOFF_SHEET.md
+4:DOI=UNSET
+5:REPO=UNSET
+15:EMAIL=UNSET
+  source (same SRC_MANIFEST_SHA256); no new clean-room execution is claimed for this round, and one environment is
+  recorded.
+  Open: every author field of the regenerated sign-off sheet is blank; the final locators -- preprint and software
+  DOIs, repository tag, author e-mail -- are unset, so this package is built in `draft` mode and the `final` build
+  remains untested on real locators. The ruling is unchanged and repeated: no Zenodo draft, DOI reservation or
+  GitHub release until every content item is fixed and the sheet is signed.
+== F8 gate5 pins on the build block
+/Users/hiroki/Downloads/mpup_gpt_r51_20260928/tools/gate5_verify.py:243:A('MH',7,("has",RB,r"lake build DiophCompression"))
+/Users/hiroki/lean/mpup-lean/pkg_r40/tools/gate5_verify.py:243:A('MH',7,("has",RB,r"lake build DiophCompression"))
+453d544d7bb129033e04dcab656e4820
+020cfce0ab602fc6bda4801c4c72d351

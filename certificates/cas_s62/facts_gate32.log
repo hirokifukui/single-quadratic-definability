@@ -1,0 +1,74 @@
+== F1 core zip sha / file count / SHA256SUMS
+6a8745cb0afe9f56
+CORE_FILES=714 SUMS_LINES=713
+SUMS_OK=713
+CORE_SOURCE_MANIFEST_LINES=396 CORE_SUBMISSION_LINES=268
+== F2 lean/ identity r49 vs r50 core
+R50_LEAN_FILES=326 R49_LEAN_FILES=326
+LEAN_DIFF=0
+FROZEN_DIFF=0 files=59
+== F3 source manifest
+     323
+db56ee4d1708c2e3
+CORE_FRESH_BUILD_LOGS=0
+== F4 exclude regex
+core/release/PUBLIC_CORE_EXCLUDE.txt:9:# Round- or session-numbered certificates from earlier rounds (the current round's fresh_build and source manifest
+core/release/PUBLIC_CORE_EXCLUDE.txt:21:^certificates/fresh_build_(?!r50[_.]).*$
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/PUBLIC_CORE_EXCLUDE.template.txt:9:# Round- or session-numbered certificates from earlier rounds (the current round's fresh_build and source manifest
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/PUBLIC_CORE_EXCLUDE.template.txt:21:^certificates/fresh_build_(?!@ROUND@[_.]).*$
+== F5 PARTITION_RECORD lines 727 761
+## Development history
+- certificates/fresh_build_r49.log
+== F6 LETTER_GATE31 74-89
+## 5. Clean room
+
+No Lean file changed after r49, so no new clean room was cut for r50.  The record below is r49's cold clean room on
+`agora` (an empty directory, the shipped `lean/` tree, the release lakefile pinning mathlib
+`d46bd45325c5cdf0ecf5cee0f5ff6d6e3586eb35`, `lake update` and `lake exe cache get`, then `fresh_build.sh`), reused because its
+source manifest equals r50's; it is not a new run.  Single environment; we say so.
+
+```
+FRESH_EXIT=0   SOURCE_MANIFEST_FILES=323   SRC_MANIFEST_SHA256=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b
+RU_BUILD_EXIT=0  AUDIT_RU_EXIT=0  AUDIT_EXIT=0  RU_FORBIDDEN=0  RU_CAPS_MISSING=0
+RU_AXIOM_LINES=1577     RU_RECORDS=1542     RU_NONSTD3_LINES=0
+THEOREMS=1092/1092  DEFINITIONS=298/298  FROZEN_FILES=59
+DEFFID_CONSTANTS=1154  DEFFID_MISMATCH=0  DEFFID_MISSING=0  DEFFID_EXTRA=0
+FINAL_AXIOM_LINES=421  FINAL_NONSTD3_LINES=0  TYPE_ROWS=452  SOURCE_FREEZE=OK
+logs compared: 1
+```
+== F7 r49 log
+9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9  r49/mpup_gpt_r
+9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9  /Users/hiroki/
+9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9  /Users/hiroki/
+SRC_MANIFEST_SHA256=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b
+RU_BUILD_EXIT=0
+SOURCE_FREEZE=OK
+FRESH_EXIT=0
+== F8 README template recipe 95-115, key names
+    python3 tools/fidelity_destroyer.py . --shipping-only \
+        --dispositions certificates/fidelity_destroyer_current.tsv
+
+Expected: no hit whose disposition is not recorded. This gate is advisory: it produces an inventory
+for a human to disposition, not a pass/fail verdict, because several of its patterns have legitimate
+uses (a negation, or a remark that explicitly disclaims sharpness).
+
+## Reproducing the manifest
+
+    cd lean
+    { find MPUP DiophCompression scripts -type f \( -name '*.lean' -o -name '*.py' -o -name '*.sh' \) -print0
+      printf '%s\0' MPUP.lean DiophCompression.lean lakefile.lean lean-toolchain; } \
+      | LC_ALL=C sort -z | xargs -0 shasum -a 256 | awk '{print $1"  "$2}'
+
+The seal (`correspondence/SEAL_*.txt`) records the SHA-256 of this listing as `SOURCE_MANIFEST_SHA256`; a build whose listing hashes differently is building a different tree.
+
+## Package integrity
+
+    shasum -a 256 -c SHA256SUMS
+    python3 tools/shipping_artifact_gate.py .
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/README_BUILD_APAL.template.md:5:**The one command.** `bash release/build_submission_from_package.sh` rebuilds the submission PDF from the extracted archive and nothing else, and prints `EXTERNAL_PATHS`, `HOME_DEPENDENCIES`, `SESSION_PINNED_INPUTS`, `BUILD_EXIT`, `NEWLY_BUILT_PDF_SHA256` and `SOURCE_MANIFEST_SHA256`. The build's inputs live at `certificates/*_current.log` inside the archive, put there beforehand by `release/stage_build_inputs.sh`, which is a separate step and not part of the build. The build runs in a scratch directory and promotes its outputs only when every preflight and gate has passed; a build that stops at preflight leaves the extracted tree byte-identical (`TREE_UNCHANGED=1`).
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/README_BUILD_APAL.template.md:109:The seal (`correspondence/SEAL_*.txt`) records the SHA-256 of this listing as `SOURCE_MANIFEST_SHA256`; a build whose listing hashes differently is building a different tree.
+core/lean/fresh_build.sh:20:echo "SRC_MANIFEST_SHA256=$(sha256_file logs/source_manifest_start.sha256)"
+== F9 SEAL_WHAT_IS_OPEN stale refs
+1:  This round adds the normal-form results of Appendix A to the Lean library. Every SE2-definable total
+11:  the published version of Kane-Kim, specialized to the convention used here in Lemma A.8; formalizing it, or
+== F10 signoff + locators

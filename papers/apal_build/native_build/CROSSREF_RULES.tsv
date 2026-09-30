@@ -1,0 +1,2 @@
+file	anchor_regex	expected_kind	expected_head_keyword
+06_s6_relation_phase_diagram.tex	collapse at \$k = 0\$ is \\cref\{([a-z]+:[0-9.A-Z]+)\}	proposition	Arity zero

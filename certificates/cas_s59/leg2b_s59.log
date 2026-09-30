@@ -1,0 +1,5 @@
+DIAG parent(sub elt) = False ; in els: True ; hash-equal to some elt: False
+SUBGROUPS 30
+PASS K3' group lemma on Z/12xZ/4 (tuples): covers=72 bad=0
+CAUGHT control K3' an index-3 cover exists
+CAUGHT control K3' without disjointness the conclusion fails (2832 instances)

@@ -1,0 +1,16 @@
+MATCH D1 diff r51->r52 unchanged/changed/added/removed: GPT=657/52/30/15 OURS=657/52/30/15
+  GPT_DIFF_INVENTORY_KEYS ['r51_files', 'r52_files', 'unchanged', 'changed', 'added', 'deleted']
+MATCH D2 lean files r52 / identical to r51: GPT=326/True OURS=326/True
+MATCH D3 frozen files / identical: GPT=59/True OURS=59/True
+MATCH D4 native files r51/r52: GPT=31/31 OURS=31/31
+  native changed/added/removed: ['submission/native/APAL_MANUSCRIPT.tex', 'submission/native/frontmatter.tex', 'submission/native/sections/00_introduction.tex'] ['submission/native/sections/20b_declaration_on_ai_assisted_tools.tex'] ['submission/native/sections/12_declaration_on_ai_assisted_tools.tex']
+MATCH D5 core files: GPT=739 OURS=739
+MATCH H1 SHA256SUMS lines/OK: GPT=738/738 OURS=738/738
+MATCH H2 CORE_SOURCE_MANIFEST.sha256 lines: GPT=396 OURS=396
+MATCH H2 CORE_SUBMISSION_INPUT_MANIFEST.sha256 lines: GPT=277 OURS=277
+  lean manifest files ['certificates/source_manifest_r52.sha256']
+MATCH H3 certificates/source_manifest_r52.sha256 lines: GPT=323 OURS=323
+MATCH H3b certificates/source_manifest_r52.sha256 sha256: GPT=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b OURS=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b
+MATCH H4 fresh_build_r49.log sha256: GPT=9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9 OURS=9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9
+MATCH H4b r49 log identical r51->r52: GPT=True OURS=True
+  registry candidates: ['papers/apal_build/native_build/PAPER_CLAIMS_ONE_ROOT.txt', 'papers/apal_build/native_build/PAPER_CLAIMS_REVIEW.tsv', 'papers/apal_build/native_build/PAPER_CLAIMS.tsv', 'certificates/PAPER_CLAIM_LEAN_TYPES.tsv', 'submission/native/PAPER_CLAIMS_ONE_ROOT.txt', 'submission/native/PAPER_CLAIMS_REVIEW.tsv', 'submission/native/PAPER_CLAIMS.tsv']

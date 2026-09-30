@@ -1,0 +1,43 @@
+\section{The multi-parameter universal-pair question}\label[appendix]{sec:C}
+Bayer, David, Haßler, Matiyasevich and Schleicher [BDHMS25, §6.2] ask whether there is a pair of constants (ν, δ) such that every Diophantine subset of ℕᵖ is definable by a single equation with ν unknowns and degree at most δ, uniformly in p. The answer is negative, and the obstruction is a count. It is not a count of coefficient vectors: those range over ℤ and there are infinitely many of them. What is counted is the set of \emph{specialisations} of one fixed polynomial as its parameters run over a finite box, and the count has the same shape as the one that proves \cref{theorem:4.1} — a box of inputs against a box of images.
+
+\begin{theorem}[\texttt{coder\_\allowbreak{}counting\_\allowbreak{}bound\_\allowbreak{}weighted}, \texttt{multiUniversalN\_\allowbreak{}bound\_\allowbreak{}weighted}, \texttt{multiUniversalZ\_\allowbreak{}bound\_\allowbreak{}weighted}, \texttt{wtCount\_\allowbreak{}closed\_\allowbreak{}form}; standard axioms]\label[theorem]{theorem:C.1}
+Let $ν, δ : ℕ → ℕ$ and suppose that for every $p$, every Diophantine subset of $ℕ^{p}$ is defined by a single equation in $ν(p)$ unknowns of total degree at most $δ(p)$, with unknowns ranging over $ℕ$ or over $ℤ$. Then for every $p ≥ 1$,
+\[
+\begin{gathered}
+p − 1 ≤ \mathrm{wtCount}\ δ(p)\ (ν(p) + 1) = C(δ(p) + ν(p) + 1, ν(p) + 2), \\
+\text{where } \mathrm{wtCount}\ d\ k := Σ_{\text{|m| ≤ d, m in k variables}} (d − |m|).
+\end{gathered}
+\]
+\end{theorem}
+\begin{proof}
+Fix n and set $p = n + 1$.
+
+\emph{(1) The coder, and what universality is applied to.} Define e : $ℕ^{n} → ℕ$ by iterating Cantor's pairing bijection ⟨·,·⟩ : $ℕ^{2} → ℕ: e$ of the empty tuple is 0, and $e(a_{1}, …, a_{k+1}) = ⟨e(a_{1}, …, a_{k}), a_{k+1}⟩$ (\texttt{code}). \cref{sec:2} defines no coder; earlier versions of this appendix cited one there, and that reference was wrong rather than merely terse. e is injective, because ⟨·,·⟩ is and injectivity at arity k lifts to arity k + 1 in both components (\texttt{code\_\allowbreak{}injective}). Its graph \{(a, c) ∈ ℕⁿ⁺¹ : c = e(a)\} is a Diophantine subset of ℕᵖ for $p = n + 1$, the pairing relation being cut out by a polynomial equation and the iteration being a finite conjunction of such (\texttt{diophN\_\allowbreak{}graph\_\allowbreak{}code}). The hypothesis of the theorem quantifies over every Diophantine subset of ℕᵖ, so it applies to this graph in particular. The hypothesis at p supplies an integer polynomial C in the p parameters (a, c) and $r ≤ ν(p)$ unknowns u, of total degree $d ≤ δ(p)$, such that (a, c) lies in the graph if and only if $C(a, c, u) = 0$ has a solution u in the admissible range. It is the \emph{graph} that is represented, not a subset of ℕⁿ; this is where the extra parameter c comes from, and it is why the fibre below has 1 + r variables rather than r.
+
+\emph{(2) Specialisation.} For $a ∈ ℕ^{n}$ let $Φ(a) := C(a, ·, ·) ∈ ℤ[c, u_{1}, …, u_{r}]$, the polynomial in 1 + r variables obtained by substituting the numbers a for the first n parameters. Its total degree is at most d.
+
+\emph{(3) Φ is injective.} Suppose $Φ(a) = Φ(a′)$. Because e is total and single-valued, (a, e(a)) lies in the graph, so there is an admissible u with $C(a, e(a), u) = 0$, that is, Φ(a) vanishes at (e(a), u). Then Φ(a′) vanishes there too, so (a′, e(a)) lies in the graph, so $e(a′) = e(a)$. Injectivity of e now gives $a′ = a$. Totality and single-valuedness are what produce the witness; injectivity is used only at this last step, to turn equal outputs into equal inputs.
+
+\emph{(4) Coefficient growth over a box, graded by monomial degree.} Write $Φ(a) = Σ_{|m| ≤ d} f_{m}(a) · z^{m}$, where $z = (c, u)$ and m runs over the monomials of degree at most d in the 1 + r fibre variables. Each $f_{m}$ is a polynomial in a with integer coefficients, and since C has total degree d and zᵐ already carries |m| of it, $f_{m}$ has degree at most d − |m|. Let K := Σ\_β |coeff\_β(C)| be the ℓ¹ size of the fixed polynomial C, a finite number determined by C alone. For a in the box [0, N]ⁿ with $N ≥ 1$ this gives
+
+\[
+|f_{m}(a)| ≤ K · N^{d − |m|}
+\]
+(\texttt{aux\_\allowbreak{}coeff\_\allowbreak{}bound\_\allowbreak{}weighted}). The exponent drops with |m|: a monomial that has already spent |m| on the fibre variables can receive contributions only from those terms of C whose parameter part has degree at most d − |m|.
+
+\emph{(5) The count.} By (4) the coefficient at m takes at most $2K·N^{d−|m|}$ + 1 integer values, and since $N ≥ 1$ this is at most (2K + $1)·N^{d−|m|}$. Multiplying over the $M := C(d + r + 1, r + 1)$ monomials, the number of distinct specialisations is at most (2K + $1)^{M} · N^{W}$, where $W := Σ_{|m| ≤ d} (d − |m|) = \mathrm{wtCount} d (r + 1)$. By (3) the (N + 1)ⁿ points of the box give pairwise distinct specialisations, so
+
+$(N + 1)^{n} ≤ (2K + 1)^{M} · N^{W}$
+
+(\texttt{aux\_\allowbreak{}counting\_\allowbreak{}weighted}). Suppose $n ≥ W + 1$ and take $N := (2K + 1)^{M} + 1$. Then $(2K + 1)^{M} · N^{W} < N · N^{W} = N^{W+1} ≤ N^{n} < (N + 1)^{n}$, contradicting the display. Two edges of the count deserve a sentence, since a reader checking it will look for them. \emph{Vanishing coefficients.} If some $f_{m}$ is identically zero the display still holds: the range counted at m is the integer interval of radius $K·N^{d−|m|}$, which contains 0, so a coefficient that takes one value is counted among the at most $2K·N^{d−|m|}$ + 1 that it may take. Nothing in (4) or (5) assumes $f_{m} ≠ 0$. \emph{Degree zero.} If $d = 0$ then C is a constant, $W = \mathrm{wtCount} 0 (r + 1) = C(r + 1, r + 2) = 0$, and the bound reads $n ≤ 0: a$ constant equation represents no coder of positive arity, which is the right conclusion and is delivered by the same inequality rather than by a separate case. Hence $n ≤ W = \mathrm{wtCount} d (r + 1)$, and since wtCount is monotone in both arguments (\texttt{wtCount\_\allowbreak{}mono}) and $d ≤ δ(p), r ≤ ν(p)$, we get $n ≤ \mathrm{wtCount} δ(p) (ν(p) + 1)$, which is the assertion at $p = n + 1$.
+
+\emph{Closed form.} For $k ≥ 1$, which is the case here since $k = r + 1$, the number of monomials of degree exactly j in k variables is C(j + k − 1, k − 1), so $W = Σ_{j=0}^{d} (d − j)·C(j + k − 1, k − 1)$. Writing d − j as the number of i with $j ≤ i ≤ d − 1$ and exchanging the order of summation, $W = Σ_{i=0}^{d−1} Σ_{j=0}^{i} C(j + k − 1, k − 1) = Σ_{i=0}^{d−1} C(i + k, k) = C(d + k, k + 1)$, by the hockey-stick identity applied twice. The Lean statement \texttt{wtCount\_\allowbreak{}closed\_\allowbreak{}form} is proved for every k, including $k = 0$, where the displayed count of monomials does not apply and $W = d = C(d, 1)$ directly.
+
+\end{proof}
+
+In particular no \emph{constant} pair (ν, δ) can work: the right-hand side of \cref{theorem:C.1} is then one fixed number while the left-hand side is unbounded. This is the negative answer to the question, and it is what \texttt{not\_\allowbreak{}MPUP\_\allowbreak{}N} and \texttt{not\_\allowbreak{}MPUP\_\allowbreak{}Z} state.
+\begin{remark}[the weighted and the crude bound]\label[remark]{remark:C.2}
+The unweighted form of the obstruction (\texttt{coder\_\allowbreak{}counting\_\allowbreak{}bound}) bounds every coefficient by $K·N^{d}$, uniformly in the monomial, and so pays d for each of the M monomials, giving the cruder $n ≤ d·M$. Step (4) pays only d − |m|, which turns a product of equal factors into a sum of unequal ones. That the weighted bound refines the crude one and is not a competing claim is a theorem: \texttt{wtCount\_\allowbreak{}le\_\allowbreak{}crude} proves $\mathrm{wtCount} d k ≤ d$ · monoCount d k. The bound as stated, in terms of wtCount, and both closed forms are verified in the formal artifact: \texttt{wtCount\_\allowbreak{}closed\_\allowbreak{}form} proves $\mathrm{wtCount} d k = C(d + k, k + 1)$ and \texttt{monoCount\_\allowbreak{}closed\_\allowbreak{}form} proves the companion identity monoCount $d k = C(d + k, k)$. The comparison with \cref{theorem:4.1} is that both are box counts, and the difference is which box: there the images of a parameter box are confined by the growth theorem, here the specialisations of a fixed polynomial over a parameter box are confined by the size of its own coefficients.
+
+\end{remark}

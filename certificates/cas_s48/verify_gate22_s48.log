@@ -1,0 +1,37 @@
+PASS A0 polar convention b=2B, b(v,v)=2Q(v)
+PASS A1 im(p)=Ann(rad Q) on 5 contrasts (zero / rank-1 / nondeg / degenerate / indefinite)
+PASS A1b same on 200 random symmetric rational matrices dim<=4
+PASS A2 completeSquare  Q(z)+l_a(z)+q(a) = Q(z-h(a)) - R(a), h affine in a
+PASS A2b same identity on 59 random nondegenerate forms
+PASS A3 b(v,w)^2 <= 4 Q(v)Q(w) for Q>=0 (coefficient 4, NOT 1 -- control 5)
+PASS A3b Q(w)=0 => b(w,-)=0 (the case the route forbids skipping)
+PASS A3c control 8: Q(w)=0, w!=0, w not radical exists only for indefinite Q
+PASS A4 P=(b-a)^2: rad(Q)=span(0,1); centre h(a)=(a,0) exists; pi kills rad
+PASS A4b full-z coercivity c||z||^2 <= N Q(z) FAILS at (0,1) -- CoercivityCertificate does not apply
+PASS A4c but the OUTPUT-only bound holds: |pi(z)|=|b|, Q(z)=b^2, so |pi(z)|^2 <= 4 Q(w_pi) Q(z)
+PASS A5 Q=(x-2y)^2+y^2 : Q(2,1)=1 while ||(2,1)||_inf^2=4  => single integer constant unsatisfiable
+PASS A5b minimum ratio over |x|,|y|<=60 is 1/5, attained at a multiple of (-5,-2)  | min=1/5 at (-60, -24)
+PASS A6 setup: e0 isotropic, e0 not radical, v0 not radical, Q(e0)=0
+PASS A6a b(v0,e0)!=0 branch
+PASS A6b b(v0,e0)=0 arranged
+PASS A6c e = Q(y)e0 - b(e0,y)y is isotropic and non-orthogonal to v0, with NO global nondegeneracy  | y=[-3, -2, -3] e=[-1, 1, -6]
+PASS A6d Q(e)=0 identically in y (symbolic)
+PASS A6e b(v0,e) = -b(e0,y)b(v0,y) when b(v0,e0)=0 (symbolic)
+PASS A7 Q(v0 + s e) = Q(v0) + s b(v0,e)  (Q(e)=0), so s=(R(a)-R(a0))/b(v0,e) hits any R
+PASS A8 one M (=lcm of denominators) makes z(a0+Mt) integral for EVERY t, including t and -t (controls 18,19)
+PASS A9 w0 = u - b(v,u)/(2Q(v)) v : b(v,w0)=0 and Q(v)Q(w0)<0 (sign is automatic)
+PASS A10 e=sV+AW: Q(e)=A(s^2+AC)=A(d+AC)=0 when d=s^2=-AC, and b(e,V)=2sA
+PASS A11 Q(Tv+ASw) = (A/L^2)(T^2 - d S^2) = Q(v) when T^2-dS^2=1
+PASS A11b doubling identity (T^2+dS^2)^2 - d(2TS)^2 = (T^2-dS^2)^2 holds identically
+PASS A11b2 and T^2+dS^2 = 2T^2-1 exactly when T^2-dS^2=1 (so 2T^2-1 is NOT an identity by itself)
+PASS A11c two-step determinant = 2S(1-T), nonzero for T>1,S>0
+PASS A12 for every tested (d,N) a nontrivial positive Pell unit == 1 mod N exists (49 pairs)
+PASS A13 e = ck e_out - c0 e_wit has l(e)=ck*c0 - c0*ck = 0 and pi(e)=ck, so ker l <= ker pi forces ck=0
+PASS A14 zero-padded graph is total, output-unique and injective for n<=m (n=0,1,2 ; m=0,1,2,3 ; r=0)
+PASS A15 control 2: rad = span(2,1), pi(2,1)=2 != 0, so the output-unique hypothesis fails there
+PASS A16 control 6: centre is (1/3,0) -- plain reflection z->2h-z is NOT integral
+PASS A16b integer solutions form a sparse congruence-Pell family (3b-1 = Pell T with T==2 mod 3)  | |b|<=30: [(0, 0), (6, -12), (6, 12)] ; next: (b,u)=(6534,13860)
+PASS A17 control 9: b - a1^2 - a2 = 0 has zero quadratic part in z, nonzero in the inputs
+PASS A18 control 12/25: Cantor pairing is injective on N^2 but NOT on Z^2 -- no step may survive Z->N  | first Z-collision: (-13, -13, 12, 12)
+
+VERIFY_GATE22_TOTAL=35 PASS=35 FAIL=0

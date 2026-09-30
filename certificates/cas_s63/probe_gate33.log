@@ -1,0 +1,135 @@
+@@SEP@@ relation_phase_diagram_all_positive_arity_of_classical
+DiophCompression.relation_phase_diagram_all_positive_arity_of_classical : DiophCompression.UniformQuadraticSolvabilityOnCodes →
+  DiophCompression.DPRM_NN →
+    ∀ {k : ℕ},
+      0 < k →
+        DiophCompression.SingleEqFragmentZZ 2 k ⊂ DiophCompression.RecFragmentZZ k ∧
+          DiophCompression.RecFragmentZZ k ⊂ DiophCompression.REFragmentZZ k ∧
+            DiophCompression.REFragmentZZ k = DiophCompression.PPFragmentZZ 2 k ∧
+              DiophCompression.PPFragmentZZ 2 k = DiophCompression.SingleEqFragmentZZ 4 k
+@@SEP@@ TCER def
+def DiophCompression.ResearchUpgrade.TCERBridge.TernaryCosetEventualRepresentation : Prop :=
+∀ (S : Matrix (Fin 3) (Fin 3) ℤ) (d : ℕ) (ρ : Fin 3 → ℤ),
+  S.IsSymm →
+    (∀ (y : Fin 3 → ℤ), y ≠ 0 → 0 < TCERBridge.QS S y) →
+      0 < d →
+        ∃ bad E,
+          (∀ p ∈ bad, Nat.Prime p) ∧
+            (∀ e ∈ E, 0 < e) ∧
+              ∀ (b : ℕ → ℕ),
+                ∃ N₀,
+                  ∀ (N : ℤ),
+                    N₀ ≤ N →
+                      TCERBridge.LocalPrimRep S d ρ N →
+                        (∀ p ∈ bad, ¬↑p ^ (b p + 1) ∣ N) →
+                          (∀ e ∈ E, ¬∃ q, ↑N = ↑e * q ^ 2) → ∃ x, TCERBridge.QS S (ρ + ↑d • x) = N
+@@SEP@@ LocalPrimRep
+def DiophCompression.ResearchUpgrade.TCERBridge.LocalPrimRep : Matrix (Fin 3) (Fin 3) ℤ → ℕ → (Fin 3 → ℤ) → ℤ → Prop :=
+fun S d ρ N =>
+  ∀ (p : ℕ),
+    Nat.Prime p → ∀ (e : ℕ), ∃ x, ↑p ^ e ∣ TCERBridge.QS S (ρ + ↑d • x) - N ∧ ¬∀ (i : Fin 3), ↑p ∣ (ρ + ↑d • x) i
+@@SEP@@ SingleQuadraticWithWitnessesZZ
+def DiophCompression.ResearchUpgrade.SingleQuadraticWithWitnessesZZ : {n m : ℕ} →
+  ((Fin n → ℤ) → Fin m → ℤ) → ℕ → Prop :=
+fun {n m} f r => ∃ P, MvPolynomial.totalDegree P ≤ 2 ∧ DiophCompression.RepresentsZZ P (DiophCompression.graphVecZZ f)
+@@SEP@@ graphData_of_witnesses
+@graphData_of_witnesses : ∀ {n m r : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ},
+  SingleQuadraticWithWitnessesZZ f r → ∃ D, D.Defines f
+@@SEP@@ scalar_rn_of_polarRank_le_one
+scalar_rn_of_polarRank_le_one : ∀ (n r : ℕ) (D : QuadraticGraphData n 1 r) (f : (Fin n → ℤ) → Fin 1 → ℤ),
+  D.Defines f → D.polarRank ≤ 1 → ∃ a β d E φ g, ∀ (x : Fin n → ℤ) (y : ℤ), Rn a β d E φ g x y ↔ y = scalarOut f x
+@@SEP@@ zeroWitness_iff
+@zeroWitness_iff : ∀ {n : ℕ} (f : (Fin n → ℤ) → Fin 1 → ℤ),
+  SingleQuadraticWithWitnessesZZ f 0 ↔ GlobalQuadratic (scalarOut f) ∨ ParityAffineNF (scalarOut f)
+@@SEP@@ UniqueWitnessSingleQuadraticZZ
+def DiophCompression.ResearchUpgrade.UniqueWitnessSingleQuadraticZZ : {n m : ℕ} → ((Fin n → ℤ) → Fin m → ℤ) → Prop :=
+fun {n m} f =>
+  ∃ r P,
+    MvPolynomial.totalDegree P ≤ 2 ∧
+      DiophCompression.RepresentsZZ P (DiophCompression.graphVecZZ f) ∧
+        ∀ (v : Fin (n + m) → ℤ) (y y' : Fin r → ℤ),
+          DiophCompression.evalAtZZ P v y = 0 → DiophCompression.evalAtZZ P v y' = 0 → y = y'
+@@SEP@@ existsUnique_of_uniqueWitness
+@existsUnique_of_uniqueWitness : ∀ {n m r : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ} (P : MPUP.Poly (n + m) r),
+  DiophCompression.RepresentsZZ P (DiophCompression.graphVecZZ f) →
+    (∀ (v : Fin (n + m) → ℤ) (y y' : Fin r → ℤ),
+        DiophCompression.evalAtZZ P v y = 0 → DiophCompression.evalAtZZ P v y' = 0 → y = y') →
+      ∀ (a : Fin n → ℤ), ∃! p, DiophCompression.evalAtZZ P (pairVec a p.1) p.2 = 0
+@@SEP@@ uniqueWitness_of_commonSlope
+@uniqueWitness_of_commonSlope : ∀ {n m : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ},
+  CommonSlopeIntNF f → UniqueWitnessSingleQuadraticZZ f
+@@SEP@@ singleQuadratic_iff_uniqueWitness_of_TCER
+singleQuadratic_iff_uniqueWitness_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ),
+    DiophCompression.SingleQuadraticDefinableFunctionZZ f ↔ UniqueWitnessSingleQuadraticZZ f
+@@SEP@@ floorThird
+def DiophCompression.ResearchUpgrade.floorThird : (Fin 1 → ℤ) → Fin 1 → ℤ :=
+fun a x => a 0 / 3
+@@SEP@@ floorThird_oneWitness
+floorThird_oneWitness : SingleQuadraticWithWitnessesZZ floorThird 1
+@@SEP@@ floorThirdPoly_two_witnesses
+floorThirdPoly_two_witnesses : (DiophCompression.evalAtZZ floorThirdPoly (pairVec (fun x => 1) fun x => 0) fun x => 1) =
+    0 ∧
+  (DiophCompression.evalAtZZ floorThirdPoly (pairVec (fun x => 1) fun x => 0) fun x => -1) = 0
+@@SEP@@ floorThird_not_zeroWitness
+floorThird_not_zeroWitness : ¬SingleQuadraticWithWitnessesZZ floorThird 0
+@@SEP@@ floorThird_min_witnesses
+floorThird_min_witnesses : SingleQuadraticWithWitnessesZZ floorThird 1 ∧ ¬SingleQuadraticWithWitnessesZZ floorThird 0
+@@SEP@@ axioms zeroWitness_iff
+'DiophCompression.ResearchUpgrade.zeroWitness_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+@@SEP@@ axioms singleQuadratic_iff_uniqueWitness_of_TCER
+'DiophCompression.ResearchUpgrade.singleQuadratic_iff_uniqueWitness_of_TCER' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@@SEP@@ axioms floorThird_min_witnesses
+'DiophCompression.ResearchUpgrade.floorThird_min_witnesses' depends on axioms: [propext, Classical.choice, Quot.sound]
+@@SEP@@ G32 MPUP.wtCount_closed_form
+MPUP.wtCount_closed_form : ∀ (d k : ℕ), MPUP.wtCount d k = (d + k).choose (k + 1)
+@@SEP@@ G32 DiophCompression.singleQuadratic_finiteFiber_height_vector
+@DiophCompression.singleQuadratic_finiteFiber_height_vector : ∀ {n m r : ℕ} (P : MPUP.Poly (n + m) r),
+  MvPolynomial.totalDegree P ≤ 2 → ∃ C, DiophCompression.FiberHeightBoundVecZZ P C
+@@SEP@@ G32 DiophCompression.function_phase_diagram_by_arity_of_DPRM_NN
+DiophCompression.function_phase_diagram_by_arity_of_DPRM_NN : DiophCompression.DPRM_NN →
+  (∀ {n m : ℕ},
+      0 < n →
+        0 < m →
+          ∃ f, DiophCompression.TotalComputableFunctionZZ f ∧ ¬DiophCompression.SingleQuadraticDefinableFunctionZZ f) ∧
+    (∀ {m : ℕ} (f : (Fin 0 → ℤ) → Fin m → ℤ),
+        DiophCompression.SingleQuadraticDefinableFunctionZZ f ∧ DiophCompression.TotalComputableFunctionZZ f) ∧
+      (∀ {n : ℕ} (f : (Fin n → ℤ) → Fin 0 → ℤ),
+          DiophCompression.SingleQuadraticDefinableFunctionZZ f ∧ DiophCompression.TotalComputableFunctionZZ f) ∧
+        ∀ {n m : ℕ} (f : (Fin n → ℤ) → Fin m → ℤ),
+          (DiophCompression.SingleQuadraticDefinableFunctionZZ f → DiophCompression.TotalComputableFunctionZZ f) ∧
+            (DiophCompression.TotalComputableFunctionZZ f ↔ DiophCompression.PPQuadraticDefinableFunctionZZ f) ∧
+              (DiophCompression.PPQuadraticDefinableFunctionZZ f ↔ DiophCompression.SingleQuarticDefinableFunctionZZ f)
+@@SEP@@ G32 DiophCompression.uniformQuadraticFiberStructureZZ_of_quadratic
+@DiophCompression.uniformQuadraticFiberStructureZZ_of_quadratic : ∀ {n r : ℕ} (P : MPUP.Poly (n + 1) r),
+  MvPolynomial.totalDegree P ≤ 2 → DiophCompression.UniformQuadraticFiberStructureZZ P
+@@SEP@@ G32 sealedFullNF_of_TCER
+sealedFullNF_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ), DiophCompression.SingleQuadraticDefinableFunctionZZ f → FullVectorCosetNF f
+@@SEP@@ G32 generalFullNF_iff_semidefiniteFullNF
+generalFullNF_iff_semidefiniteFullNF : GeneralFullNF ↔ SemidefiniteFullNF
+@@SEP@@ G32 singleQuadratic_iff_commonSlope_of_TCER
+singleQuadratic_iff_commonSlope_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ),
+    2 ≤ m → (DiophCompression.SingleQuadraticDefinableFunctionZZ f ↔ CommonSlopeIntNF f)
+@@SEP@@ G32 singleQuadratic_of_commonSlope
+@singleQuadratic_of_commonSlope : ∀ {n m : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ},
+  CommonSlopeIntNF f → DiophCompression.SingleQuadraticDefinableFunctionZZ f
+@@SEP@@ G32 sqPadFn_not_singleQuadratic_of_TCER
+sqPadFn_not_singleQuadratic_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ¬DiophCompression.SingleQuadraticDefinableFunctionZZ sqPadFn
+@@SEP@@ G32 DiophCompression.UniformQuadraticSolvabilityOnCodes
+def DiophCompression.UniformQuadraticSolvabilityOnCodes : Prop :=
+∀ (k : ℕ), ComputablePred fun p => DiophCompression.QuadraticCode.solvableZZ k p.1 p.2
+@@SEP@@ G32 DiophCompression.DPRM_NN
+def DiophCompression.DPRM_NN : Prop :=
+∀ (k : ℕ) (A : Set (Fin k → ℕ)), (REPred fun a => a ∈ A) → DiophCompression.WithinDiophNN A
+@@SEP@@ G32 axioms sealedFullNF_of_TCER
+'DiophCompression.ResearchUpgrade.sealedFullNF_of_TCER' depends on axioms: [propext, Classical.choice, Quot.sound]
+@@SEP@@ PLANT1 (must fail)
+/Users/hiroki/lean/s63_evidence/probe/probe_gate33.lean:73:8: error(lean.unknownIdentifier): Unknown identifier `zeroWitness_iff_of_TCER_PLANT`
+@@SEP@@ PLANT2 (must fail)
+/Users/hiroki/lean/s63_evidence/probe/probe_gate33.lean:75:8: error(lean.unknownIdentifier): Unknown identifier `DiophCompression.relation_phase_diagram_all_positive_arity_of_GS_only`
+EXIT=1

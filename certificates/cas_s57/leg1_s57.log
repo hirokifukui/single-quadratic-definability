@@ -1,0 +1,42 @@
+PASS N1 48601 == 1+24*45^2
+PASS N1 wrong ex1 (-219,15,20) sums to 48586
+PASS N1 wrong ex2 (-210,-19,64) sums to 48557
+PASS N1 (-199,-90,30) sums to 48601
+PASS N1 (-195,-24,100) sums to 48601
+PASS N1 first coords differ mod 5
+CAUGHT control N1 perturbed (-199,-90,31) sums to 48601
+PASS N2 dW=1 half-polar identity
+PASS N2 dW=1 E_v preserves Q
+PASS N2 dW=1 F_v preserves Q
+PASS N2 dW=1 E_v,F_v identity at t=0
+PASS N2 dW=1 (★) four coefficient equations
+CAUGHT control N2 dW=1 sign-flipped E_v preserves Q
+PASS N2 dW=2 half-polar identity
+PASS N2 dW=2 E_v preserves Q
+PASS N2 dW=2 F_v preserves Q
+PASS N2 dW=2 E_v,F_v identity at t=0
+PASS N2 dW=2 (★) four coefficient equations
+CAUGHT control N2 dW=2 sign-flipped E_v preserves Q
+PASS N2 dW=3 half-polar identity
+PASS N2 dW=3 E_v preserves Q
+PASS N2 dW=3 F_v preserves Q
+PASS N2 dW=3 E_v,F_v identity at t=0
+PASS N2 dW=3 (★) four coefficient equations
+CAUGHT control N2 dW=3 sign-flipped E_v preserves Q
+PASS N3 factor scaling preserves XY
+PASS N3 Z'-Z = ((lam-1)/K)[K p - (F/lam) K v]
+CAUGHT control N3 (lam+1) variant equals Z'-Z
+PASS N3 concrete instance: Z'-Z integral for all F in lam*Z (K=3, lam=25)
+CAUGHT control N3 lam=5 (not ≡1 mod K) keeps integrality
+PASS N4 b(2u+1)=0: every solution in box has b=0 (output unique)
+PASS N4 b(2u+1): Q=2bu, centre (0,-1/2), R=0
+PASS N4 (4b+1)(4u+1)=1: only (0,0) in box
+PASS N4 (4b+1)(4u+1)-1 = 16(b+1/4)(u+1/4) - 1 (Q=16bu, R=1)
+CAUGHT control N4 (2b+1)(2u+1)=1 has only (0,0)
+PASS N5 deg1 F=6t+4, K=4 (q=5): roots mod q^h for h=1..5; q^1 ≡ 1 mod K
+PASS N5 deg2 disc!=0 F=t^2+1, K=3 (q=5): roots mod q^h for h=1..5; q^2 ≡ 1 mod K
+PASS N5 deg2 disc=0 F=(2t+1)^2, K=7 (q=3): roots mod q^h for h=1..5; q^6 ≡ 1 mod K
+CAUGHT control N5 F=t^2+1 has a root mod 3
+PASS N6 finite sanity: alpha*beta+w^2=r (|r|<=10) has >=2 outputs alpha in box
+CAUGHT control N6 anisotropic alpha^2+beta^2+w^2 = 0 has >=2 outputs
+LEG1_SUMMARY 41/41  CONTROLS_CAUGHT 9/9

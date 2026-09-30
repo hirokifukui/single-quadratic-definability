@@ -1,0 +1,70 @@
+label	trust	lean	external_hypotheses	frozen_file	source	uses
+Definition 1.1	D				01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Proposition 1.2	F	singleEqFragmentZZ_subset_ppFragmentZZ, singleEqFragmentZZ_subset_diophFragmentZZ, fragment_lattice_ZZ, singleEqFragmentZZ_four_eq_ppFragmentZZ_two, singleEqFragmentZZ_four_eq_diophFragmentZZ		FragmentLattice_STATEMENTS.lean, OneSortedFragments_STATEMENTS.lean	01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Proposition 1.3	F	singleEquation_relation_re, ppRelation_re, singleQuartic_relation_re, ppQuadratic_relation_re, recFragmentZZ_subset_reFragmentZZ			01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Proposition 1.4	F	relation_phase_diagram_arity_zero		ArityZeroFragments_STATEMENTS.lean	01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Definition 1.5	D				01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Definition 1.6	D				01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Definition 1.7	D				01_s1_fragments_se2_rec_re_pp2_se4.tex	
+Theorem 2.1	F	singleQuadratic_finiteFiber_height_vector		FiniteFiberGrowth_STATEMENTS.lean	02_s2_finite_fibre_height_and_cardinality.tex	
+Theorem 2.2	F	singleQuadratic_finiteFiber_cardinality_vector		FiniteFiberCardinality_STATEMENTS.lean	02_s2_finite_fibre_height_and_cardinality.tex	Theorem 9.2
+Remark 2.3	R				02_s2_finite_fibre_height_and_cardinality.tex	
+Remark 2.4	R				02_s2_finite_fibre_height_and_cardinality.tex	
+Definition 3.1	D				03_s3_definable_total_functions.tex	
+Theorem 3.2	F	singleQuadratic_function_quadratic_growth		FiniteFiberGrowth_STATEMENTS.lean	03_s3_definable_total_functions.tex	Theorem 2.1
+Theorem 3.3	F	singleQuadratic_total_function_computable, ppQuadratic_total_function_computable		ComputableFunctions_STATEMENTS.lean	03_s3_definable_total_functions.tex	
+Theorem 3.4	F	ppQuadratic_functions_closed_under_composition, singleQuadratic_functions_not_closed_under_composition		ComputableFunctions_STATEMENTS.lean, PolynomialGraphs_STATEMENTS.lean	03_s3_definable_total_functions.tex	Theorem 3.2
+Theorem 3.5	F	singleQuadratic_functions_strict_of_pos_arity, singleQuadratic_functions_eq_at_zero_input, singleQuadratic_functions_eq_at_zero_output			03_s3_definable_total_functions.tex	Theorem 3.2, Theorem 3.3
+Theorem 4.1	F	singleQuadratic_injective_dimension_sharp		ResearchUpgrade_STATEMENTS.lean	04_s4_injective_dimension_theorem.tex	Remark 4.5, Theorem 4.2
+Theorem 4.2	F	summit_of_defines		ResearchUpgrade_STATEMENTS.lean	04_s4_injective_dimension_theorem.tex	
+Theorem 4.3	F	singleQuadratic_sharp_iff		ResearchUpgrade_STATEMENTS.lean	04_s4_injective_dimension_theorem.tex	Theorem 4.1
+Corollary 4.4	F	atomGraphZZ_le_one		ResearchUpgrade_STATEMENTS.lean	04_s4_injective_dimension_theorem.tex	Theorem 4.1
+Remark 4.5	R	singleQuadratic_injective_dimension_bound			04_s4_injective_dimension_theorem.tex	
+Remark 4.6	R				04_s4_injective_dimension_theorem.tex	
+Theorem 5.1	F	polynomial_graph_singleQuadratic_iff		MultivariatePolynomialGraphs_STATEMENTS.lean	05_s5_polynomial_graph_classification.tex	Theorem 3.2
+Theorem 6.1	F	recursive_strictly_contained_re		HaltingTransport_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	
+Theorem 6.2	F	singleEqFragmentZZ_four_eq_ppFragmentZZ_two, singleEqFragmentZZ_four_eq_diophFragmentZZ			06_s6_relation_phase_diagram.tex	Proposition 1.2
+Theorem 6.3	F+H	singleEqFragmentZZ_two_subset_recFragmentZZ	QuadraticSolvabilityDecidableZZ	ComputabilityFragments_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	Theorem 3.2
+Theorem 6.4	F	quadraticCode_eval_primrec, quadraticCode_toPoly_totalDegree_le_two, quadraticCode_toPoly_eval, quadraticCode_surjective, uniformCodeGS_implies_perEquationGS, uniformCodeGS_iff, globalGS_input_compiler_computable, globalInstance_eval_iff			06_s6_relation_phase_diagram.tex	Corollary 6.6, Definition 1.5, Theorem 6.3, Theorem 6.5
+Theorem 6.5	F	coded_family_ssubset_rec		EffectiveDiagonal_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	
+Corollary 6.6	F+H	singleQuadratic_strict_recursive_of_codes	UniformQuadraticSolvabilityOnCodes	EffectiveDiagonal_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	Theorem 6.3, Theorem 6.4, Theorem 6.5
+Theorem 6.7	F+H	DPRM_ZZ_of_DPRM_NN	DPRM_NN (hypothesis of the implication)	DPRMTransport_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	
+Theorem 6.8	F+H	relation_phase_diagram_all_positive_arity_of_classical	UniformQuadraticSolvabilityOnCodes, DPRM_NN	RelationPhaseAllPositiveArityClassical_STATEMENTS.lean	06_s6_relation_phase_diagram.tex	Corollary 6.6, Proposition 1.4, Theorem 6.1, Theorem 6.2, Theorem 6.3, Theorem 6.4, Theorem 6.7
+Theorem 7.1	F+H	function_phase_diagram_by_arity_of_DPRM_NN	DPRM_NN	FunctionPhaseByArityNN_STATEMENTS.lean	07_s7_function_phase_diagram.tex	Theorem 3.3, Theorem 3.4, Theorem 3.5, Theorem 6.7
+Definition 8.1	D				08_s8_structured_infinite_fibres.tex	
+Definition 8.2	D				08_s8_structured_infinite_fibres.tex	
+Theorem 8.3	F	fiber_infinite_of_structuredCertificate, fiber_unbounded_of_certificate, certificate_pullback		StructuredCertificates_STATEMENTS.lean	08_s8_structured_infinite_fibres.tex	Definition 8.2
+Definition 8.4	D	UniformQuadraticFiberStructureZZ			08_s8_structured_infinite_fibres.tex	
+Theorem 8.5	F	uniformQuadraticFiberStructureZZ_of_quadratic, singleQuadratic_fiber_bounded_or_structurallyInfinite		SummitClosure_STATEMENTS.lean	08_s8_structured_infinite_fibres.tex	Theorem 2.1, Theorem 9.3
+Examples 8.6	R				08_s8_structured_infinite_fibres.tex	
+Remark 8.7	R				08_s8_structured_infinite_fibres.tex	
+Remark 8.8	R				08_s8_structured_infinite_fibres.tex	
+Definition 9.1	D				09_s9_the_arithmetic_projection_theorem.tex	
+Theorem 9.2	F	quadraticProjectionDichotomyZ_all		not in frozen_statements	09_s9_the_arithmetic_projection_theorem.tex	
+Theorem 9.3	F	quadraticProjectionDichotomyZ_all_data, quadraticProjectionDichotomyZ_structured		SummitClosure_STATEMENTS.lean, TopDichotomyData_STATEMENTS.lean	09_s9_the_arithmetic_projection_theorem.tex	Definition 8.2, Lemma V.2, Lemma V.3
+Proposition 10.1	F	generalWeakNF_iff_definiteWeakNF		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Proposition 10.2	F	lowRankSemidefiniteWeakNF_holds		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Lemma 10.5, Proposition 10.1
+Lemma 10.3	F	direction_discriminant_square		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Lemma 10.4	F	square_values_rigidity		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Lemma 10.5	F	norm_section		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Lemma 10.3, Lemma 10.4
+Proposition 10.6	F	generalFullNF_iff_semidefiniteFullNF		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Theorem 4.2
+Proposition 10.7	F+H	sealedFullNF_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.6
+Lemma 10.8	M				10_s10_definable_functions.tex	
+Proposition 10.9	F+H	singleQuadratic_iff_commonSlope_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.6
+Proposition 10.10	F+H	sqPadFn_not_singleQuadratic_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.9
+Proposition 10.11	F	not_commonSlope_of_fullVectorCosetNF		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Proposition 10.12	F	commonSlope_injective_iff		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Lemma 10.13	F	addSubgroup_two_coset_cover		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	
+Proposition 10.14	F+H	scalar_singleQuadratic_iff_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Lemma 10.13, Proposition 10.9
+Proposition 10.15	F+H	singleQuadratic_padZero_iff_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.9
+Proposition 10.16	F	zeroWitness_iff		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.14
+Proposition 10.17	F+H	singleQuadratic_iff_uniqueWitness_of_TCER	TernaryCosetEventualRepresentation	ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.9, Proposition 10.14, Proposition 10.16
+Proposition 10.18	F	floorThird_min_witnesses		ResearchUpgrade_STATEMENTS.lean	10_s10_definable_functions.tex	Proposition 10.14, Proposition 10.16
+Theorem C.1	F	coder_counting_bound_weighted, multiUniversalN_bound_weighted, multiUniversalZ_bound_weighted, wtCount_closed_form		WeightedBound_STATEMENTS.lean	17_appc_the_multi_parameter_universal_pair_quest.tex	
+Remark C.2	R				17_appc_the_multi_parameter_universal_pair_quest.tex	
+Lemma V.1	M				20_appf_the_arithmetic_projection_theorem_comple.tex	
+Lemma V.2	M				20_appf_the_arithmetic_projection_theorem_comple.tex	
+Lemma V.3	M				20_appf_the_arithmetic_projection_theorem_comple.tex	
+Theorem V.4	M				20_appf_the_arithmetic_projection_theorem_comple.tex	
+Corollary V.5	M				20_appf_the_arithmetic_projection_theorem_comple.tex	Theorem V.4
+Lemma V.6	M				20_appf_the_arithmetic_projection_theorem_comple.tex	

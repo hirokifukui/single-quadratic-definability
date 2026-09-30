@@ -1,0 +1,20 @@
+BLOCK core release/README_BUILD_APAL.md lines 39 mismatch 0
+BLOCK core lean/lakefile.lean lines 20 mismatch 0
+BLOCK core lean/fresh_build.sh lines 21 mismatch 0
+BLOCK core certificates/CLEANROOM_REFERENCE.txt lines 12 mismatch 0
+BLOCK core correspondence/LETTER_GATE33.md lines 36 mismatch 0
+BLOCK core correspondence/LETTER_GATE33.md lines 28 mismatch 0
+BLOCK core release/github_workflows/ci.yml lines 44 mismatch 0
+BLOCK core papers/blueprint/BLUEPRINT.md lines 25 mismatch 0
+BLOCK core papers/blueprint/BLUEPRINT.md lines 28 mismatch 0
+BLOCK core submission/native/sections/11_s12_formalization.tex lines 18 mismatch 0
+BLOCK core release/TRUST_BOUNDARY_APAL.template.md lines 21 mismatch 0
+BLOCK core submission/native/frontmatter.tex lines 26 mismatch 0
+BLOCK core submission/native/sections/20b_declaration_on_ai_assisted_tools.tex lines 3 mismatch 0
+BLOCK core papers/apal_build/locators.txt lines 15 mismatch 0
+BLOCK core release/SEAL_WHAT_IS_OPEN.md lines 18 mismatch 0
+NOPATH_BLOCK 30 lines: { /   "registry_rows": 74, /   "unique_registered_roots": 72, /   "in_FinalAxiomReport": 50, /   "missing_in_FinalAxiomReport": [ /     "DiophCompression.ResearchUpgrade.NormLift.direction_discriminant_square", /     "DiophCompression.ResearchUpgrade.NormLift.norm_section", /     "DiophCompression.ResearchUpgrade.NormLift.square_values_rigidity", /     "DiophCompression.ResearchUpgrade.QuadraticGr
+NOPATH_BLOCK 1 lines: DiophCompression.ResearchUpgrade.sealedFullNF_of_TCER	theorem	5	DiophCompression.ResearchUpgrade.TCERBridge.TernaryCosetEventualRepresentation → ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ), DiophCompression.SingleQuadraticDefinableFunctionZZ f → DiophCompression.ResearchUpgrade.FullVectorCosetNF f	propext,Classical.choice,Quot.sound
+NOPATH_BLOCK 1 lines: DiophCompression.ResearchUpgrade.scalar_singleQuadratic_iff_of_TCER	theorem	3	DiophCompression.ResearchUpgrade.TCERBridge.TernaryCosetEventualRepresentation → ∀ (n : ℕ) (f : (Fin n → ℤ) → Fin 1 → ℤ), DiophCompression.SingleQuadraticDefinableFunctionZZ f ↔ DiophCompression.ResearchUpgrade.CommonSlopeIntNF f ∨ DiophCompression.ResearchUpgrade.GlobalQuadratic (DiophCompression.ResearchUpgrade.scalarO
+NOPATH_BLOCK 1 lines: DiophCompression.ResearchUpgrade.floorThird_min_witnesses	theorem	0	DiophCompression.ResearchUpgrade.SingleQuadraticWithWitnessesZZ DiophCompression.ResearchUpgrade.floorThird 1 ∧ ¬DiophCompression.ResearchUpgrade.SingleQuadraticWithWitnessesZZ DiophCompression.ResearchUpgrade.floorThird 0	propext,Classical.choice,Quot.sound
+EXCERPT_BLOCKS=19 PATH_BLOCKS=15 LINES=354 MISMATCH=0 NOT_FOUND=0 NOPATH=4 PLANT=off

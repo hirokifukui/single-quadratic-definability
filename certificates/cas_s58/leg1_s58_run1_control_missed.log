@@ -1,0 +1,39 @@
+PASS G1 lower exponent 1/2-1/56 = 27/56
+PASS G1 upper exponent 3/7+1/56 = 25/56
+PASS G1 gap = 1/28
+PASS G1 c N^(27/56) - C N^(25/56) = N^(25/56) (c N^(1/28) - C)
+PASS G1 threshold (2C/c)^28 suffices on samples
+CAUGHT control G1 eps=1/28 would leave no gap (27/56 claimed)
+PASS G2 Q (quadratic part in unknown b) = 0
+PASS G2 linear part at radical vector 1 is 1 (not 0)
+PASS G2 total and output-unique on a in [-40,40]
+CAUGHT control G2 'output uniqueness forces linear part 0 on Rad' holds for b-a
+PASS G3 table f has CommonSlope (n=1,M=3)
+PASS G3 table f has CommonSlope (n=2,M=2)
+PASS G3 V1 >= 0 on box (n=1,M=3)
+PASS G3 V1 = 0 exactly at b = f(a) on box (n=1,M=3)
+PASS G3 V1 >= 0 on box (n=2,M=2)
+PASS G3 V1 = 0 exactly at b = f(a) on box (n=2,M=2)
+PASS G3 total degree of V1 is 2
+PASS G3 unknown quadratic part positive definite (Sylvester)
+MISSED control G3 V1 without e(e-1) still defines the graph
+PASS G3 GPT example: correct V1 = 4, omitted = 0
+PASS G4 (a+M)^2 - a^2 = 2Ma + M^2
+PASS G4 no M in 1..50 gives constant difference of a^2
+CAUGHT control G4 difference constant in a
+PASS G5 total and unique on [-60,60]
+PASS G5 f(2t)=t, f(2t+1)=-3t-1
+PASS G5 affine on each class mod 2 (full coset NF with M=2)
+PASS G5 no CommonSlope for M in 1..20
+CAUGHT control G5 CommonSlope with M=2
+PASS G6 lambda lemma holds on 2016 (F,K) instances
+CAUGHT control G6 lambda ≡ 1 mod (K+1) always
+PASS G7 e isotropic, non-radical
+PASS G7 x radical: polar(x, .) = 0
+PASS G7 Q(x+Ne) = Q(x)
+PASS G7 N e integral
+PASS G7 x+Ne non-radical
+CAUGHT control G7 with non-isotropic e, Q(x+Ne)=Q(x)
+PASS G8 injectivity iff (B injective and residue cosets disjoint): 400/400
+CAUGHT control G8 criterion without the coset-disjointness clause
+LEG1_SUMMARY 30/30  CONTROLS_CAUGHT 7/8

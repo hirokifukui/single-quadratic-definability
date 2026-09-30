@@ -1,0 +1,7 @@
+CAUGHT P1 A.9 hypothesis deleted exit=1 ["FAIL Proposition A.9: token 'Assume TCER' not found in order"]
+CAUGHT P2 A.9 m >= 2 deleted exit=1 ["FAIL Proposition A.9: token 'm ≥ 2' not found in order"]
+CAUGHT P3 A.10 'unconditionally' inserted exit=1 ["FAIL Proposition A.10: forbidden token 'unconditionally' present"]
+CAUGHT P4 A.11 root swapped to parityFn_not_commonSlope exit=1 ['FAIL Proposition A.11: no type fingerprint for parityFn_not_commonSlope']
+CAUGHT P5 A.12 forged type hash exit=1 ['FAIL Proposition A.12: lean_type_sha256 for commonSlope_injective_iff is 000000000000, current type is d0d2a97a8ae0 (root substituted or type changed; re-register deliberately)']
+CAUGHT P6 A.11 TCER inserted exit=1 ["FAIL Proposition A.11: forbidden token 'Assume TCER' present"]
+A9A12_PLANTS_CAUGHT=6/6

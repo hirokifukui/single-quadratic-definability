@@ -1,0 +1,7 @@
+PASS C1 exists_collision_vector reproduced: v in ker(linear parts) gives f(v)=f(-v) on 4000 random families (n<=4, m<n)  | counterexamples=0
+PASS C2 the SAME lemma kills every Delta=0 (radical) case at (n,m)=(2,1): 2964 forms, 0 survivors
+PASS C3 Cantor pairing: ker(linear part) = span(-3,1); pairing collides at +-v on Z^2  | v=[-3, 1], pi(v)=pi(-v)=2
+PASS C4 vector output m>1 on 2000 families: collision still at the SINGLE pair (v,-v) -- the m centres need not coincide  | counterexamples=0
+PASS C5 control 11: a ceiling relation is r=0 yet not globally polynomial, so the collision lemma does NOT apply to it directly  | boundary recorded, not computed
+
+COLLISION_CHECK_TOTAL=5 PASS=5 FAIL=0

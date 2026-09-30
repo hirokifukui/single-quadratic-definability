@@ -1,0 +1,35 @@
+PASS G1a prose lemma false at integer c=0,s=2,B=0,C=K=1
+PASS G1b prose lemma false at rational c=1/4,s=2,B=0,C=K=1
+PASS G1c with Lean hyps (1<=c,0<=s,0<=B,0<=K) no violation in box
+PASS G1ctl planted (c=0 allowed) is caught
+PASS G2a radical of x^2 is {0}, so ell=0 annihilates it
+PASS G2b candidate c=1 is NOT a centre
+PASS G2c a centre exists (c=0)
+PASS G3a f(0)=1 escapes radius C*N at N=0
+PASS G3b f maps [-N,N] into radius C(1+N), N<=50
+PASS G4a an orthogonal w of opposite sign exists
+PASS G4b every orthogonal w has output coordinate 0
+PASS G4c v itself is visible (the Lean disjunction holds via v)
+PASS G5a (3b-a)^2<=1: total, OU, f=floor((a+1)/3), 121 inputs
+PASS G5b the comment's (3b-a-1)^2<=1 defines a different function
+PASS G6 N4 total/OU, f(2t)=t, f(2t+1)=-3t-1, |a|<=80
+PASS G7a residue cases enumerated = 2355
+PASS G7b #S_eta=1 <-> d<=R0<d+g for every R0 in [-1, d+k^2+1]
+PASS G7ctl planted (<= for <) is caught
+PASS G8a full-residue thresholds = brute force (k<=7)
+PASS G8b k=3,m=3,R0=3 passes
+PASS G8c k=3,m=4 admits no R0
+PASS G8d k=5,m=2,R0=8 passes
+PASS G9a k=2,R=a(a-1): a=0,1 give unique b=0
+PASS G9b ... but a=3 gives b in {-1,0,1}
+PASS G9c k=3,R=a mod 2: total, OU, f=0, R non-constant
+PASS G10a (star) c*R = (c+ell)^2 + D h^2
+PASS G10b c^2(r^2+Ds^2) = (r0^2+Ds0^2)(A^2+Dh^2)
+PASS G10c with c=r0^2+Ds0^2: r^2+Ds^2 = R identically
+PASS G10d basepoint r(0)=r0, s(0)=s0
+PASS G10e line discriminant = -D*(2h)^2
+PASS G10f R(0)=27 also equals 3^2+2*3^2 (second representation)
+PASS G10g concrete T=(cH-ell^2)/D is a square of a linear form
+PASS G10h concrete section: r^2+2s^2 = R and passes through (3,3)
+PASS G10ctl basis-only square test accepts x1^2+x2^2 though T(1,1)=2 is not a square
+CHECKS=34 PASS=34 FAIL=0

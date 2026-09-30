@@ -1,0 +1,80 @@
+== F8a README recipe as written (from core/lean)
+README_RECIPE_LINES=184 SHA=405c162970f91991
+== F8b GPT's corrected recipe (C_reproduction_patches §1), from core root
+GPT_RECIPE_LINES=323 SHA=db56ee4d1708c2e3
+GPT_RECIPE_CMP_SHIPPED=0
+== F8c fresh_build.sh manifest function
+13:  { find MPUP DiophCompression ResearchUpgrade scripts -type f \( -name '*.lean' -o -name '*.py' -o -name '*.sh' \) -print0; printf '%s\0' MPUP.lean DiophCompression.lean ResearchUpgrade.lean lakefile.lean lean-toolchain; } \
+14:    | LC_ALL=C sort -z | while IFS= read -r -d '' f; do printf '%s  %s\n' "$(sha256_file "$f")" "$f"; done; }
+18:manifest > logs/source_manifest_start.sha256
+19:echo "SOURCE_MANIFEST_FILES=$(wc -l < logs/source_manifest_start.sha256 | tr -d ' ')"
+20:echo "SRC_MANIFEST_SHA256=$(sha256_file logs/source_manifest_start.sha256)"
+26:echo "=== lake build ResearchUpgrade (r40, third library) ==="; lake build ResearchUpgrade > logs/lake_build_ru.log 2>&1; echo "RU_BUILD_EXIT=0"; tail -3 logs/lake_build_ru.log
+29:echo "=== audit_ru.sh (r40: per-file kernel audit of ResearchUpgrade) ==="; ./scripts/audit_ru.sh > logs/audit_ru.log 2>&1; echo "AUDIT_RU_SH_EXIT=$?"; grep -E "AUDIT_RU_EXIT" logs/audit_ru.log
+55:withax = re.findall(r"' depends on axioms: \[(.*?)\]", t, re.S)
+56:free   = len(re.findall(r"' does not depend on any axioms", t))
+68:lake env lean scripts/ResearchUpgradeAxiomReport.lean > logs/ru_axioms.log 2>&1; echo "RU_AXIOMS_EXIT=$?"
+73:withax = re.findall(r"' depends on axioms: \[(.*?)\]", t, re.S)
+74:free   = len(re.findall(r"' does not depend on any axioms", t))
+== F8d SOURCE_MANIFEST_SHA256 in seal / what it hashes
+/Users/hiroki/lean/s62_evidence/facts/core/correspondence/SEAL_r50.txt:65:  SOURCE_MANIFEST_SHA256=c51dc753018e7abb9cb67ca5d3e8b439355f3b43c7db99b47aa954be0c2089d4
+/Users/hiroki/lean/s62_evidence/facts/core/CORE_SEAL.txt:11:CORE_RELEASE_FILES=CORE_SEAL.txt,CORE_SOURCE_MANIFEST.sha256,CORE_SUBMISSION_INPUT_MANIFEST.sha256,README_PUBLIC_CORE.md,SHA256SUMS
+/Users/hiroki/lean/s62_evidence/facts/core/CORE_SEAL.txt:12:CORE_SOURCE_MANIFEST_FILES=396
+/Users/hiroki/lean/s62_evidence/facts/core/CORE_SEAL.txt:13:CORE_SOURCE_MANIFEST_SHA256=c51dc753018e7abb9cb67ca5d3e8b439355f3b43c7db99b47aa954be0c2089d4
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/build_submission_from_package.sh:146:# people could agree on SOURCE_MANIFEST_SHA256 and build different documents.  The Lean manifest
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/build_submission_from_package.sh:151:say "SOURCE_MANIFEST_SHA256=$SRC_SHA"
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/build_submission_from_package.sh:186:  echo "SOURCE_MANIFEST_SHA256=$SRC_SHA"
+== F8e cd lean then root-relative
+3:Every figure in this file is inserted by `tools/generate_trust.py` from the shipped certificates when the package is assembled ({{generated_on}}); none is typed. `tools/shipping_artifact_gate.py` refuses a package in which this file and the certificates disagree.
+5:**The one command.** `bash release/build_submission_from_package.sh` rebuilds the submission PDF from the extracted archive and nothing else, and prints `EXTERNAL_PATHS`, `HOME_DEPENDENCIES`, `SESSION_PINNED_INPUTS`, `BUILD_EXIT`, `NEWLY_BUILT_PDF_SHA256` and `SOURCE_MANIFEST_SHA256`. The build's inputs live at `certificates/*_current.log` inside the archive, put there beforehand by `release/stage_build_inputs.sh`, which is a separate step and not part of the build. The build runs in a scratch directory and promotes its outputs only when every preflight and gate has passed; a build that stops at preflight leaves the extracted tree byte-identical (`TREE_UNCHANGED=1`).
+18:Measured on the machine that produced the shipped PDF, not recalled (`papers/apal_build/BUILD_ENVIRONMENT.txt` is the pinned record; `tools/environment_preflight.py` refuses to build on a different one):
+39:    python3 tools/font_preflight.py papers/apal_build/preamble.tex
+45:    cd lean
+52:and is the script that produced the clean-room record in `certificates/`. The current certificates record one
+64:`trustCompiler` do not appear; no errors. The shipped record is `certificates/FinalAxiomReport_current.log`.
+85:    lake env lean scripts/PaperClaimTypeReport.lean > certificates/PaperClaimTypeReport_current.log
+87:    python3 tools/paper_claims_check.py . --native submission/native
+88:    python3 tools/paper_claims_controls.py . --native submission/native
+90:Expected: `FORMAL_CLAIMS_MISSING=0`, `REVIEW_UNREVIEWED=0`, `REVIEW_STALE=0`, `PAPER_CLAIMS_EXIT=0`, `NEGATIVE_CONTROLS_CAUGHT=16/16`, `ONE_ROOT_LABELS=3/3`; `python3 tools/signoff_controls.py . --native submission/native` prints `SIGNOFF_CONTROLS=6/6` (the author sign-off carry-over regression set). The seven planted controls for
+95:    python3 tools/fidelity_destroyer.py . --shipping-only \
+96:        --dispositions certificates/fidelity_destroyer_current.tsv
+104:    cd lean
+114:    python3 tools/shipping_artifact_gate.py .
+== F9 SEAL_WHAT_IS_OPEN full + provenance
+     1	  This round adds the normal-form results of Appendix A to the Lean library. Every SE2-definable total
+     2	  function has a full vector coset normal form under one analytic input, TCER (the eventual representation of
+     3	  large integers by an individual positive definite ternary lattice coset); without it the full form is proved
+     4	  except in the semidefinite branch of polar rank at least three (`generalFullNF_iff_semidefiniteFullNF`,
+     5	  `sealedFullNF_of_TCER`). With at least two outputs the conclusion sharpens under TCER to a characterization
+     6	  by one integer slope, f(a + Mt) = f(a) + Bt (`singleQuadratic_iff_commonSlope_of_TCER`), whose reverse
+     7	  direction holds for every number of outputs without TCER (`singleQuadratic_of_commonSlope`); consequently
+     8	  a -> (a^2, 0) is not SE2-definable under TCER although a -> a^2 is (`sqPadFn_not_singleQuadratic_of_TCER`).
+     9	  TCER is an explicit hypothesis of the Lean theorems, not an axiom, and the standard-axiom footprint of a
+    10	  conditional theorem does not certify it. In ordinary mathematics TCER is the consequence stated on p. 5 of
+    11	  the published version of Kane-Kim, specialized to the convention used here in Lemma A.8; formalizing it, or
+    12	  replacing it in this application by an argument that avoids the analytic theory, is a separate task. The
+    13	  figures of this round -- roots, footprints, frozen statements, pages -- are the measured fields above, and
+    14	  this paragraph repeats none of them. The clean-room attestation of this round is one environment (agora);
+    15	  see fresh_build_compare above.
+    16	  Open: the author sign-off of the rows -- every author field of the regenerated sheet is blank; the final
+    17	  locators -- preprint and software DOIs, repository tag, author e-mail -- are unset, so this package is
+    18	  built in `draft` mode and the `final` build remains untested on real locators; the blank-slate reviews are
+    19	  the reviewer's; the literature items that section 10 records as unresolved remain as section 10 states
+    20	  them. The ruling is unchanged and repeated: no Zenodo draft, DOI reservation or GitHub release until every
+    21	  content item is fixed and the sheet is signed.
+/Users/hiroki/Downloads/mpup_gpt_r50_20260928/release/SEAL_WHAT_IS_OPEN.md
+/Users/hiroki/lean/mpup-lean/pkg_r40/release/SEAL_WHAT_IS_OPEN.md
+183:for f in SEAL.template.md SEAL_INPUT.env SEAL_WHAT_IS_OPEN.md TRUST_BOUNDARY_APAL.template.md; do
+250:         SEAL_WHAT_IS_OPEN.md README_BUILD_APAL.template.md RELEASE_CHECKLIST_APAL.template.md PUBLIC_CORE_EXCLUDE.template.txt \
+801:    && grep -E '^\./(lean|frozen_statements|certificates|tools|submission|manuscript|papers|literature|mathematics|structural_theory)/|^\./(README\.md|CITATION\.cff|LICENSE|LICENSE-CC-BY-4\.0\.txt|LICENSING\.md|SHA256SUMS|ASSEMBLY_GATES\.log|PACKAGE_BUILD\.log|SHIPPING_MEASUREMENTS\.txt|SUBMISSION_INPUT_MANIFEST\.sha256|PARTITION_RECORD\.md)$|^\./release/(CITATION\.cff|LICENSE|LICENSE-CC-BY-4\.0\.txt|LICENSING\.md|PROOF_COMPANION\.md|APPENDIX_F_LEAN_ANCHORS\.md|APPENDIX_F_COVERAGE\.md|AUTHOR_SIGNOFF_SHEET\.md|README_BUILD_APAL\.md|README_BUILD_APAL\.template\.md|RELEASE_CHECKLIST_APAL\.md|RELEASE_CHECKLIST_APAL\.template\.md|SEAL\.template\.md|SEAL_INPUT\.env|SEAL_WHAT_IS_OPEN\.md|PUBLIC_CORE_EXCLUDE\.txt|PUBLIC_CORE_EXCLUDE\.template\.txt|STATEMENT_MAP_FULL\.md|TRUST_BOUNDARY_APAL\.md|TRUST_BOUNDARY_APAL\.template\.md|assemble_'"$ROUND"'\.sh|build_submission_from_package\.sh|fresh_build\.sh|lakefile\.lean|stage_build_inputs\.sh)$|^\./release/github_workflows/|^\./correspondence/SEAL_'"$ROUND"'\.txt$|^\./correspondence/(LETTER_GATE31|GATE31_CHECKLIST|REVIEW_GATE31_DISPOSITION_s61|ERRATA_R50_20260928|TCER_ADAPTER_s58|GPT_REVIEW_GATE31_20260928_[A-Za-z0-9_]+)\.md$' "$2/all.lst" > "$2/core0.lst" \
+== F10 signoff 74 rows
+== F10b locators
+== F11 review registry / claims rows
+75 papers/apal_build/native_build/PAPER_CLAIMS_REVIEW.tsv
+48 papers/apal_build/native_build/PAPER_CLAIMS.tsv
+75 submission/native/PAPER_CLAIMS_REVIEW.tsv
+48 submission/native/PAPER_CLAIMS.tsv
+== F12 cover 'Under the same input'
+24:injections ℤⁿ → ℤᵐ, which is realized by an injection for every n ≤ m, use no such input. Under the same input the paper
+== F13 checklist D2
+20:| D2 regenerate, check the PDF, repack the core | PARTIAL — dry run 4: DRY_EXIT=0, gate5 FAIL 0, PDF 70 pages, paper claims 47/0, controls 16/16, parallel prose OK, destroyer 0 undispositioned, SHIPPING_ARTIFACT_GATE OK, LEAN_CHANGE_STATEMENT=unchanged-since-r49-manifest-identical; the sealed ZIP, its manifest and checksums are written only at the author's seal | dry run log; seal and ZIP only on the author's instruction |

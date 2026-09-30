@@ -1,0 +1,21 @@
+sections=21
+QED_WITHOUT_PROOF: Every cell terminates in §5, §6, or §7, each of which delive
+QED_WITHOUT_PROOF: *The complementary branch.* Stated with the case split above
+QED_WITHOUT_PROOF: **Capacity corollary (G_ℤ(r,2) = 2 for all r).** Upper bound
+ROMAN_IRREGULAR Lemma III.2′. (not III.1): starred with the label in the note
+QED_WITHOUT_PROOF: Theorem 9.2 follows by forgetting the family, and Theorem 9.
+QED_WITHOUT_PROOF: is an integer, because M = 8Δ|C| divides both Y′ − Y and X′ 
+QED_WITHOUT_PROOF: (uncoupled rank-one branch; `rank_one_uncoupled`, the m₂ = 0
+
+-- s37 (Gate-11 N12), resolution of the QED_WITHOUT_PROOF cells above.  The migrator emitted a
+bare \qed wherever the source ended an argument with a tombstone that no proof environment
+opened.  All six are now closed, by hand and not by re-running the migrator:
+  full-rank projection dichotomy (Part I, theorem* -> sections 1-8)  proof[Proof of the full-rank projection dichotomy]
+  Lemma 5, moving-modulus prime progression (Part II, section 6)      proof[Proof of Lemma 5]
+  assembly and the capacity corollary (Part II, section 8)           proof[Proof of the assembly and the capacity corollary]
+  IV.3 the summit                                                    proof[Proof of Theorems 9.2 and 9.3]
+  V.4 one-witness fibre dichotomy                                    proof
+  V.5 uncoupled rank-one branch: the \qed sat INSIDE the corollary environment and was removed;
+      a statement carries no tombstone.  Its justification is still inline in the statement's own
+      paragraph -- splitting that sentence is a prose decision, held for Dr. Fukui.
+ROMAN_IRREGULAR above is unchanged.  raw \qed = 0; raw Markdown emphasis in Part V = 0.

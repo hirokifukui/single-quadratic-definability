@@ -1,0 +1,44 @@
+name: kernel-audit
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    defaults:
+      run:
+        # explicit bash = bash -eo pipefail: a failing audit fails its step even through `| tee`
+        shell: bash
+        # the repository root is the package root; the Lean project is lean/
+        working-directory: lean
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain "$(cat lean-toolchain)"
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: mathlib cache
+        run: |
+          ~/.elan/bin/lake update
+          ~/.elan/bin/lake exe cache get
+      - name: Build (the three libraries lean/fresh_build.sh builds)
+        run: |
+          ~/.elan/bin/lake build
+          ~/.elan/bin/lake build DiophCompression
+          ~/.elan/bin/lake build ResearchUpgrade
+          ~/.elan/bin/lake build DiophCompression.QuadraticWitnessInertiaCore
+      - name: Kernel audit, DiophCompression (dynamic file-enumeration gate + planted controls)
+        run: bash scripts/audit_dc.sh | tee audit_ci.log
+      - name: Kernel audit, ResearchUpgrade (per-file kernel audit)
+        run: bash scripts/audit_ru.sh | tee audit_ru_ci.log
+      - name: Upload audit logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-logs
+          path: |
+            lean/audit_ci.log
+            lean/audit_ru_ci.log

@@ -1,0 +1,35 @@
+PASS K1 N=4 ordinarily represented by 2Z^3 mod p^e (p<=7, box)
+PASS K1 global solution (2,0,0): 4 = 2^2
+PASS K1 N=4 NOT primitively represented by 2Z^3 mod 2^e (e=1..4)
+CAUGHT control K1 rho=(1,0,0),d=2,N=1 not primitive mod 2^e
+PASS K2 det Gram (n,m,M)=(1,1,2) = M^(2(n+m))(1+M^n) = 48
+PASS K2 Sylvester positive definite (n,m,M)=(1,1,2)
+PASS K2 det Gram (n,m,M)=(1,2,2) = M^(2(n+m))(1+M^n) = 192
+PASS K2 Sylvester positive definite (n,m,M)=(1,2,2)
+PASS K2 det Gram (n,m,M)=(1,1,3) = M^(2(n+m))(1+M^n) = 324
+PASS K2 Sylvester positive definite (n,m,M)=(1,1,3)
+PASS K2 det Gram (n,m,M)=(2,1,2) = M^(2(n+m))(1+M^n) = 320
+PASS K2 Sylvester positive definite (n,m,M)=(2,1,2)
+PASS K2 det Gram (n,m,M)=(1,3,3) = M^(2(n+m))(1+M^n) = 26244
+PASS K2 Sylvester positive definite (n,m,M)=(1,3,3)
+PASS K2 det Gram (n,m,M)=(2,2,2) = M^(2(n+m))(1+M^n) = 1280
+PASS K2 Sylvester positive definite (n,m,M)=(2,2,2)
+CAUGHT control K2 det = M^(2(n+m)) * M^n (wrong factor)
+PASS K2 GPT's instance n=1,m=2,M=2 gives 192
+PASS K3 n=1, reduced denominators<=12: every disjoint nonempty 2-cover is the parity split (covers=1)
+PASS K3 n=2, reduced denominators<=4: every 2-cover has den 2, p0=p1 mod 2, p0!=0 mod 2, c0-c1 odd (covers=3)
+CAUGHT control K3 a 2-cover with denominator 3 exists (n=1)
+PASS K4 (2b-a)(2b+3a-1): total and output-unique on [-60,60]
+PASS K4 the unique root equals parityFn: f(2t)=t, f(2t+1)=-3t-1
+PASS K4 p0=1,p1=-3: p0=p1 mod 2, p0 odd, c0-c1=-1 odd
+CAUGHT control K4 h0=a, h1=a+2 (same parity) defines a function
+CAUGHT control K4 roots a/3,(a-1)/3 total
+CAUGHT control K4 roots +a,-a output-unique
+PASS K4 a(a-1)/2 integer-valued on [-50,50] with non-integer coefficients
+PASS K5 composition identity on 480 random cases
+CAUGHT control K5 period M+N works
+PASS K6 25+20+14+8+17 = 84
+PASS K6 13/16 = 81.25%
+CAUGHT control K6 13/16 = 82%
+LEG1_SUMMARY 25/25  CONTROLS_CAUGHT 8/8
+LEG1_EXIT=0

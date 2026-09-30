@@ -1,0 +1,615 @@
+'DiophCompression.SemanticQuadraticSingular.quadraticProjectionDichotomyZ_all' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.quadraticWitnessInertiaZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.graphAchievableZ_degree_two_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.universalCapacityZ_degree_two_le_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.no_four_parameter_quadratic_universality' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.capBound_degree_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_syntactic_semantic_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_gap_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_graph_degree_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_graph_arity_inertia' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinZ_degree_two_is_decidable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinN_degree_two_is_decidable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.not_universalAchievableZ_one_degree_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.not_universalAchievableN_one_degree_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.universalCapacityZ_degree_two_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.universalCapacityN_degree_two_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraph_degree_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraph_degree_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraph_degree_two_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraph_degree_three_ternary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraph_degree_four_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.codingDegree_three_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.codingDegree_ge_three_le_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppQuadratic_graph_all_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atom_two_implies_pp_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pp_quadratic_implies_single_quartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.single_quadratic_strict_pp_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ternarySkolem_atomicRank_three_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ternarySkolem_atomicRank_two_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppWitnessRankZ_eq_top_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppWitnessRankZ_le_coe_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppWitnessRankZ_le_atomicDegreeRankZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.preimageRel_imageRel' depends on axioms: [propext, Quot.sound]
+'DiophCompression.ppWitnessRankZ_preimage_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppWitnessRankZ_image_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppArityRankZ_fold' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ternaryPair_ppWitnessRankZ_le_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppArityRankZ_two_three_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppArityRankZ_two_finite_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomicDegreeRankZ_ternary_two_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomicDegreeRankZ_preimage_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.evalAtZZ_natCast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraphZZ_degree_two_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.one_sorted_quadratic_no_injective_ternary_graph' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.atomGraphZZ_degree_one_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.zToNat_injective' depends on axioms: [propext, Quot.sound]
+'DiophCompression.zToNat_nonneg' depends on axioms: [propext, Quot.sound]
+'DiophCompression.ternaryPairZZ_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppGraphZZ_degree_two_three' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.intToNatPoly_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.intToNatPoly_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pairZ_inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.intTupleCode_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppGraphZZ_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.intTupleCode_system' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppGraphZZ_degree_two_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinSingleEquationZZ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraphZZ_iff_within' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppGraphZZ_iff_within' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleEqFragmentZZ_subset_ppFragmentZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinSingleEquationZZ_double_of_withinPPZZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.ppZZ_degree_two_subset_singleEquationZZ_degree_four' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.graphZZ_intTupleCode_withinPPZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.graphZZ_not_withinSingleEquationZZ_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pp_not_single_quadratic_at_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_fragment_strict_at_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_fragment_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.preimageRelZZ_imageRelZZ' depends on axioms: [propext, Quot.sound]
+'DiophCompression.withinPPZZ_preimage_of_systems' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_image_of_systems' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_preimage_intTupleCode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_image_intTupleCode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pp_quadratic_internal_arity_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppFragmentZZ_two_arity_collapse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_logic_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.coder_counting_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_tupleCoderZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_tupleCoderN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.multiUniversalZ_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.multiUniversalN_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_MPUP_Z_of_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_MPUP_N_of_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.multiUniversalN_degree_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.wtCount_le_crude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.wtCount_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.aux_arith_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.pval_efac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.deg_finset_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.aux_kappa_bound_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.aux_coeff_bound_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.aux_coeff_nat_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.aux_counting_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.coder_counting_bound_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.multiUniversalN_bound_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.multiUniversalZ_bound_weighted' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_MPUP_N_of_weighted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.monoCount_widen' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.monoCount_succ_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.monoCount_closed_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.wtCount_eq_sum_monoCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.wtCount_closed_form' depends on axioms: [propext, Classical.choice, Quot.sound]
+'MPUP.not_MPUP_Z_of_weighted_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.multiUniversalN_capBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.multiUniversalZ_capBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_height_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_height_scalar_sup' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_height_vector' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_function_quadratic_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_injective_dimension_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.atomGraphZZ_le_two_from_dimension_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.polynomial_graph_singleQuadratic_of_degree_le' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.polynomial_graph_one_not_singleQuadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.polynomial_graph_one_singleQuadratic_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.powerGraph_not_withinSingleEquationZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.cubic_graph_withinPPZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.cubic_graph_not_withinSingleEquationZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_fragment_strict_arity_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadratic_fragment_strict_all_arity_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.square_graph_singleQuadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fourth_power_graph_not_singleQuadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fourth_power_graph_ppQuadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_functions_not_closed_under_composition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.skolemComputable_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinDiophZZ_of_withinPPZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_two_of_withinDiophZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.withinPPZZ_two_iff_withinDiophZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppFragmentZZ_two_eq_diophFragmentZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ncard_le_of_abs_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ncard_le_of_abs_le_vec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiberCardBound_of_fiberHeightBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiberCardBoundVec_of_fiberHeightBoundVec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_cardinality_scalar' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_cardinality_vector' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_cardinality_scalar_sup' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_finiteFiber_cardinality_vector_sup' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadraticFiniteValuedRelation_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiberVecZZ_eq_singleton_of_represents' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadraticDefinableFunction_finiteValued' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.withinDiophZZ_of_withinSingleEquationZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleEqFragmentZZ_subset_diophFragmentZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleEqFragmentZZ_four_eq_ppFragmentZZ_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleEqFragmentZZ_four_eq_diophFragmentZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fragment_lattice_ZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.eval_mul_of_isHomogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.topHomogeneous_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.exists_eval_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.linePoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.linePoly_coeff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.linePoly_natDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.exists_line_natDegree_eq_totalDegree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.polynomial_graph_not_singleQuadratic_of_degree_ge_three' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.polynomial_graph_singleQuadratic_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec₂_int_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec₂_int_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec_eval_of_coords' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.computable_eval_of_coords' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec_int_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.computable_eval_mvPolynomial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec_evalAtZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrecPred_evalAtZZ_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec₂_solCheck' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.exists_solCheck_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.rePred_exists_solCheck' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.powerGraphZZ_computablePred' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.dioph_relation_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppQuadratic_relation_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppRelation_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleEquation_relation_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuartic_relation_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.recFragmentZZ_subset_reFragmentZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_relation_recursive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleEqFragmentZZ_two_subset_recFragmentZZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.ppQuadratic_eq_re_of_DPRM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuartic_eq_re_of_DPRM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.computable_of_withinDiophZZ_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.computablePred_graphVecZZ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.compSys_sol_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppQuadratic_total_function_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_total_function_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.computable_total_function_ppQuadratic_of_DPRM' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.ppQuadratic_functions_eq_totalComputable_of_DPRM' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.ppQuadratic_functions_eq_singleQuartic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.ppQuadratic_functions_closed_under_composition' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_functions_proper_subset_totalComputable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.function_phase_diagram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.haltingRelZZ_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.haltingRelZZ_not_computablePred' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.recursive_strictly_contained_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_strict' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.decodePolyZZ_totalDegree_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.decodePolyZZ_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticSolvabilityDecidable_of_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.diagonalSetZZ_computablePred' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.diagonalSetZZ_not_singleQuadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_strict_recursive_all_positive_arity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.unary_singleQuadratic_strict_recursive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_all_positive_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_structural_theory_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_arity_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_unary' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_arity_ge_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_functions_strict_of_pos_arity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.singleQuadratic_functions_eq_at_zero_input' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_functions_eq_at_zero_output' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.function_phase_diagram_by_arity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.function_phase_diagram_by_arity_of_DPRM_NN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.relation_phase_diagram_all_positive_arity_of_classical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.apal_structural_core_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_structural_core_of_uniformGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_structural_core_of_perEquationGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_structural_core_of_DPRM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_full_phase_diagram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticCode_eval_primrec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticCode_toPoly_totalDegree_le_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticCode_toPoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticCode_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.decodePolyZZ_eq_codeOfNat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.decodePolyZZ_natOfCode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformCodeGS_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformCodeGS_implies_perEquationGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.effDiagonal_computablePred' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.effDiagonal_not_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.coded_family_ssubset_rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_strict_recursive_of_codes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.rePred_diffPreimage' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.transportWitnessArity_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.transportPoly_eval_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.DPRM_ZZ_of_DPRM_NN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.transportPoly_totalDegree_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.dprmTransport_resource_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fixedArityCode_matches_QuadraticCode' depends on axioms: [propext]
+'DiophCompression.fixedArityInstance_parameterArity' depends on axioms: [propext]
+'DiophCompression.globalGS_implies_fixedArityGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.globalGS_implies_uniformGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.globalGS_implies_perEquationGS' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_structural_core_of_DPRM_NN' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_full_phase_diagram_classical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.apal_full_phase_diagram_literature' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.moving_modulus_prime_step_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.PellUnitOrbitRealization.orbit_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.MovingModulusStepOrbitSG.c_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.movingModulusStepOrbitSG_of_base_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.MovingModulusStepOrbitRealization.output_injective' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.fiber_infinite_of_structuredCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.boundedOrStructured_exclusive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.finite_or_infinite_of_boundedOrStructured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.StructuredCertificate.pullback_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.polynomialProgression_of_periodic_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiber_infinite_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiber_unbounded_of_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.certificate_pullback' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primeProgression_index_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.StepFamilyRealization.point_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiber_infinite_of_typedCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.boundedOrCertified_exclusive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.finite_or_infinite_of_boundedOrCertified' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.movingModulus_negSlope_witnessEquiv' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.fiberSetSG_negSlope' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.movingModulus_negSlope_dvd_transfer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.movingModulus_negSlope_strictMono_transfer' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.movingModulusStepOrbitSG_of_negSlope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_B4_movingStep_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.transportedRepresentation_totalDegree_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.DPRM_ZZ_resource_bound_final' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.evalAtZZ_negOutputPoly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.mem_fiberZZ_negOutputPoly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fiberZZ_negOutputPoly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.mem_fiberZZ_negOutputPoly_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.StructuredCertificate.negOutput_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.negOutputPoly_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.structuredCertificate_of_flipZero_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.infinite_integer_set_pos_or_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.infinite_integer_fiber_pos_or_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.injective_of_lt_succ_from' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.linearFamilyPoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_linear_family_q' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.quadraticFamilyPoly_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_A3_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_B1_fixed_periodic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellFamily_coords_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellFamily_X_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_B0_polynomial_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_A2_polynomial_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.extract_A1_pell_kind' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniform_bound_certificate_exclusive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_implies_boundedOrStructured' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_implies_finiteFiberHeight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_implies_boundedOrInfinite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.negOutputPoly_solution_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_negOutputPoly' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_negOutputPoly_kind' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.branch_kind_iff_not_bounded' depends on axioms: [propext]
+'DiophCompression.no_unclassified_quadratic_branch' does not depend on any axioms
+'DiophCompression.branch_table_partition' depends on axioms: [propext]
+'DiophCompression.fullRank_structured_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fullRank_branch_kinds' does not depend on any axioms
+'DiophCompression.singular_structured_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.oneWitness_structured_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.oneWitness_branch_kinds' does not depend on any axioms
+'DiophCompression.singular_branch_kinds' does not depend on any axioms
+'DiophCompression.splitFactor_spec' depends on axioms: [propext]
+'DiophCompression.substParamTerm_evalW' depends on axioms: [propext]
+'DiophCompression.substParamCode_evalW' depends on axioms: [propext]
+'DiophCompression.toConcreteEquation_witnessArity' depends on axioms: [propext]
+'DiophCompression.globalInstance_eval_iff' depends on axioms: [propext]
+'DiophCompression.globalInstance_solvable_iff' depends on axioms: [propext]
+'DiophCompression.toConcreteEquation_parameterFree' depends on axioms: [propext]
+'DiophCompression.rational_clearing_int_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_of_infiniteFiberStructured' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.infiniteFiberStructured_of_uniformQuadraticFiberStructureZZ' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_iff_infiniteFiberStructured' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.infiniteFiberStructured_of_nonneg_halves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_of_nonneg_halves' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.weak_target_trivial_on_finite_fibre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.linearFamily_nonempty' depends on axioms: [propext]
+'DiophCompression.SemanticQuadratic.fiberSet_infinite_of_linearFamily' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_of_dichotomyLinearData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_degenerate_C_zero_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_square_C_zero_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_square_C_ne_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_degenerate_C_zero_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_square_C_zero_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_square_C_ne_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.infinite_of_periodicProgression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.periodicProgression_or_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.periodic_infinite_or_empty_of_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.rank_one_uncoupled_periodic_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.alpha_zero_beta_zero_periodic_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomySG_zero_periodic_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.pellOrbit_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_strictMono_fst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_unbounded_fst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_output_dvd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_output_strictMono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_output' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.pell_fiber_orbit_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.pellOrbit_neg_snd' depends on axioms: [propext, Quot.sound]
+'DiophCompression.pellOrbit_strictMono_fst_neg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.pell_orbit_of_X_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.rank_one_coupled_prime_step_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.d2_quadratic_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.d2_leading_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.d2_family_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.a2_quadratic_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.a2_leading_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.a2_leading_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.a2_family_growth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.fiberSet_infinite_of_oneWitnessFamilyData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_of_dichotomyOneWitnessData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomyOneWitnessData_of_linear' depends on axioms: [propext]
+'DiophCompression.SemanticQuadratic.dichotomy_definite_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.fiber_dichotomy_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.fiber_dichotomy_of_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_pell_data' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadratic.dichotomy_degenerate_C_ne_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.fiber_dichotomy_data_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadratic.fiber_dichotomy_of_data_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.infinite_of_structuredFamily' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2_of_dichotomy2Data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.rank_one_uncoupled_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.rank_one_uncoupled_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2Data_of_unimodular' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.b1c_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.rank_one_coupled_pos_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2_rank_one_normal_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2_rank_one_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2_rank_one_normal_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticTwoWitness.dichotomy2_rank_one_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.dichotomyM_of_dichotomyMData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.alpha_zero_beta_zero_family_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_dichotomy_all_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_root_bound_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_alpha_zero_dichotomy_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_dichotomy_all_data_of_dir' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.fiberSetM_line_family' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_dichotomy_of_direction_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_dichotomy_all_data_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticMatrix.full_rank_dichotomy_all_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomySG_of_dichotomySGData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.quotient_rank_ge_two_moving_dichotomy_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.sg_pos_orbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomySG_pos_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.aux_dichotomySG_neg_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomySG_zero_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomyMData_of_dichotomySGData_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.quotient_rank_one_coupled_dichotomy_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.quotient_rank_one_dichotomy_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.dichotomyMData_of_unimodular' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.singular_projection_dichotomy_all_r_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.quotient_rank_zero_dichotomy_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticSingular.singular_projection_dichotomy_all_r_data_full' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticGeneral.dichotomyG_of_dichotomyGData' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticGeneral.quadraticProjectionDichotomyZ_all_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.SemanticQuadraticGeneral.quadraticProjectionDichotomyZ_all_of_data' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.exists_fiberSetG_eq_fiberNatSigned' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.structuredCertificate_of_half_infinite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.infiniteFiberStructured_of_quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.uniformQuadraticFiberStructureZZ_of_quadratic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.quadraticFiberBoundedOrStructured_of_quadratic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.quadraticProjectionDichotomyZ_structured' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.singleQuadratic_fiber_bounded_or_structurallyInfinite' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'DiophCompression.primrec₂_splitFactor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec₂_substParamTerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.primrec₂_substParamCode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.globalGS_input_compiler_computable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.globalGS_input_compiler_comp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.b4_edge_neg_one_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.b4_edge_neg_b_pos_mu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.b4_edge_neg_b_neg_mu' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.halves_inter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fibre_empty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fibre_univ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fibre_zero_only' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fibre_two_points' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.fibre_neg_only' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DiophCompression.kindOmitB2_breaks_partition' depends on axioms: [propext]

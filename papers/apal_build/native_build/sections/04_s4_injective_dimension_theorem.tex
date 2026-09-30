@@ -1,0 +1,41 @@
+\section{Injective dimension theorem}\label{sec:4}
+\begin{theorem}[\texttt{singleQuadratic\_\allowbreak{}injective\_\allowbreak{}dimension\_\allowbreak{}sharp}]\label[theorem]{theorem:4.1}
+If $f : ℤ^{n} → ℤ^{m}$ is $\mathrm{SE}_{2}$-definable and injective then $n ≤ m$.
+
+\end{theorem}
+\begin{proof}
+Write the defining equation, after renaming the variables, as $Q(z) + ℓ_{a}(z) + q(a) = 0$, where $z$ carries the output and the unknowns, $Q$ is an integer quadratic form in $z$ alone, $ℓ_{a}$ is linear in $z$ with coefficients affine in $a$, and $q$ is quadratic in $a$. Over $ℚ$ the form $Q$ admits five behaviours, exhaustive but not pairwise exclusive (\texttt{branch\_exhaustive}), and each forces one of the two structural alternatives of \cref{theorem:4.2}: either $f$ has \emph{linear} growth, $‖f(a)‖_{∞} ≤ C(1 + ‖a‖_{∞})$, or $f$ agrees with a vector of rational polynomials of degree at most two on one full lattice coset $ρ + Mℤ^{n}$. In the first case the box $‖a‖_{∞} ≤ N$ has $(2N+1)^{n}$ points whose images lie in a box of side $2C(1+N)+1$, so injectivity gives $(2N+1)^{n} ≤ (2C(1+N)+1)^{m}$ for every $N$, and comparing growth in $N$ forces $n ≤ m$. In the second case counting does not suffice: the images lie in a box of side quadratic in $N$, and the count alone yields only $n ≤ 2m$ (\cref{remark:4.5}). Suppose instead $n > m$, and write the restriction to the coset as $f(ρ + Mt) = (p_{1}(t), …, p_{m}(t))$ with $p_{j} = c_{j} + L_{j} + H_{j}$, where $L_{j}$ is linear and $H_{j}$ is homogeneous quadratic over $ℚ$. The linear map $L = (L_{1}, …, L_{m}) : ℚ^{n} → ℚ^{m}$ has a nonzero kernel because $m < n$; clearing denominators gives $v ∈ ℤ^{n} \setminus \{0\}$ with $L(v) = 0$. Since $H_{j}(-v) = H_{j}(v)$, $p_{j}(v) - p_{j}(-v) = 2L_{j}(v) = 0$ for every $j$, so $f(ρ + Mv) = f(ρ - Mv)$ while $ρ + Mv ≠ ρ - Mv$ because $M > 0$ and $v ≠ 0$, contradicting injectivity. Hence $n ≤ m$. No hypothesis on the discriminant, on a common centre of the quadratic parts, or on the number of unknowns is used (\texttt{exists\_collision\_vector}, \texttt{not\_injective\_of\_weakVectorCosetNF}).
+
+\end{proof}
+\begin{theorem}[the structural alternative, \texttt{summit\_\allowbreak{}of\_\allowbreak{}defines}]\label[theorem]{theorem:4.2}
+If a single quadratic equation defines a total function $f : ℤ^{n} → ℤ^{m}$, then $f$ has linear growth or $f$ has a weak vector coset normal form. There is no hypothesis on the number of unknowns, no nondegeneracy hypothesis, and no hypothesis on the form.
+
+\end{theorem}
+\begin{proof}
+By the exhaustive rational case split on $Q$ (\texttt{branch\_exhaustive}): $Q ≡ 0$ gives the coset normal form; the semidefinite, negative-semidefinite and quotient-anisotropic cases give linear growth. The isotropic case splits once more: when some solution lies off the centre family it gives the coset normal form, and when every solution lies in the radical it returns linear growth through the same affine consumer as the other branches (\texttt{summit\_of\_isotropicBranch}). The five cases and their witnesses are the content of the companion proof note (\texttt{PROOF\_NOTE\_DIMENSION.md}, deposited with the artifact), one section per case.
+
+\end{proof}
+\begin{theorem}[sharpness, \texttt{singleQuadratic\_\allowbreak{}sharp\_\allowbreak{}iff}]\label[theorem]{theorem:4.3}
+An injective $\mathrm{SE}_{2}$-definable function $ℤ^{n} → ℤ^{m}$ exists if and only if $n ≤ m$. The existence direction is witnessed by zero-padding and uses no unknowns.
+
+\end{theorem}
+\begin{proof}
+Necessity is \cref{theorem:4.1}. For sufficiency, zero-padding $a ↦ (a_{1}, …, a_{n}, 0, …, 0)$ is injective, and its graph is defined by a single quadratic equation with no unknowns (\texttt{exists\_graph\_injective\_pad}).
+
+\end{proof}
+\begin{corollary}[\texttt{not\_\allowbreak{}atomGraphZZ\_\allowbreak{}two}, \texttt{atomGraphZZ\_\allowbreak{}capacity\_\allowbreak{}eq\_\allowbreak{}one}]\label[corollary]{corollary:4.4}
+No single quadratic equation defines the graph of an injection $ℤ^{n} → ℤ$ for $n ≥ 2$, and a degree-one equation does so for $n = 1$. Hence the one-sorted coding arity is exactly one: $\mathrm{ca}(\mathrm{SE}_{2}) = 1$.
+
+\end{corollary}
+\begin{proof}
+\cref{theorem:4.1} with $m = 1$ gives $n ≤ 1$ for every finite number of unknowns; \texttt{atomGraphZZ\_degree\_one\_one} is the lower bound.
+
+\end{proof}
+\begin{remark}[the previous bound]\label[remark]{remark:4.5}
+The box count of \cref{theorem:3.2} alone yields only $n ≤ 2m$ --- images of a box of side $N$ lie in a box of side quadratic in $N$. That inequality (\texttt{singleQuadratic\_injective\_dimension\_bound}) remains true and is now a corollary of \cref{theorem:4.1}; it is recorded because it is what a growth bound alone can give, and the improvement to $n ≤ m$ is exactly the content of the structural alternative.
+
+\end{remark}
+\begin{remark}[what is due to whom at $n = 2$, $m = 1$, no unknowns]\label[remark]{remark:4.6}
+When the defined function is itself a polynomial, the case $n = 2$, $m = 1$ with no unknowns is Lew and Rosenberg \cite{LR78a}, Thm.~5.3(2): no quadratic storing function exists on $ℤ^{2}$. Their statement is about polynomials, and their three-line proof uses only integer-valuedness. The restriction of the same question to the lattice points of an affine convex cone, under a nonzero-discriminant hypothesis, is Gjaldb\ae k \cite{Gj21}, Theorem 2. Neither reaches the present statement, because a function with $\mathrm{SE}_{2}$-definable graph need not be a polynomial: the equation $4b^{2} - (4a_{1}+2)b + (a_{1}^{2} + a_{1}) = 0$ is total and output-unique over $ℤ$ and defines $a ↦ ⌈a_{1}/2⌉$, which is not a polynomial of any degree (\texttt{parity\_exists\_unique}; the formalised part is \texttt{parity\_not\_quadratic}, which rules out rational polynomials of degree at most two). Nor do they admit unknowns. In the indefinite case the non-squareness of the Pell discriminant is not quoted but proved here from quotient-anisotropy, by exhibiting the isotropic non-radical vector that a square discriminant would force (\texttt{not\_isSquare\_pellDiscr}); square-value questions of this kind go back to Davenport, Lewis and Schinzel \cite{DLS64}, cited as background and not used in the formalisation.
+
+\end{remark}

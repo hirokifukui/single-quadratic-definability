@@ -1,0 +1,8 @@
+CAUGHT P1 A.14 hypothesis deleted exit=1 ["FAIL Proposition A.14: token 'Assume TCER' not found in order"]
+CAUGHT P2 A.14 'odd coordinate' clause deleted exit=1 ["FAIL Proposition A.14: token 'odd coordinate' not found in order"]
+CAUGHT P3 A.15 'unconditionally' inserted exit=1 ["FAIL Proposition A.15: token 'For every' not found in order"]
+CAUGHT P4 A.15 m >= 1 inserted exit=1 ["FAIL Proposition A.15: forbidden token 'm ≥ 1' present"]
+CAUGHT P5 A.13 root swapped to affine_eq_of_eq_on_coset exit=1 ['FAIL Lemma A.13: no type fingerprint for affine_eq_of_eq_on_coset']
+CAUGHT P6 A.14 forged type hash exit=1 ['FAIL Proposition A.14: lean_type_sha256 for scalar_singleQuadratic_iff_of_TCER is 000000000000, current type is ecf15137955f (root substituted or type changed; re-register deliberately)']
+CAUGHT P7 A.13 'finite group' inserted exit=1 ["FAIL Lemma A.13: token 'subgroups of an additive commutative group' not found in order"]
+A13A15_PLANTS_CAUGHT=7/7

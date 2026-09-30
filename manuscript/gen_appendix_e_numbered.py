@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+"""gen_appendix_e_numbered.py - Appendix E, as the paper actually describes it.
+
+The earlier generator emitted one row per Lean declaration in frozen_statements/ (about six
+hundred rows) and wrote them to a separate companion file. The paper's own Appendix E promises
+something else and smaller: one row per NUMBERED STATEMENT of Sections 1-9 and Appendices A-C,
+carrying the Lean name that statement cites and the frozen file that holds its signature. The two
+disagreed, the companion file was never inlined, and the appendix shipped empty. This generator
+produces what the paragraph promises, and the build inlines it.
+
+Usage: gen_appendix_e_numbered.py <MANUSCRIPT.md> <frozen_statements_dir> <out.md> [<full_map.md>]
+Exit 1 if no rows, or if a numbered statement of the body has no row.
+"""
+# s34 (Gate-8 M02): statement labels may be lettered.  Theorem C.1 was invisible to every
+# scanner because this pattern required a leading digit.  [A-Z]+ not [A-Z]: a single letter
+# cannot match AA.1, which Gate-8 itself named as a required positive control.
+import glob, io, os, re, sys
+
+KINDS = r'Theorem|Definition|Lemma|Corollary|Proposition|Remark|Examples?|Fact'
+
+# s34 (Gate-8 M03).  A name cited by the paper that is in no frozen file used to be counted and
+# then ignored; the count sat at 1 for several rounds with nobody able to say which name it was.
+# Now: any such name is a hard failure unless it is listed here WITH A REASON.  The list is not a
+# way to silence the gate -- each entry is a claim about the trust boundary that a referee can check.
+ALLOWLIST = {
+    'quadraticProjectionDichotomyZ_all':
+        'Theorem 9.2. Proved in the paper by Appendix F without appeal to the formalization; the '
+        'Lean name is a pointer, and it is a root of the axiom report, so its footprint is '
+        'reported even though its statement is not diffed. Listed in section 11 as one of the '
+        'nineteen names outside the frozen set.',
+}
+
+def main(ms_path, frozen_dir, out_path, full_out=None, manifest=None):
+    # s38 (Gate-12 M06): when a paper-claim manifest (submission/native/PAPER_CLAIMS.tsv) is given,
+    # the PRINTED table is restricted to the statements the manifest names; the full map is unchanged.
+    keep = None
+    if manifest:
+        import csv
+        keep = {r['paper_label'] for r in csv.DictReader(io.open(manifest, encoding='utf-8'), delimiter='\t')}
+    src = io.open(ms_path, encoding='utf-8').read()
+    body = src.split('## Appendix F')[0]
+
+    # where is each frozen name declared?
+    home = {}
+    for f in sorted(glob.glob(os.path.join(frozen_dir, '*_STATEMENTS.lean'))):
+        txt = io.open(f, encoding='utf-8').read()
+        for m in re.finditer(r'^(?:theorem|def|noncomputable def|abbrev)\s+(\S+)', txt, re.M):
+            home.setdefault(m.group(1), os.path.basename(f))
+
+    rows, missing = [], []
+    for m in re.finditer(r'^\*\*(' + KINDS + r')\s+((?:[0-9]+|[A-Z]+)\.[0-9]+)\*\*', body, re.M):
+        kind, num = m.group(1), m.group(2)
+        # the parenthetical wraps across hard-wrapped lines: take the whole paragraph
+        para = body[m.end():]
+        para = para.split('\n\n')[0]
+        # a backticked name may be hard-wrapped across lines; close it up first
+        para = re.sub(r'`([^`]*)`', lambda mm: '`' + re.sub(r'\s+', '', mm.group(1)) + '`', para)
+        head = para.split(').')[0]
+        names = [n for n in re.findall(r'`([A-Za-z_][A-Za-z0-9_.\u2080-\u2089\u2032\']*)`', head)
+                 if not n.endswith('.lean')]
+        files = sorted({home[n] for n in names if n in home})
+        unknown = [n for n in names if n not in home]
+        rows.append((kind, num, names, files, unknown))
+        if not names:
+            missing.append('%s %s (cites no Lean name)' % (kind, num))
+
+    if not rows:
+        sys.stderr.write('gen_appendix_e: no numbered statements found\n')
+        return 1
+
+    unknown_all = sorted({n for r in rows for n in r[4]})
+    allowed = [n for n in unknown_all if n in ALLOWLIST]
+    unlisted = [n for n in unknown_all if n not in ALLOWLIST]
+
+    w = io.open(out_path, 'w', encoding='utf-8')
+    # s35 (Gate-9 §8 and §12).  The paragraph in Appendix E says the PRINTED table carries one row
+    # per numbered THEOREM and that the map over every numbered statement ships separately.  The
+    # generator printed every statement, and the separate file was a stale copy of the same table,
+    # so all three clauses of that paragraph were false at once.  Printed: theorem-kind only.  Full:
+    # every numbered statement, written to a second path when one is given.
+    THEOREMISH = ('Theorem', 'Proposition', 'Corollary', 'Lemma', 'Fact')
+    printed = [r for r in rows if r[0] in THEOREMISH]
+    if keep is not None:
+        printed = [r for r in rows if ('%s %s' % (r[0], r[1])) in keep]
+    if full_out:
+        f = open(full_out, 'w')
+        f.write('The complete statement map, generated by `manuscript/gen_appendix_e_numbered.py`; '
+                'not maintained by hand. One row for every numbered statement of Sections 1-9 and '
+                'Appendices A-C, including definitions, remarks and examples. The paper prints the '
+                'theorem rows only; this file is the whole of it.\n\n')
+        f.write('| # | statement | Lean name(s) | frozen file |\n|---|---|---|---|\n')
+        for kind, num, names, files, unknown in rows:
+            nm = ', '.join('`%s`' % x for x in names) if names else '—'
+            fl = ', '.join(files) if files else ('—' if not names else 'not in frozen_statements')
+            f.write('| %s | %s | %s | %s |\n' % (num, kind, nm, fl))
+        f.close()
+        print('STATEMENT_MAP_FULL_ROWS=%d -> %s' % (len(rows), full_out))
+    w.write('The map below is generated by `manuscript/gen_appendix_e_numbered.py` and inlined at '
+            'build time; it is not maintained by hand. %d statements%s, of which %d cite at '
+            'least one Lean name. A dash means the statement is derived and cites no declaration of '
+            'its own.\n\n' % (len(printed), ' (those of the paper-claim manifest)' if keep is not None else '',
+                                sum(1 for r in printed if r[2])))
+    w.write('| # | statement | Lean name(s) | frozen file |\n|---|---|---|---|\n')
+    for kind, num, names, files, unknown in printed:
+        nm = ', '.join('`%s`' % n for n in names) if names else '—'
+        fl = ', '.join(files) if files else ('—' if not names else 'not in frozen_statements')
+        w.write('| %s | %s | %s | %s |\n' % (num, kind, nm, fl))
+    w.write('\nNames cited by the paper but absent from `frozen_statements/`: %d.\n'
+            % sum(1 for r in rows for _ in r[4]))
+    w.close()
+    lettered = [r for r in rows if not r[1][0].isdigit()]
+    print('APPENDIX_E_ROWS=%d  WITH_LEAN_NAME=%d  NO_NAME=%d'
+          % (len(printed), sum(1 for r in printed if r[2]), sum(1 for r in printed if not r[2])))
+    print('APPENDIX_E_PRINTED=%d  APPENDIX_E_ALL_STATEMENTS=%d' % (len(printed), len(rows)))
+    print('STATEMENTS_FOUND=%d' % len(rows))
+    print('STATEMENTS_MAPPED=%d' % len(rows))
+    print('LETTERED_LABELS=%d (%s)' % (len(lettered), ', '.join(r[1] for r in lettered) or '-'))
+    print('C1_FOUND=%d' % sum(1 for r in rows if r[1] == 'C.1'))
+    print('ALLOWLISTED_NAMES=%d (%s)' % (len(allowed), ', '.join(allowed) or '-'))
+    print('UNKNOWN_NAMES=%d' % len(unlisted))
+    for n in unlisted:
+        sys.stderr.write('gen_appendix_e: cited name in no frozen file and not allowlisted: %s\n' % n)
+    print('APPENDIX_E_EXIT=%d' % (1 if unlisted else 0))
+    return 1 if unlisted else 0
+
+if __name__ == '__main__':
+    if len(sys.argv) not in (4, 5, 6):
+        sys.stderr.write(__doc__)
+        sys.exit(2)
+    sys.exit(main(*sys.argv[1:]))

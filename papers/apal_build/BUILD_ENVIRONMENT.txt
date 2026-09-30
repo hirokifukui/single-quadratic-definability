@@ -1,0 +1,7 @@
+# Typesetting environment pinned for this round (tools/environment_preflight.py --pin).
+# The build refuses to overwrite a shipped artifact from an environment that differs.
+FONTSPEC=fontspec.sty @ /usr/local/texlive/2026basic/texmf-dist/tex/latex/fontspec
+TEXLIVE=2026
+TEXMFDIST=/usr/local/texlive/2026basic/texmf-dist
+XDVIPDFMX=This is xdvipdfmx Version 20260113 by the DVIPDFMx project team,
+XELATEX=XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)

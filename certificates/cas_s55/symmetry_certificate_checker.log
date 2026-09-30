@@ -1,0 +1,6 @@
+ctlD4 output flip (Lean: ctlD4_certificate_NF): isometry=ok base_point=ok slope=ok certificate=ok  => PASS
+planted: witness flip T2: isometry=ok base_point=NO slope=ok certificate=NO  => FAIL
+planted: wrong certificate A = -1: isometry=ok base_point=ok slope=ok certificate=NO  => FAIL
+planted: non-isometry diag(-1,2,1): isometry=NO base_point=NO slope=ok certificate=ok  => FAIL
+T = -I (reduces to doubled centre; fails here since 2c is not integral): isometry=ok base_point=NO slope=ok certificate=ok  => FAIL
+CHECKER_CASES=5 UNEXPECTED=0

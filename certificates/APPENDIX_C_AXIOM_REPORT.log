@@ -1,0 +1,53 @@
+APPENDIX_C_AXIOM_REPORT — Gate-8 F02 (s34, 2026-09-04 13:34:44 )
+
+Scope: every root cited by Appendix C of the manuscript, i.e. the whole of MPUP/WeightedBound.lean.
+Before s34 none of these were in scripts/FinalAxiomReport.lean; Gate-8 §3 was correct that the
+weighted theorems sat outside the formal trust chain.
+
+MEASURED_ROOT      /Users/hiroki/lean/mpup-lean
+ROOT_KIND          development vault (NOT a release certificate; the release certificate is
+                   produced at r30 assembly from the extracted distribution root -- Gate-8 Q3)
+HOST               agora
+TOOLCHAIN          leanprover/lean4:v4.31.0-rc1
+COMMAND            ~/.elan/bin/lake env lean scripts/WeightedBoundProbe.lean
+COMMAND_FULLREPORT ~/.elan/bin/lake env lean scripts/FinalAxiomReport.lean
+
+APPENDIX_C_ROOTS_EXPECTED   19
+APPENDIX_C_ROOTS_PRINTED    19
+APPENDIX_C_NONSTANDARD_AXIOMS 0
+FULL_REPORT_ROOTS           417
+FULL_REPORT_DEPENDS         413
+FULL_REPORT_AXIOM_FREE      4
+FULL_REPORT_NONSTANDARD     0
+FORBIDDEN_TOKENS            sorryAx 0 / native_decide 0 / ofReduceBool 0 / trustCompiler 0
+ERRORS                      0
+EXIT                        0
+
+The nineteen roots (all [propext, Classical.choice, Quot.sound]):
+  MPUP.wtCount_le_crude
+  MPUP.wtCount_mono
+  MPUP.aux_arith_weighted
+  MPUP.pval_efac
+  MPUP.deg_finset_sum
+  MPUP.aux_kappa_bound_weighted
+  MPUP.aux_coeff_bound_weighted
+  MPUP.aux_coeff_nat_weighted
+  MPUP.aux_counting_weighted
+  MPUP.coder_counting_bound_weighted
+  MPUP.multiUniversalN_bound_weighted
+  MPUP.multiUniversalZ_bound_weighted
+  MPUP.not_MPUP_N_of_weighted_bound
+  MPUP.monoCount_widen
+  MPUP.monoCount_succ_right
+  MPUP.monoCount_closed_form
+  MPUP.wtCount_eq_sum_monoCount
+  MPUP.wtCount_closed_form
+  MPUP.not_MPUP_Z_of_weighted_bound
+
+Reconciliation of the two mechanisms after s34:
+  axiom-report roots                417
+  frozen theorem statements         455
+  in both                           366
+  frozen but not a root             89
+  root with no frozen statement     51
+All nineteen Appendix C theorems are now in BOTH sets.

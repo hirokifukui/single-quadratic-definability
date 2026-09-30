@@ -1,0 +1,86 @@
+MARKDOWN_GENERATED=OK (tex_to_md.py; hand mirror archived in the vault at history/manuscript_hand_mirror/)
+PUBLIC_CORE_EXCLUDE_FRESH_ROUND=r49
+PUBLIC_CORE_EXCLUDE=rendered patterns=21
+SIGNOFF_ROWS=74
+SIGNOFF_CARRIED=74
+SIGNOFF_INVALIDATED=0
+SIGNOFF_BLANK=0
+SIGNOFF_EXIT=0
+NATIVE_TEX_IN_PACKAGE=OK sections=23 SOURCE_STATUS=FINAL BUILD_SOURCE=submission/native QA_REFERENCE=manuscript/MANUSCRIPT_V32.md MARKDOWN_IS_GENERATED=1 QA_INTERMEDIATE=generated Markdown HAND_MAINTAINED_MARKDOWN_QA_DEPENDENCIES=0 
+CITED_ARTIFACTS_SHIPPED=OK (proof note + s48 CAS pair + logs + Gate-22 checklist)
+LICENSE_MIT=OK CI_RU_BUILD_AUDIT=OK
+TOOLS_SHIPPED=OK n=39
+DISPOSITIONS_SHIPPED=OK n=1
+CLEANROOM_CURRENT=1  CLEANROOM_AGED_OUT=0  SHIPPED_TREE_SHA=db56ee4d
+CLEANROOM_REFERENCE=written log=fresh_build_r49.log round=r49 environment=agora new_build=no
+CLEANROOM_GATE=OK (single environment, explicitly allowed)
+FRESH_BUILD_COMPARE_DIFFS=none_single_environment
+SEALS_AGED_OUT=27
+DEVELOPMENT_HISTORY_SHIPPED=OK
+FROZEN_SHIPPED=OK n=59
+BUILD_INPUTS_SHIPPED=OK
+GENERATE_TRUST=OK axiom_roots=421 axiom_roots_axiom_free=4 axiom_roots_with_axioms=417 binder_roots=452 binder_unconditional=406 citation_version=0.31.0 footprint_all_three=398 footprint_propext_only=14 footprint_propext_quot=5 frozen_definitions=298 frozen_files=59 frozen_theorems=1092 recon_both=374 recon_frozen_not_root=718 recon_root_not_frozen=47 release_date=2026-09-30 round=r53
+REVIEW_REPORTS_TAGGED_STALE=5
+EARLIER_READER_REPORTS_STALE=OK untagged=0
+MANIFEST_MATCH=OK (shipped lean/ == the tree the clean-room built)
+MANIFEST_PREV=EQUAL (source_manifest_r52.sha256; Lean source unchanged this round, as declared)
+LEAN_CHANGE_STATEMENT=unchanged-since-r52-manifest-identical
+GATE5_ITEMS=363 GATE5_PASS=355 GATE5_FAIL=0 GATE5_DEFERRED=8 ABSOLUTE_PATHS=0
+SHIPPING_SET_SIZE=7  MISSING_FROM_SET=0
+UNDISPOSITIONED=0
+DESTROYER_EXIT=0
+OUTSIDE_FROZEN=23
+OUTSIDE_BUT_ROOT=8
+COVERED_BY_NEITHER=15
+CENSUS_EXIT=0
+DECLARED_COMPANIONS=4 (exempt by name, Gate-9 N05 is to unify them)
+NEAR_MISS_TOP5 manuscript/PROOF_NOTE_DIMENSION.md=2, submission/APAL_SUBMISSION_CHECKLIST_v1.md=1, submission/APAL_COVER_LETTER_v1.md=1, release/TRUST_BOUNDARY_APAL.template.md=1, release/TRUST_BOUNDARY_APAL.md=1
+TRIGGER_MARGIN highest_untriggered=2 trigger=6
+PARALLEL_PROSE_FILES=0 PARALLEL_PROSE_DIRS=0
+PARALLEL_PROSE_CONTROL=OK
+POSITIVE_FOUND=3 (A.10, AA.1, C.1)
+OLD_PATTERN_FOUND=0
+NEGATIVE_DROP=1 (63 -> 62)
+PATTERN_FILES_AGREE=4/4
+LETTERED_CONTROL_EXIT=0
+FORMAL_CLAIMS_FOUND=44
+FORMAL_CLAIMS_REGISTERED=44
+FORMAL_CLAIMS_MISSING=0
+REVIEW_ROWS=74 REVIEW_UNREVIEWED=0 REVIEW_STALE=0
+ONE_ROOT_LABELS=3/3
+PAPER_CLAIMS=47 PAPER_CLAIMS_FAIL=0
+PAPER_CLAIMS_EXIT=0
+NEGATIVE_CONTROLS_CAUGHT=16/16
+NEGATIVE_CONTROLS_EXIT=0
+SIGNOFF_CONTROLS=6/6
+SIGNOFF_CONTROLS_EXIT=0
+CORE_CHECKSUM_CONTROLS=8/8
+CORE_CHECKSUM_CONTROLS_EXIT=0
+PACKAGE_GATES=OK
+PACKAGE_BUILD_IN_ROOT=OK mode=final
+POST_BUILD_ABSPATH_GATE=OK (release/ tools/ papers/ scanned after the package build)
+BAD_SUBSCRIPT_OCCURRENCES=0
+CREF_INSIDE_MATH=0
+MALFORMED_SE2_DEFINABLE_PHRASE=0
+MANUSCRIPT_SCAN_EXIT=0
+BLUEPRINT nodes=69 D=9 F=34 F+H=11 M=7 R=8
+BLUEPRINT_DETERMINISM=OK
+VAULT_MIRROR=OK (submission/, build log, TRUST, reconciliation refreshed from the package)
+PARTITION_RECORD=OK all=1568 core=740 history=828 dup=0
+PACKAGE_FILES_PREDICTED=1569
+GENERATE_SEAL=OK correspondence/SEAL_r53.txt tokens=87
+CAUGHT	C01 README version one generation old	expect=README_VERSION	exit=1	failed=['README_VERSION']
+CAUGHT	C02 CITATION date one generation old	expect=CITATION_ROOT_DATE	exit=1	failed=['CITATION_ROOT_DATE']
+CAUGHT	C03 seal quotes an old PDF hash	expect=SEAL_PDF_SHA	exit=1	failed=['SEAL_PDF_SHA', 'MEASUREMENTS_AGREE']
+CAUGHT	C04 measurements mutated by a failed build	expect=MEASUREMENTS_AGREE	exit=1	failed=['MEASUREMENTS_AGREE']
+CAUGHT	C05 __pycache__ left in the tree	expect=NO_PYCACHE	exit=1	failed=['NO_PYCACHE']
+CAUGHT	C06 public core missing a Lean file	expect=PARTITION_RECORD	exit=1	failed=['PARTITION_RECORD']
+CAUGHT	C07 history file listed in the core	expect=PARTITION_RECORD	exit=1	failed=['PARTITION_RECORD']
+CAUGHT	C08 union incomplete after the split	expect=PARTITION_RECORD	exit=1	failed=['PARTITION_RECORD']
+CAUGHT	C09 intersection non-empty after the split	expect=PARTITION_RECORD	exit=1	failed=['PARTITION_RECORD']
+CAUGHT	C10 an old trust document mixed in	expect=SINGLE_TRUST	exit=1	failed=['SUBMISSION_MANIFEST', 'SINGLE_TRUST', 'PARTITION_RECORD']
+CAUGHT	C11 an old cover letter mixed in	expect=SINGLE_COVER_LETTER	exit=1	failed=['SINGLE_COVER_LETTER', 'PARTITION_RECORD']
+CAUGHT	C12 a source file mutated after the build	expect=SOURCE_MANIFEST	exit=1	failed=['SOURCE_MANIFEST']
+CAUGHT	C13 a development-history certificate re-listed in the public core	expect=PARTITION_RECORD	exit=1	failed=['PARTITION_RECORD']
+RELEASE_CONTROLS_CAUGHT=13/13
+RELEASE_CONTROLS_EXIT=0

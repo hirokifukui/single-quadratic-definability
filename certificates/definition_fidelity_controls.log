@@ -1,0 +1,47 @@
+=== CONTROL 0: untouched copy (expect EXIT 0) ===
+DEFFID_CONSTANTS=89
+DEFFID_SHORTNAMES=58/61
+DEFFID_MISMATCH=0
+DEFFID_MISSING=0
+DEFFID_EXTRA=0
+DEFFID_EXIT=0
+=== CONTROL 1: body mutation fq '+ q' -> '- q' (expect MISMATCH fq VALUE, EXIT 1) ===
+BUILD_EXIT=0
+DEFFID_CONSTANTS=89
+DEFFID_SHORTNAMES=58/61
+MISMATCH DiophCompression.SemanticQuadratic.fq VALUE
+DEFFID_MISMATCH=1
+DEFFID_MISSING=0
+DEFFID_EXTRA=0
+DEFFID_EXIT=1
+=== CONTROL 2: docstring-only mutation (expect EXIT 0) ===
+BUILD_EXIT=0
+DEFFID_CONSTANTS=89
+DEFFID_SHORTNAMES=58/61
+DEFFID_MISMATCH=0
+DEFFID_MISSING=0
+DEFFID_EXTRA=0
+DEFFID_EXIT=0
+=== CONTROL 3: type-only-visible mutation: extra unused argument on fbound (expect MISMATCH fbound TYPE, EXIT 1) ===
+21:def fbound (K : ℕ) (l m q : ℤ) : ℤ := (K : ℤ) * ((1 + |l| + |m|) ^ 2 + |q|)
+21:def fbound (zz : ℤ) (K : ℕ) (l m q : ℤ) : ℤ := (K : ℤ) * ((1 + |l| + |m|) ^ 2 + |q|)
+BUILD_EXIT=1
+DEFFID_EXIT=1 (lean failure)
+RESTORE_BUILD_EXIT=0
+CONTROLS_DONE
+=== CONTROL 3b: same type mutation, caught at the declaration-text layer by statement_diff (expect FAIL>=1) ===
+  OK   BridgeGeneral_STATEMENTS.lean:fboundG_eq_fboundM_general  <- DiophCompression/SemanticQuadraticMatrix/BridgeGeneral.lean
+FAIL DIFF    FiberDichotomy_STATEMENTS.lean:fbound  (in DiophCompression/SemanticQuadratic/FiberDefs.lean)
+    frozen: def fbound (K : ℕ) (l m q : ℤ) : ℤ
+    prod  : def fbound (zz : ℤ) (K : ℕ) (l m q : ℤ) : ℤ
+  OK   FullRank_STATEMENTS.lean:fboundM  <- DiophCompression/SemanticQuadraticMatrix/FullRankGeneric.lean
+  OK   FullRank_STATEMENTS.lean:fboundM_core_ge_lin  <- DiophCompression/SemanticQuadraticMatrix/FullRankGeneric.lean
+  OK   FullRank_STATEMENTS.lean:fboundM_core_ge_gamma  <- DiophCompression/SemanticQuadraticMatrix/FullRankGeneric.lean
+  OK   Singular_STATEMENTS.lean:fbound3S  <- DiophCompression/SemanticQuadraticSingular/DefsSingular.lean
+  OK   Singular_STATEMENTS.lean:fbound3S_mono  <- DiophCompression/SemanticQuadraticSingular/TransferS.lean
+  OK   Singular_STATEMENTS.lean:fboundM_eq_fbound3S  <- DiophCompression/SemanticQuadraticSingular/BridgeSingular.lean
+  OK   ThreeWitness_STATEMENTS.lean:fboundG_eq_fboundM  <- DiophCompression/SemanticQuadraticThreeWitness/Bridge3W.lean
+THEOREMS=263/263
+DEFINITIONS=50/51
+FAIL=1
+CONTROL_3B_DONE

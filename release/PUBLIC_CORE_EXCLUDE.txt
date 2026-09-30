@@ -1,0 +1,36 @@
+# PUBLIC_CORE_EXCLUDE — paths that stay in the package but belong to the DEVELOPMENT HISTORY archive, not the
+# public core (s41, Gate-15 F08). One extended regular expression per line, matched against the path relative to
+# the package root (no leading ./); lines starting with # are comments. The assembler renders r53 to the
+# current round and writes the rendered file to the package as release/PUBLIC_CORE_EXCLUDE.txt; the same rendered
+# file is read by tools/partition_check.py, which fails when any listed pattern still matches a public-core path
+# (PUBLIC_CORE_HISTORY_PATHS=0). Current-round evidence is kept in the core by construction: the clean-room logs
+# and source manifest of r53 do not match the patterns below.  s62 (GATE32 P0): the assembler also renders
+# r49 to the round of the clean-room run whose log it ships for the current source (r49 when a later round
+# reuses r49's cold room for an unchanged Lean source); that log is evidence of the current source, whatever its
+# round number, and stays in the core under its original name.
+#
+# Round- or session-numbered certificates from earlier rounds (the current round's fresh_build and source manifest
+# are excluded from the pattern by the r53 lookahead).
+^certificates/FinalAxiomReport_s[0-9]+_.*$
+^certificates/GATE5_CHECKLIST_s[0-9]+\.md$
+^certificates/PROMOTION_MANIFEST_s[0-9]+\.txt$
+^certificates/ROOT_FROZEN_RECONCILIATION_s[0-9]+\.md$
+^certificates/audit_dc_.*$
+^certificates/binder_ledger_s[0-9]+\.log$
+^certificates/blind_verify_clean.*$
+^certificates/defchar_s[0-9]+_.*$
+^certificates/final_axioms_fresh_r[0-9]+\.log$
+^certificates/freeze_check_r[0-9]+\.log$
+^certificates/fresh_build_(?!(r53|r49)[_.]).*$
+^certificates/gate5_(crosswalk|verify)_s[0-9]+\.tsv$
+^certificates/homework_.*$
+^certificates/hypothesis_(binder|occurrence)_ledger_(r|s)[0-9]+.*$
+^certificates/source_manifest_(?!r53\.)r[0-9]+\.sha256$
+^certificates/statement_diff_(fresh|negctrl|unicode|s[0-9]+).*$
+# Probe scripts and simulated reviews from the development
+^lean/scripts/probe_s[0-9]+[a-z]?\.lean$
+^mathematics/(RED_TEAM|REFEREE_SIMULATION)_r[0-9]+\.md$
+^structural_theory/GATE[0-9]_.*\.md$
+# Superseded novelty-gate passes (the standing rules NOVELTY_CLAIMS_ALLOWED/FORBIDDEN and the FINAL crosswalk stay)
+^literature/NOVELTY_(FINAL_GATE|PASS)_s[0-9]+\.md$
+^literature/NOVELTY_GATE_V[0-9]+\.md$

@@ -1,0 +1,35 @@
+T1_gap_criterion PASS checks=47516 mismatch=0
+T1_planted_nonstrict PASS caught=553
+T2_full_residue PASS checks=861 mismatch=0
+T2_planted_drop_odd PASS caught=15
+T3_examples PASS k3m3R3 yes; k3m4 none(R0<40); k5m2R8 yes; k=1 -> R0=0 only; even k none(m=1,R0<60)
+T3_planted PASS k3m4R0=4 rejected
+T4_rank3_outputs PASS inputs=61 bad=0
+T4_rank3_a0_four PASS a0=[(0, -1, 0), (0, 0, -1), (0, 0, 1), (0, 1, 0)]
+T4_planted_card_solutions_eq1 PASS witness-count criterion rejects a=0 wrongly
+T4_translation PASS
+T4_planted_translation PASS
+T4_pd_rank3 PASS
+T4_centre_residual PASS
+T5_totality_box PASS inputs=2401 miss=0
+T5_planted_7mod8 PASS 7+8S never a sum of three squares
+T5_a0_outputs PASS
+T5_rank_obstruction PASS rank(8M^2 I4)=4 > rank(L^T L)<=3
+T6_D4_example PASS unique sol b=a; 2c nonintegral; diag(-1,1,1) integral; planted diag(1,-1,1) nonintegral
+T7_HC_finite PASS trials=150 mismatch=0 positives=n/a
+T7_planted_residue1 PASS caught=56
+T8_CR_transport PASS P(a+Mt,z+Gt)=P(a,z), G integral, no PD assumed
+T8_planted_halfM PASS caught=199
+T9_coercivity PASS 60 PD matrices x 40 vectors, exact
+T9_planted_diag PASS 1/A_ii bound fails at (2,1): 4 > 1
+T9_sheared_ratio PASS note §4.3: Q(2,1)=1 and min ratio 1/5
+T10_brahmagupta PASS
+T10_planted_sign PASS
+T11_recipe PASS h=-x1 - 3*x2/2
+T11_planted_nonsquare PASS x1^2+x2^2 not square at (1,1)
+T12_s_nonneg_droppable PASS no violation with s<0 (B,K>=0)
+T12_B_K_needed PASS counterexamples B<0:1001 K<0:7498
+T12_planted_drop_K_from_bound PASS s<=B alone fails 1803 times
+LEG1_TESTS=32 LEG1_FAIL=0
+LEG1_DONE
+LEG1_EXIT=0

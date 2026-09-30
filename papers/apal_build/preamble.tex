@@ -1,0 +1,78 @@
+\usepackage{fontspec}
+\usepackage{unicode-math}
+%% s35 (Gate-9 G05).  These were the family names STIX Two Text / STIX Two Math / Menlo, resolved
+%% through the operating system's font database; none of the three is in the TeX tree, so a clean
+%% Linux build of the archive stopped.  The same faces are now taken from the TeX distribution
+%% (stix2-otf) and named by FILE, so kpathsea resolves them and the operating system is not asked.
+\setmainfont{STIXTwoText-Regular.otf}[
+  BoldFont       = STIXTwoText-Bold.otf,
+  ItalicFont     = STIXTwoText-Italic.otf,
+  BoldItalicFont = STIXTwoText-BoldItalic.otf]
+\setmathfont{STIXTwoMath-Regular.otf}
+%% Latin Modern Mono was tried first and missed 69 glyphs over twelve characters, all inside
+%% \texttt{}: the subscripts and Greek letters of Lean identifiers.  DejaVu Sans Mono ships with
+%% TeX Live and covers all twelve, checked in the font's cmap before this line was written.
+\setmonofont{DejaVuSansMono.ttf}[
+  BoldFont   = DejaVuSansMono-Bold.ttf,
+  ItalicFont = DejaVuSansMono-Oblique.ttf,
+  Scale      = 0.80]
+\usepackage[margin=1in]{geometry}
+\usepackage{lineno}
+\linenumbers
+\modulolinenumbers[1]
+\usepackage{longtable,booktabs,array}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parskip}{0.4\baselineskip}
+\setlength{\parindent}{0pt}
+\sloppy
+\raggedbottom
+\emergencystretch=3em
+
+%% The 39 characters that occur in RUNNING TEXT and are absent from the text
+%% font. Each is made active and routed to the math font. The list was
+%% generated from the "Missing character" lines of a previous run, not guessed;
+%% the build gate below requires that list to come back empty.
+\makeatletter
+\newcommand{\champmap}[2]{\catcode`#1=\active \begingroup\lccode`~=`#1
+  \lowercase{\endgroup\def~}{\ensuremath{#2}}}
+\makeatother
+\champmap{∈}{\in}
+\champmap{∉}{\notin}
+\champmap{≤}{\leq}
+\champmap{≥}{\geq}
+\champmap{≠}{\neq}
+\champmap{≡}{\equiv}
+\champmap{∣}{\mid}
+\champmap{∤}{\nmid}
+\champmap{→}{\to}
+\champmap{↦}{\mapsto}
+\champmap{⇒}{\Rightarrow}
+\champmap{⇐}{\Leftarrow}
+\champmap{⟹}{\Longrightarrow}
+\champmap{⟺}{\Longleftrightarrow}
+\champmap{∎}{\blacksquare}
+\champmap{∃}{\exists}
+\champmap{∀}{\forall}
+\champmap{⊆}{\subseteq}
+\champmap{⊊}{\subsetneq}
+\champmap{∞}{\infty}
+\champmap{√}{\surd}
+\champmap{∧}{\wedge}
+\champmap{∨}{\vee}
+\champmap{∩}{\cap}
+\champmap{⊕}{\oplus}
+\champmap{∅}{\emptyset}
+\champmap{∘}{\circ}
+\champmap{ℓ}{\ell}
+\champmap{⟨}{\langle}
+\champmap{⟩}{\rangle}
+\champmap{𝒫}{\mathcal{P}}
+\champmap{ᵀ}{^{\mathsf{T}}}
+\champmap{ᵏ}{^{k}}
+\champmap{ᵐ}{^{m}}
+\champmap{ᵢ}{_{i}}
+\champmap{ⱼ}{_{j}}
+\champmap{ₖ}{_{k}}
+\champmap{⋯}{\cdots}
+\champmap{ᵖ}{^{p}}      % added s31: the glyph gate caught this one in the proof of Theorem 3.4   % added s31: the glyph gate caught this one on a new Appendix F proof

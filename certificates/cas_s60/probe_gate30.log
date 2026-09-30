@@ -1,0 +1,122 @@
+@@SEP@@ TCER def
+def DiophCompression.ResearchUpgrade.TCERBridge.TernaryCosetEventualRepresentation : Prop :=
+∀ (S : Matrix (Fin 3) (Fin 3) ℤ) (d : ℕ) (ρ : Fin 3 → ℤ),
+  S.IsSymm →
+    (∀ (y : Fin 3 → ℤ), y ≠ 0 → 0 < TCERBridge.QS S y) →
+      0 < d →
+        ∃ bad E,
+          (∀ p ∈ bad, Nat.Prime p) ∧
+            (∀ e ∈ E, 0 < e) ∧
+              ∀ (b : ℕ → ℕ),
+                ∃ N₀,
+                  ∀ (N : ℤ),
+                    N₀ ≤ N →
+                      TCERBridge.LocalPrimRep S d ρ N →
+                        (∀ p ∈ bad, ¬↑p ^ (b p + 1) ∣ N) →
+                          (∀ e ∈ E, ¬∃ q, ↑N = ↑e * q ^ 2) → ∃ x, TCERBridge.QS S (ρ + ↑d • x) = N
+@@SEP@@ rn_two_roots
+@rn_two_roots : ∀ {n : ℕ} {F : (Fin n → ℤ) → ℤ} (a : ℤ) (β : Fin n → ℤ) (d : ℤ) (E : Matrix (Fin n) (Fin n) ℤ)
+  (φ : Fin n → ℤ) (g : ℤ),
+  a ≠ 0 →
+    (∀ (x : Fin n → ℤ) (y : ℤ), Rn a β d E φ g x y ↔ y = F x) →
+      ∃ ℓ s,
+        ∀ (x : Fin n → ℤ) (y : ℤ),
+          Rn a β d E φ g x y ↔ 2 * a * y = -(β ⬝ᵥ x + d) + (ℓ ⬝ᵥ x + s) ∨ 2 * a * y = -(β ⬝ᵥ x + d) - (ℓ ⬝ᵥ x + s)
+@@SEP@@ rn_classify
+@rn_classify : ∀ {n : ℕ} {F : (Fin n → ℤ) → ℤ} (a : ℤ) (β : Fin n → ℤ) (d : ℤ) (E : Matrix (Fin n) (Fin n) ℤ)
+  (φ : Fin n → ℤ) (g : ℤ),
+  (∀ (x : Fin n → ℤ) (y : ℤ), Rn a β d E φ g x y ↔ y = F x) → GlobalQuadratic F ∨ ParityAffineNF F
+@@SEP@@ scalar_commonSlope_or_rn_of_TCER
+scalar_commonSlope_or_rn_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n r : ℕ) (D : QuadraticGraphData n 1 r) (f : (Fin n → ℤ) → Fin 1 → ℤ),
+    D.Defines f → CommonSlopeIntNF f ∨ ∃ a β d E φ g, ∀ (x : Fin n → ℤ) (y : ℤ), Rn a β d E φ g x y ↔ y = scalarOut f x
+@@SEP@@ scalar_singleQuadratic_iff_of_TCER
+scalar_singleQuadratic_iff_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n : ℕ) (f : (Fin n → ℤ) → Fin 1 → ℤ),
+    DiophCompression.SingleQuadraticDefinableFunctionZZ f ↔
+      CommonSlopeIntNF f ∨ GlobalQuadratic (scalarOut f) ∨ ParityAffineNF (scalarOut f)
+@@SEP@@ singleQuadratic_iff_commonSlope_of_TCER_of_ne_one
+singleQuadratic_iff_commonSlope_of_TCER_of_ne_one : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ),
+    m ≠ 1 → (DiophCompression.SingleQuadraticDefinableFunctionZZ f ↔ CommonSlopeIntNF f)
+@@SEP@@ commonSlopeIntNF_of_zero_outputs
+@commonSlopeIntNF_of_zero_outputs : ∀ {n : ℕ} (f : (Fin n → ℤ) → Fin 0 → ℤ), CommonSlopeIntNF f
+@@SEP@@ zeroWitness_of_globalQuadratic
+@zeroWitness_of_globalQuadratic : ∀ {n : ℕ} {f : (Fin n → ℤ) → Fin 1 → ℤ},
+  GlobalQuadratic (scalarOut f) →
+    ∃ P,
+      P.totalDegree ≤ 2 ∧
+        ∀ (a : Fin n → ℤ) (b : Fin 1 → ℤ), b = f a ↔ (MvPolynomial.eval (Sum.elim (pairVec a b) 0)) P = 0
+@@SEP@@ zeroWitness_of_parityAffine
+@zeroWitness_of_parityAffine : ∀ {n : ℕ} {f : (Fin n → ℤ) → Fin 1 → ℤ},
+  ParityAffineNF (scalarOut f) →
+    ∃ P,
+      P.totalDegree ≤ 2 ∧
+        ∀ (a : Fin n → ℤ) (b : Fin 1 → ℤ), b = f a ↔ (MvPolynomial.eval (Sum.elim (pairVec a b) 0)) P = 0
+@@SEP@@ singleQuadratic_of_scalarFamilies
+@singleQuadratic_of_scalarFamilies : ∀ {n : ℕ} {f : (Fin n → ℤ) → Fin 1 → ℤ},
+  CommonSlopeIntNF f ∨ GlobalQuadratic (scalarOut f) ∨ ParityAffineNF (scalarOut f) →
+    DiophCompression.SingleQuadraticDefinableFunctionZZ f
+@@SEP@@ sealed_scalarFamilies_of_TCER
+sealed_scalarFamilies_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n : ℕ) (f : (Fin n → ℤ) → Fin 1 → ℤ),
+    DiophCompression.SingleQuadraticDefinableFunctionZZ f →
+      CommonSlopeIntNF f ∨ GlobalQuadratic (scalarOut f) ∨ ParityAffineNF (scalarOut f)
+@@SEP@@ commonSlope_of_TCER_of_two_le_polarRank
+commonSlope_of_TCER_of_two_le_polarRank : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m r : ℕ) (D : QuadraticGraphData n m r) (f : (Fin n → ℤ) → Fin m → ℤ),
+    0 < m → (∃ v, D.zQuad v ≠ 0) → 2 ≤ D.polarRank → D.Defines f → CommonSlopeIntNF f
+@@SEP@@ singleQuadratic_padZero_iff_of_TCER
+singleQuadratic_padZero_iff_of_TCER : TCERBridge.TernaryCosetEventualRepresentation →
+  ∀ (n m : ℕ) (f : (Fin n → ℤ) → Fin m → ℤ),
+    DiophCompression.SingleQuadraticDefinableFunctionZZ (padZero f) ↔ CommonSlopeIntNF f
+@@SEP@@ commonSlope_comp
+@commonSlope_comp : ∀ {n m k : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ} {g : (Fin m → ℤ) → Fin k → ℤ},
+  CommonSlopeIntNF f → CommonSlopeIntNF g → CommonSlopeIntNF (g ∘ f)
+@@SEP@@ commonSlope_posDef_presentation
+@commonSlope_posDef_presentation : ∀ {n m : ℕ} {f : (Fin n → ℤ) → Fin m → ℤ},
+  CommonSlopeIntNF f →
+    ∃ M B β,
+      1 ≤ M ∧
+        (∀ (a : Fin n → ℤ) (b : Fin m → ℤ),
+            b = f a ↔ ∃ u e, (MvPolynomial.eval (Sum.elim (pairVec a b) (Sum.elim u e))) (slopeEncoder M B β) = 0) ∧
+          (∀ (a : Fin n → ℤ) (b : Fin m → ℤ) (u u' : Fin n → ℤ) (e e' : (Fin n → Fin M) → ℤ),
+              (MvPolynomial.eval (Sum.elim (pairVec a b) (Sum.elim u e))) (slopeEncoder M B β) = 0 →
+                (MvPolynomial.eval (Sum.elim (pairVec a b) (Sum.elim u' e'))) (slopeEncoder M B β) = 0 →
+                  u = u' ∧ e = e') ∧
+            ∀ (b : Fin m → ℚ) (u : Fin n → ℚ) (e : (Fin n → Fin M) → ℚ),
+              slopeUnknownQuad M B β b u e = 0 → b = 0 ∧ u = 0 ∧ e = 0
+@@SEP@@ CommonSlopeIntNF
+def DiophCompression.ResearchUpgrade.CommonSlopeIntNF : {n m : ℕ} → ((Fin n → ℤ) → Fin m → ℤ) → Prop :=
+fun {n m} f => ∃ M B, 1 ≤ M ∧ ∀ (a t : Fin n → ℤ), f (a + ↑M • t) = f a + B.mulVec t
+@@SEP@@ GlobalQuadratic
+def DiophCompression.ResearchUpgrade.GlobalQuadratic : {n : ℕ} → ((Fin n → ℤ) → ℤ) → Prop :=
+fun {n} f => ∃ q, ∀ (x : Fin n → ℤ), ↑(f x) = q.eval (castQ x)
+@@SEP@@ ParityAffineNF
+def DiophCompression.ResearchUpgrade.ParityAffineNF : {n : ℕ} → ((Fin n → ℤ) → ℤ) → Prop :=
+fun {n} F =>
+  ∃ p q c c',
+    (∀ (i : Fin n), 2 ∣ p i - q i) ∧
+      (∃ i, ¬2 ∣ p i) ∧
+        ¬2 ∣ c - c' ∧
+          ∀ (x : Fin n → ℤ), (2 ∣ p ⬝ᵥ x + c → 2 * F x = p ⬝ᵥ x + c) ∧ (¬2 ∣ p ⬝ᵥ x + c → 2 * F x = q ⬝ᵥ x + c')
+@@SEP@@ Rn
+def DiophCompression.ResearchUpgrade.Rn : {n : ℕ} →
+  ℤ → (Fin n → ℤ) → ℤ → Matrix (Fin n) (Fin n) ℤ → (Fin n → ℤ) → ℤ → (Fin n → ℤ) → ℤ → Prop :=
+fun {n} a β d E φ g x y => Pn a β d E φ g x y = 0
+@@SEP@@ sameParity_not_function
+sameParity_not_function : ¬∃ F, ∀ (x y : ℤ), (2 * y - x) * (2 * y - x - 2) = 0 ↔ y = F x
+@@SEP@@ modThree_not_total
+modThree_not_total : ¬∀ (x : ℤ), ∃ y, (3 * y - x) * (3 * y - x + 1) = 0
+@@SEP@@ parityFn_parityAffine
+parityFn_parityAffine : ParityAffineNF (scalarOut parityFn)
+@@SEP@@ affine_eq_of_eq_on_coset
+@affine_eq_of_eq_on_coset : ∀ {n : ℕ} {k : ℤ},
+  k ≠ 0 →
+    ∀ {w w' : Fin n → ℤ} {e e' : ℤ} (x₀ : Fin n → ℤ),
+      (∀ (t : Fin n → ℤ), w ⬝ᵥ (x₀ + k • t) + e = w' ⬝ᵥ (x₀ + k • t) + e') → w = w' ∧ e = e'
+@@SEP@@ PLANT_1 (must fail)
+/Users/hiroki/lean/s60_evidence/probe/probe_gate30.lean:52:8: error(lean.unknownIdentifier): Unknown identifier `rn_two_roots_PLANTED_s60`
+@@SEP@@ PLANT_2 (must fail)
+/Users/hiroki/lean/s60_evidence/probe/probe_gate30.lean:54:8: error(lean.unknownIdentifier): Unknown identifier `zeroWitness_of_commonSlope`
+EXIT=1

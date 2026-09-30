@@ -1,0 +1,18 @@
+MATCH singleQuadratic_iff_exists_witnesses
+MATCH graphData_of_witnesses
+MATCH scalar_rn_of_polarRank_le_one
+MATCH zeroWitness_iff
+MATCH existsUnique_of_uniqueWitness
+MATCH uniqueWitness_of_commonSlope
+MATCH uniqueWitness_of_zeroWitness
+MATCH singleQuadratic_iff_uniqueWitness_of_TCER
+MATCH floorThird_oneWitness
+MATCH floorThirdPoly_two_witnesses
+MATCH floorThird_not_zeroWitness
+MATCH floorThird_min_witnesses
+MATCH SingleQuadraticWithWitnessesZZ
+MATCH UniqueWitnessSingleQuadraticZZ
+MATCH floorThird
+MATCH floorThirdPoly
+LEAN_EXIT=0 ERRORS=0 THEOREMS=12 DEFS=4 MISMATCH=0
+EXIT=0

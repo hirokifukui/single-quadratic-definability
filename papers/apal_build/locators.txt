@@ -1,0 +1,15 @@
+# Artifact locators substituted into the manuscript at build time.
+# UNSET is legal in a DRAFT build and fatal in a FINAL build. Do not invent an identifier here:
+# a fabricated DOI in a PDF is worse than a visible statement that none has been assigned yet.
+DOI=https://doi.org/10.5281/zenodo.23053094
+REPO=https://github.com/hirokifukui/single-quadratic-definability
+# Fixed build epoch (s35, Gate-9 build-portability homework 11 and 12).  Two rebuilds of identical
+# bytes used to produce different PDFs, because xelatex derives the document /ID from the clock.
+# Measured: with SOURCE_DATE_EPOCH and FORCE_SOURCE_DATE set, two builds are byte-identical; without
+# them the /ID differs and nothing else does.  The value is the r33 build date 2026-09-05T00:00:00Z (s37: the r30 value 1757001600
+# resolved to 2025-09-04, a year before the release -- Gate-11 N18).  The epoch is
+# a property of the round rather than of the machine that happens to build it.
+SOURCE_DATE_EPOCH=1788566400
+
+# author e-mail printed under the title; UNSET is legal in DRAFT, fatal in FINAL (s36, N01)
+EMAIL=fukui@somec.org

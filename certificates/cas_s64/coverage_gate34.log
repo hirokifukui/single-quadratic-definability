@@ -1,0 +1,12 @@
+ROWS 74 MULTI_ROOT_CELLS 0 UNIQUE 72 IN_FAR 50 MISSING_FAR 22 IN_PCTR 72
+FAR_ROOTS_TOTAL 421 PCTR_ROWS 452
+GPT_JSON 74 72 50 22 0
+MISSING_LIST_EQUAL_GPT True
+PCTR_REGISTERED_FOOTPRINTS_SUBSET_STD3 72 / 72 []
+PCTR_FOOTPRINT_VALUES ['propext', 'propext,Classical.choice,Quot.sound']
+PCTR_ALL_ROWS_SUBSET_STD3 452 / 452
+FAR_FOOTPRINTS_SUBSET_STD3 417 / 417 NO_DEP 4
+EXAMPLE sealedFullNF_of_TCER in_FAR False in_PCTR True propext,Classical.choice,Quot.sound
+EXAMPLE scalar_singleQuadratic_iff_of_TCER in_FAR False in_PCTR True propext,Classical.choice,Quot.sound
+EXAMPLE floorThird_min_witnesses in_FAR False in_PCTR True propext,Classical.choice,Quot.sound
+PLANT CAUGHT

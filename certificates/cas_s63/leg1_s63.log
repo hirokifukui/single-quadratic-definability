@@ -1,0 +1,25 @@
+PASS N1 (3b-a+1)^2+u^2=1: b=floor(a/3) only; u-set {+-1} iff a=1 mod 3 else {0}; a in [-300,300] (finite)
+PASS N1b triples scanned = 21035 (GPT's count: 601 inputs x 7 b x 5 u)
+PASS N1c a=1,b=0: u=+1 and u=-1 both solve (two witnesses)
+PASS N1d total degree 2
+PASS N2 |3b-a+1|<=1 <=> a-2<=3b<=a (grid a in [-40,40], b in [-20,20])
+PASS N2b a-2<=3b<=a has exactly one integer b, = floor(a/3), a in [-300,300]
+PASS N3 residue r=0,1,2 -> u=0,1,0 solves with b=q
+PASS N4 rational quadratic with q(0)=q(1)=q(2)=0 is identically 0; q(3)=0 != 1
+PASS N5a (p(x+6)+c) - (p x + c) = 6p  (so 2(f(x+6)-f(x)) = 6p on the same class)
+PASS N5b x and x+6 give the same parity of p x + c (difference 6p = 2*3p)
+PASS N5c p odd: exactly one of x=0,1 has p x + c even (all odd p in [-21,21], c in [-10,10])
+PASS N5d 2(floor((x+6)/3)-floor(x/3)) = 4 on [-300,300]
+PASS N5e 6p = 4 has no integer solution
+PASS N6 affine L(x,y)=s+l1 x+l2 y with coeffs in (1/6)Z: integer on Z^2 grid <=> s,l1,l2 integers (finite)
+PASS N7 floor((a+3t)/3) = floor(a/3)+t, a in [-60,60], t in [-10,10]
+PASS N8a (6b-3a)(6b+9a-3) == 9(2b-a)(2b+3a-1)
+PASS N8b (2b-2a)^2 = 0 iff b = a (repeated root)
+PLANT_CAUGHT PLANT1 (3b-a)^2+u^2=1 (no +1) claimed to define floor(a/3) on [-12,12]
+PLANT_CAUGHT PLANT2 a=1 mod 3 claimed to have witness set {0}
+PLANT_CAUGHT PLANT3 6p = 4 claimed solvable in integers
+PLANT_CAUGHT PLANT4 quadratic through (0,0),(1,0),(2,0),(3,1) claimed
+PLANT_CAUGHT PLANT5 triple count claimed 21036
+PLANT_CAUGHT PLANT6 L=(x+1)/2 claimed integer-valued on Z
+LEG1_SYMPY checks 17/17 PASS; plants caught 6/6; sympy 1.14.0
+LEG1_EXIT= 0

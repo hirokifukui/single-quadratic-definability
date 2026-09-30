@@ -1,0 +1,16 @@
+BLOCK core correspondence/LETTER_GATE32.md lines 19 mismatch 0
+BLOCK core correspondence/LETTER_GATE32.md lines 35 mismatch 0
+BLOCK core correspondence/GATE32_CHECKLIST.md lines 17 mismatch 0
+BLOCK core certificates/CLEANROOM_REFERENCE.txt lines 12 mismatch 0
+BLOCK core release/README_BUILD_APAL.md lines 54 mismatch 0
+BLOCK core release/README_BUILD_APAL.md lines 39 mismatch 0
+BLOCK core lean/lakefile.lean lines 20 mismatch 0
+BLOCK core lean/fresh_build.sh lines 19 mismatch 0
+BLOCK core lean/scripts/HypothesisBinderLedger.lean lines 12 mismatch 0
+BLOCK core lean/scripts/PaperClaimTypeReport.lean lines 5 mismatch 0
+BLOCK core certificates/fresh_build_r49.log lines 20 mismatch 0
+BLOCK core tools/public_core_release.py lines 47 mismatch 0
+BLOCK core tools/public_core_controls.py lines 29 mismatch 0
+BLOCK core release/SEAL_WHAT_IS_OPEN.md lines 12 mismatch 0
+BLOCK core papers/apal_build/locators.txt lines 15 mismatch 0
+EXCERPT_BLOCKS=15 LINES=355 MISMATCH=0 NOT_FOUND=0 PLANT=off

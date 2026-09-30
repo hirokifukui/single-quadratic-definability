@@ -1,0 +1,12 @@
+# CLEANROOM_REFERENCE - the clean-room record of the Lean source shipped in this package (written by the assembler).
+# The log is kept byte for byte under its original name.  A round that does not change the Lean source reuses the
+# earlier run's log and does not re-date it.  Checked by tools/public_core_release.py --verify (evidence consistency
+# only: the check does not run Lean).
+original_name=certificates/fresh_build_r49.log
+build_round=r49
+shipped_in_round=r53
+environment=agora
+new_build_performed_for_round=no
+log_sha256=9ed741407611c68f187b475d3cbc48b0f6b62a2a06a8ef83376f3cd195307ff9
+source_manifest=certificates/source_manifest_r53.sha256
+source_manifest_sha256=db56ee4d1708c2e348f9412c282a093b22b5302b97b992fae3b03ad6ec1c2e7b

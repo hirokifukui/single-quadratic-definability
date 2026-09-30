@@ -1,0 +1,16 @@
+=== 5. the division identity ===
+    p^2 q - (quotient*h + bracket) = 0
+[PASS] 5a the identity is exact as polynomials in t (coefficients in p,A,h0,q1,q0)
+[PASS] 5b the bracket is free of t
+[PASS] 5c the quotient is affine in t
+[PASS] 5d no integer datum with bracket != 0 divides for every t (|t|<=60)  -- bracket==0 and divides-all cases seen: 5
+[PASS] 5e with bracket = 0 and h | q at every t, f = -quotient/p^2 equals -q/h  -- 560 qualifying integer instances, mismatches: []
+=== 6. the witness-collision vector ===
+[PASS] 6a L(z0 + e) = L(z0) for e = d_k e_{b_j} - c_j e_{u_k}  -- counterexamples: []
+[PASS] 6b the output coordinate j moves by exactly d_k (nonzero when d_k != 0)  -- b2[j] - z0b[j] = d_k by construction, checked in 6a's second clause
+=== 7. the growth bound ===
+[PASS] 7a R(a) <= C_R (1 + ||a||_inf)^2 with C_R = sum of |coefficients|  -- C_R = 29, samples 81x81
+[PASS] 7b hence sqrt(R(a)) <= sqrt(C_R) (1 + ||a||_inf): a LINEAR UPPER BOUND, not the false identity 'the square root of a quadratic is linear'
+=== SUMMARY ===
+CHECKS=9 PASS=9 FAIL=0
+REDERIVE_GATE23_NOTE_REPAIR_S52 DONE

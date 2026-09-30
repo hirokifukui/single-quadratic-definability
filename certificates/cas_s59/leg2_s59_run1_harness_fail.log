@@ -1,0 +1,30 @@
+PASS K1 N=4 ordinary local rep by 2Z^3 at p in {2,3,5} e<=3
+PASS K1 N=4 no primitive local rep by 2Z^3 at 2^e, e<=3
+PASS K1 4 = Q_I3(2,0,0)
+CAUGHT control K1 rho=(1,0,0),d=2,N=1 has no primitive rep mod 2^3
+PASS K2 symbolic-delta det (1,1,2) = 48
+PASS K2 symbolic-delta det (1,2,2) = 192
+PASS K2 symbolic-delta det (1,1,3) = 324
+PASS K2 symbolic-delta det (2,1,2) = 320
+PASS K2 symbolic-delta det (1,2,3) = 2916
+PASS K2 positive definite at random delta (1,2,2)
+PASS K2 positive definite at random delta (2,2,2)
+PASS K2 positive definite at random delta (1,1,4)
+CAUGHT control K2 det = 2^6*2
+PASS K3 n=1 den<=12 covers=1 all parity type
+PASS K3 n=2 den<=4 covers=3 all parity type
+FAIL K3 group lemma on Z/12xZ/4: covers=120, all H=K of index 2
+CAUGHT control K3 a disjoint 2-coset cover of Z/12xZ/4 with index 3 exists
+PASS K4 (2b-a)(2b+3a-1) total unique
+PASS K4 total degree of (2b-a)(2b+3a-1) is 2
+PASS K4 root is parityFn on [-70,70]
+CAUGHT control K4 same-parity numerators a, a+2 unique
+CAUGHT control K4 a/3,(a-1)/3 total
+PASS K4 a(a-1)/2 integer-valued, not in Z[x]
+PASS K5 composition identity 500 cases
+CAUGHT control K5 period M+N
+PASS K6 84
+PASS K6 81.25
+CAUGHT control K6 81
+LEG2_SUMMARY 20/21  CONTROLS_CAUGHT 7/7
+LEG2_EXIT=0

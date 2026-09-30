@@ -1,0 +1,22 @@
+PASS N1 N == 48601
+PASS N1 wrong1 norm = 48586
+PASS N1 wrong2 norm = 48557
+PASS N1 right1 norm = 48601
+PASS N1 right2 norm = 48601
+PASS N1 mod 5 first coords 1 and 0
+CAUGHT control N1 48586 == 48601
+PASS N2 dW=1 E^T G E == G
+PASS N2 dW=1 F^T G F == G
+PASS N2 dW=1 E(0)=F(0)=I
+Traceback (most recent call last):
+  File "/Users/hiroki/lean/s57_evidence/cas_s57/leg2_s57.sage.py", line 53, in <module>
+    cE1 = dE.derivative(tS).subs({tS:_sage_const_0 }); cE2 = dE.derivative(tS, _sage_const_2 ).subs({tS:_sage_const_0 }) / _sage_const_2
+          ~~~~~~~~~~~~~^^^^
+  File "sage/rings/polynomial/multi_polynomial.pyx", line 409, in sage.rings.polynomial.multi_polynomial.MPolynomial.derivative
+    return multi_derivative(self, args)
+  File "sage/misc/derivative.pyx", line 221, in sage.misc.derivative.multi_derivative
+    F = F._derivative(arg)
+  File "/var/tmp/sage-10.8-current/local/lib/python3.13/site-packages/sage/rings/polynomial/multi_polynomial_element.py", line 1951, in _derivative
+    d = {e: x._derivative(var)
+            ~~~~~~~~~~~~~^^^^^
+TypeError: Argument 'var' has incorrect type (expected sage.rings.polynomial.multi_polynomial_libsingular.MPolynomial_libsingular, got MPolynomial_polydict)

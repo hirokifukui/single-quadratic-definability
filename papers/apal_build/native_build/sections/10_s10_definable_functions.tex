@@ -1,0 +1,200 @@
+\section{Definable functions: normal forms and classification}\label{sec:10}
+This section classifies the SE₂-definable total functions. Say that $f : ℤ^{n} → ℤ^{m}$ has a \emph{common slope} if there are $M ≥ 1$ and an integer $m × n$ matrix $B$ with $f(a + Mt) = f(a) + Bt$ for all $a, t ∈ ℤ^{n}$. Under the analytic input $\mathrm{TCER}$ stated before \cref{proposition:10.7}, a function with two or more outputs is SE₂-definable exactly when it has a common slope (\cref{proposition:10.9}); with one output, exactly when it has a common slope, agrees with a rational polynomial of total degree at most two, or is of the parity-affine kind (\cref{proposition:10.14}); and $a ↦ (f(a), 0)$ is SE₂-definable exactly when $f$ has a common slope (\cref{proposition:10.15}). Every map to $ℤ^{0}$ has a common slope. The converse directions use no analytic input, and neither does the case without unknowns (\cref{proposition:10.16}). Under $\mathrm{TCER}$ every SE₂-definable function has a presentation whose unknowns are unique (\cref{proposition:10.17}), and $a ↦ ⌊a/3⌋$ needs exactly one unknown (\cref{proposition:10.18}). The section treats the normal forms first (\cref{proposition:10.1} to \cref{lemma:10.8}), then several outputs (\cref{proposition:10.9} to \cref{proposition:10.12}), one output (\cref{lemma:10.13} to \cref{proposition:10.15}) and the unknowns (\cref{proposition:10.16} to \cref{proposition:10.18}).
+
+\textbf{The weak vector coset normal form.} By \cref{theorem:4.2}, every single quadratic equation that defines a total function $f$ yields linear growth or a weak vector coset normal form. Whether the second alternative is always available --- every such $f$ has a weak vector coset normal form --- was left open in the first version of this work. The artifact now reduces it, together with its full-residue strengthening, to the semidefinite branch (\cref{proposition:10.1}, \cref{proposition:10.6}), settles that branch in low rank (\cref{proposition:10.2}), and settles the whole question conditionally on one explicit analytic input on ternary lattice cosets (\cref{proposition:10.7}). Nothing in Sections 1–9 uses the results of this section. Write the equation as $Q(z) + ℓ_{a}(z) + q(a) = 0$ with $z$ the outputs and the $r$ unknowns, and let $d$ be the rank of the polar form of $Q$ over ℚ.
+
+\begin{proposition}[\texttt{generalWeakNF\_\allowbreak{}iff\_\allowbreak{}definiteWeakNF}, \texttt{rankExcess\_\allowbreak{}compiler}, \texttt{definite\_\allowbreak{}reduction}; standard axioms]\label[proposition]{proposition:10.1}
+Every total function defined by a single quadratic equation over ℤ has a weak vector coset normal form if and only if this holds for the equations with at least one output whose form $Q$ is positive definite.
+\end{proposition}
+
+\begin{proof}
+Every branch of $Q$ other than the positive semidefinite one is either closed or carried to it by a change of sign (\texttt{generalWeakNF\_iff\_semidefiniteWeakNF}). For a nonzero positive semidefinite $Q$ with $m ≥ 1$ outputs one has $m ≤ d ≤ m + r$, and an integer change of the unknown coordinates alone, read off a Smith normal form of the saturated lattice of radical unknown vectors, removes $m + r - d$ unknowns without changing the inputs, the outputs or the graph. What remains has integer coefficients, total degree at most two, and a positive definite form of rank $d$ (\texttt{rankExcess\_compiler}, \texttt{definite\_reduction}).
+\end{proof}
+
+The number $d - m$ counts the unknowns of the compiled equation, not the least number with which the graph can be defined: $(b - a)^{2} + (u_{1} + u_{2})^{2} = 0$ has $d = 2$ and compiles to one unknown, while $b - a = 0$ defines the same graph with none (\texttt{sameGraph\_three\_witnessCounts}).
+
+\begin{proposition}[\texttt{lowRankSemidefiniteWeakNF\_\allowbreak{}holds}, \texttt{definiteWeakNF\_\allowbreak{}oneOut\_\allowbreak{}oneWit\_\allowbreak{}holds}; standard axioms]\label[proposition]{proposition:10.2}
+Let $f : ℤ^{n} → ℤ^{m}$, $m ≥ 1$, be defined by a single quadratic equation over ℤ whose form $Q$ is nonzero, semidefinite of either sign, and of polar rank at most two. Then $f$ has a weak vector coset normal form. In particular this holds for one output, one unknown and a positive definite form, for every $n$.
+\end{proposition}
+
+\begin{proof}
+After a change of sign and the compilation in the proof of \cref{proposition:10.1}, the form is positive definite in $d ≤ 2$ output-and-unknown coordinates. If $d = 1$ there is one output and no unknown, and the full vector coset normal form is known (\texttt{fullVectorCosetNF\_of\_defines}). Let $d = 2$. Completing the square gives $Q(z - c(a)) = R(a)$ with $c$ rational affine and $R$ rational of degree at most two, and $Q(w) = α\big((w_{1} + βw_{2})^{2} + Δw_{2}^{2}\big)$ with $α, Δ > 0$ (\texttt{binary\_compiler\_gen}). If $R$ vanishes at every integer input, every solution is the centre and $f$ is affine. Otherwise fix an integer input $a_{0}$ with $R(a_{0}) ≠ 0$ and an integer solution $z_{0}$ there; the off-centre vector $z_{0} - c(a_{0})$ gives a representation $R(a_{0})/α = r_{0}^{2} + Δ s_{0}^{2}$. Write $R(a_{0} + x)/α = r_{0}^{2} + Δs_{0}^{2} + 2ℓ(x) + H(x)$ with $ℓ$ linear and $H$ a quadratic form. Totality makes this a rational value of $X^{2} + ΔY^{2}$ at every integer $x$, so \cref{lemma:10.5} gives rational affine $r, s$ with $R(a_{0} + x)/α = r(x)^{2} + Δ s(x)^{2}$ identically and $(r(0), s(0)) = (r_{0}, s_{0})$. The resulting affine family of solutions passes through $z_{0}$ exactly; a common denominator $M$ of its coefficients makes it integral on $a_{0} + Mℤ^{n}$, and output-uniqueness identifies its output coordinates with $f$ there (\texttt{weakVectorCosetNF\_of\_binary}). No class-number argument and no uniqueness of the unknowns is used.
+\end{proof}
+
+The three lemmas used in the proof of \cref{proposition:10.2} follow.
+
+\begin{lemma}[\texttt{direction\_discriminant\_square}; standard axioms]\label[lemma]{lemma:10.3}
+Let $Δ > 0$, $A ≠ 0$, $B$, $C$ be rational. If $At^{2} + Bt + C$ is a value of $X^{2} + ΔY^{2}$ with rational $X, Y$ for every integer $t$, then $B^{2} - 4AC = -Δh^{2}$ for some rational $h$. Consequently, if $c + 2ℓ(x) + H(x)$, with $ℓ$ a rational linear form and $H$ a rational quadratic form on $ℚ^{n}$, is such a value at every $x ∈ ℤ^{n}$, then $\big(cH(v) - ℓ(v)^{2}\big)/Δ$ is the square of a rational number for every $v ∈ ℤ^{n}$.
+\end{lemma}
+
+\begin{proof}
+Replacing $Δ$ by an integer in its square class and multiplying the polynomial by a square, we may assume that $Δ, A, B, C$ are integers; neither step changes the hypothesis or the conclusion. Put $δ = B^{2} - 4AC$. If $δ = 0$ the conclusion holds with $h = 0$. Suppose $δ ≠ 0$ and $δ ≠ -Δh^{2}$ for every rational $h$. Then $-Δ$ and $-Δδ$ are not rational squares, so each is a quadratic non-residue on some unit residue class modulo a common period (\texttt{nonResidueClass\_holds}); by the multiplicativity of the Jacobi symbol one of the two classes or their product carries $(-Δ/\cdot) = -1$ and $(δ/\cdot) = +1$ (\texttt{characterSeparation\_holds}), and Dirichlet's theorem gives arbitrarily large primes $p$ in that class (\texttt{separating\_prime\_of\_residueWitness}). Take such a $p$ with $p ∤ 2AΔδ$. As $δ$ is a nonzero square modulo $p$, the polynomial $P(t) = At^{2} + Bt + C$ has a root $t_{0}$ modulo $p$ with $P'(t_{0}) ≢ 0$, and $P(t_{0} + p) ≡ P(t_{0}) + pP'(t_{0}) \pmod{p^{2}}$; so $p$ divides one of $P(t_{0})$, $P(t_{0} + p)$ exactly once. On the other hand a rational value $X^{2} + ΔY^{2}$ has even $p$-adic valuation: after removing the common power of $p$ from $X$ and $Y$, a relation $p ∣ X^{2} + ΔY^{2}$ with $X, Y$ not both divisible by $p$ would make $-Δ$ a square modulo $p$. This contradiction proves the first statement. For the second, restrict to the line $t ↦ tv$: the value is $c + 2ℓ(v)t + H(v)t^{2}$. If $H(v) ≠ 0$, the first statement gives $4ℓ(v)^{2} - 4cH(v) = -Δh^{2}$, that is $\big(cH(v) - ℓ(v)^{2}\big)/Δ = (h/2)^{2}$. If $H(v) = 0$, the same valuation argument applied to the linear polynomial $c + 2ℓ(v)t$ shows $ℓ(v) = 0$ (\texttt{not\_total\_of\_linear}), and the quantity is $0$.
+\end{proof}
+
+The one-variable statement is \texttt{rat\_discriminant\_of\_total'}; it is proved in the artifact but lies outside the frozen statement registry, so \cref{lemma:10.3} is registered under its direction-wise form.
+
+\begin{lemma}[\texttt{square\_values\_rigidity}; standard axioms]\label[lemma]{lemma:10.4}
+Let $T$ be a rational quadratic form on $ℚ^{n}$ such that $T(v)$ is the square of a rational number for every $v ∈ ℤ^{n}$. Then $T = h^{2}$ for a rational linear form $h$.
+\end{lemma}
+
+\begin{proof}
+Let $N ≥ 1$ clear the denominators of $T$ and put $A = N^{2}T$. The values of $A$ on $ℤ^{n}$ are integers and rational squares, hence squares of integers. If $A$ vanishes on $ℤ^{n}$ it vanishes on $ℚ^{n}$ by homogeneity, and $h = 0$. Otherwise fix $w ∈ ℤ^{n}$ with $A(w) = a^{2}$, $a > 0$, and let $B_{A}(x, y) = A(x + y) - A(x) - A(y)$. For $v ∈ ℤ^{n}$ the polynomial $p(t) = A(tw + v) = a^{2}t^{2} + B_{A}(w, v)t + A(v)$ is the square of an integer at every integer $t$. Let $y_{t} ≥ 0$ be its square root. For large $t$, $y_{t} - at = \big(B_{A}(w, v)t + A(v)\big)/(y_{t} + at)$ tends to $B_{A}(w, v)/(2a)$; an integer sequence with a limit is eventually constant, so $p(t) = (at + e)^{2}$ for some integer $e$ and infinitely many $t$, hence identically. Comparing coefficients, $A(v) = \big(B_{A}(w, v)/(2a)\big)^{2}$. Thus $h(x) = B_{A}(w, x)/(2aN)$ satisfies $T = h^{2}$ on $ℤ^{n}$, and on $ℚ^{n}$ by homogeneity.
+\end{proof}
+
+The formal proof reaches \cref{lemma:10.4} through the affine version \texttt{c21\_affine\_square}. It is the case of quadratic forms of a theorem of Kojima \cite{Koj15} (see also \cite{Sch00}, Theorem 52): an integer polynomial that is a square at every integer point is the square of a polynomial. It is also related to Hilbert-type irreducibility over $ℤ$ \cite{BDKN22}. The argument above is self-contained.
+
+\begin{lemma}[\texttt{norm\_section}; standard axioms]\label[lemma]{lemma:10.5}
+Let $Δ > 0$ and let $r_{0}, s_{0}$ be rational with $c = r_{0}^{2} + Δs_{0}^{2} > 0$. If $c + 2ℓ(x) + H(x)$ is a value of $X^{2} + ΔY^{2}$ at every $x ∈ ℤ^{n}$, there are rational affine functions $r, s$ on $ℚ^{n}$ with $(r(0), s(0)) = (r_{0}, s_{0})$ and $c + 2ℓ(x) + H(x) = r(x)^{2} + Δ s(x)^{2}$ for every $x ∈ ℚ^{n}$.
+\end{lemma}
+
+\begin{proof}
+By \cref{lemma:10.3} and \cref{lemma:10.4}, $(cH - ℓ^{2})/Δ = k^{2}$ for a rational linear form $k$. Put $u = c + ℓ$. Then $u^{2} + Δk^{2} = c(c + 2ℓ + H)$. Solve $r_{0}r + Δs_{0}s = u$, $r_{0}s - s_{0}r = k$, whose determinant is $c ≠ 0$: $r = (r_{0}u - Δs_{0}k)/c$ and $s = (s_{0}u + r_{0}k)/c$ are rational affine. Brahmagupta's identity $(r_{0}^{2} + Δs_{0}^{2})(r^{2} + Δs^{2}) = (r_{0}r + Δs_{0}s)^{2} + Δ(r_{0}s - s_{0}r)^{2}$ gives $c(r^{2} + Δs^{2}) = u^{2} + Δk^{2} = c(c + 2ℓ + H)$. At $x = 0$, $u = c$ and $k = 0$, so $(r(0), s(0)) = (r_{0}, s_{0})$.
+\end{proof}
+
+\textbf{The full-residue form.} A \emph{full} vector coset normal form of $f$ is one modulus $M ≥ 1$ together with, on every residue class modulo $M$, a vector quadratic polynomial that agrees with $f$ on that class (\texttt{FullVectorCosetNF}). Write $\mathrm{polar}(x, y) = Q(x + y) - Q(x) - Q(y)$.
+
+\begin{proposition}[\texttt{generalFullNF\_\allowbreak{}iff\_\allowbreak{}semidefiniteFullNF}, \texttt{isotropicBranchFullNF\_\allowbreak{}holds}; standard axioms]\label[proposition]{proposition:10.6}
+Every total function defined by a single quadratic equation over ℤ has a full vector coset normal form if and only if this holds for the equations with at least one output whose form $Q$ is nonzero and semidefinite of either sign.
+\end{proposition}
+
+\begin{proof}
+Use the case split of \cref{theorem:4.2} (\texttt{branch\_exhaustive}). If $Q ≡ 0$, the scalar relation behind the weak form already carries the full-residue form of the case without unknowns (\texttt{linearBranchFullNF\_holds}). In the quotient-anisotropic indefinite case every off-centre vector of a solution lies in the radical, and $f$ is globally affine (\texttt{anisotropicIndefiniteFullNF\_holds}). Let $Q$ have a non-radical isotropic vector. If $d ≥ 3$, the Eichler transformations $x ↦ x + \mathrm{polar}(x, e)v - \big(\mathrm{polar}(x, v) + Q(v)\,\mathrm{polar}(x, e)\big)e$, with $e$ isotropic and $\mathrm{polar}(e, v) = 0$, preserve $Q$. Through an integer solution they return to the integer lattice at two parameters $±M$, and output uniqueness at these two points forces every output coordinate to vanish on the polar complement of two isotropic vectors that are not polar-orthogonal to each other. This is impossible, so every off-centre vector is radical and $f$ is again globally affine (\texttt{isotropicBranchFullNF\_of\_three\_le\_polarRank}). If $d ≤ 2$, then $Q = XY$ in rational coordinates modulo the radical. If the residual $R$ were not constant, a quadratic section of the solution set along an input line and the scaling $(X, Y) ↦ (λX, Y/λ)$ would give two integer solutions at one input with different outputs. The factor $λ ∉ \{0, 1\}$ must be congruent to $1$ modulo the denominators of the section and divide its values on a progression; it is $λ = F(k_{0})/F(k_{1})$ for $k_{0} = k_{1} + K F(k_{1}) s$, since $F(k_{0}) = F(k_{1})\,μ(s)$ with $μ(s) ≡ 1 \pmod{K}$ (\texttt{exists\_scaling\_divisor}). So $R$ is constant, and a constant residual gives the full form with a common slope (\texttt{isotropicBranchFullNF\_of\_polarRank\_le\_two}).
+\end{proof}
+
+Neither case can be merged into the other: $b(2u + 1) = 0$ is output-unique of polar rank two with an off-radical integer solution, and $(4b + 1)(4u + 1) = 1$ has constant residual $1$, not $0$ (\texttt{rank\_hypothesis\_needed}, \texttt{residual\_zero\_not\_forced}).
+
+For the semidefinite branch in polar rank at least three we use one analytic input. Call $\mathrm{TCER}$ the following statement (\texttt{TernaryCosetEventualRepresentation}): for every positive definite integral ternary form $y ↦ y^{\top}Sy$ and every coset $ρ + dℤ^{3}$ there are finitely many primes and finitely many positive integers $e$ such that, for every bound on the valuations at those primes, every sufficiently large integer that is primitively represented by the coset modulo every prime power, has the bounded valuations, and is not $e$ times a rational square for any of the $e$, is represented by the coset.
+
+\begin{proposition}[\texttt{sealedFullNF\_\allowbreak{}of\_\allowbreak{}TCER}, \texttt{generalFullNF\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.7}
+Assume $\mathrm{TCER}$. Then every total function defined by a single quadratic equation over ℤ, with any finite number of unknowns, has a full vector coset normal form, and in particular a weak vector coset normal form.
+\end{proposition}
+
+\begin{proof}
+By \cref{proposition:10.6} it suffices to treat a nonzero semidefinite form. Polar rank at most two is settled without $\mathrm{TCER}$ (rank one by the no-unknown case, rank two by \texttt{rankTwoSemidefiniteFullNF\_holds}). In polar rank at least three a ternary slice of the equation is fixed first, two of its cosets with different output residues are chosen, and a progression of targets is built that is primitively represented at every prime power, has prescribed valuations at the bad primes and avoids the exceptional square classes; $\mathrm{TCER}$ applied to both cosets gives two solutions at one input with different outputs unless the residual is constant (\texttt{ccr\_of\_TCER}, \texttt{semidefiniteFullNF\_allRanks\_of\_TCER}). The formal statement is on the original class \texttt{SingleQuadraticDefinableFunctionZZ}.
+\end{proof}
+
+In ordinary mathematics $\mathrm{TCER}$ is supplied by an eventual-representation consequence of the splitting of the theta series of a ternary lattice coset, stated for an individual coset on p.~5 of the published version of \cite{KK26}. We record it in the form used here.
+
+\begin{lemma}[Kane--Kim consequence in the $\mathrm{TCER}$ convention]\label[lemma]{lemma:10.8}
+Let $S$ be a positive definite integral symmetric $3 × 3$ matrix with ternary form $Q_{S}$, $d ≥ 1$ and $ρ ∈ ℤ^{3}$. There are finitely many primes and finitely many positive integers $e$ such that, for every bound $b$ on the valuations at those primes, there is $N_{0} ≥ 1$ with the following property: every integer $N ≥ N_{0}$ that is primitively represented by $ρ + dℤ^{3}$ modulo every prime power, satisfies $v_{p}(N) ≤ b(p)$ at those primes and is not $e$ times a rational square for any of the $e$, equals $Q_{S}(ρ + dx)$ for some $x ∈ ℤ^{3}$. In particular $\mathrm{TCER}$ holds.
+\end{lemma}
+
+\begin{proof}
+If a prime divides $d$ and every coordinate of $ρ$, no integer is primitively represented by the coset modulo that prime, and the primitive statement $\mathrm{TCER}$ is empty for this coset. Otherwise $d$ and the coordinates of $ρ$ are coprime, and the coset is the lattice coset $dL + ρ$ of conductor $d$ in the sense of \cite{KK26}, for the integral lattice $L = ℤ^{3}$ with bilinear form $x^{\top}Sy$. Its theta series splits as $E + U + f$. The coefficient of $E$ at $N$ is a product of local densities by Shimura's Siegel--Weil formula for lattice cosets, and it is at least $c_{ε}N^{1/2 - ε}$ when $N$ is locally represented by the coset and has bounded divisibility at finitely many bad primes; $U$ is supported on finitely many square classes $tℤ^{2}$; and the coefficient of $f$ is $O(N^{3/7 + ε})$ by Duke's bound. With $ε = 1/56$ the representation number of $N$ outside the classes $tℤ^{2}$ is at least $cN^{27/56} - CN^{25/56} = N^{25/56}(cN^{1/28} - C)$, which is positive once $N > (2C/c)^{28}$; here $c > 0$ and $C$ depend only on the coset and the bound $b$, and no effective value is claimed. Take the bad primes of \cite{KK26} and let the $e$ be the $t$. A solution modulo every power of $p$ gives a $p$-adic solution by compactness of $ℤ_{p}^{3}$, so primitive representability modulo every prime power implies local representability; excluding every class $eℚ^{2}$ excludes at least the classes $tℤ^{2}$; and $N_{0}$ may be taken $≥ 1$. The order of quantifiers --- coset, then bad primes and exceptional classes, then the valuation bound, then the threshold --- is the order in \cite{KK26}.
+\end{proof}
+
+In \cref{lemma:10.8}, $N$ is primitively represented by $ρ + dℤ^{3}$ modulo $p^{e}$ if $Q_{S}(ρ + dx) - N$ is divisible by $p^{e}$ for some $x ∈ ℤ^{3}$ such that $p$ does not divide every coordinate of $ρ + dx$; the vector may depend on $p$ and $e$. This is the local hypothesis \texttt{LocalPrimRep} of $\mathrm{TCER}$, and the primitivity concerns the represented vector $ρ + dx$, not $x$. The first step of the proof uses it: for $S = I_{3}$, $d = 2$ and $ρ = 0$ the integer $4 = Q_{S}(2, 0, 0)$ is represented by the coset modulo every prime power, but not primitively modulo $2$, since every point of $2ℤ^{3}$ has all coordinates even; so under an ordinary local hypothesis this coset would not be vacuous. We do not state or use the version with ordinary local representability.
+
+The numbering of \cref{lemma:10.8} is ours: \cite{KK26} states the consequence in its introduction, proves the splitting and the finiteness of the exceptional square classes, and takes the lower bound for $E$ from Shimura's formula and the bound for $f$ from Duke. The only analytic input not formalized in the artifact is $\mathrm{TCER}$ itself. The Lean development verifies the implication from its explicitly stated form to \cref{proposition:10.7}; the hypothesis is an argument of the theorem, not an axiom, and the standard-axiom footprint of the conditional theorem does not certify it. Formalizing that input, or replacing it in this application by an argument that avoids the analytic theory, is a separate task.
+
+\textbf{Several outputs.} With two or more outputs the branch proofs give more than a full form: one integer slope on all residue classes. Say that $f : ℤ^{n} → ℤ^{m}$ has a \emph{common slope} if there are $M ≥ 1$ and an integer $m × n$ matrix $B$ with $f(a + Mt) = f(a) + Bt$ for all $a, t ∈ ℤ^{n}$ (\texttt{CommonSlopeIntNF}).
+
+\begin{proposition}[\texttt{singleQuadratic\_\allowbreak{}iff\_\allowbreak{}commonSlope\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.9}
+Assume $\mathrm{TCER}$ and let $m ≥ 2$. A function $f : ℤ^{n} → ℤ^{m}$ is defined by a single quadratic equation over ℤ, with any finite number of unknowns, if and only if it has a common slope.
+\end{proposition}
+
+\begin{proof}
+Only the forward direction uses $\mathrm{TCER}$ (\texttt{sealedCommonSlopeNF\_of\_TCER}). With $m ≥ 2$ the form $Q$ is nonzero, since a relation with $Q ≡ 0$ is output-unique only when $m ≤ 1$, and its polar rank $d$ is at least $m$. In the isotropic branch with $d ≥ 3$ no input with an affine centre has an integer solution: if the off-centre vector $x$ of a solution is radical, a shift by an integral multiple $Ne_{0}$ of a non-radical isotropic vector keeps $Q(x)$, gives a solution at the same input and makes the off-centre vector non-radical, and the Eichler argument of \cref{proposition:10.6} applies; so this branch contains no function (\texttt{isotropic\_three\_le\_polarRank\_not\_defines}). With $d ≤ 2$ the residual is constant (\cref{proposition:10.6}) and the constant-residual transport gives a common slope. In the quotient-anisotropic indefinite case $f$ is globally affine, and its rational coefficients are the integers $f(0)$ and $f(e_{i}) - f(0)$ (\texttt{intAffine\_of\_ratAffine}). In the semidefinite case the positive definite reduction and $\mathrm{TCER}$ give a constant residual, hence a common slope, before any full form is extracted.
+
+The backward direction holds for every $m$ without $\mathrm{TCER}$ (\texttt{singleQuadratic\_of\_commonSlope}). Put $β_{ρ} = f(ρ)$ for $ρ ∈ \{0, \dots, M - 1\}^{n}$ and $δ_{ρ} = Mβ_{ρ} - Bρ$. With unknowns $u ∈ ℤ^{n}$ and $e ∈ ℤ^{M^{n}}$ the equation
+\[
+\Big(\sum_{ρ} e_{ρ} - 1\Big)^{2} + \sum_{ρ} e_{ρ}(e_{ρ} - 1) + \Big\lVert a - Mu - \sum_{ρ} e_{ρ}ρ\Big\rVert^{2} + \Big\lVert Mb - Ba - \sum_{ρ} e_{ρ}δ_{ρ}\Big\rVert^{2} = 0
+\]
+has total degree two, and every summand is non-negative on the integers. A solution therefore has $e$ equal to a unit vector at some $ρ$, $a = Mu + ρ$ and $Mb = M(β_{ρ} + Bu)$, so $b = f(ρ + Mu) = f(a)$; conversely Euclidean division of $a$ by $M$ gives a solution with $b = f(a)$, and its witnesses are unique (\texttt{slopeEncoder\_graph\_iff}, \texttt{slopeEncoder\_witness\_unique}). The equation uses $n + M^{n}$ unknowns besides the outputs; no minimality is claimed, and one-hot quadratic penalties are a known device.
+\end{proof}
+
+The map $a ↦ a^{2}$ is defined by $b - a^{2} = 0$ (\texttt{sqFn\_singleQuadratic}), and $(a + M)^{2} - a^{2} = 2Ma + M^{2}$ depends on $a$, so $a ↦ (a^{2}, 0)$ has no common slope (\texttt{sqPadFn\_not\_commonSlope}).
+
+\begin{proposition}[\texttt{sqPadFn\_\allowbreak{}not\_\allowbreak{}singleQuadratic\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.10}
+Assume $\mathrm{TCER}$. The map $ℤ → ℤ^{2}$, $a ↦ (a^{2}, 0)$, is not defined by a single quadratic equation over ℤ.
+\end{proposition}
+
+\begin{proof}
+By \cref{proposition:10.9} with $m = 2$ and the remark above.
+\end{proof}
+
+So adding a constant output coordinate need not preserve definability by one quadratic equation; the zero-padding in \cref{theorem:4.3} pads linearly and is a different operation. The forward direction of \cref{proposition:10.9} needs the branch proofs, because a full form does not give a common slope, already for one output.
+
+\begin{proposition}[\texttt{not\_\allowbreak{}commonSlope\_\allowbreak{}of\_\allowbreak{}fullVectorCosetNF}]\label[proposition]{proposition:10.11}
+It is not the case that every function defined by a single quadratic equation over ℤ that has a full vector coset normal form has a common slope.
+\end{proposition}
+
+\begin{proof}
+The equation $(2b - a)(2b + 3a - 1) = 0$ defines $f(2t) = t$, $f(2t + 1) = -3t - 1$, which is affine on both classes modulo $2$ (\texttt{parityFn\_singleQuadratic}, \texttt{parityFn\_fullVectorCosetNF}). A common slope with modulus $M$ would give $f(2M) - f(0) = f(1 + 2M) - f(1)$, that is $M = -3M$ (\texttt{parityFn\_not\_commonSlope}).
+\end{proof}
+
+A common slope is a finite certificate. Its image is $\bigcup_{ρ}\big(f(ρ) + Bℤ^{n}\big)$ over $ρ ∈ \{0, \dots, M - 1\}^{n}$ (\texttt{commonSlope\_range}).
+
+\begin{proposition}[\texttt{commonSlope\_\allowbreak{}injective\_\allowbreak{}iff}]\label[proposition]{proposition:10.12}
+Let $f : ℤ^{n} → ℤ^{m}$ satisfy $f(a + Mt) = f(a) + Bt$ for all $a, t$, with $M ≥ 1$ and $B$ an integer matrix. Then $f$ is injective if and only if $t ↦ Bt$ is injective on $ℤ^{n}$ and $f(ρ) - f(σ) ∉ Bℤ^{n}$ for distinct $ρ, σ ∈ \{0, \dots, M - 1\}^{n}$.
+\end{proposition}
+
+\begin{proof}
+Write every input as $ρ + Mu$ with $0 ≤ ρ_{i} < M$; the decomposition is unique. A collision $f(ρ + Mu) = f(σ + Mv)$ reads $f(ρ) - f(σ) = B(v - u)$. If $ρ = σ$ it is a kernel element of $B$; otherwise it is an overlap of two residue images. Conversely a kernel element $t ≠ 0$ gives $f(Mt) = f(0)$, and $f(ρ) - f(σ) = Bt$ gives $f(ρ) = f(σ + Mt)$ with $ρ ≠ σ + Mt$.
+\end{proof}
+
+For such $f$, injectivity forces $n ≤ m$ through \cref{theorem:4.1}, which needs no hypothesis (\texttt{commonSlope\_injective\_dim}).
+
+\textbf{One output.} With one output the forms $Q ≡ 0$ and polar rank one survive, and after the witnesses are removed a single equation $αy^{2} + (β · x + d)y + T(x) = 0$ with integer coefficients and $T$ quadratic remains (\texttt{scalar\_commonSlope\_or\_rn\_of\_TCER}). The witnesses disappear for different reasons in the two cases. If $Q ≡ 0$ the equation is linear in the output and the unknowns; at an input where an unknown had a nonzero coefficient, either the output has coefficient zero and is not determined, or a kernel vector with nonzero output coordinate gives a second output, so output uniqueness makes the coefficient of every unknown vanish at every integer input, hence identically (\texttt{rn\_of\_sol\_linear}); the completed-square centre of the other branches is not used. If the polar rank is one, every vector whose output coordinate is zero lies in the radical of the polar form (\texttt{witnessDir\_inRadicalQ}), and the unknowns are eliminated from the equation (\texttt{noWitnessData\_defines}). If $α ≠ 0$ its discriminant is the square of $2αf(x) + β · x + d$ at every integer $x$, hence of an integer affine form, so $y$ is a solution exactly when $2αy$ is one of two integer affine values $u(x)$, $v(x)$ (\texttt{rn\_two\_roots}). The sets where $2α$ divides $u$ or $v$ are empty or cosets of subgroups of $ℤ^{n}$, and together they cover $ℤ^{n}$.
+
+\begin{lemma}[\texttt{addSubgroup\_\allowbreak{}two\_\allowbreak{}coset\_\allowbreak{}cover}]\label[lemma]{lemma:10.13}
+Let $H$ and $K$ be subgroups of an additive commutative group $G$ and $b ∈ G$. If every element of $G$ lies in exactly one of $H$ and $b + K$, then $H = K$, $b ∉ H$, every element lies in $H$ or in $b + H$, and $g + g ∈ H$ for every $g ∈ G$.
+\end{lemma}
+
+\begin{proof}
+First $b ∉ H$, since $b = b + 0$ lies in $b + K$. If $k ∈ K$ were not in $H$, then $k ∈ b + K$, so $-b ∈ K$ and $0 ∈ H$ would also lie in $b + K$. If $h ∈ H$ were not in $K$, then $h + b ∉ b + K$, so $h + b ∈ H$ and $b ∈ H$. Hence $H = K$. If $g ∈ H$ then $g + g ∈ H$. If $g ∈ b + H$ and $g + g ∉ H$, then $g + g ∈ b + H$ and $g = (g + g) - g ∈ H$, which is impossible. No finiteness or density is used.
+\end{proof}
+
+\begin{proposition}[\texttt{scalar\_\allowbreak{}singleQuadratic\_\allowbreak{}iff\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.14}
+Assume $\mathrm{TCER}$. A function $f : ℤ^{n} → ℤ$ is defined by a single quadratic equation over ℤ, with any finite number of unknowns, if and only if one of the following holds: $f$ has a common slope; $f$ agrees on $ℤ^{n}$ with a polynomial with rational coefficients of total degree at most two; or there are integer vectors $p, q$ and integers $c, c'$, with $p - q$ having even coordinates, $p$ having an odd coordinate and $c - c'$ odd, such that $2f(a) = p · a + c$ when $p · a + c$ is even and $2f(a) = q · a + c'$ otherwise.
+\end{proposition}
+
+\begin{proof}
+The reverse direction holds without $\mathrm{TCER}$ (\texttt{singleQuadratic\_of\_scalarFamilies}). A common slope is compiled as in \cref{proposition:10.9}. For a rational polynomial $q$ with common denominator $N$ the equation $Nb - Nq(a) = 0$ has no unknowns. In the third case $(p - q) · a + (c - c')$ is odd for every $a$, so exactly one of $p · a + c$ and $q · a + c'$ is even, and $(2b - p · a - c)(2b - q · a - c') = 0$ holds exactly at $b = f(a)$; again there are no unknowns.
+
+Only the forward direction uses $\mathrm{TCER}$ (\texttt{sealed\_scalarFamilies\_of\_TCER}). If $Q ≢ 0$ and the polar rank is at least two, the branch arguments in the proof of \cref{proposition:10.9} use only $m > 0$ and give a common slope (\texttt{commonSlope\_of\_TCER\_of\_two\_le\_polarRank}). Otherwise the equation reduces to $αy^{2} + (β · x + d)y + T(x) = 0$. If $α = 0$, $f$ is a rational polynomial of degree at most two. If $α ≠ 0$, then at each integer $x$ the equation has the integer root $y = f(x)$, so $Δ(x) = (β · x + d)^{2} - 4αT(x) = (2αf(x) + β · x + d)^{2}$ is a square at every integer point. A quadratic polynomial that is a square at every integer point is the square of an affine function $L$ with rational coefficients (\texttt{c21\_affine\_square}); since $L(x) = ±(2αf(x) + β · x + d)$ is an integer for every integer $x$, the constant $s = L(0)$ and the coefficients $ℓ_{i} = L(e_{i}) - L(0)$ are integers. Put $u(x) = -(β · x + d) + (ℓ · x + s)$ and $v(x) = -(β · x + d) - (ℓ · x + s)$. Then $4α(αy^{2} + (β · x + d)y + T(x)) = (2αy - u(x))(2αy - v(x))$, so for all integers $x$ and $y$ the equation holds if and only if $2αy = u(x)$ or $2αy = v(x)$ (\texttt{rn\_two\_roots}). Let $I_{u}$ and $I_{v}$ be the sets where $2α$ divides $u$ or $v$; on $I_{u}$ the quotient is a solution, so $2αf = u$ there, and likewise on $I_{v}$, and $I_{u} ∪ I_{v} = ℤ^{n}$. If $I_{u}$ and $I_{v}$ meet at $x_{0}$, both divisibilities hold on $x_{0} + 2αℤ^{n}$, so $u = v$ there, hence everywhere (\texttt{affine\_eq\_of\_eq\_on\_coset}), and $f$ is affine; the same holds if one of the sets is empty. Otherwise $I_{u}$ and $I_{v}$ are disjoint cosets of $\{h : 2α ∣ U · h\}$ and $\{h : 2α ∣ V · h\}$, where $U$ and $V$ are the linear parts of $u$ and $v$. By \cref{lemma:10.13} these subgroups coincide and contain $2ℤ^{n}$, so $α$ divides the coordinates of $U$, $V$ and the constants; writing $u = α(p · x + c)$ and $v = α(q · x + c')$, the two sets are where $p · x + c$, respectively $q · x + c'$, is even. Exactly one of them holds at $0$ and at each unit vector, which gives the parity conditions, and a proper non-empty set forces an odd coordinate of $p$ (\texttt{rn\_classify}).
+\end{proof}
+
+The three families overlap: an affine function belongs to the first two. The rational coefficients are needed, as $a ↦ a(a - 1)/2$ shows, and the function of \cref{proposition:10.11} is of the third kind with $p = 1$, $c = 0$, $q = -3$, $c' = 1$ (\texttt{parityFn\_parityAffine}). The denominator two refers to the normalized case in the proof: two distinct roots whose integrality sets are both non-empty and disjoint. Other displayed denominators occur, since multiplying an equation by a non-zero integer does not change its graph: $(6b - 3a)(6b + 9a - 3) = 9(2b - a)(2b + 3a - 1)$. A repeated root also defines a function: $(2b - 2a)^{2} = 0$ holds exactly at $b = a$. The following are negative controls for the parity and coverage conditions of the third family, not impossibility results for other presentations: $(2b - a)(2b - a - 2) = 0$ has two solutions at $a = 0$, and $(3b - a)(3b - a + 1) = 0$ has none at $a = 2$ (\texttt{sameParity\_not\_function}, \texttt{modThree\_not\_total}). For every number of outputs other than one, definability under $\mathrm{TCER}$ is exactly the common slope (\texttt{singleQuadratic\_iff\_commonSlope\_of\_TCER\_of\_ne\_one}).
+
+\begin{proposition}[\texttt{singleQuadratic\_\allowbreak{}padZero\_\allowbreak{}iff\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.15}
+Assume $\mathrm{TCER}$. For every $f : ℤ^{n} → ℤ^{m}$, the map $a ↦ (f(a), 0) ∈ ℤ^{m} × ℤ$ is defined by a single quadratic equation over ℤ if and only if $f$ has a common slope.
+\end{proposition}
+
+\begin{proof}
+A common slope of $(f, 0)$ restricts to $f$, and a common slope of $f$ extends by a zero row (\texttt{commonSlope\_padZero\_iff}). For $m ≥ 1$ apply \cref{proposition:10.9} with $m + 1 ≥ 2$ outputs; for $m = 0$ both sides hold. No definability of $f$ itself is assumed.
+\end{proof}
+
+\cref{proposition:10.10} is the case $f(a) = a^{2}$ (\texttt{sqPadFn\_not\_singleQuadratic\_of\_padding}). Common slopes compose: if $f$ has modulus $M$ and matrix $B$ and $g$ has $N$ and $C$, then $g ∘ f$ has $MN$ and $CB$ (\texttt{commonSlope\_comp}); this is not a statement about composition of definable functions in general. In the equation of \cref{proposition:10.9} the part of degree two in the output $b$ and the unknowns $u$, $e$ is a sum of squares that vanishes only at zero, so every function with a common slope has a presentation whose quadratic part in the output and the unknowns is positive definite and whose witnesses are unique (\texttt{commonSlope\_posDef\_presentation}); nothing is claimed about other presentations.
+
+\textbf{Unknowns.} Without unknowns the scalar classification needs no analytic input.
+
+\begin{proposition}[\texttt{zeroWitness\_\allowbreak{}iff}]\label[proposition]{proposition:10.16}
+A function $f : ℤ^{n} → ℤ$ is defined by a single quadratic equation over ℤ without unknowns if and only if $f$ agrees on $ℤ^{n}$ with a polynomial with rational coefficients of total degree at most two, or $f$ is of the third kind in \cref{proposition:10.14}.
+\end{proposition}
+
+\begin{proof}
+The reverse direction is the construction in the proof of \cref{proposition:10.14}, which uses no unknowns. Conversely, without unknowns the output is the only coordinate of the quadratic part, so its polar rank is at most one, and the argument of \cref{proposition:10.14} in the cases $Q ≡ 0$ and polar rank one gives the two alternatives (\texttt{scalar\_rn\_of\_polarRank\_le\_one}, \texttt{rn\_classify}). Neither case uses $\mathrm{TCER}$.
+\end{proof}
+
+A common slope need not be definable without unknowns: \cref{proposition:10.18} gives an example.
+
+\begin{proposition}[\texttt{singleQuadratic\_\allowbreak{}iff\_\allowbreak{}uniqueWitness\_\allowbreak{}of\_\allowbreak{}TCER}]\label[proposition]{proposition:10.17}
+Assume $\mathrm{TCER}$. A function $f : ℤ^{n} → ℤ^{m}$ is defined by a single quadratic equation over ℤ if and only if it is defined by a single quadratic equation over ℤ whose solutions in the unknowns coincide whenever the inputs and outputs do. In particular each input then has exactly one solution in the output and the unknowns together.
+\end{proposition}
+
+\begin{proof}
+The reverse direction is immediate. For the forward direction, with $m ≠ 1$ the function has a common slope by \cref{proposition:10.9}, the case $m = 0$ being trivial; with $m = 1$ it has a common slope or is of one of the other two kinds of \cref{proposition:10.14}. In the equation of the proof of \cref{proposition:10.9} the degree-two part in the output and the unknowns is a sum of squares that vanishes only at zero, and a solution determines $e$, as the unit vector at the residue $ρ$ of $a$ modulo $M$, and then $u$ (\texttt{commonSlope\_posDef\_presentation}, \texttt{uniqueWitness\_of\_commonSlope}). The other two kinds are defined without unknowns (\cref{proposition:10.16}). Each input has a solution by totality, its output is unique, and then so are the unknowns (\texttt{existsUnique\_of\_uniqueWitness}). Only the forward direction uses $\mathrm{TCER}$.
+\end{proof}
+
+This concerns one presentation of each function, not every presentation.
+
+\begin{proposition}[\texttt{floorThird\_\allowbreak{}min\_\allowbreak{}witnesses}]\label[proposition]{proposition:10.18}
+The map $ℤ → ℤ$, $a ↦ ⌊a/3⌋$, is defined by a single quadratic equation over ℤ with one unknown, and by no single quadratic equation over ℤ without unknowns.
+\end{proposition}
+
+\begin{proof}
+The equation $(3b - a + 1)^{2} + u^{2} - 1 = 0$ has one unknown $u$. If $(3b - a + 1)^{2} + u^{2} = 1$ then $|3b - a + 1| ≤ 1$, so $a - 2 ≤ 3b ≤ a$ and $b = ⌊a/3⌋$; conversely, for $a = 3q + r$ with $0 ≤ r < 3$ take $b = q$ and $u = 1$ if $r = 1$, $u = 0$ otherwise (\texttt{floorThird\_oneWitness}). At $a = 1$, $b = 0$ both $u = 1$ and $u = -1$ are solutions, so the unknown is not unique in this presentation (\texttt{floorThirdPoly\_two\_witnesses}). Without unknowns, \cref{proposition:10.16} would make $a ↦ ⌊a/3⌋$ a rational polynomial of degree at most two or of the third kind of \cref{proposition:10.14}. The first is impossible: such a polynomial would vanish at $0$, $1$ and $2$ and take the value $1$ at $3$. In the second, the coefficient $p$ is odd, since $n = 1$; so one of $x = 0$ and $x = 1$ has $px + c$ even, and then so has $x + 6$, which gives $6p = 2(⌊(x + 6)/3⌋ - ⌊x/3⌋) = 4$, impossible in integers (\texttt{floorThird\_not\_zeroWitness}). No $\mathrm{TCER}$ is used.
+\end{proof}
+
+The count refers to this one format, a single equation of total degree at most two with integer unknowns; we do not study the least number of unknowns in general. The map $a ↦ ⌊a/3⌋$ has a common slope, with $M = 3$ and $B = 1$, and belongs to neither of the other two families; $a ↦ a^{2}$ has no common slope (\texttt{sqFn\_not\_commonSlope}) and grows faster than any function of the third kind, which is affine on each of two cosets, so it belongs only to the second; and the function of \cref{proposition:10.11} has no common slope and takes the values $0$, $-1$, $1$, $-4$ at $0$, $1$, $2$, $3$, which no polynomial of degree at most two does. So none of the three families of \cref{proposition:10.14} can be dropped.

@@ -1,0 +1,89 @@
+\section{Relation phase diagram}\label{sec:6}
+\begin{theorem}[unconditional strictness $\mathrm{REC} ⊊ \mathrm{RE}$; \texttt{HaltingTransport.\allowbreak{}lean}, \texttt{recursive\_\allowbreak{}strictly\_\allowbreak{}contained\_\allowbreak{}re}]\label[theorem]{theorem:6.1}
+For every $k ≥ 1$, $\mathrm{REC}(k) ⊊ \mathrm{RE}(k)$.
+\end{theorem}
+\begin{proof}
+Transport mathlib's halting problem (\texttt{ComputablePred.\allowbreak{}halting\_\allowbreak{}problem}, \texttt{halting\_\allowbreak{}problem\_\allowbreak{}re}) to ℤᵏ by reading coordinate 0 as a code (\texttt{haltingRelZZ}).
+
+\end{proof}
+
+\begin{theorem}[Skolem \cite{Sko38}, unconditional; \cref{proposition:1.2}]\label[theorem]{theorem:6.2}
+$\mathrm{PP}_{2}(k) = \mathrm{SE}_{4}(k) = \mathrm{Dioph}(k)$ for every $k$.
+
+\end{theorem}
+\begin{proof}[Proof of \cref{theorem:6.2}]
+This is the second clause of \cref{proposition:1.2}, restated at the point where the phase diagram consumes it; nothing is added here. The two inclusions are the Lean theorems named there (\texttt{singleEqFragmentZZ\_\allowbreak{}four\_\allowbreak{}eq\_\allowbreak{}ppFragmentZZ\_\allowbreak{}two}, \texttt{singleEqFragmentZZ\_\allowbreak{}four\_\allowbreak{}eq\_\allowbreak{}diophFragmentZZ}), and the argument is the sum-of-squares collapse in one direction and Skolem's degree reduction in the other. It is stated separately because \cref{sec:6} needs it as an arrow of the diagram and because a reader tracing which arrows consume a hypothesis should find this one carrying none.
+
+\end{proof}
+\begin{theorem}[per-equation decidability $⇒ SE_{2} ⊆ \mathrm{REC}$; \texttt{singleEqFragmentZZ\_\allowbreak{}two\_\allowbreak{}subset\_\allowbreak{}recFragmentZZ}]\label[theorem]{theorem:6.3}
+Assume $\mathrm{QuadraticSolvabilityDecidableZZ}$. Then $\mathrm{SE}_{2}(k) ⊆ \mathrm{REC}(k)$ for all $k$; for $k ≥ 2$ the inclusion is strict, witnessed by the graph of $x ↦ x^{3}$ (\texttt{cubic\_\allowbreak{}graph\_\allowbreak{}not\_\allowbreak{}withinSingleEquationZZ}, \texttt{powerGraphZZ\_\allowbreak{}computablePred}; \texttt{apal\_\allowbreak{}structural\_\allowbreak{}core\_\allowbreak{}of\_\allowbreak{}perEquationGS}).
+
+\end{theorem}
+\begin{proof}
+\emph{Inclusion.} Let $A ∈ SE_{2}(k)$ be represented by P of total degree at most two with witness arity r, so that $a ∈ A ⟺ P(a, ·)$ has an integer root. QuadraticSolvabilityDecidableZZ says precisely that this predicate of a is decidable for the fixed P, so $A ∈ \mathrm{REC}(k)$.
+
+\emph{Strictness at $k = 2$.} The graph \{(a, b) ∈ ℤ² : b = a³\} is decidable — compute a³ and compare. It is not SE₂-definable: it is the graph of a total function, and \cref{theorem:3.2} bounds SE₂-definable total functions by C(1+|a|)², which a³ exceeds for large a.
+
+\emph{Strictness at $k > 2$.} Take $A_{k}$ := \{(a₁, …, $a_{k}$) ∈ ℤᵏ : a₂ = a₁³\}, which is decidable. If $A_{k}$ were SE₂-definable by P(a₁, …, $a_{k}$, u), then substituting the constants a₃ = ⋯ = $a_{k} = 0$ gives $P′(a_{1}, a_{2}, u) := P(a_{1}, a_{2}, 0, …, 0, u)$, whose total degree is at most that of P — substituting constants for variables cannot raise total degree — and which represents \{(a₁, a₂) : a₂ = a₁³\}. That contradicts the case $k = 2$. So $A_{k} ∈ \mathrm{REC}(k)$ \textbackslash{} SE₂(k) for every $k ≥ 2$.
+
+\end{proof}
+\begin{theorem}[code bridge; \texttt{QuadraticCodes.\allowbreak{}lean}, \texttt{GSInputCompiler.\allowbreak{}lean}, \texttt{GSCompilerComputable.\allowbreak{}lean}]\label[theorem]{theorem:6.4}
+(a) Evaluation of a code at (parameters, unknown list) is primitive recursive uniformly in the code (\texttt{quadraticCode\_\allowbreak{}eval\_\allowbreak{}primrec}). (b) The polynomial of a code has total degree at most two (\texttt{quadraticCode\_\allowbreak{}toPoly\_\allowbreak{}totalDegree\_\allowbreak{}le\_\allowbreak{}two}) and evaluates as the computable evaluation (\texttt{quadraticCode\_\allowbreak{}toPoly\_\allowbreak{}eval}). (c) Every polynomial of total degree at most two is the polynomial of a code (\texttt{quadraticCode\_\allowbreak{}surjective}). (d) UniformQuadraticSolvabilityOnCodes ⇒ QuadraticSolvabilityDecidableZZ (\texttt{uniformCodeGS\_\allowbreak{}implies\_\allowbreak{}perEquationGS}). (e) The flat form, in which a code is carried as a single natural number rather than as a pair, is equivalent (\texttt{uniformCodeGS\_\allowbreak{}iff}, via \texttt{codeOfNat}/\texttt{natOfCode}). (f) The \emph{input compiler} that folds a parameter list into the coefficient table, producing a parameter-free equation with the same integer solutions, is primitive recursive (\texttt{globalGS\_\allowbreak{}input\_\allowbreak{}compiler\_\allowbreak{}computable}, \texttt{globalInstance\_\allowbreak{}eval\_\allowbreak{}iff}); consequently the reduction from our instance form to the parameter-free coefficient-table form of the literature is effective, not merely extensional.
+
+\end{theorem}
+\begin{proof}
+Throughout, a code is a pair $c = (r, T): a$ witness arity $r ∈ ℕ$ and a finite list T of terms, each term a coefficient $α ∈ ℤ$ together with at most two variable codes. Evaluation at parameters $a ∈ ℤ^{k}$ and unknowns $u ∈ ℤ^{r}$ reads a variable code i as the i-th entry of the environment \texttt{ofFn a ++ u}, an out-of-range code as 1 and an absent factor as 1, and sums the terms.
+
+\emph{(a).} Fix the environment map e(a, u) := \texttt{ofFn a ++ u}. The value of a single term (α, i?, j?) is α · e(a,u)[i] · e(a,u)[j] with the two conventions above, and the value of the code is the fold of those values over T. Every ingredient is primitive recursive: list indexing with a default and list append are primitive recursive; integer addition and multiplication are; \texttt{Option.\allowbreak{}elim} against the constant 1 is; and primitive recursive functions are closed under composition, pairing and \texttt{List.\allowbreak{}foldr}. The code c occurs as an \emph{argument} of the composite, not as a parameter of the construction, so the resulting map $(c, a, u) ↦ \mathrm{evalZZ} c a u$ is primitive recursive uniformly in c, which is the content of the clause. That the type of codes is \texttt{Primcodable} is what makes "uniformly in c" a statement about a single function rather than a family.
+
+\emph{(b).} Define toPoly c as the sum over T of the monomials $α·X_{i}·X_{j}$, an absent or out-of-range factor contributing the constant 1. Each summand is a monomial in at most two variables, hence of total degree at most two, and the total degree of a sum is at most the maximum of the total degrees; so $\mathrm{totalDegree} (toPoly c) ≤ 2$. Agreement with the computable evaluation is an induction on T: polynomial evaluation is additive over the sum, and on a single term both sides compute α · (value of the first factor) · (value of the second factor) under the same two conventions. The empty list gives 0 on both sides.
+
+\emph{(c).} Let P be a polynomial in k + r variables with $\mathrm{totalDegree} P ≤ 2$. Its monomial expansion is finite and unique, and each monomial of degree at most two is 1, $X_{i}$, or $X_{i}$ $X_{j}$ with $i ≤ j$. Map the expansion term by term: a constant monomial α becomes the term (α, none, none); α $X_{i}$ becomes (α, some i, none); α $X_{i}$ $X_{j}$ becomes (α, some i, some j). Let $T_{P}$ be the resulting list and $c_{P} := (r, T_{P})$. By (b), toPoly $c_{P}$ is the sum of exactly those monomials, i.e. P. The map is total because the support of P is finite, and it needs no choice: the monomial expansion of a polynomial is unique. Surjectivity is what lets a \emph{coded} family range over all degree-two equations, which is the hypothesis (i) of the diagonalization \cref{theorem:6.5} uses.
+
+\emph{(d).} Assume UniformQuadraticSolvabilityOnCodes and let P of total degree at most two with witness arity r be given. By (c) pick a code $c_{P}$ with toPoly $c_{P} = P$; by (b), for every a the equation $P(a, ·) = 0$ has an integer solution $u ∈ ℤ^{r}$ if and only if $c_{P}$ is solvable at a. The hypothesis says that (c, a) ↦ (c solvable at a) is a computable predicate; the map $a ↦ (c_{P}, a)$ is computable (a constant paired with the identity), and computable predicates are closed under composition with computable maps, so a ↦ (P solvable at a) is computable. That is QuadraticSolvabilityDecidableZZ. Only this direction is claimed. The converse fails to be available for the use we make of it: deciding one equation at a time gives each fixed relation as recursive but does not give a single decider uniform in the code, and the diagonalization behind \cref{corollary:6.6} quantifies over the coded family. That is why \cref{definition:1.5} is stated in the uniform form and \cref{theorem:6.3} in the per-equation form, and why the two are kept apart everywhere in Sections 6 and 7.
+
+\emph{(e).} \texttt{natOfCode} and \texttt{codeOfNat} are the \texttt{Primcodable} encoding and decoding of the code type; they are mutually inverse and both primitive recursive by construction of the instance. A computable predicate transports along a computable bijection in both directions, so uniform decidability stated on codes and uniform decidability stated on their numeric encodings are equivalent hypotheses. The clause is bookkeeping, not mathematics; it is recorded because the two forms both occur in the literature and it should be visible that nothing depends on the choice.
+
+\emph{(f).} The equations of \cite{GS04} carry no parameters: the input is a coefficient table. Our instances carry a parameter vector a, so a bridge is required, and the clause asserts that the bridge is effective rather than merely extensional. Define the compiler on terms. A term (α, i?, j?) of a code with k parameters is rewritten by evaluating every factor whose variable code lies in the parameter block, namely in the range $i < k$: if both factors are parameters the term becomes the constant $(α·a_{i}·a_{j}$, none, none); if exactly one is, it becomes $(α·a_{i}$, some j, none) with the unknown index shifted down by k; if neither is, only the shift is applied. Applying this term by term is a \texttt{List.\allowbreak{}map} whose step function is a case split on two \texttt{Option} fields together with lookups into \texttt{ofFn a}, so the compiler is primitive recursive, and again uniformly in (c, a) because both are arguments. Two properties are immediate from (b) and the definition of evaluation: the compiled code still has at most two variable codes per term, hence total degree at most two; and for every u, evaluating the compiled code at the empty parameter list and u gives the same integer as evaluating c at (a, u), so the two equations have literally the same solution set in u (\texttt{globalInstance\_\allowbreak{}eval\_\allowbreak{}iff}). Hence the reduction from our instance form to the parameter-free coefficient-table form is a primitive recursive map of inputs, which is what "effective, not merely extensional" means here.
+
+\end{proof}
+\begin{theorem}[effective fragment diagonalization; \texttt{EffectiveDiagonal.\allowbreak{}lean}, \texttt{coded\_\allowbreak{}family\_\allowbreak{}ssubset\_\allowbreak{}rec}]\label[theorem]{theorem:6.5}
+Let C be a Primcodable type, interp : $C → 𝒫(ℤ^{k+1})$, and $F ⊆ 𝒫(ℤ^{k+1})$ with (i) F coded: every $A ∈ F$ equals interp e for some e; (ii) membership v ∈ interp e uniformly decidable in (e, v); (iii) $F ⊆ \mathrm{REC}(k+1)$. Then $F ⊊ \mathrm{REC}(k+1)$.
+\end{theorem}
+\begin{proof}
+The diagonal D := \{v | the code decoded from v₀, if any, does not accept v\} is recursive by (ii) (\texttt{effDiagonal\_\allowbreak{}computablePred}) and not in F by self-application: if D = interp e, evaluate at the constant vector whose entries encode e (\texttt{effDiagonal\_\allowbreak{}not\_\allowbreak{}mem}).
+
+\end{proof}
+
+\begin{corollary}[\texttt{singleQuadratic\_\allowbreak{}strict\_\allowbreak{}recursive\_\allowbreak{}of\_\allowbreak{}codes}]\label[corollary]{corollary:6.6}
+Assume $\mathrm{UniformQuadraticSolvabilityOnCodes}$. Then $\mathrm{SE}_{2}(k) ⊊ \mathrm{REC}(k)$ for every $k ≥ 1$, in particular at arity one, where the $x^{3}$ witness is unavailable.
+\end{corollary}
+\begin{proof}
+Instantiate \cref{theorem:6.5} with C the type of quadratic codes and interp c = \{v | c solvable at v\}: (i) is \cref{theorem:6.4}(c), (ii) is the hypothesis, (iii) is \cref{theorem:6.3} via \cref{theorem:6.4}(d).
+
+\end{proof}
+
+The separation of \cref{theorem:6.5} from its instance is deliberate. The diagonal argument uses nothing about quadratic equations except that they form an explicitly coded family whose membership relation is uniformly decidable; stated that way, the lemma applies verbatim to any fragment for which a decision procedure uniform in the code is available.
+
+\begin{theorem}[DPRM transport; \texttt{DPRMTransport.\allowbreak{}lean}, \texttt{DPRM\_\allowbreak{}ZZ\_\allowbreak{}of\_\allowbreak{}DPRM\_\allowbreak{}NN}]\label[theorem]{theorem:6.7}
+$\mathrm{DPRM}_{NN} ⇒ \mathrm{DPRM}_{ZZ}$.
+\end{theorem}
+\begin{proof}
+For $A ⊆ ℤ^{k}$ r.e., the preimage A' ⊆ ℕ²ᵏ under $b ↦ (b_{i} − b_{k+i})_{i}$ is r.e. (\texttt{rePred\_\allowbreak{}diffPreimage}; the difference map is primitive recursive). $DPRM_{NN}$ gives P with A' = $\{b | ∃ y ∈ ℕ^{s}, P(b,y) = 0\}$. Then $a ∈ A$ iff there are integers $p, q ∈ ℤ^{k}, y ∈ ℤ^{s}$ and $w ∈ ℤ^{(2k+s)×4}$ with $a = p − q, P(p,q,y) = 0$, and each coordinate of (p,q,y) equal to the sum of the four squares of the corresponding w's (Lagrange, mathlib \texttt{Nat.\allowbreak{}sum\_\allowbreak{}four\_\allowbreak{}squares}); the single equation is the sum of squares of these conditions (\texttt{transportPoly}, \texttt{transportPoly\_\allowbreak{}eval\_\allowbreak{}eq\_\allowbreak{}zero\_\allowbreak{}iff}). The witness arity is 5(2k+s) (\texttt{transportWitnessArity\_\allowbreak{}eq}), and the final representing polynomial — after the renaming that indexes the witnesses by a \texttt{Fin} type — has total degree at most max(2·deg P, 4) (\texttt{transportedRepresentation\_\allowbreak{}totalDegree\_\allowbreak{}le}, \texttt{DPRM\_\allowbreak{}ZZ\_\allowbreak{}resource\_\allowbreak{}bound\_\allowbreak{}final}).
+
+\end{proof}
+
+\begin{theorem}[relation phase diagram; \texttt{relation\_\allowbreak{}phase\_\allowbreak{}diagram\_\allowbreak{}all\_\allowbreak{}positive\_\allowbreak{}arity\_\allowbreak{}of\_\allowbreak{}classical}]\label[theorem]{theorem:6.8}
+Assume $\mathrm{UniformQuadraticSolvabilityOnCodes}$ and $\mathrm{DPRM}_{NN}$. Then for every $k ≥ 1$:
+\[
+\mathrm{SE}_{2}(k) ⊊ \mathrm{REC}(k) ⊊ \mathrm{RE}(k) = \mathrm{PP}_{2}(k) = \mathrm{SE}_{4}(k),
+\]
+where $\mathrm{SE}_{2} ⊊ \mathrm{REC}$ uses the hypothesis only through \cref{corollary:6.6} at $k = 1$ (through \cref{theorem:6.3} at $k ≥ 2$), $\mathrm{REC} ⊊ \mathrm{RE}$ is \cref{theorem:6.1}, $\mathrm{RE} = \mathrm{PP}_{2}$ is DPRM (\cref{theorem:6.7} with \texttt{ppQuadratic\_\allowbreak{}eq\_\allowbreak{}re\_\allowbreak{}of\_\allowbreak{}DPRM}), and $\mathrm{PP}_{2} = \mathrm{SE}_{4}$ is \cref{theorem:6.2}. At $k = 0$ all five classes coincide.
+\end{theorem}
+
+\begin{proof}
+Every arrow is already proved. $SE_{2}(k) ⊆ \mathrm{REC}(k)$ is \cref{theorem:6.3} via \cref{theorem:6.4}(d), and the inclusion is strict: at $k = 1$ by \cref{corollary:6.6}, whose diagonalization needs the uniform form of the hypothesis and \cref{theorem:6.4}(c) for the coded family; at $k ≥ 2$ by the x³ witness of \cref{theorem:6.3}. $\mathrm{REC}(k) ⊊ \mathrm{RE}(k)$ is \cref{theorem:6.1}, unconditional. $\mathrm{RE}(k) = PP_{2}(k)$ is \cref{theorem:6.7} under $DPRM_{NN}$, and $PP_{2}(k) = SE_{4}(k)$ is \cref{theorem:6.2}, unconditional. The collapse at $k = 0$ is \cref{proposition:1.4}.
+
+\end{proof}
+\textbf{Layering.} The formalization exports the diagram in dependency layers (\texttt{apal\_\allowbreak{}structural\_\allowbreak{}core\_\allowbreak{}unconditional}, \texttt{\_\allowbreak{}of\_\allowbreak{}uniformGS}, \texttt{\_\allowbreak{}of\_\allowbreak{}perEquationGS}, \texttt{\_\allowbreak{}of\_\allowbreak{}DPRM}, \texttt{\_\allowbreak{}of\_\allowbreak{}DPRM\_\allowbreak{}NN}), so that a reader can see exactly which arrow uses which classical input, and the unconditional part of the diagram can be read off without accepting any of them.
+

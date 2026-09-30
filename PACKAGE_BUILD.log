@@ -1,0 +1,187 @@
+TREE_HASH_BEFORE=09c8a89f0e4c8b7105c0d2bf1d0ec173223d240234e383098033bbd5be0d9d28
+EXTERNAL_PATHS=0
+HOME_DEPENDENCIES=0
+SESSION_PINNED_INPUTS=0
+FROZEN_FILES_IN_ARCHIVE=59
+STATEMENT_SOURCE=release/TRUST_BOUNDARY_APAL.md
+CITED_NAMES=254
+CITED_OURS=127
+OUTSIDE_FROZEN=23
+OUTSIDE_BUT_ROOT=8
+COVERED_BY_NEITHER=15
+MANUSCRIPT_SAYS_OUTSIDE=23
+MANUSCRIPT_SAYS_ROOTS=8
+MANUSCRIPT_SAYS_NEITHER=15
+ROOT_NAMES=apal_logic_core, coder_counting_bound, primrec_eval_of_coords, primrec_int_pow, primrec₂_int_add, primrec₂_int_mul, quadraticProjectionDichotomyZ_all, quadraticWitnessInertiaZ
+NEITHER_NAMES=GraphAchievableZ, code, code_injective, compSys, coordPoly, diophN_graph_code, eval_abs_le_int, eval_relabelG_ZZ, fboundG_box_le, fiberVal_flip, mem_fiberZZ_coordPoly, normal_form_general_quadratic, not_MPUP_N, not_MPUP_Z, relabelG
+CENSUS_EXIT=0
+CANARIES=1008 SHINGLE=12 THRESHOLD=6(per directory)
+DECLARED_COMPANION release/PROOF_COMPANION.md shingles=312
+DECLARED_COMPANION manuscript/APAL_PROJECTION_PROOF_FULL.md shingles=0
+DECLARED_COMPANION history/superseded_appendixF/FULL_RANK_PROOF_V2.md shingles=56
+DECLARED_COMPANION history/superseded_appendixF/QUADRATIC_PROJECTION_DICHOTOMY_FULL_V2.md shingles=86
+DECLARED_COMPANION history/superseded_appendixF/APAL_PROJECTION_PROOF_FULL.md shingles=179
+DECLARED_COMPANION manuscript/FULL_RANK_PROOF_V2.md shingles=0
+DECLARED_COMPANION manuscript/QUADRATIC_PROJECTION_DICHOTOMY_FULL_V2.md shingles=0
+DECLARED_COMPANION manuscript/FALLBACK_FINITE_SIDE_V31.md shingles=0
+DECLARED_COMPANIONS=4 (exempt by name, Gate-9 N05 is to unify them)
+DECLARED_EXCERPTS=70 files, largest=47, ceiling=12
+PER_FILE_CEILING release/AUTHOR_SIGNOFF_SHEET.md shingles=29 ceiling=30
+PER_FILE_CEILING correspondence/GPT_REVIEW_GATE29_20260927_E_source_evidence.md shingles=19 ceiling=19
+PER_FILE_CEILING correspondence/GPT_REVIEW_GATE30_20260928_E_source_evidence.md shingles=26 ceiling=26
+PER_FILE_CEILING correspondence/GPT_REVIEW_GATE31_20260928_E_source_evidence.md shingles=47 ceiling=47
+PER_FILE_CEILING correspondence/GPT_REVIEW_GATE32_20260928_E_source_evidence.md shingles=16 ceiling=17
+PER_FILE_CEILING correspondence/GPT_REVIEW_GATE34_20260930_E_source_evidence.md shingles=16 ceiling=16
+NEAR_MISS_TOP5 manuscript/PROOF_NOTE_DIMENSION.md=2, submission/APAL_SUBMISSION_CHECKLIST_v1.md=1, submission/APAL_COVER_LETTER_v1.md=1, release/TRUST_BOUNDARY_APAL.template.md=1, release/TRUST_BOUNDARY_APAL.md=1
+TRIGGER_MARGIN highest_untriggered=2 trigger=6
+PARALLEL_PROSE_FILES=0 PARALLEL_PROSE_DIRS=0
+PARALLEL_PROSE_CONTROL=OK
+PREEXISTING_SHIPPED_PDF_SHA256=22e6df3f6c44bf9c5854902b4b950d5de6b846b139e276b902c4bb39455d70e2
+SOURCE_DATE_EPOCH=1788566400
+BUILD_ROOT /Users/hiroki/Downloads/mpup_gpt_r53_20260930
+INPUTS  far=FinalAxiomReport_current.log  sd=statement_diff_current.log  ledger=binder_ledger_current.log  frozen=59
+TEX_TO_MD=generated_manuscript.md chars=227823
+MARKDOWN_GENERATED_GATE=OK
+STATEMENT_MAP_FULL_ROWS=63 -> statement_map_full.md
+APPENDIX_E_ROWS=47  WITH_LEAN_NAME=41  NO_NAME=6
+APPENDIX_E_PRINTED=47  APPENDIX_E_ALL_STATEMENTS=63
+STATEMENTS_FOUND=63
+STATEMENTS_MAPPED=63
+LETTERED_LABELS=2 (C.1, C.2)
+C1_FOUND=1
+ALLOWLISTED_NAMES=1 (quadraticProjectionDichotomyZ_all)
+UNKNOWN_NAMES=0
+APPENDIX_E_EXIT=0
+H1_STRIPPED  APPENDIX_E_INLINED
+FILLED ROOTS=417 THMS=1092 DEFS=298 UNCOND=406 BROOTS=452 -> body_counts.md
+LOCATORS mode=final DOI=https://doi.org/10.5281/zenodo.23053094 REPO=https://github.com/hirokifukui/single-quadratic-definability
+PLACEHOLDER_GATE=OK  (0 surviving tokens)
+APPENDIX_E_GATE=OK rows=47
+STATEMENT_MAP_FULL_GATE=OK rows=64
+POSITIVE_FOUND=3 (A.10, AA.1, C.1)
+OLD_PATTERN_FOUND=0
+NEGATIVE_DROP=1 (63 -> 62)
+PATTERN_FILES_AGREE=4/4
+SELF_MATCH=0
+LETTERED_CONTROL_EXIT=0
+    Definition 1.6, Definition 1.7, Remark 2.3, Remark 2.4, Definition 3.1, Examples 8.6, Definition 9.1
+
+UNPROVED_OR_UNCITED_THEOREMS=0
+PROOF_CITATION_EXIT=0
+ENV FONTSPEC   ok       fontspec.sty @ /usr/local/texlive/2026basic/texmf-dist/tex/latex/fontspec
+ENV TEXLIVE    ok       2026
+ENV TEXMFDIST  ok       /usr/local/texlive/2026basic/texmf-dist
+ENV XDVIPDFMX  ok       This is xdvipdfmx Version 20260113 by the DVIPDFMx project team,
+ENV XELATEX    ok       XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)
+ENVIRONMENT_PREFLIGHT=OK differing=0
+FONT_PREFLIGHT_DECLARED=8
+  main   STIXTwoText-Regular.otf      OK
+  math   STIXTwoMath-Regular.otf      OK
+  mono   DejaVuSansMono.ttf           OK
+  face   STIXTwoText-Bold.otf         OK
+  face   STIXTwoText-Italic.otf       OK
+  face   STIXTwoText-BoldItalic.otf   OK
+  face   DejaVuSansMono-Bold.ttf      OK
+  face   DejaVuSansMono-Oblique.ttf   OK
+FONT_PREFLIGHT=OK
+SOURCE_STATUS=FINAL
+BUILD_SOURCE=submission/native
+QA_REFERENCE=manuscript/MANUSCRIPT_V32.md
+MARKDOWN_IS_GENERATED=1
+QA_INTERMEDIATE=generated Markdown
+HAND_MAINTAINED_MARKDOWN_QA_DEPENDENCIES=0
+CANONICAL_SOURCE=native
+NATIVE_STATEMENTS=73 MD_STATEMENTS=73 NATIVE_STATEMENT_MISMATCH=0
+NATIVE_STATEMENT_EXIT=0
+NATIVE_STATEMENT_GATE=OK
+PAPER_CLAIMS=47 PAPER_CLAIMS_FAIL=0
+PAPER_CLAIMS_EXIT=0
+PAPER_CLAIMS_GATE=OK
+PAPER_CLAIM_TYPES_EXIT=0
+PAPER_CLAIM_TYPES_GATE=OK 453 lines
+CROSSREF_EXIT=0
+CROSSREF_SEMANTIC_GATE=OK
+NEGATIVE_CONTROLS_CAUGHT=16/16
+NEGATIVE_CONTROLS_EXIT=0
+MALFORMED_SE2_DEFINABLE_PHRASE=0
+MANUSCRIPT_SCAN_EXIT=0
+MANUSCRIPT_CONTROLS_CAUGHT=14/14
+MANUSCRIPT_CONTROLS_EXIT=0
+NEGATIVE_CONTROLS_GATE=OK
+MATHMODE_SUPERSCRIPTS=0 MATHMODE_SUBSCRIPTS=0 MATHMODE_DISPLAYS=0/1 MATHMODE_DISPLAYS_LEFT=1 APPLIED=0
+PROOF_COMPANION_STATEMENTS=73 PROOF_COMPANION_WITH_PROOF=55
+PROOF_COMPANION_GATE=OK
+APPENDIX_E_TEX rows=47
+APPENDIX_E_WIDTHS appendix_e_table.tex                         cols=4 rows=48  0.060,0.060,0.530,0.300 -> 0.067,0.133,0.356,0.337
+LOCATORS_NATIVE mode=final files_substituted=3
+NATIVE_FLATTENED lines=1899
+NATIVE_OK  sections: 23
+GLYPH_GATE=OK
+BUILD_OK mode=final pages=70 pages
+P01_OVERFULL_ALL=1
+P01_OVERFULL_GT_5PT=0
+P01_UNDERFULL_ALL=34
+P01_MISSING_GLYPHS=0
+P01_UNRESOLVED_REFS=0
+P01_UNDEFINED_CITATIONS=0
+P01_PLACEHOLDERS=0
+P01_GATE=OK
+TYPESET RAW_BLOCKQUOTE_MARKERS     ok   0 []
+TYPESET STRAY_ASTERISKS            ok   0 []
+TYPESET RAW_STAR_BULLETS           ok   0 []
+TYPESET RAW_MD_EMPHASIS            ok   0 files
+TYPESET TEXTASCIICIRCUM            ok   0
+TYPESET MALFORMED_DISPLAY_TABLES   ok   0 []
+TYPESET RAW_CITATION_KEYS          ok   0 []
+TYPESET HARDCODED_REFERENCES       ok   0 []
+TYPESET BARE_NUMBER_REFERENCES     ok   0 []
+TYPESET TEXTSUPERSCRIPT_EXPONENTS  ok   0
+TYPESET DISPLAYTEXT_REMAINING     1 (counted, not gated)
+TYPESET MATH_DISPLAYS=26 MATH_INLINE=2144
+TYPESET ENUMERATE_RESTARTS         ok   0 []
+TYPESET DUPLICATE_LABELS           ok   0 []
+TYPESET STATEMENT_WITHOUT_PROOF    ok   0 []
+TYPESET UNBALANCED_ENVIRONMENTS    ok   0 []
+TYPESET OVERFULL_GT_5PT            ok   0
+TYPESET UNRESOLVED_REFS            ok   0
+TYPESET UNDEFINED_CITATIONS        ok   0
+TYPESET_GATE=OK checks_failed=0
+FIGURE_PAGES            measured=70  checklist=[70]
+FIGURE_ABSTRACT_WORDS   measured=250  checklist=[250]
+FIGURE_KEYWORDS         measured=6  checklist=[6]
+FIGURE_REFERENCES       measured=27  checklist=[27]
+SUBMISSION_FIGURES_MISMATCH=0
+SUBMISSION_FIGURES_EXIT=0
+TRUSTFIG_axiom_roots                measured=421  document=421
+TRUSTFIG_axiom_roots_with_axioms    measured=417  document=417
+TRUSTFIG_axiom_roots_axiom_free     measured=4  document=4
+TRUSTFIG_footprint_all_three        measured=398  document=398
+TRUSTFIG_footprint_propext_only     measured=14  document=14
+TRUSTFIG_footprint_propext_quot     measured=5  document=5
+TRUSTFIG_binder_roots               measured=452  document=452
+TRUSTFIG_binder_unconditional       measured=406  document=406
+TRUSTFIG_frozen_theorems            measured=1092  document=1092
+TRUSTFIG_frozen_definitions         measured=298  document=298
+TRUSTFIG_frozen_files               measured=59  document=59
+TRUST_FIGURES_MISMATCH=0
+TRUST_FIGURES_EXIT=0
+SHIP_COPY=OK  submission/APAL_MANUSCRIPT_v32.{tex,pdf} refreshed from this build
+BUILD_EXIT=0
+NEWLY_BUILT_PDF_SHA256=a2d9aaacacaa6548435cb819056c0326cbd2beced2db801fd6847538c32b1564
+NEWLY_BUILT_TEX_SHA256=9aca0dcf295c8de7cf2101bc17df60190532aedb978784618bfda91633b2e5bb
+NEW_PDF_CREATED=1
+GENERATED_PDF_EQ_SHIPPED=1
+GENERATED_TEX_EQ_SHIPPED=1
+SHIPPED_PDF_SHA256=a2d9aaacacaa6548435cb819056c0326cbd2beced2db801fd6847538c32b1564
+SHIPPED_TEX_SHA256=9aca0dcf295c8de7cf2101bc17df60190532aedb978784618bfda91633b2e5bb
+PDF_PAGES=70
+XDVIPDFMX_VERSION=20260113
+SOURCE_MANIFEST_SHA256=e720e9b0e0778ed630634c43feca524ceeda40e37821084a146ce841208d4152
+SOURCE_MANIFEST_SCOPE=lean,frozen_statements,manuscript
+SUBMISSION_INPUT_MANIFEST_FILES=316
+SUBMISSION_INPUT_MANIFEST_SHA256=8c6f7a56287f5a34d6740afaf15110e5e77a3736e6c7231a9c2d66ae5138a145
+SUBMISSION_INPUT_MANIFEST_SCOPE=papers/apal_build,submission,tools,release,certificates,manuscript,frozen_statements (build products and backups excluded)
+PY_CACHE_CREATED=0
+SHIPPING_MEASUREMENTS=written
+SUBMISSION_INPUT_MANIFEST=written
+PACKAGE_BUILD_EXIT=0

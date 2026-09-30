@@ -1,0 +1,44 @@
+\section{Finite-fibre height and cardinality}\label{sec:2}
+Write $\mathrm{fiberVecZZ} P a := \{b ∈ ℤ^{m} | ∃ u, P(a ++ b, u) = 0\}$ for $P ∈ \mathrm{Poly} (n+m) r$, and fiberZZ P a for the scalar case $m = 1$.
+
+\begin{theorem}[uniform finite-fibre height; \texttt{FiniteFiberGrowth.\allowbreak{}lean}, \texttt{singleQuadratic\_\allowbreak{}finiteFiber\_\allowbreak{}height\_\allowbreak{}vector}]\label[theorem]{theorem:2.1}
+Let $P ∈ \mathrm{Poly}\ (n+m)\ r$ with $\mathrm{totalDegree}\ P ≤ 2$. There is $C ∈ ℕ$ such that for all $N ≥ 1$ and all $a ∈ ℤ^{n}$ with $‖a‖_{∞} ≤ N$: if $\mathrm{fiberVecZZ}\ P\ a$ is finite, then every $b$ in it satisfies $‖b‖_{∞} ≤ C·N^{2}$.
+
+\end{theorem}
+% PROOF-GROUP: \cref{theorem:2.1}, \cref{theorem:2.2} (stated together, proved in order below)
+\begin{theorem}[finite-fibre cardinality; \texttt{FiniteFiberCardinality.\allowbreak{}lean}, \texttt{singleQuadratic\_\allowbreak{}finiteFiber\_\allowbreak{}cardinality\_\allowbreak{}vector}]\label[theorem]{theorem:2.2}
+With the same $P$, there is $C ∈ ℕ$ such that simultaneously $\mathrm{FiberHeightBoundVecZZ}\ P\ C$ and $\mathrm{FiberCardBoundVecZZ}\ P\ C$ hold, the latter meaning: for $N ≥ 1$ and $‖a‖_{∞} ≤ N$, a finite fibre has at most $(2CN^{2} + 1)^{m}$ elements. The constant is the same $C$ (the cardinality bound is the box count of the height bound: \texttt{fiberCardBoundVec\_\allowbreak{}of\_\allowbreak{}fiberHeightBoundVec}).
+
+\end{theorem}
+\begin{proof}[Proof of \cref{theorem:2.1}]
+We first treat the scalar case $m = 1$ (\texttt{singleQuadratic\_\allowbreak{}finiteFiber\_\allowbreak{}height\_\allowbreak{}scalar}) and then reduce the vector case to it.
+
+Fix $P ∈ \mathrm{Poly} (n+1) r$ of total degree at most two and a parameter point $a ∈ ℤ^{n}$. Relabel the variables so that the output coordinate c and the r unknowns u form one block of r+1 variables and the parameters form the other (\texttt{relabelG}, \texttt{eval\_\allowbreak{}relabelG\_\allowbreak{}ZZ}); the relabelled polynomial has total degree at most two, since renaming variables cannot raise the degree. Splitting it into homogeneous components in the block (c, u) and specialising the parameters at a gives
+
+$P(a, c, u) = H(c,u) + Σ_{i} ℓ_{i}(a)·x_{i} + q(a)$,
+
+where H is the homogeneous quadratic component in the r+1 variables $x = (c, u)$ (possibly the zero polynomial), each ℓᵢ is a polynomial of degree at most one in a, and q has degree at most two in a (\texttt{normal\_\allowbreak{}form\_\allowbreak{}general\_\allowbreak{}quadratic}). The point of the decomposition is that H does not depend on a: as the parameter point moves, only the affine part of the fibre equation moves, and it moves polynomially.
+
+Now apply the arithmetic projection dichotomy of \cref{sec:9} (\cref{theorem:9.2}) to the homogeneous form H. It supplies a constant K, depending on H alone, such that for every affine datum (ℓ, q) the set of natural numbers c admitting an integer witness u with $H(c,u) + ℓ·(c,u) + q = 0$ is either infinite or bounded above by
+
+$\mathrm{fboundG} K ℓ q = K·((1 + Σ_{i}|ℓ_{i}|)^{2} + |q|)$.
+
+Applying this to H, and to its reflection in the output coordinate (\texttt{flipZero H}, still homogeneous of degree two), covers the negative half of the fibre as well; the two constants are combined into one. If the fibre is finite, the infinite horn of the dichotomy is impossible on both halves, so every c in the fibre satisfies $|c| ≤ \mathrm{fboundG} (K_{1}+K_{2}) ℓ(a) q(a)$.
+
+It remains to bound that expression in terms of N. Each ℓᵢ has degree at most one and q degree at most two in a, so on the box $‖a‖_{∞} ≤ N$ their values are bounded by SL·N and SQ·N² for constants SL, SQ depending only on the coefficient sizes of P (\texttt{eval\_\allowbreak{}abs\_\allowbreak{}le\_\allowbreak{}int}), whence $\mathrm{fboundG} (K_{1}+K_{2}) ℓ(a) q(a) ≤ C·N^{2}$ with $C := (K_{1}+K_{2})·((1+SL)^{2} + SQ)$ (\texttt{fboundG\_\allowbreak{}box\_\allowbreak{}le}). This proves the scalar case, and the constant depends only on P.
+
+For the vector case, fix a coordinate j and consider the polynomial obtained by keeping the j-th output coordinate as the output and moving the remaining m−1 output coordinates into the block of unknowns (\texttt{coordPoly}). This does not change the total degree, and a point b of the vector fibre yields, for each j, a point $b_{j}$ of the scalar fibre of coordPoly j (\texttt{mem\_\allowbreak{}fiberZZ\_\allowbreak{}coordPoly}). A finite vector fibre has finite scalar projections, so the scalar bound applies to each coordinate with a constant $C_{j}$; taking C to be the maximum over the finitely many j gives the statement.
+
+\end{proof}
+\begin{proof}[Proof of \cref{theorem:2.2}]
+Given the height bound, a finite fibre is contained in the box of side 2CN²+1 centred at the origin in ℤᵐ, which has (2CN²+1)ᵐ lattice points (\texttt{ncard\_\allowbreak{}le\_\allowbreak{}of\_\allowbreak{}abs\_\allowbreak{}le\_\allowbreak{}vec}). No new constant is needed.
+
+\end{proof}
+\begin{remark}[on effectivity]\label[remark]{remark:2.3}
+The constant C is not claimed to be effective in \cref{theorem:2.1}, and the proof above shows precisely where effectivity would have to come from. The parameter-dependent part is completely explicit: SL and SQ are read off the coefficients of P, and the passage from fboundG to C·N² is elementary. The one non-explicit ingredient is K, the constant supplied by the projection dichotomy for the homogeneous form H. The paper proves that K exists; it does not prove an algorithm that computes K, or C, from the coefficients of P, and no such algorithm is claimed. We therefore state \cref{theorem:2.1,theorem:2.2,theorem:3.2,theorem:4.1} with a non-effective constant, and we do not use effectivity anywhere. Nothing in Sections 6 and 7 depends on it, and it is worth separating four things that are easy to run together. The finite-fibre theorem gives a non-effective structural bound. The computability of SE₂-definable \emph{total functions} (\cref{theorem:7.1}) uses neither that bound nor any external input: totality plus a Diophantine graph makes a dovetailed search terminate. The recursiveness of SE₂ \emph{relations} (\cref{sec:6}) uses \cref{definition:1.5}, since positive search settles membership but not its complement. Uniformity in the code is not a convenience there: a decision procedure supplied one equation at a time would give each fixed relation as recursive, but the diagonalization of \cref{theorem:6.5}, which is what separates SE₂ from REC at arity one, quantifies over a coded family and needs the decision to be uniform in the code. The certificates of \cref{sec:8} assert the existence of a structured output subset, with witnesses selected non-effectively. A non-effective bound terminates no search, and we nowhere ask it to.
+
+\end{remark}
+\begin{remark}[worst case, not sharp]\label[remark]{remark:2.4}
+The exponent 2 is attained $(b − a^{2} = 0)$ but the bound is not sharp in general: for $x·y = a$ with $a ≠ 0$ the finite fibre lies in [−N, N], and for $b^{2} = a$ it lies in [−√N, √N]. The theorem is a uniform worst-case bound; the sharp exponent as a function of the shape of P is not studied here.
+
+\end{remark}
